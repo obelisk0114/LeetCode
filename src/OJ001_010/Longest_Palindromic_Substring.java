@@ -1,4 +1,4 @@
-package OJ1_10;
+package OJ001_010;
 
 /*
  * http://www.csie.ntnu.edu.tw/~u91029/Palindrome.html
@@ -6,6 +6,7 @@ package OJ1_10;
  * Use Manacher's Algorithm 
  * Last = L = j ; RightMost = R = j+z(j)-1 ; Gusfield's Algorithm
  * nL = n = z[i]
+ * length of palindrome that we use in the algorithm = z[i]-1
  * 
  */
 

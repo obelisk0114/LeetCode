@@ -1,4 +1,4 @@
-package OJ11_20;
+package OJ011_020;
 
 import java.util.Scanner;
 import java.util.LinkedList;

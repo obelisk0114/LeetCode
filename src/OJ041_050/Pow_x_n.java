@@ -1,4 +1,4 @@
-package OJ41_50;
+package OJ041_050;
 
 import java.util.Scanner;
 

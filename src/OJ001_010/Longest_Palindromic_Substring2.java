@@ -1,4 +1,4 @@
-package OJ1_10;
+package OJ001_010;
 
 /*
  * http://www.csie.ntnu.edu.tw/~u91029/Palindrome.html
