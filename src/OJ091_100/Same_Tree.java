@@ -45,11 +45,11 @@ public class Same_Tree {
 		while (true) {
 			TreeNode currentNode = queue.removeFirst();
 			if (currentNode.equals(nextLevel)) {
-				queue.addLast(nextLevel);
-				list.add(tmp);
 				if (levelNullNode == (int) Math.pow(2, levelMark)) {
 					break;
 				}
+				queue.addLast(nextLevel);
+				list.add(tmp);
 				tmp = new ArrayList<String>();
 				levelMark++;                      // Next level
 				levelNullNode = 0;                // Reset null nodes count
