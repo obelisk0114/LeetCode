@@ -1,5 +1,8 @@
 package OJ091_100;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Same_Tree {
 	private class TreeNode {
 		int val;
@@ -8,7 +11,7 @@ public class Same_Tree {
 		TreeNode(int x) { val = x; }
 	}
 	
-	public static boolean isSameTree(TreeNode p, TreeNode q) {
+	public boolean isSameTree(TreeNode p, TreeNode q) {
 		if ((p == null) && (q == null)) {
 			return true;
 		}
@@ -19,6 +22,85 @@ public class Same_Tree {
 			return false;
 		}
 		return (isSameTree(p.left, q.left) && isSameTree(p.right, q.right));
+	}
+	
+	public void storeTree(TreeNode treenode) {
+		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+		
+		// Add root
+		ArrayList<String> first = new ArrayList<String>();
+		first.add(Integer.toString(treenode.val));
+		list.add(first);
+		
+		// Construct a queue to record
+		TreeNode nextLevel = new TreeNode(-1);    // Mark next level
+		TreeNode nullNode = new TreeNode(-2);     // Mark null node
+		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.addLast(treenode);
+		queue.addLast(nextLevel);
+		int levelMark = 1;                        // Mark level
+		int levelNullNode = 0;                    // Mark null nodes in this level
+		
+		ArrayList<String> tmp = new ArrayList<String>();
+		while (true) {
+			TreeNode currentNode = queue.removeFirst();
+			if (currentNode.equals(nextLevel)) {
+				queue.addLast(nextLevel);
+				list.add(tmp);
+				if (levelNullNode == (int) Math.pow(2, levelMark)) {
+					break;
+				}
+				tmp = new ArrayList<String>();
+				levelMark++;                      // Next level
+				levelNullNode = 0;                // Reset null nodes count
+				continue;
+			}
+			if (currentNode.left == null) {
+				tmp.add("null");
+				queue.addLast(nullNode);
+				levelNullNode++;
+			}
+			else {
+				String tobeAdd = Integer.toString(currentNode.left.val); 
+				tmp.add(tobeAdd);
+				queue.addLast(currentNode.left);
+			}
+			if (currentNode.right == null) {
+				tmp.add("null");
+				queue.addLast(nullNode);
+				levelNullNode++;
+			}
+			else {
+				String tobeAdd = Integer.toString(currentNode.right.val);
+				tmp.add(tobeAdd);
+				queue.addLast(currentNode.right);
+			}	
+		}
+		printTree(list);
+	}
+	
+	public void printTree(ArrayList<ArrayList<String>> tree) {
+		for (int i = 0; i < tree.size(); i++) {
+			int Space = (int) Math.pow(2, tree.size() - 1 - i) - 1;
+			for (int j = 0; j < tree.get(i).size(); j++) {
+				for (int run = 0; run < 2; run++) {
+					for (int k = 0; k < Space; k++) {
+						System.out.print(" ");
+					}
+					
+					if (j == 0)
+						break;
+				}
+				String realOut = tree.get(i).get(j);
+				if (realOut.equals("null")) {
+					System.out.print("  ");
+				}
+				else {
+					System.out.printf("%2s", realOut);
+				}
+			}
+			System.out.println();
+		}
 	}
 
 	public static void main(String[] args) {
@@ -47,7 +129,11 @@ public class Same_Tree {
 		q1.left = q2;   q1.right = q3;   q2.left = q4;   q2.right = q5;
 		q3.left = q6;   q3.right = q7;
 		
-		System.out.println(isSameTree(p1, q1));
+		System.out.println("Tree p : \n");
+		tree.storeTree(p1);
+		System.out.println("Tree q : \n");
+		tree.storeTree(q1);
+		System.out.println(tree.isSameTree(p1, q1));
 
 	}
 
