@@ -43,11 +43,11 @@ public class Invert_Binary_Tree {
 		while (true) {
 			TreeNode currentNode = queue.removeFirst();
 			if (currentNode.equals(nextLevel)) {
-				queue.addLast(nextLevel);
-				list.add(tmp);
 				if (levelNullNode == (int) Math.pow(2, levelMark)) {
 					break;
 				}
+				queue.addLast(nextLevel);
+				list.add(tmp);
 				tmp = new ArrayList<String>();
 				levelMark++;                      // Next level
 				levelNullNode = 0;                // Reset null nodes count
@@ -79,7 +79,7 @@ public class Invert_Binary_Tree {
 	
 	void printTree(ArrayList<ArrayList<String>> tree) {
 		for (int i = 0; i < tree.size(); i++) {
-			int Space = (int) Math.pow(2, tree.size() - 1 - i) - 1;
+			int Space = (int) Math.pow(2, tree.size() - i) - 1;
 			for (int j = 0; j < tree.get(i).size(); j++) {
 				for (int run = 0; run < 2; run++) {
 					for (int k = 0; k < Space; k++) {
