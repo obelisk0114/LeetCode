@@ -29,5 +29,11 @@
 ## 181-190
 189. Rotate Array
 
+## 201-210
+204. Count Primes
+
+## 211-220
+215. Kth Largest Element in an Array
+
 ## 221-230
 226. Invert Binary Tree
