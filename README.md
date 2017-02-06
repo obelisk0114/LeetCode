@@ -8,6 +8,7 @@
 ## 11-20
 11.
 12.
+19. Remove Nth Node From End of List
 20. Valid Parentheses
 
 ## 21-30
@@ -30,6 +31,7 @@
 189. Rotate Array
 
 ## 201-210
+203. Remove Linked List Elements
 204. Count Primes
 
 ## 211-220
