@@ -21,12 +21,15 @@
 88. Merge Sorted Array
 
 ## 91-100
+94. Binary Tree Inorder Traversal
+98. Validate Binary Search Tree
 100. Same Tree
 
 ## 101-110
 101. Symmetric Tree
 102. Binary Tree Level Order Traversal
 103. Binary Tree Zigzag Level Order Traversal
+108. Convert Sorted Array to Binary Search Tree
 
 ## 141-150
 147. Insertion Sort List
@@ -43,3 +46,4 @@
 
 ## 221-230
 226. Invert Binary Tree
+230. Kth Smallest Element in a BST
