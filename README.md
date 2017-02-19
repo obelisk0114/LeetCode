@@ -33,6 +33,7 @@
 
 ## 141-150
 147. Insertion Sort List
+148. Sort List
 
 ## 181-190
 189. Rotate Array
