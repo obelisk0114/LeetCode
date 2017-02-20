@@ -35,6 +35,9 @@
 147. Insertion Sort List
 148. Sort List
 
+## 161-170
+167. Two Sum II - Input array is sorted
+
 ## 181-190
 189. Rotate Array
 
