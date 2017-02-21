@@ -56,6 +56,9 @@
 ## 271-280
 280. Wiggle Sort
 
+## 291-300
+296. Best Meeting Point
+
 ## 311-320
 311. Sparse Matrix Multiplication
 
