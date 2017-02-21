@@ -55,3 +55,9 @@
 
 ## 271-280
 280. Wiggle Sort
+
+## 311-320
+311. Sparse Matrix Multiplication
+
+## 321-330
+324. Wiggle Sort II
