@@ -54,6 +54,7 @@
 230. Kth Smallest Element in a BST
 
 ## 271-280
+277. Find the Celebrity
 280. Wiggle Sort
 
 ## 291-300
@@ -64,3 +65,6 @@
 
 ## 321-330
 324. Wiggle Sort II
+
+## 331-340
+339. Nested List Weight Sum
