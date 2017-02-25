@@ -21,10 +21,6 @@ public class Nested_List_Weight_Sum {
 		public List<NestedInteger> getList();
 	}
 	
-	// https://discuss.leetcode.com/topic/65020/java-clean-code-with-explanations-and-running-time-5-solutions
-	// https://discuss.leetcode.com/topic/41413/simple-java-bfs-2ms-solution-with-queue
-	// https://discuss.leetcode.com/topic/41458/java-iterative-solution
-	
 	public int depthSum_BFS(List<NestedInteger> nestedList) {
 		int sum = 0;
 		int level = 1;
@@ -94,5 +90,9 @@ public class Nested_List_Weight_Sum {
 	    }
 	    return sum;
 	}
+	
+	// https://discuss.leetcode.com/topic/65020/java-clean-code-with-explanations-and-running-time-5-solutions
+	// https://discuss.leetcode.com/topic/41413/simple-java-bfs-2ms-solution-with-queue
+	// https://discuss.leetcode.com/topic/41458/java-iterative-solution
 
 }
