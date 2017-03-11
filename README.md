@@ -62,6 +62,7 @@
 
 ## 291-300
 296. Best Meeting Point
+300. Longest Increasing Subsequence
 
 ## 311-320
 311. Sparse Matrix Multiplication
