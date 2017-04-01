@@ -76,5 +76,8 @@
 ## 361-370
 364. Nested List Weight Sum II
 
+## 411-420
+412. Fizz Buzz
+
 ## 511-520
 516. Longest Palindromic Subsequence
