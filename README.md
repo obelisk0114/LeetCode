@@ -14,6 +14,9 @@
 ## 21-30
 21. Merge Two Sorted Lists
 
+## 31-40
+36. Valid Sudoku
+
 ## 41-50
 50. Pow(x, n)
 
