@@ -16,6 +16,7 @@
 
 ## 31-40
 36. Valid Sudoku
+37. Sudoku Solver
 
 ## 41-50
 50. Pow(x, n)
