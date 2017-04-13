@@ -4,6 +4,7 @@
 1. Two Sum
 2. 
 5. Longest Palindromic Substring
+7. Reverse Integer
 
 ## 11-20
 11.
@@ -36,6 +37,7 @@
 108. Convert Sorted Array to Binary Search Tree
 
 ## 141-150
+144. Binary Tree Preorder Traversal
 147. Insertion Sort List
 148. Sort List
 
