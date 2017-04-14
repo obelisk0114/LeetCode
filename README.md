@@ -36,6 +36,10 @@
 103. Binary Tree Zigzag Level Order Traversal
 108. Convert Sorted Array to Binary Search Tree
 
+## 111-120
+118. Pascal's Triangle
+119. Pascal's Triangle II
+
 ## 141-150
 144. Binary Tree Preorder Traversal
 147. Insertion Sort List
