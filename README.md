@@ -22,6 +22,9 @@
 ## 41-50
 50. Pow(x, n)
 
+## 61-70
+61. Rotate List
+
 ## 81-90
 88. Merge Sorted Array
 
