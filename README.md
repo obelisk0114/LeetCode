@@ -20,10 +20,13 @@
 37. Sudoku Solver
 
 ## 41-50
+43. Multiply Strings
 50. Pow(x, n)
 
 ## 61-70
 61. Rotate List
+66. Plus One
+67. Add Binary
 
 ## 81-90
 88. Merge Sorted Array
@@ -66,6 +69,9 @@
 226. Invert Binary Tree
 230. Kth Smallest Element in a BST
 
+## 231-240
+231. Power of Two
+
 ## 251-260
 252. Meeting Rooms
 
@@ -86,11 +92,15 @@
 ## 331-340
 339. Nested List Weight Sum
 
+## 341-350
+342. Power of Four
+
 ## 361-370
 364. Nested List Weight Sum II
 
 ## 411-420
 412. Fizz Buzz
+415. Add Strings
 
 ## 511-520
 516. Longest Palindromic Subsequence
