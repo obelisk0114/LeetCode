@@ -88,6 +88,7 @@
 
 ## 321-330
 324. Wiggle Sort II
+326. Power of Three
 
 ## 331-340
 339. Nested List Weight Sum
@@ -110,3 +111,6 @@
 ## 611-620
 611. Valid Triangle Number
 617. Merge Two Binary Trees
+
+## 621-630
+628. Maximum Product of Three Numbers
