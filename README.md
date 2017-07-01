@@ -58,6 +58,9 @@
 ## 181-190
 189. Rotate Array
 
+## 191-200
+191. Number of 1 Bits
+
 ## 201-210
 203. Remove Linked List Elements
 204. Count Primes
