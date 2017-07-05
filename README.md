@@ -51,6 +51,9 @@
 147. Insertion Sort List
 148. Sort List
 
+## 151-160
+152. Maximum Product Subarray
+
 ## 161-170
 167. Two Sum II - Input array is sorted
 170. Two Sum III - Data structure design
@@ -74,6 +77,7 @@
 
 ## 231-240
 231. Power of Two
+238. Product of Array Except Self
 
 ## 251-260
 252. Meeting Rooms
