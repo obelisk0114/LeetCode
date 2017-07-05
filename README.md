@@ -23,6 +23,9 @@
 43. Multiply Strings
 50. Pow(x, n)
 
+## 51-60
+53. Maximum Subarray
+
 ## 61-70
 61. Rotate List
 66. Plus One
