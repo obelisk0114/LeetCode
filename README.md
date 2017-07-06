@@ -25,6 +25,8 @@
 
 ## 51-60
 53. Maximum Subarray
+54. Spiral Matrix
+59. Spiral Matrix II
 
 ## 61-70
 61. Rotate List
@@ -105,6 +107,7 @@
 
 ## 341-350
 342. Power of Four
+344. Reverse String
 
 ## 361-370
 364. Nested List Weight Sum II
