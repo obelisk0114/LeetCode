@@ -5,6 +5,7 @@
 2. 
 5. Longest Palindromic Substring
 7. Reverse Integer
+8. String to Integer (atoi)
 
 ## 11-20
 11.
@@ -30,8 +31,12 @@
 
 ## 61-70
 61. Rotate List
+65. Valid Number
 66. Plus One
 67. Add Binary
+
+## 71-80
+79. Word Search
 
 ## 81-90
 88. Merge Sorted Array
@@ -74,6 +79,7 @@
 204. Count Primes
 
 ## 211-220
+212. Word Search II
 215. Kth Largest Element in an Array
 
 ## 221-230
@@ -119,6 +125,9 @@
 ## 511-520
 516. Longest Palindromic Subsequence
 
+## 541-550
+541. Reverse String II
+
 ## 601-610
 
 ## 611-620
@@ -127,3 +136,6 @@
 
 ## 621-630
 628. Maximum Product of Three Numbers
+
+## 631-640
+635. Design Log Storage
