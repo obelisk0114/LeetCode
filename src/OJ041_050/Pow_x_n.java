@@ -3,6 +3,19 @@ package OJ041_050;
 import java.util.Scanner;
 
 public class Pow_x_n {
+	// https://discuss.leetcode.com/topic/21837/5-different-choices-when-talk-with-interviewers
+	// https://discuss.leetcode.com/topic/40546/iterative-log-n-solution-with-clear-explanation
+	public double MyPow(double x, int n) {
+        double ans = 1;
+        long absN = Math.abs((long)n);
+        while(absN > 0) {
+            if((absN&1)==1) ans *= x;
+            absN >>= 1;
+            x *= x;
+        }
+        return n < 0 ?  1/ans : ans;
+    }
+	
 	private static double fastPower(int x, int n) {
 		// handle base is zero.
 		if (x == 0 && n == 0) {

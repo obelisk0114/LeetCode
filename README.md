@@ -15,6 +15,7 @@
 
 ## 21-30
 21. Merge Two Sorted Lists
+29. Divide Two Integers
 
 ## 31-40
 36. Valid Sudoku
@@ -66,7 +67,11 @@
 
 ## 161-170
 167. Two Sum II - Input array is sorted
+168. Excel Sheet Column Title
 170. Two Sum III - Data structure design
+
+## 171-180
+171. Excel Sheet Column Number
 
 ## 181-190
 189. Rotate Array
