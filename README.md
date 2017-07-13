@@ -6,6 +6,7 @@
 5. Longest Palindromic Substring
 7. Reverse Integer
 8. String to Integer (atoi)
+9. Palindrome Number
 
 ## 11-20
 11.
@@ -98,6 +99,9 @@
 ## 251-260
 252. Meeting Rooms
 
+## 261-270
+264. Ugly Number II
+
 ## 271-280
 277. Find the Celebrity
 280. Wiggle Sort
@@ -108,6 +112,7 @@
 
 ## 311-320
 311. Sparse Matrix Multiplication
+313. Super Ugly Number
 
 ## 321-330
 324. Wiggle Sort II
@@ -122,6 +127,9 @@
 
 ## 361-370
 364. Nested List Weight Sum II
+
+## 371-380
+372. Super Pow
 
 ## 411-420
 412. Fizz Buzz
