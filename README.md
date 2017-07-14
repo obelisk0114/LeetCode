@@ -106,6 +106,9 @@
 277. Find the Celebrity
 280. Wiggle Sort
 
+## 281-290
+287. Find the Duplicate Number
+
 ## 291-300
 296. Best Meeting Point
 300. Longest Increasing Subsequence
