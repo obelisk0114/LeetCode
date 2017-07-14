@@ -101,6 +101,7 @@
 
 ## 261-270
 264. Ugly Number II
+268. Missing Number
 
 ## 271-280
 277. Find the Celebrity
