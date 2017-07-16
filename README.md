@@ -23,6 +23,7 @@
 37. Sudoku Solver
 
 ## 41-50
+41. First Missing Positive
 43. Multiply Strings
 50. Pow(x, n)
 
@@ -140,6 +141,10 @@
 415. Add Strings
 416. Partition Equal Subset Sum
 
+## 441-450
+442. Find All Duplicates in an Array
+448. Find All Numbers Disappeared in an Array
+
 ## 451-460
 453. Minimum Moves to Equal Array Elements
 
@@ -167,3 +172,8 @@
 ## 631-640
 634. Find Derangements
 635. Design Log Storage (LogSystem)
+637. Average of Levels in Binary Tree
+640. Solve the Equation
+
+## 641-650
+643. Maximum Average Subarray I
