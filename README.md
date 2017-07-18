@@ -103,6 +103,7 @@
 
 ## 251-260
 252. Meeting Rooms
+260. Single Number III
 
 ## 261-270
 264. Ugly Number II
@@ -141,6 +142,9 @@
 
 ## 371-380
 372. Super Pow
+
+## 381-390
+389. Find the Difference
 
 ## 411-420
 412. Fizz Buzz
