@@ -59,6 +59,10 @@
 118. Pascal's Triangle
 119. Pascal's Triangle II
 
+## 131-140
+136. Single Number
+137. Single Number II
+
 ## 141-150
 144. Binary Tree Preorder Traversal
 147. Insertion Sort List
@@ -113,6 +117,7 @@
 
 ## 291-300
 296. Best Meeting Point
+299. Bulls and Cows
 300. Longest Increasing Subsequence
 
 ## 311-320
@@ -129,6 +134,7 @@
 ## 341-350
 342. Power of Four
 344. Reverse String
+347. Top K Frequent Elements
 
 ## 361-370
 364. Nested List Weight Sum II
@@ -146,7 +152,8 @@
 448. Find All Numbers Disappeared in an Array
 
 ## 451-460
-453. Minimum Moves to Equal Array Elements
+451. Sort Characters By Frequency
+453. Minimum Moves to Equal Array Elements (Can't access article)
 
 ## 461-470
 462. Minimum Moves to Equal Array Elements II (Can't access article)
