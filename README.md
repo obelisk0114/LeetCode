@@ -92,6 +92,7 @@
 ## 211-220
 212. Word Search II
 215. Kth Largest Element in an Array
+217. Contains Duplicate
 
 ## 221-230
 226. Invert Binary Tree
@@ -145,6 +146,10 @@
 
 ## 381-390
 389. Find the Difference
+
+## 391-400
+393. UTF-8 Validation
+394. Decode String
 
 ## 411-420
 412. Fizz Buzz
