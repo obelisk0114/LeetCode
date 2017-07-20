@@ -93,6 +93,7 @@
 212. Word Search II
 215. Kth Largest Element in an Array
 217. Contains Duplicate
+219. Contains Duplicate II
 
 ## 221-230
 226. Invert Binary Tree
@@ -140,6 +141,7 @@
 
 ## 361-370
 364. Nested List Weight Sum II
+368. Largest Divisible Subset
 
 ## 371-380
 372. Super Pow
@@ -150,6 +152,7 @@
 ## 391-400
 393. UTF-8 Validation
 394. Decode String
+397. Integer Replacement
 
 ## 411-420
 412. Fizz Buzz
