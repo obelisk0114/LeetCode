@@ -89,6 +89,7 @@
 191. Number of 1 Bits
 
 ## 201-210
+202. Happy Number
 203. Remove Linked List Elements
 204. Count Primes
 
@@ -180,8 +181,14 @@
 ## 511-520
 516. Longest Palindromic Subsequence
 
+## 521-530
+523. Continuous Subarray Sum (Can't access article)
+
 ## 541-550
 541. Reverse String II
+
+## 551-560
+560. Subarray Sum Equals K
 
 ## 601-610
 
