@@ -64,12 +64,15 @@
 137. Single Number II
 
 ## 141-150
+141. Linked List Cycle
+142. Linked List Cycle II
 144. Binary Tree Preorder Traversal
 147. Insertion Sort List
 148. Sort List
 
 ## 151-160
 152. Maximum Product Subarray
+160. Intersection of Two Linked Lists
 
 ## 161-170
 167. Two Sum II - Input array is sorted
@@ -94,6 +97,7 @@
 215. Kth Largest Element in an Array
 217. Contains Duplicate
 219. Contains Duplicate II
+220. Contains Duplicate III
 
 ## 221-230
 226. Invert Binary Tree
