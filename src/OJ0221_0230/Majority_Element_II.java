@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
+/*
+ * http://www.jianshu.com/p/dfd676b71ef0
+ * https://segmentfault.com/a/1190000004905350
+ */
+
 public class Majority_Element_II {
 	/*
 	 * https://discuss.leetcode.com/topic/32510/java-easy-version-to-understand
