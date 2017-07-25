@@ -59,6 +59,9 @@
 118. Pascal's Triangle
 119. Pascal's Triangle II
 
+## 121-130
+130. Surrounded Regions
+
 ## 131-140
 136. Single Number
 137. Single Number II
@@ -77,6 +80,7 @@
 ## 161-170
 167. Two Sum II - Input array is sorted
 168. Excel Sheet Column Title
+169. Majority Element
 170. Two Sum III - Data structure design
 
 ## 171-180
@@ -87,6 +91,7 @@
 
 ## 191-200
 191. Number of 1 Bits
+200. Number of Islands
 
 ## 201-210
 202. Happy Number
@@ -102,6 +107,7 @@
 
 ## 221-230
 226. Invert Binary Tree
+229. Majority Element II
 230. Kth Smallest Element in a BST
 
 ## 231-240
