@@ -9,7 +9,7 @@
 9. Palindrome Number
 
 ## 11-20
-11.
+11. Container With Most Water
 12.
 19. Remove Nth Node From End of List
 20. Valid Parentheses
@@ -24,6 +24,7 @@
 
 ## 41-50
 41. First Missing Positive
+42. Trapping Rain Water
 43. Multiply Strings
 50. Pow(x, n)
 
