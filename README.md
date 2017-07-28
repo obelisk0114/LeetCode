@@ -17,6 +17,7 @@
 
 ## 21-30
 21. Merge Two Sorted Lists
+22. Generate Parentheses
 26. Remove Duplicates from Sorted Array
 29. Divide Two Integers
 
@@ -46,6 +47,7 @@
 79. Word Search
 
 ## 81-90
+84. Largest Rectangle in Histogram
 88. Merge Sorted Array
 
 ## 91-100
@@ -128,6 +130,7 @@
 
 ## 271-280
 277. Find the Celebrity
+278. First Bad Version
 280. Wiggle Sort
 
 ## 281-290
