@@ -11,14 +11,17 @@
 ## 11-20
 11. Container With Most Water
 12.
+17. Letter Combinations of a Phone Number
 19. Remove Nth Node From End of List
 20. Valid Parentheses
 
 ## 21-30
 21. Merge Two Sorted Lists
+26. Remove Duplicates from Sorted Array
 29. Divide Two Integers
 
 ## 31-40
+34. Search for a Range
 36. Valid Sudoku
 37. Sudoku Solver
 
@@ -165,6 +168,9 @@
 393. UTF-8 Validation
 394. Decode String
 397. Integer Replacement
+
+## 401-410
+401. Binary Watch
 
 ## 411-420
 412. Fizz Buzz
