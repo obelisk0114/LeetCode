@@ -22,6 +22,7 @@
 29. Divide Two Integers
 
 ## 31-40
+33. Search in Rotated Sorted Array
 34. Search for a Range
 36. Valid Sudoku
 37. Sudoku Solver
@@ -47,7 +48,8 @@
 79. Word Search
 
 ## 81-90
-84. Largest Rectangle in Histogram
+81. Search in Rotated Sorted Array II
+84. Largest Rectangle in Histogram (Can't access article)
 88. Merge Sorted Array
 
 ## 91-100
@@ -64,6 +66,7 @@
 ## 111-120
 118. Pascal's Triangle
 119. Pascal's Triangle II
+120. Triangle
 
 ## 121-130
 130. Surrounded Regions
@@ -81,6 +84,8 @@
 
 ## 151-160
 152. Maximum Product Subarray
+153. Find Minimum in Rotated Sorted Array
+154. Find Minimum in Rotated Sorted Array II
 160. Intersection of Two Linked Lists
 
 ## 161-170
