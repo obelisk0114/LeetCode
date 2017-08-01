@@ -98,9 +98,7 @@ public class Search_in_Rotated_Sorted_Array_II {
 		}
 	    return false;
 	}
-	
-	// https://discuss.leetcode.com/topic/20473/o-lgn-with-worst-case-of-o-n
-	
+		
 	// self
 	public boolean search_linear(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
