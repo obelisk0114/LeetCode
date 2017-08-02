@@ -45,6 +45,7 @@
 67. Add Binary
 
 ## 71-80
+77. Combinations
 79. Word Search
 
 ## 81-90
@@ -225,6 +226,7 @@
 ## 631-640
 634. Find Derangements
 635. Design Log Storage (LogSystem)
+636. Exclusive Time of Functions
 637. Average of Levels in Binary Tree
 640. Solve the Equation
 
