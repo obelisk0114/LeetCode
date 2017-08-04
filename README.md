@@ -22,6 +22,7 @@
 29. Divide Two Integers
 
 ## 31-40
+31. Next Permutation
 33. Search in Rotated Sorted Array
 34. Search for a Range
 36. Valid Sudoku
@@ -45,6 +46,7 @@
 67. Add Binary
 
 ## 71-80
+75. Sort Colors
 77. Combinations
 79. Word Search
 
