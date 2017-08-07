@@ -32,6 +32,8 @@
 41. First Missing Positive
 42. Trapping Rain Water
 43. Multiply Strings
+46. Permutations
+47. Permutations II
 50. Pow(x, n)
 
 ## 51-60
