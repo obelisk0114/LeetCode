@@ -27,6 +27,7 @@
 34. Search for a Range
 36. Valid Sudoku
 37. Sudoku Solver
+39. Combination Sum
 
 ## 41-50
 41. First Missing Positive
