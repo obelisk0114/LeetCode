@@ -40,12 +40,14 @@
 53. Maximum Subarray
 54. Spiral Matrix
 59. Spiral Matrix II
+60. Permutation Sequence
 
 ## 61-70
 61. Rotate List
 65. Valid Number
 66. Plus One
 67. Add Binary
+69. Sqrt(x)
 
 ## 71-80
 75. Sort Colors
