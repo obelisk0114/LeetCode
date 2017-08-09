@@ -28,6 +28,7 @@
 36. Valid Sudoku
 37. Sudoku Solver
 39. Combination Sum
+40. Combination Sum II
 
 ## 41-50
 41. First Missing Positive
@@ -172,6 +173,7 @@
 
 ## 361-370
 364. Nested List Weight Sum II
+367. Valid Perfect Square
 368. Largest Divisible Subset
 
 ## 371-380
