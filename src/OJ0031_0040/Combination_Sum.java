@@ -35,7 +35,9 @@ public class Combination_Sum {
 		}
 		
 		// cand[] sorted; from is the starting point of picking elements at this level
-		for (int i = from; i < cand.length; ++i) { 
+		for (int i = from; i < cand.length; ++i) {
+			if (remain - cand[i] < 0)
+				break;
 			list.add(cand[i]);
 			dfs(ans, list, cand, remain - cand[i], i);
 			list.remove(list.size() - 1);
