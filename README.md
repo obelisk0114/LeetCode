@@ -92,6 +92,7 @@
 148. Sort List
 
 ## 151-160
+151. Reverse Words in a String
 152. Maximum Product Subarray
 153. Find Minimum in Rotated Sorted Array
 154. Find Minimum in Rotated Sorted Array II
@@ -121,6 +122,7 @@
 ## 211-220
 212. Word Search II
 215. Kth Largest Element in an Array
+216. Combination Sum III
 217. Contains Duplicate
 219. Contains Duplicate II
 220. Contains Duplicate III
