@@ -50,6 +50,7 @@
 66. Plus One
 67. Add Binary
 69. Sqrt(x)
+70. Climbing Stairs
 
 ## 71-80
 75. Sort Colors
@@ -180,6 +181,7 @@
 
 ## 371-380
 372. Super Pow
+377. Combination Sum IV
 
 ## 381-390
 389. Find the Difference
