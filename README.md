@@ -39,6 +39,8 @@
 50. Pow(x, n)
 
 ## 51-60
+51. N-Queens
+52. N-Queens II
 53. Maximum Subarray
 54. Spiral Matrix
 59. Spiral Matrix II
@@ -60,6 +62,7 @@
 ## 81-90
 81. Search in Rotated Sorted Array II
 84. Largest Rectangle in Histogram (Can't access article)
+86. Partition List
 88. Merge Sorted Array
 
 ## 91-100
