@@ -288,7 +288,7 @@ public class Permutations {
 		// gray code
 		for (int i = 0; i < (1 << N); i++) {
 			/*****   System.out.println(i ^ (i >> 1));   *****/
-			String s = Integer.toBinaryString( (1 << N) | (i ^ (i >> 1)) ).substring( 1 );;
+			String s = Integer.toBinaryString( (1 << N) | (i ^ (i >> 1)) ).substring( 1 );
 			System.out.println(s);
 		}
 		System.out.println();
@@ -297,7 +297,7 @@ public class Permutations {
 		int k = 2;
 		// C(n,k)   ;   Gosper's Hack
 		for (int comb = (1 << k) - 1; comb < 1 << n;) {
-			String s = Integer.toBinaryString( (1 << n) | comb ).substring( 1 );;
+			String s = Integer.toBinaryString( (1 << n) | comb ).substring( 1 );
 			System.out.println(s);
 			//System.out.println(comb);
 		    int x = comb & -comb, y = comb + x;
