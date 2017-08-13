@@ -64,6 +64,7 @@
 84. Largest Rectangle in Histogram (Can't access article)
 86. Partition List
 88. Merge Sorted Array
+89. Gray Code
 
 ## 91-100
 94. Binary Tree Inorder Traversal
@@ -85,6 +86,8 @@
 130. Surrounded Regions
 
 ## 131-140
+131. Palindrome Partitioning
+132. Palindrome Partitioning II
 136. Single Number
 137. Single Number II
 
@@ -170,6 +173,7 @@
 326. Power of Three
 
 ## 331-340
+338. Counting Bits
 339. Nested List Weight Sum
 
 ## 341-350
