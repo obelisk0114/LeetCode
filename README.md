@@ -194,6 +194,7 @@
 389. Find the Difference
 
 ## 391-400
+392. Is Subsequence
 393. UTF-8 Validation
 394. Decode String
 397. Integer Replacement
@@ -207,12 +208,16 @@
 415. Add Strings
 416. Partition Equal Subset Sum
 
+## 431-440
+435. Non-overlapping Intervals
+
 ## 441-450
 442. Find All Duplicates in an Array
 448. Find All Numbers Disappeared in an Array
 
 ## 451-460
 451. Sort Characters By Frequency
+452. Minimum Number of Arrows to Burst Balloons
 453. Minimum Moves to Equal Array Elements (Can't access article)
 
 ## 461-470
@@ -252,3 +257,4 @@
 
 ## 641-650
 643. Maximum Average Subarray I
+648. Replace Words
