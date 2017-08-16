@@ -67,6 +67,7 @@
 89. Gray Code
 
 ## 91-100
+93. Restore IP Addresses
 94. Binary Tree Inorder Traversal
 98. Validate Binary Search Tree
 100. Same Tree
@@ -83,6 +84,7 @@
 120. Triangle
 
 ## 121-130
+125. Valid Palindrome
 130. Surrounded Regions
 
 ## 131-140
