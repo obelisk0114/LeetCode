@@ -19,6 +19,7 @@
 21. Merge Two Sorted Lists
 22. Generate Parentheses
 26. Remove Duplicates from Sorted Array
+28. Implement strStr()
 29. Divide Two Integers
 
 ## 31-40
@@ -96,9 +97,11 @@
 ## 141-150
 141. Linked List Cycle
 142. Linked List Cycle II
+143. Reorder List
 144. Binary Tree Preorder Traversal
 147. Insertion Sort List
 148. Sort List
+150. Evaluate Reverse Polish Notation
 
 ## 151-160
 151. Reverse Words in a String
@@ -137,7 +140,10 @@
 220. Contains Duplicate III
 
 ## 221-230
+221. Maximal Square
+224. Basic Calculator
 226. Invert Binary Tree
+227. Basic Calculator II
 229. Majority Element II
 230. Kth Smallest Element in a BST
 
