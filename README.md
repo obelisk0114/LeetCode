@@ -68,6 +68,7 @@
 89. Gray Code
 
 ## 91-100
+92. Reverse Linked List II
 93. Restore IP Addresses
 94. Binary Tree Inorder Traversal
 98. Validate Binary Search Tree
@@ -130,6 +131,7 @@
 202. Happy Number
 203. Remove Linked List Elements
 204. Count Primes
+206. Reverse Linked List
 
 ## 211-220
 212. Word Search II
