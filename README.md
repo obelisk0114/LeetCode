@@ -63,6 +63,7 @@
 ## 81-90
 81. Search in Rotated Sorted Array II
 84. Largest Rectangle in Histogram (Can't access article)
+85. Maximal Rectangle
 86. Partition List
 88. Merge Sorted Array
 89. Gray Code
@@ -259,7 +260,7 @@
 628. Maximum Product of Three Numbers
 
 ## 631-640
-634. Find Derangements
+634. Find Derangements (haven't test)
 635. Design Log Storage (LogSystem)
 636. Exclusive Time of Functions
 637. Average of Levels in Binary Tree
