@@ -49,6 +49,7 @@
 
 ## 61-70
 61. Rotate List
+62. Unique Paths
 65. Valid Number
 66. Plus One
 67. Add Binary
@@ -72,6 +73,8 @@
 92. Reverse Linked List II
 93. Restore IP Addresses
 94. Binary Tree Inorder Traversal
+95. Unique Binary Search Trees II
+96. Unique Binary Search Trees
 98. Validate Binary Search Tree
 100. Same Tree
 
@@ -153,6 +156,9 @@
 ## 231-240
 231. Power of Two
 238. Product of Array Except Self
+
+## 241-250
+241. Different Ways to Add Parentheses
 
 ## 251-260
 252. Meeting Rooms
