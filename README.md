@@ -7,6 +7,7 @@
 7. Reverse Integer
 8. String to Integer (atoi)
 9. Palindrome Number
+10. Regular Expression Matching
 
 ## 11-20
 11. Container With Most Water
@@ -50,6 +51,8 @@
 ## 61-70
 61. Rotate List
 62. Unique Paths
+63. Unique Paths II
+64. Minimum Path Sum (Can't access article)
 65. Valid Number
 66. Plus One
 67. Add Binary
@@ -195,6 +198,7 @@
 
 ## 341-350
 342. Power of Four
+343. Integer Break
 344. Reverse String
 347. Top K Frequent Elements
 
