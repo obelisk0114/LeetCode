@@ -1,0 +1,20 @@
+var displayComments = function() {
+  var nbb = document.createElement('script');
+  nbb.type = 'text/javascript';
+  nbb.async = true;
+  nbb.src = nodeBBURL + '/plugins/nodebb-plugin-blog-comments/lib/general.js?t=' + Date.now();
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(nbb);
+};
+
+var removeComments = function() {
+  var e = document.getElementById('nodebb');
+  if (e) e.remove();
+};
+
+// TODO: Use UMD instead of manually handlinging CommonJS/AMD
+try {
+  module.exports = {
+    displayComments: displayComments,
+    removeComments: removeComments
+  };
+} catch(e) {}
