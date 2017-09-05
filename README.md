@@ -38,6 +38,7 @@
 43. Multiply Strings
 46. Permutations
 47. Permutations II
+48. Rotate Image
 50. Pow(x, n)
 
 ## 51-60
@@ -63,6 +64,7 @@
 75. Sort Colors
 77. Combinations
 79. Word Search
+80. Remove Duplicates from Sorted Array II
 
 ## 81-90
 81. Search in Rotated Sorted Array II
