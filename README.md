@@ -68,6 +68,8 @@
 
 ## 81-90
 81. Search in Rotated Sorted Array II
+82. Remove Duplicates from Sorted List II
+83. Remove Duplicates from Sorted List
 84. Largest Rectangle in Histogram (Can't access article)
 85. Maximal Rectangle
 86. Partition List
