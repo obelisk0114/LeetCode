@@ -63,6 +63,7 @@
 ## 71-80
 75. Sort Colors
 77. Combinations
+78. Subsets
 79. Word Search
 80. Remove Duplicates from Sorted Array II
 
@@ -75,6 +76,7 @@
 86. Partition List
 88. Merge Sorted Array
 89. Gray Code
+90. Subsets II
 
 ## 91-100
 92. Reverse Linked List II
