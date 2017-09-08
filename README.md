@@ -216,8 +216,10 @@
 ## 371-380
 372. Super Pow
 377. Combination Sum IV
+380. Insert Delete GetRandom O(1)
 
 ## 381-390
+381. Insert Delete GetRandom O(1) - Duplicates allowed
 389. Find the Difference
 
 ## 391-400
@@ -234,6 +236,7 @@
 412. Fizz Buzz
 415. Add Strings
 416. Partition Equal Subset Sum
+417. Pacific Atlantic Water Flow
 
 ## 431-440
 435. Non-overlapping Intervals
