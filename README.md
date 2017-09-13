@@ -141,6 +141,7 @@
 200. Number of Islands
 
 ## 201-210
+201. Bitwise AND of Numbers Range
 202. Happy Number
 203. Remove Linked List Elements
 204. Count Primes
@@ -193,6 +194,7 @@
 ## 311-320
 311. Sparse Matrix Multiplication
 313. Super Ugly Number
+315. Count of Smaller Numbers After Self
 
 ## 321-330
 324. Wiggle Sort II
@@ -230,6 +232,7 @@
 
 ## 401-410
 401. Binary Watch
+406. Queue Reconstruction by Height
 409. Longest Palindrome
 
 ## 411-420
