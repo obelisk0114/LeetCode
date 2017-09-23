@@ -199,6 +199,7 @@
 ## 321-330
 324. Wiggle Sort II
 326. Power of Three
+327. Count of Range Sum
 
 ## 331-340
 338. Counting Bits
