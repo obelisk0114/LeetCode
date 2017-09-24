@@ -2,7 +2,7 @@
 
 ## 1-10
 1. Two Sum
-2. 
+2. Add Two Numbers
 5. Longest Palindromic Substring
 7. Reverse Integer
 8. String to Integer (atoi)
@@ -217,6 +217,7 @@
 368. Largest Divisible Subset
 
 ## 371-380
+371. Sum of Two Integers
 372. Super Pow
 377. Combination Sum IV
 380. Insert Delete GetRandom O(1)
@@ -247,6 +248,7 @@
 
 ## 441-450
 442. Find All Duplicates in an Array
+445. Add Two Numbers II
 448. Find All Numbers Disappeared in an Array
 
 ## 451-460
