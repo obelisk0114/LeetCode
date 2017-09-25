@@ -134,6 +134,7 @@
 171. Excel Sheet Column Number
 
 ## 181-190
+187. Repeated DNA Sequences
 189. Rotate Array
 
 ## 191-200
@@ -195,6 +196,7 @@
 311. Sparse Matrix Multiplication
 313. Super Ugly Number
 315. Count of Smaller Numbers After Self
+318. Maximum Product of Word Lengths
 
 ## 321-330
 324. Wiggle Sort II
