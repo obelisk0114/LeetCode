@@ -132,10 +132,12 @@
 
 ## 171-180
 171. Excel Sheet Column Number
+174. Dungeon Game
 
 ## 181-190
 187. Repeated DNA Sequences
 189. Rotate Array
+190. Reverse Bits
 
 ## 191-200
 191. Number of 1 Bits
@@ -188,6 +190,7 @@
 287. Find the Duplicate Number
 
 ## 291-300
+295. Find Median from Data Stream
 296. Best Meeting Point
 299. Bulls and Cows
 300. Longest Increasing Subsequence
@@ -299,3 +302,4 @@
 ## 641-650
 643. Maximum Average Subarray I
 648. Replace Words
+650. 2 Keys Keyboard
