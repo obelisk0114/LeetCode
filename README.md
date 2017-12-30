@@ -207,6 +207,7 @@
 324. Wiggle Sort II
 326. Power of Three
 327. Count of Range Sum
+329. Longest Increasing Path in a Matrix (Can't access article)
 
 ## 331-340
 338. Counting Bits
