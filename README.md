@@ -124,6 +124,7 @@
 152. Maximum Product Subarray
 153. Find Minimum in Rotated Sorted Array
 154. Find Minimum in Rotated Sorted Array II
+155. Min Stack
 160. Intersection of Two Linked Lists
 
 ## 161-170
@@ -199,6 +200,7 @@
 
 ## 311-320
 311. Sparse Matrix Multiplication
+312. Burst Balloons
 313. Super Ugly Number
 315. Count of Smaller Numbers After Self
 318. Maximum Product of Word Lengths
