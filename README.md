@@ -29,6 +29,7 @@
 31. Next Permutation
 33. Search in Rotated Sorted Array
 34. Search for a Range
+35. Search Insert Position
 36. Valid Sudoku
 37. Sudoku Solver
 39. Combination Sum
@@ -279,6 +280,8 @@
 516. Longest Palindromic Subsequence
 
 ## 521-530
+521. Longest Uncommon Subsequence I
+522. Longest Uncommon Subsequence II (Can't access article)
 523. Continuous Subarray Sum (Can't access article)
 
 ## 541-550
