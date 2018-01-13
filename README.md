@@ -50,6 +50,8 @@
 52. N-Queens II
 53. Maximum Subarray
 54. Spiral Matrix
+56. Merge Intervals
+57. Insert Interval
 59. Spiral Matrix II
 60. Permutation Sequence
 
