@@ -43,6 +43,7 @@
 46. Permutations
 47. Permutations II
 48. Rotate Image
+49. Group Anagrams
 50. Pow(x, n)
 
 ## 51-60
@@ -226,6 +227,9 @@
 343. Integer Break
 344. Reverse String
 347. Top K Frequent Elements
+
+## 351-360
+352. Data Stream as Disjoint Intervals
 
 ## 361-370
 364. Nested List Weight Sum II
