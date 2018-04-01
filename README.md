@@ -195,6 +195,7 @@
 ## 271-280
 277. Find the Celebrity
 278. First Bad Version
+279. Perfect Squares
 280. Wiggle Sort
 
 ## 281-290
@@ -214,6 +215,7 @@
 318. Maximum Product of Word Lengths
 
 ## 321-330
+322. Coin Change
 324. Wiggle Sort II
 326. Power of Three
 327. Count of Range Sum
