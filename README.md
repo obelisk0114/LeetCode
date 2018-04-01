@@ -133,6 +133,7 @@
 160. Intersection of Two Linked Lists
 
 ## 161-170
+166. Fraction to Recurring Decimal
 167. Two Sum II - Input array is sorted
 168. Excel Sheet Column Title
 169. Majority Element
@@ -298,6 +299,7 @@
 541. Reverse String II
 
 ## 551-560
+554. Brick Wall
 557. Reverse Words in a String III
 560. Subarray Sum Equals K
 
