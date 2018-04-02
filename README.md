@@ -68,6 +68,7 @@
 70. Climbing Stairs
 
 ## 71-80
+73. Set Matrix Zeroes
 75. Sort Colors
 77. Combinations
 78. Subsets
@@ -291,6 +292,7 @@
 
 ## 511-520
 516. Longest Palindromic Subsequence
+518. Coin Change 2
 
 ## 521-530
 521. Longest Uncommon Subsequence I
