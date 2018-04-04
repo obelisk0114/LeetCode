@@ -102,6 +102,7 @@
 108. Convert Sorted Array to Binary Search Tree
 
 ## 111-120
+112. Path Sum
 118. Pascal's Triangle
 119. Pascal's Triangle II
 120. Triangle
