@@ -103,6 +103,7 @@
 
 ## 111-120
 112. Path Sum
+113. Path Sum II
 118. Pascal's Triangle
 119. Pascal's Triangle II
 120. Triangle
@@ -190,6 +191,7 @@
 
 ## 251-260
 252. Meeting Rooms
+257. Binary Tree Paths
 260. Single Number III
 
 ## 261-270
