@@ -70,6 +70,7 @@
 ## 71-80
 73. Set Matrix Zeroes
 75. Sort Colors
+76. Minimum Window Substring
 77. Combinations
 78. Subsets
 79. Word Search
@@ -163,6 +164,7 @@
 203. Remove Linked List Elements
 204. Count Primes
 206. Reverse Linked List
+209. Minimum Size Subarray Sum
 
 ## 211-220
 212. Word Search II
