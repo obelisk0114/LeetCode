@@ -190,6 +190,7 @@
 
 ## 241-250
 241. Different Ways to Add Parentheses
+242. Valid Anagram
 
 ## 251-260
 252. Meeting Rooms
@@ -278,6 +279,7 @@
 435. Non-overlapping Intervals
 436. Find Right Interval (Can't access article)
 437. Path Sum III
+438. Find All Anagrams in a String
 
 ## 441-450
 442. Find All Duplicates in an Array
@@ -314,6 +316,9 @@
 554. Brick Wall
 557. Reverse Words in a String III
 560. Subarray Sum Equals K
+
+## 561-570
+567. Permutation in String
 
 ## 591-600
 592. Fraction Addition and Subtraction
