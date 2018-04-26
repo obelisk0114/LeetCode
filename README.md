@@ -16,6 +16,7 @@
 15. 3Sum
 16. 3Sum Closest
 17. Letter Combinations of a Phone Number
+18. 4Sum
 19. Remove Nth Node From End of List
 20. Valid Parentheses
 
@@ -290,6 +291,7 @@
 451. Sort Characters By Frequency
 452. Minimum Number of Arrows to Burst Balloons
 453. Minimum Moves to Equal Array Elements (Can't access article)
+454. 4Sum II
 
 ## 461-470
 462. Minimum Moves to Equal Array Elements II (Can't access article)
