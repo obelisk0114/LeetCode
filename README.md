@@ -220,6 +220,9 @@
 299. Bulls and Cows
 300. Longest Increasing Subsequence
 
+## 301-310
+309. Best Time to Buy and Sell Stock with Cooldown
+
 ## 311-320
 311. Sparse Matrix Multiplication
 312. Burst Balloons
@@ -359,3 +362,6 @@
 
 ## 681-690
 687. Longest Univalue Path
+
+## 711-720
+714. Best Time to Buy and Sell Stock with Transaction Fee
