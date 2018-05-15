@@ -153,6 +153,7 @@
 ## 171-180
 171. Excel Sheet Column Number
 174. Dungeon Game
+179. Largest Number
 
 ## 181-190
 187. Repeated DNA Sequences
@@ -363,6 +364,7 @@
 
 ## 681-690
 687. Longest Univalue Path
+689. Maximum Sum of 3 Non-Overlapping Subarrays
 
 ## 711-720
 714. Best Time to Buy and Sell Stock with Transaction Fee
