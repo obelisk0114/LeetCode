@@ -70,6 +70,7 @@
 
 ## 71-80
 73. Set Matrix Zeroes
+74. Search a 2D Matrix
 75. Sort Colors
 76. Minimum Window Substring
 77. Combinations
@@ -193,6 +194,7 @@
 231. Power of Two
 238. Product of Array Except Self
 239. Sliding Window Maximum
+240. Search a 2D Matrix II (Can't access article)
 
 ## 241-250
 241. Different Ways to Add Parentheses
