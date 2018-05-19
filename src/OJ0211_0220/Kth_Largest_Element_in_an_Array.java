@@ -118,6 +118,51 @@ public class Kth_Largest_Element_in_an_Array {
 		}
 	}
 	
+	/* ------- To be continued ------- */
+	/*
+	private int find_Kth_Largest2(int[] nums, int k) {
+		int end = nums.length - 1;
+		return find_Kth_Partition2(nums, 0, end, k);
+	}
+	
+	// Selection in worst-case linear time
+	private int find_Kth_Partition2(int[] nums, int start, int end, int k) {
+		int length = end - start + 1;
+		int group = 5;
+		if (length <= group) {
+			return nums[insertionSort(nums, start, end, k)];
+		}
+		
+		int medianLength = length / group;
+		if (length % group != 0) {
+			medianLength++;
+		}
+		int[] median = new int[medianLength];
+		int counter = 0;
+		for (int i = start; i <= end; i += group) {
+			median[counter] = insertionSort(nums, i, i + group - 1, (group + 1) / 2);
+			counter++;
+		}
+		
+		int index = insertionSort(median, 0, medianLength - 1, medianLength / 2);
+		if (k - 1 == length / 2 ) {
+			return median[index];
+		}
+	}
+	
+	private int insertionSort (int[] nums, int start, int end, int k) {
+		int length = end - start + 1;
+		for (int i = 1; i < length; i++) {
+			for (int j = i - 1; j >= 0; j--) {
+				if (nums[j] < nums[i]) {
+					swap(nums, i, j);
+				}
+			}
+		}
+		return k - 1;
+	}
+	*/
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Kth_Largest_Element_in_an_Array kth = new Kth_Largest_Element_in_an_Array();
