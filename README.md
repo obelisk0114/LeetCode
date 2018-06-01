@@ -193,6 +193,7 @@
 
 ## 231-240
 231. Power of Two
+234. Palindrome Linked List
 238. Product of Array Except Self
 239. Sliding Window Maximum
 240. Search a 2D Matrix II (Can't access article)
