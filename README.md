@@ -375,3 +375,6 @@
 ## 711-720
 713. Subarray Product Less Than K
 714. Best Time to Buy and Sell Stock with Transaction Fee
+
+## 731-740
+740. Delete and Earn
