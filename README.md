@@ -164,6 +164,7 @@
 
 ## 191-200
 191. Number of 1 Bits
+198. House Robber (Can't access article)
 200. Number of Islands
 
 ## 201-210
@@ -176,6 +177,7 @@
 
 ## 211-220
 212. Word Search II
+213. House Robber II
 215. Kth Largest Element in an Array
 216. Combination Sum III
 217. Contains Duplicate
@@ -244,6 +246,7 @@
 329. Longest Increasing Path in a Matrix (Can't access article)
 
 ## 331-340
+337. House Robber III
 338. Counting Bits
 339. Nested List Weight Sum
 
