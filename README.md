@@ -6,6 +6,7 @@
 3. Longest Substring Without Repeating Characters
 4. Median of Two Sorted Arrays
 5. Longest Palindromic Substring
+6. ZigZag Conversion
 7. Reverse Integer
 8. String to Integer (atoi)
 9. Palindrome Number
@@ -333,6 +334,7 @@
 541. Reverse String II
 
 ## 551-560
+553. Optimal Division
 554. Brick Wall
 557. Reverse Words in a String III
 560. Subarray Sum Equals K
