@@ -43,6 +43,7 @@
 41. First Missing Positive
 42. Trapping Rain Water
 43. Multiply Strings
+45. Jump Game II
 46. Permutations
 47. Permutations II
 48. Rotate Image
@@ -54,6 +55,7 @@
 52. N-Queens II
 53. Maximum Subarray
 54. Spiral Matrix
+55. Jump Game
 56. Merge Intervals
 57. Insert Interval
 59. Spiral Matrix II
