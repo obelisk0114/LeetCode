@@ -136,6 +136,7 @@
 142. Linked List Cycle II
 143. Reorder List
 144. Binary Tree Preorder Traversal
+146. LRU Cache
 147. Insertion Sort List
 148. Sort List
 150. Evaluate Reverse Polish Notation
