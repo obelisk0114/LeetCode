@@ -150,6 +150,7 @@
 160. Intersection of Two Linked Lists
 
 ## 161-170
+162. Find Peak Element
 166. Fraction to Recurring Decimal
 167. Two Sum II - Input array is sorted
 168. Excel Sheet Column Title
@@ -158,6 +159,7 @@
 
 ## 171-180
 171. Excel Sheet Column Number
+172. Factorial Trailing Zeroes
 174. Dungeon Game
 179. Largest Number
 
