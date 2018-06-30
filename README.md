@@ -238,6 +238,7 @@
 
 ## 301-310
 309. Best Time to Buy and Sell Stock with Cooldown
+310. Minimum Height Trees
 
 ## 311-320
 311. Sparse Matrix Multiplication
