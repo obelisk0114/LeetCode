@@ -366,6 +366,7 @@
 
 ## 621-630
 628. Maximum Product of Three Numbers
+630. Course Schedule III
 
 ## 631-640
 634. Find Derangements (haven't test)
