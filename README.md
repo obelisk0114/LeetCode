@@ -289,6 +289,7 @@
 393. UTF-8 Validation
 394. Decode String
 397. Integer Replacement
+399. Evaluate Division
 
 ## 401-410
 401. Binary Watch
