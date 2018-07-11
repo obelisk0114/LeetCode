@@ -384,6 +384,7 @@
 ## 651-660
 653. Two Sum IV - Input is a BST
 658. Find K Closest Elements
+659. Split Array into Consecutive Subsequences
 
 ## 681-690
 687. Longest Univalue Path
