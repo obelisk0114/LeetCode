@@ -109,6 +109,7 @@
 108. Convert Sorted Array to Binary Search Tree
 
 ## 111-120
+111. Minimum Depth of Binary Tree
 112. Path Sum
 113. Path Sum II
 118. Pascal's Triangle
