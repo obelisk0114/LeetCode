@@ -402,3 +402,6 @@
 
 ## 731-740
 740. Delete and Earn
+
+## 761-770
+767. Reorganize String
