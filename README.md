@@ -240,6 +240,7 @@
 300. Longest Increasing Subsequence
 
 ## 301-310
+301. Remove Invalid Parentheses
 303. Range Sum Query - Immutable
 304. Range Sum Query 2D - Immutable
 307. Range Sum Query - Mutable
