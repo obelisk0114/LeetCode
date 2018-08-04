@@ -31,6 +31,7 @@
 
 ## 31-40
 31. Next Permutation
+32. Longest Valid Parentheses
 33. Search in Rotated Sorted Array
 34. Search for a Range
 35. Search Insert Position
