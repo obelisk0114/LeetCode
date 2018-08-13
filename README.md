@@ -124,6 +124,7 @@
 124. Binary Tree Maximum Path Sum
 125. Valid Palindrome
 127. Word Ladder
+128. Longest Consecutive Sequence
 129. Sum Root to Leaf Numbers
 130. Surrounded Regions
 
