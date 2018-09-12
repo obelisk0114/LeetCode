@@ -403,6 +403,9 @@
 ## 661-670
 662. Maximum Width of Binary Tree
 
+## 671-680
+678. Valid Parenthesis String
+
 ## 681-690
 687. Longest Univalue Path
 689. Maximum Sum of 3 Non-Overlapping Subarrays
