@@ -402,6 +402,7 @@
 
 ## 661-670
 662. Maximum Width of Binary Tree
+670. Maximum Swap
 
 ## 671-680
 678. Valid Parenthesis String
