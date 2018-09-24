@@ -336,6 +336,7 @@
 
 ## 471-480
 474. Ones and Zeroes (Can't access article)
+478. Generate Random Point in a Circle (Can't access article)
 480. Sliding Window Median (Can't access article)
 
 ## 491-500
