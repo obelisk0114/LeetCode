@@ -351,6 +351,7 @@
 523. Continuous Subarray Sum (Can't access article)
 
 ## 531-540
+535. Encode and Decode TinyURL (Can't access article)
 539. Minimum Time Difference
 
 ## 541-550
