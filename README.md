@@ -373,6 +373,7 @@
 
 ## 591-600
 592. Fraction Addition and Subtraction
+593. Valid Square
 600. Non-negative Integers without Consecutive Ones
 
 ## 601-610
