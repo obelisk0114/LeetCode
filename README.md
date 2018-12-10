@@ -111,6 +111,7 @@
 102. Binary Tree Level Order Traversal
 103. Binary Tree Zigzag Level Order Traversal
 108. Convert Sorted Array to Binary Search Tree
+110. Balanced Binary Tree
 
 ## 111-120
 111. Minimum Depth of Binary Tree
