@@ -160,6 +160,7 @@
 
 ## 161-170
 162. Find Peak Element
+164. Maximum Gap
 166. Fraction to Recurring Decimal
 167. Two Sum II - Input array is sorted
 168. Excel Sheet Column Title
