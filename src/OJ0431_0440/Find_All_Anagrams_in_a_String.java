@@ -7,8 +7,57 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Find_All_Anagrams_in_a_String {
+	/*
+	 * Match with this link
+	 * https://leetcode.com/problems/minimum-window-substring/discuss/26810/Java-solution.-using-two-pointers-+-HashMap
+	 */
+	public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> list = new ArrayList<>();
+        if (s == null || s.length() < p.length())
+            return list;
+        
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c : p.toCharArray()) {
+            int val = map.getOrDefault(c, 0);
+            map.put(c, val + 1);
+        }
+        
+        int count = 0;
+        int left = 0;
+        
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            if (map.containsKey(c)) {
+                int val = map.get(c) - 1;
+                map.put(c, val);
+                
+                if (val >= 0) {
+                    count++;
+                }
+                
+                while (count == p.length()) {
+                    if (right - left + 1 == p.length()) {
+                        list.add(left);
+                    }
+                    
+                    if (map.containsKey(s.charAt(left))) {
+                        map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
+                        
+                        if (map.get(s.charAt(left)) > 0) {
+                            count--;
+                        }
+                    }
+                    
+                    left++;
+                }
+            }
+        }
+        
+        return list;
+    }
+	
 	// https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
-	public List<Integer> findAnagrams(String s, String t) {
+	public List<Integer> findAnagrams2(String s, String t) {
 		List<Integer> result = new LinkedList<>();
 		if (t.length() > s.length())
 			return result;
