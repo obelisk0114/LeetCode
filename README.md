@@ -298,6 +298,7 @@
 
 ## 381-390
 381. Insert Delete GetRandom O(1) - Duplicates allowed
+384. Shuffle an Array
 389. Find the Difference
 
 ## 391-400
