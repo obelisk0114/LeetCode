@@ -307,6 +307,7 @@
 392. Is Subsequence
 393. UTF-8 Validation
 394. Decode String
+395. Longest Substring with At Least K Repeating Characters
 397. Integer Replacement
 399. Evaluate Division
 
