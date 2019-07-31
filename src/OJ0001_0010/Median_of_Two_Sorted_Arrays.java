@@ -80,7 +80,8 @@ public class Median_of_Two_Sorted_Arrays {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2479/JAVA-Easy-Version-To-Understand!!
 	 */
-	public int findKthSmallest_move_back(int[] a, int m, int begin1, int[] b, int n, int begin2, int k) {
+	public int findKthSmallest_move_back
+	(int[] a, int m, int begin1, int[] b, int n, int begin2, int k) {
 		if (m > n)
 			return findKthSmallest_move_back(b, n, begin2, a, m, begin1, k);
 		if (m == 0)
