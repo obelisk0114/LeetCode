@@ -242,6 +242,7 @@
 280. Wiggle Sort
 
 ## 281-290
+283. Move Zeroes
 287. Find the Duplicate Number
 
 ## 291-300
