@@ -18,6 +18,32 @@ public class Binary_Tree_Level_Order_Traversal {
 	}
 	
 	public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null)
+            return res;
+        
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.offerLast(root);
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            int size = queue.size();
+            
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = queue.pollFirst();
+                list.add(cur.val);
+                
+                if (cur.left != null)
+                    queue.offerLast(cur.left);
+                if (cur.right != null)
+                    queue.offerLast(cur.right);
+            }
+            
+            res.add(list);
+        }
+        return res;
+    }
+	
+	public List<List<Integer>> levelOrder2(TreeNode root) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (root == null) {  
             return result;  
@@ -72,7 +98,7 @@ public class Binary_Tree_Level_Order_Traversal {
 		p1.left = p2;     p1.right = p3;     p2.left = p4;     p2.right = p5;
 		p3.left = p6;     p3.right = p7;     p4.left = p8;     p5.right = p9;
 		
-		levelOrder.printTraversal(levelOrder.levelOrder(p1));
+		levelOrder.printTraversal(levelOrder.levelOrder2(p1));
 	}
 
 }

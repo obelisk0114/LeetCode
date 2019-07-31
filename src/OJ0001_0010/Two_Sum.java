@@ -13,6 +13,25 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Two_Sum {
+	// by myself
+	public int[] twoSum_self(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] ans = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            
+            if (map.containsKey(complement)) {
+                ans[0] = map.get(complement);
+                ans[1] = i;
+                return ans;
+            }
+            else {
+                map.put(nums[i], i);
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+	
 	// Two-pass Hash Table
 	private int[] twoSum_TwoPass(int[] nums, int target) {
 	    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
