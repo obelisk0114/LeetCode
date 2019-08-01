@@ -4,6 +4,9 @@ public class Regular_Expression_Matching {
 	/*
 	 * https://discuss.leetcode.com/topic/40371/easy-dp-java-solution-with-detailed-explanation
 	 * 
+	 * p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1];
+	 * p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1];
+	 * 
 	 * dp[i][j] = dp[i-1][j]    //in this case, a* counts as multiple a
 	 * dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
 	 * 
