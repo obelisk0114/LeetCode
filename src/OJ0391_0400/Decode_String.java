@@ -6,25 +6,67 @@ import java.util.Stack;
 public class Decode_String {
 	// https://discuss.leetcode.com/topic/57159/simple-java-solution-using-stack/3
 	public String decodeString(String s) {
-        Stack<Integer> intStack = new Stack<>();
-        Stack<StringBuilder> strStack = new Stack<>();
-        StringBuilder cur = new StringBuilder();
-        int k = 0;
-        for (char ch : s.toCharArray()) {
-            if (Character.isDigit(ch)) {
-                k = k * 10 + ch - '0';
-            } else if ( ch == '[') {
-                intStack.push(k);
-                strStack.push(cur);
-                cur = new StringBuilder();
-                k = 0;
-            } else if (ch == ']') {
-                StringBuilder tmp = cur;
-                cur = strStack.pop();
-                for (k = intStack.pop(); k > 0; --k) cur.append(tmp);
-            } else cur.append(ch);
-        }
-        return cur.toString();
+		Stack<Integer> intStack = new Stack<>();
+		Stack<StringBuilder> strStack = new Stack<>();
+		StringBuilder cur = new StringBuilder();
+		int k = 0;
+		for (char ch : s.toCharArray()) {
+			if (Character.isDigit(ch)) {
+				k = k * 10 + ch - '0';
+			} 
+			else if (ch == '[') {
+				intStack.push(k);
+				strStack.push(cur);
+				cur = new StringBuilder();
+				k = 0;
+			} 
+			else if (ch == ']') {
+				StringBuilder tmp = cur;
+				cur = strStack.pop();
+				for (k = intStack.pop(); k > 0; --k)
+					cur.append(tmp);
+			} 
+			else
+				cur.append(ch);
+		}
+		return cur.toString();
+    }
+	
+	/*
+	 * https://leetcode.com/problems/decode-string/discuss/87615/Simple-Java-DFS-Solution/188640
+	 * 
+	 * The reason why we are using global idx is because we wanna skip the position 
+	 * that we have already visited in recursion steps.
+	 * 
+	 * Rf : https://leetcode.com/problems/decode-string/discuss/87615/Simple-Java-DFS-Solution
+	 */
+	private int idx = 0;
+	public String decodeString_recur(String s) {
+		StringBuilder sb = new StringBuilder();
+		int num = 0;
+
+		for (; idx < s.length(); idx++) {
+			char c = s.charAt(idx);
+
+			if (c == '[') {
+				idx++;
+				String str = decodeString_recur(s);
+				for (int k = 0; k < num; k++) {
+					sb.append(str);
+				}
+				num = 0;
+			} 
+			else if (c == ']') {
+				return sb.toString();
+			} 
+			else if (c >= '0' && c <= '9') {
+				num = num * 10 + c - '0';
+			} 
+			else {
+				sb.append(c);
+			}
+		}
+		return sb.toString();
     }
 	
 	/*
