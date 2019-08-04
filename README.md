@@ -244,6 +244,7 @@
 ## 281-290
 283. Move Zeroes
 287. Find the Duplicate Number
+289. Game of Life
 
 ## 291-300
 295. Find Median from Data Stream
