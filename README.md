@@ -141,6 +141,7 @@
 132. Palindrome Partitioning II
 136. Single Number
 137. Single Number II
+139. Word Break
 
 ## 141-150
 141. Linked List Cycle
