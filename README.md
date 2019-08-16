@@ -281,6 +281,7 @@
 329. Longest Increasing Path in a Matrix (Can't access article)
 
 ## 331-340
+332. Reconstruct Itinerary
 337. House Robber III
 338. Counting Bits
 339. Nested List Weight Sum
