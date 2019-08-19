@@ -442,4 +442,5 @@
 740. Delete and Earn
 
 ## 761-770
+763. Partition Labels
 767. Reorganize String
