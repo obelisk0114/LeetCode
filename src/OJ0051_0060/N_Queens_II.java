@@ -5,7 +5,11 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class N_Queens_II {
-	// Combine multiple style
+	/*
+	 * Combine multiple style
+	 * 
+	 * Rf : https://leetcode.wang/leetCode-52-N-QueensII.html
+	 */
 	public int totalNQueens_ultimate(int n) {
         int count = 0;
 		boolean[] cols = new boolean[n]; // columns |
