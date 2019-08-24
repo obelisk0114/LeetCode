@@ -13,6 +13,40 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
 	/*
 	 * by myself
 	 * 
+	 * Rf : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/39611/Is-it-Best-Solution-with-O(n)-O(1).
+	 */
+	public int maxProfit_self_buySell3(int k, int[] prices) {
+        if (k == 0 || prices == null || prices.length == 0)
+            return 0;
+        
+        if (k >= prices.length / 2) {
+            int sum = 0;
+            for (int i = 1; i < prices.length; i++) {
+                sum += Math.max(prices[i] - prices[i - 1], 0);
+            }
+            return sum;
+        }
+        
+        int[] release = new int[k];
+        int[] hold = new int[k];
+        Arrays.fill(hold, Integer.MIN_VALUE);
+        for (int i : prices) {
+            for (int j = k - 1; j >= 0; j--) {
+                release[j] = Math.max(release[j], hold[j] + i);
+                if (j != 0) {
+                    hold[j] = Math.max(hold[j], release[j - 1] - i);
+                }
+                else {
+                    hold[j] = Math.max(hold[j], -i);
+                }
+            }
+        }
+        return release[k - 1];
+    }
+	
+	/*
+	 * by myself
+	 * 
 	 * when you sell your stock this is a transaction but when you buy a stock, it is 
 	 * not considered as a full transaction. so this is why the two equation look a 
 	 * little different.
