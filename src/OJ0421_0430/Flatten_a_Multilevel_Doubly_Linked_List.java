@@ -1,7 +1,5 @@
 package OJ0421_0430;
 
-import definition.Node;
-
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -472,5 +470,22 @@ public class Flatten_a_Multilevel_Doubly_Linked_List {
      * 
      * https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/discuss/152066/c%2B%2B-about-10-lines-solution
      */
+	
+	class Node {
+		public int val;
+	    public Node prev;
+	    public Node next;
+	    public Node child;
+
+	    public Node() {}
+
+	    public Node(int _val,Node _prev,Node _next,Node _child) {
+	        val = _val;
+	        prev = _prev;
+	        next = _next;
+	        child = _child;
+	    }
+
+	}
 
 }
