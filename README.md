@@ -292,6 +292,7 @@
 339. Nested List Weight Sum
 
 ## 341-350
+341. Flatten Nested List Iterator
 342. Power of Four
 343. Integer Break
 344. Reverse String
