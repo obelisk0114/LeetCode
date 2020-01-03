@@ -31,6 +31,7 @@
 24. Swap Nodes in Pairs
 25. Reverse Nodes in k-Group
 26. Remove Duplicates from Sorted Array
+27. Remove Element
 28. Implement strStr()
 29. Divide Two Integers
 
