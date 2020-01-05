@@ -12,9 +12,11 @@ public class Find_Minimum_in_Rotated_Sorted_Array_II {
 			int mid = (l + r) / 2;
 			if (nums[mid] < nums[r]) {
 				r = mid;
-			} else if (nums[mid] > nums[r]) {
+			} 
+			else if (nums[mid] > nums[r]) {
 				l = mid + 1;
-			} else {
+			} 
+			else {
 				r--; // nums[mid] = nums[r] no idea, but we can eliminate nums[r];
 			}
 		}

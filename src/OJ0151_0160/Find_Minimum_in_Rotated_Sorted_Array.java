@@ -2,7 +2,56 @@ package OJ0151_0160;
 
 public class Find_Minimum_in_Rotated_Sorted_Array {
 	/*
+	 * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/discuss/48484/A-concise-solution-with-proof-in-the-comment
+	 * 
+	 * (1) loop is left < right, which means inside the loop, left always < right
+	 * (2) since we use round up for mid, and left < right from (1), right would never 
+	 *     be the same as mid
+	 * (3) Therefore, we compare mid with right, since they will never be the same 
+	 *     from (2)
+	 * (4) if nums[mid] < nums[right], we will know the minimum should be in the left 
+	 *     part, so we are moving right.
+	 *     
+	 *     (4-1) We can always make right = mid while we don't have to worry the loop 
+	 *           will not ends. Since from (2), we know right would never be the same 
+	 *           as mid, making right = mid will assure the interval is shrinking.
+	 * (5) if nums[mid] > nums[right], minimum should be in the right part, so we are 
+	 *     moving left. Since nums[mid] > nums[right], mid can't be the minimum, we 
+	 *     can safely move left to mid + 1, which also assure the interval is 
+	 *     shrinking
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/discuss/48484/A-concise-solution-with-proof-in-the-comment/48551
+	 * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/discuss/158940/Beat-100%3A-Very-Simple-(Python)-Very-Detailed-Explanation
+	 */
+	public int findMin_compare_right_self(int[] num) {
+		int left = 0, right = num.length - 1;
+		while (left <= right) {
+			int mid = (left + right) / 2;
+			if (num[left] > num[right]) {
+				if (num[right] < num[mid]) {
+					left = mid + 1;
+				} 
+				else if (num[right] > num[mid]) {
+					right = mid;
+				}
+			} 
+			else {
+				return num[left];
+			}
+		}
+		return num[left];
+	}
+	
+	/*
 	 * https://discuss.leetcode.com/topic/5398/java-version-bisearch-solution
+	 * 
+	 * If the first member is less than the last member, there's no rotation in the 
+	 * array. So we could directly return the first element in this subarray.
+	 * 
+	 * If value of the element in the middle is larger than the first element, we know 
+	 * the rotation is at the second half of this array. Else, it is in the first 
+	 * half in the array.
 	 * 
 	 * Rf :
 	 * https://discuss.leetcode.com/topic/14768/4ms-simple-c-code-with-explanation
