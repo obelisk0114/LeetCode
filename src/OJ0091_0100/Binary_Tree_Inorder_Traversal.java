@@ -7,22 +7,38 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class Binary_Tree_Inorder_Traversal {
-	// recursion
-	private List<Integer> inorderTraversal_recursive(TreeNode root) {
+	public List<Integer> inorderTraversal_recursive(TreeNode root) {
+		List<Integer> inorder = new LinkedList<Integer>();
+		inorderTraversal_recursive(root, inorder);
+		return inorder;
+	}
+	
+	private void inorderTraversal_recursive(TreeNode root, List<Integer> ll) {
+		if (root == null) {
+			return;
+		}
+		
+		inorderTraversal_recursive(root.left, ll);
+		ll.add(root.val);
+		inorderTraversal_recursive(root.right, ll);		
+	}
+	
+	// recursion 2
+	private List<Integer> inorderTraversal_recursive2(TreeNode root) {
 		List<Integer> inorder = new LinkedList<Integer>();
 		if (root == null) {
 			return inorder;
 		}
-		return inorderTraversal_recursive(root, inorder);
+		return inorderTraversal_recursive2(root, inorder);
 	}
 	
-	private List<Integer> inorderTraversal_recursive(TreeNode root, List<Integer> ll) {
+	private List<Integer> inorderTraversal_recursive2(TreeNode root, List<Integer> ll) {
 		if (root.left != null) {			
-			inorderTraversal_recursive(root.left, ll);
+			inorderTraversal_recursive2(root.left, ll);
 		}
 		ll.add(root.val);
 		if (root.right != null) {			
-			inorderTraversal_recursive(root.right, ll);
+			inorderTraversal_recursive2(root.right, ll);
 		}
 		return ll;
 	}
@@ -66,7 +82,7 @@ public class Binary_Tree_Inorder_Traversal {
 		n1.left = n2;     n1.right = n3;    // n2.left = n4;     n2.right = n5;
 		n3.left = n6;     n3.right = n7;
 		
-		List<Integer> ll = BTinorder.inorderTraversal_recursive(n1);
+		List<Integer> ll = BTinorder.inorderTraversal_recursive2(n1);
 		System.out.println("inorderTraversal_recursive : ");
 		while (!ll.isEmpty()) {
 			System.out.print(ll.remove(0) + " ");
