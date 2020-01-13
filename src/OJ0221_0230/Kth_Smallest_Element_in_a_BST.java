@@ -5,6 +5,25 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Kth_Smallest_Element_in_a_BST {
+	/*
+	 * The following 2 functions are from this link.
+	 * https://leetcode.com/problems/kth-smallest-element-in-a-bst/solution/
+	 */
+	public int kthSmallest(TreeNode root, int k) {
+		ArrayList<Integer> nums = inorder(root, new ArrayList<Integer>());
+		return nums.get(k - 1);
+	}
+	
+	public ArrayList<Integer> inorder(TreeNode root, ArrayList<Integer> arr) {
+		if (root == null)
+			return arr;
+		
+		inorder(root.left, arr);
+		arr.add(root.val);
+		inorder(root.right, arr);
+		return arr;
+	}
+
 	// Following two functions are DFS recursion.
 	private int kthSmallest_DFS_recursive(TreeNode root, int k) {
 		if (root == null) {
@@ -51,12 +70,12 @@ public class Kth_Smallest_Element_in_a_BST {
 	
 	// Binary search
 	// https://discuss.leetcode.com/topic/17810/3-ways-implemented-in-java-binary-search-in-order-iterative-recursive
-	private int kthSmallest(TreeNode root, int k) {
+	private int kthSmallest2(TreeNode root, int k) {
         int count = countNodes(root.left);
         if (k <= count) {
-            return kthSmallest(root.left, k);
+            return kthSmallest2(root.left, k);
         } else if (k > count + 1) {
-            return kthSmallest(root.right, k-1-count); // 1 is counted as current node
+            return kthSmallest2(root.right, k-1-count); // 1 is counted as current node
         }
         
         return root.val;
@@ -85,7 +104,7 @@ public class Kth_Smallest_Element_in_a_BST {
 		int weWant = 3;
 		System.out.println("Recursion kth BST : " + kthMinBST.kthSmallest_DFS_recursive(n1, weWant));
 		System.out.println("Iteration kth BST : " + kthMinBST.kthSmallest_DFS_iteration(n1, weWant));
-		System.out.println("Binary search kth BST : " + kthMinBST.kthSmallest(n1, weWant));
+		System.out.println("Binary search kth BST : " + kthMinBST.kthSmallest2(n1, weWant));
 
 	}
 
