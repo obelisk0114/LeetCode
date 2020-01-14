@@ -9,6 +9,24 @@ import java.util.HashSet;
  */
 
 public class Linked_List_Cycle {
+	// https://discuss.leetcode.com/topic/618/by-saying-using-no-extra-space-does-it-mean-o-0-in-space
+	public boolean hasCycle2(ListNode head) {
+		// set two runners
+		ListNode slow = head;
+		ListNode fast = head;
+
+		// fast runner move 2 steps at one time while slow runner move 1 step,
+		// if traverse to a null, there must be no loop
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/*
 	 * 
 	  runner.next != null && runner.next.next != null. 
@@ -29,24 +47,6 @@ public class Linked_List_Cycle {
 			runner = runner.next.next;
 			if (walker == runner)
 				return true;
-		}
-		return false;
-	}
-	
-	// https://discuss.leetcode.com/topic/618/by-saying-using-no-extra-space-does-it-mean-o-0-in-space
-	public boolean hasCycle2(ListNode head) {
-		// set two runners
-		ListNode slow = head;
-		ListNode fast = head;
-
-		// fast runner move 2 steps at one time while slow runner move 1 step,
-		// if traverse to a null, there must be no loop
-		while (fast != null && fast.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-			if (slow == fast) {
-				return true;
-			}
 		}
 		return false;
 	}
