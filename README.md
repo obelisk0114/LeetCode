@@ -466,3 +466,6 @@
 ## 761-770
 763. Partition Labels
 767. Reorganize String
+
+## 1011-1020
+1017. Convert to Base -2
