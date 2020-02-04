@@ -315,6 +315,7 @@
 ## 371-380
 371. Sum of Two Integers
 372. Super Pow
+373. Find K Pairs with Smallest Sums
 377. Combination Sum IV
 378. Kth Smallest Element in a Sorted Matrix
 380. Insert Delete GetRandom O(1)
