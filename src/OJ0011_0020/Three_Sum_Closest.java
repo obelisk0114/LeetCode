@@ -9,7 +9,7 @@ public class Three_Sum_Closest {
 		int closest = nums[0] + nums[1] + nums[2];
 		int low, high;
 		
-		for (int i = 0; i < nums.length - 1; i++) {
+		for (int i = 0; i < nums.length - 2; i++) {
 			low = i + 1;
 			high = nums.length - 1;
 			
