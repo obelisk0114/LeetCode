@@ -82,6 +82,52 @@ public class Surrounded_Regions {
 	}
 	
 	/*
+	 * The following 2 functions are by myself.
+	 */
+	public void solve_dfs2(char[][] board) {
+		if (board.length < 2 || board[0].length < 2)
+			return;
+		int m = board.length, n = board[0].length;
+		// Any 'O' connected to a boundary can't be turned to 'X', so ...
+		// Start from first and last column, turn 'O' to '*'.
+		for (int i = 0; i < m; i++) {
+			if (board[i][0] == 'O')
+				boundaryDFS2(board, i, 0);
+			if (board[i][n - 1] == 'O')
+				boundaryDFS2(board, i, n - 1);
+		}
+		// Start from first and last row, turn 'O' to '*'
+		for (int j = 0; j < n; j++) {
+			if (board[0][j] == 'O')
+				boundaryDFS2(board, 0, j);
+			if (board[m - 1][j] == 'O')
+				boundaryDFS2(board, m - 1, j);
+		}
+		// post-processing, turn 'O' to 'X', '*' back to 'O', keep 'X' intact.
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				if (board[i][j] == 'O')
+					board[i][j] = 'X';
+				else if (board[i][j] == '*')
+					board[i][j] = 'O';
+			}
+		}
+	}
+	// Use DFS algo to turn internal however boundary-connected 'O' to '*';
+	private void boundaryDFS2(char[][] board, int i, int j) {
+		if (i < 0 || i > board.length - 1 || j < 0 || j > board[0].length - 1 
+				|| board[i][j] != 'O')
+			return;
+        
+		board[i][j] = '*';
+		
+		boundaryDFS2(board, i - 1, j);
+		boundaryDFS2(board, i + 1, j);
+		boundaryDFS2(board, i, j - 1);
+		boundaryDFS2(board, i, j + 1);
+	}
+	
+	/*
 	 * https://discuss.leetcode.com/topic/38370/bfs-based-solution-in-java
 	 * 
 	 * Rf : 
