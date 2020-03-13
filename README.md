@@ -295,6 +295,7 @@
 
 ## 331-340
 332. Reconstruct Itinerary
+334. Increasing Triplet Subsequence
 336. Palindrome Pairs
 337. House Robber III
 338. Counting Bits
