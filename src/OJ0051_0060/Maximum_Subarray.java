@@ -39,6 +39,52 @@ public class Maximum_Subarray {
 	}
 	
 	/*
+	 * The following 2 functions are by myself
+	 * Test with LeetCode to get maximum subarray sum
+	 * 
+	 * start: start index of max subarray sum
+	 * end: end index of max subarray sum
+	 * 
+	 * max subarray will be [start, start + 1, ..., end]
+	 */
+	public int maxSubArray_getArray(int[] nums) {
+        int max = nums[0];
+        int sum = nums[0];
+        
+        int start = 0;     // start index
+        int startGo = 0;   // start index processing
+        int end = 0;       // end index
+        int endGo = 0;     // end index processing
+        for (int i = 1; i < nums.length; i++) {
+            if (sum >= 0) {
+                sum += nums[i];
+                endGo++;
+            }
+            else {
+                sum = nums[i];
+                startGo = i;
+                endGo = i;
+            }
+            
+            if (max < sum) {
+                max = sum;
+                start = startGo;
+                end = endGo;
+            }
+        }
+        
+        return calculateSum(nums, start, end);
+    }
+    
+    private int calculateSum(int[] nums, int start, int end) {
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum += nums[i];
+        }
+        return sum;
+    }
+	
+	/*
 	 * https://discuss.leetcode.com/topic/5000/accepted-o-n-solution-in-java
 	 * 
 	 * Suppose we've solved the problem for A[1 .. i - 1]; 

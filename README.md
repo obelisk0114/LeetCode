@@ -80,6 +80,7 @@
 70. Climbing Stairs
 
 ## 71-80
+72. Edit Distance (Can't access article)
 73. Set Matrix Zeroes
 74. Search a 2D Matrix
 75. Sort Colors
