@@ -409,6 +409,7 @@
 
 ## 551-560
 551. Student Attendance Record I (Can't access article)
+552. Student Attendance Record II (Can't access article)
 553. Optimal Division
 554. Brick Wall
 557. Reverse Words in a String III
