@@ -396,6 +396,7 @@
 521. Longest Uncommon Subsequence I
 522. Longest Uncommon Subsequence II (Can't access article)
 523. Continuous Subarray Sum (Can't access article)
+525. Contiguous Array
 
 ## 531-540
 535. Encode and Decode TinyURL (Can't access article)
