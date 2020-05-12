@@ -483,6 +483,9 @@
 763. Partition Labels
 767. Reorganize String
 
+## 881-890
+889. Construct Binary Tree from Preorder and Postorder Traversal
+
 ## 1001-1010
 1008. Construct Binary Search Tree from Preorder Traversal (Can't access article)
 
