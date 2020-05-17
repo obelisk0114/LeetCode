@@ -403,6 +403,7 @@
 ## 531-540
 535. Encode and Decode TinyURL (Can't access article)
 539. Minimum Time Difference
+540. Single Element in a Sorted Array (Can't access article)
 
 ## 541-550
 541. Reverse String II
