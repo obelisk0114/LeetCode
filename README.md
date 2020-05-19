@@ -484,6 +484,9 @@
 763. Partition Labels
 767. Reorganize String
 
+## 851-860
+851. Loud and Rich
+
 ## 881-890
 889. Construct Binary Tree from Preorder and Postorder Traversal
 
