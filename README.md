@@ -342,6 +342,7 @@
 395. Longest Substring with At Least K Repeating Characters
 397. Integer Replacement
 399. Evaluate Division
+400. Nth Digit
 
 ## 401-410
 401. Binary Watch
