@@ -500,3 +500,6 @@
 
 ## 1011-1020
 1017. Convert to Base -2
+
+## 1271-1280
+1277. Count Square Submatrices with All Ones
