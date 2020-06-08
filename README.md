@@ -490,6 +490,7 @@
 851. Loud and Rich
 
 ## 881-890
+886. Possible Bipartition
 889. Construct Binary Tree from Preorder and Postorder Traversal
 
 ## 981-990
