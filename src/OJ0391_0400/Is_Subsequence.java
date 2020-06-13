@@ -1,5 +1,11 @@
 package OJ0391_0400;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+
 public class Is_Subsequence {
 	/*
 	 * https://discuss.leetcode.com/topic/57205/java-only-2ms-much-faster-than-normal-2-pointers
@@ -76,7 +82,42 @@ public class Is_Subsequence {
 	 * follow up
 	 * https://discuss.leetcode.com/topic/58367/binary-search-solution-for-follow-up-with-detailed-comments
 	 * https://discuss.leetcode.com/topic/73897/hashmap-binary-search-solution-for-the-follow-up-question
+	 * https://leetcode.com/problems/is-subsequence/discuss/87302/Binary-search-solution-for-follow-up-with-detailed-comments/92266
+	 * 
+	 * Check multiple s (subsequence) in string t
+	 * 
+	 * by myself, can be used in follow up
 	 */
+	public boolean isSubsequence_followUp_self(String s, String t) {
+        Map<Character, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < t.length(); i++) {
+            char c = t.charAt(i);
+            map.putIfAbsent(c, new ArrayList<>());
+            map.get(c).add(i);
+        }
+        
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (map.containsKey(c)) {
+                int pos = Collections.binarySearch(map.get(c), count);
+                if (pos < 0) {
+                    pos = -(pos + 1);
+                }
+                
+                if (pos == map.get(c).size()) {
+                    return false;
+                }
+                else {
+                    count = map.get(c).get(pos) + 1;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        return true;
+    }
 	
 	// self
 	public boolean isSubsequence_self(String s, String t) {
