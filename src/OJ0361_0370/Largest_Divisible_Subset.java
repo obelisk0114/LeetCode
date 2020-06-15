@@ -9,6 +9,57 @@ import java.util.HashMap;
 
 public class Largest_Divisible_Subset {
 	/*
+	 * by myself
+	 * 
+	   For an increasingly sorted array of integers a[1 .. n]
+       T[n] = the length of the largest divisible subset whose largest number is a[n]
+       T[n+1] = max { 1 + T[i] } if a[n+1] mod a[i] == 0 ; else 1
+       
+	 * 
+	 * Rf :
+	 * https://discuss.leetcode.com/topic/49456/c-solution-with-explanations 
+	 * https://discuss.leetcode.com/topic/49467/concise-java-solution-o-n-2-time-o-n-space
+	 */
+	public List<Integer> largestDivisibleSubset_self(int[] nums) {
+		Arrays.sort(nums);
+		
+		int n = nums.length;
+		int[] count = new int[n];
+		int[] pre = new int[n];
+		
+		for (int i = 0; i < n; i++) {
+			count[i] = 1;
+		}
+		for (int i = 0; i < n; i++) {
+			pre[i] = -1;
+		}
+		
+		int max = 0, index = -1;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < i; j++) { 
+				if (nums[i] % nums[j] == 0) {
+					if (1 + count[j] > count[i]) {
+						count[i] = count[j] + 1;
+						pre[i] = j;
+					}
+				}
+			}
+			
+			if (count[i] > max) {
+				max = count[i];
+				index = i;
+			}
+		}
+		
+		List<Integer> res = new ArrayList<>();
+		while (index != -1) {
+			res.add(nums[index]);
+			index = pre[index];
+		}
+		return res;
+	}
+	
+	/*
 	 * https://discuss.leetcode.com/topic/49652/classic-dp-solution-similar-to-lis-o-n-2
 	 * 
 	   For an increasingly sorted array of integers a[1 .. n]
