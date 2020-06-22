@@ -2,7 +2,7 @@ package OJ0071_0080;
 
 public class Search_a_2D_Matrix {
 	// https://leetcode.com/problems/search-a-2d-matrix/discuss/26219/Binary-search-on-an-ordered-matrix
-	public boolean searchMatrix(int[][] matrix, int target) {
+	public boolean searchMatrix1(int[][] matrix, int target) {
 		if (matrix.length == 0 || matrix[0].length == 0)
 			return false;
 
@@ -28,6 +28,34 @@ public class Search_a_2D_Matrix {
 		}
 		return false;
 	}
+	
+	// modify by myself
+	public boolean searchMatrix_self_modify(int[][] matrix, int target) {
+        if (matrix.length == 0 || matrix[0].length == 0)
+			return false;
+
+		int row_num = matrix.length;
+		int col_num = matrix[0].length;
+
+		int begin = 0, end = row_num * col_num;
+
+		while (begin < end) {
+			int mid = (begin + end) / 2;
+			int mid_value = matrix[mid / col_num][mid % col_num];
+
+			if (mid_value == target) {
+				return true;
+			} 
+			else if (mid_value < target) {
+				// Should move a bit further, otherwise dead loop.
+				begin = mid + 1;
+			} 
+			else {
+				end = mid;
+			}
+		}
+		return false;
+    }
 	
 	// by myself
 	public boolean searchMatrix_self(int[][] matrix, int target) {

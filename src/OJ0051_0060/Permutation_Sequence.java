@@ -7,6 +7,21 @@ public class Permutation_Sequence {
 	/*
 	 * https://discuss.leetcode.com/topic/5081/an-iterative-solution-for-reference
 	 * 
+	 * n = 4, you have {1, 2, 3, 4}
+	 * 
+	 * If you were to list out all the permutations you have
+	 * 1 + (permutations of 2, 3, 4)
+	 * 2 + (permutations of 1, 3, 4)
+	 * 3 + (permutations of 1, 2, 4)
+	 * 4 + (permutations of 1, 2, 3)
+	 * 
+	 * We know how to calculate the number of permutations of n numbers... n! So each 
+	 * of those with permutations of 3 numbers means there are 6 possible permutations. 
+	 * Meaning there would be a total of 24 permutations in this particular one. So if 
+	 * you were to look for the (k = 14) 14th permutation, it would be in the
+	 * 
+	 * 3 + (permutations of 1, 2, 4) subset.
+	 * 
 	 * Rf : https://discuss.leetcode.com/topic/17348/explain-like-i-m-five-java-solution-in-o-n
 	 * 
 	 * Other code :
@@ -16,15 +31,19 @@ public class Permutation_Sequence {
 		List<Integer> num = new LinkedList<Integer>();
 		for (int i = 1; i <= n; i++)
 			num.add(i);
+		
 		int[] fact = new int[n]; // factorial
 		fact[0] = 1;
 		for (int i = 1; i < n; i++)
 			fact[i] = i * fact[i - 1];
-		k = k - 1;
+		
+		k = k - 1;  // start at 0
+		
 		StringBuilder sb = new StringBuilder();
 		for (int i = n - 1; i >= 0; i--) {
 			int ind = k / fact[i];
 			k = k % fact[i];
+			
 			sb.append(num.get(ind));
 			num.remove(ind);
 		}

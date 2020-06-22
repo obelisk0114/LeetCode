@@ -9,9 +9,11 @@ import java.util.HashMap;
 
 public class Single_Number_II {
 	/*
-	 * https://discuss.leetcode.com/topic/22821/an-general-way-to-handle-all-this-sort-of-questions
+	 * https://leetcode.com/problems/single-number-ii/discuss/43296/an-general-way-to-handle-all-this-sort-of-questions
 	 * 
-	 * Rf : https://discuss.leetcode.com/topic/34725/my-own-explanation-of-bit-manipulation-method-might-be-easier-to-understand 
+	 * Rf : 
+	 * https://discuss.leetcode.com/topic/34725/my-own-explanation-of-bit-manipulation-method-might-be-easier-to-understand
+	 * https://leetcode.com/problems/single-number-ii/discuss/43296/An-General-Way-to-Handle-All-this-sort-of-questions./42177 
 	 */
 	public int singleNumber(int[] nums) {
 		/*

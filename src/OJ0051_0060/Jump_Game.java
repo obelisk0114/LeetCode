@@ -8,10 +8,10 @@ public class Jump_Game {
 		
 		int maxcan = 0;// the farthest position it can jump
 		for (int i = 0; i < A.length; i++) {
+			maxcan = Math.max(maxcan, A[i] + i);// update the farthest position
+			
 			if (maxcan >= A.length - 1)
 				return true; // if the farthest postion have passed the end or reached the end
-			
-			maxcan = Math.max(maxcan, A[i] + i);// update the farthest position
 			
 			if (maxcan == i)
 				return false; // return false when you cannot move any further..

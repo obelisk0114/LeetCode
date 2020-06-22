@@ -39,7 +39,7 @@ public class First_Missing_Positive {
 		if (n == 0 || k < n)
 			return k;
 		else // If k is hiding at position 0, K+1 is the number.
-			return nums[0] == k ? k + 1 : k;
+			return nums[0] == k ? k + 1 : k;   // 1, 2, 3, 4, ..., n => return k + 1
 
 	}
 	private void swap(int[] nums, int i, int j) {
