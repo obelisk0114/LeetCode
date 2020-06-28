@@ -5,6 +5,66 @@ import java.util.Stack;
 
 public class Maximal_Rectangle {
 	/*
+	 * Get largest rectangle in every row
+	 * 
+	 * Rf :
+	 * https://leetcode.wang/leetCode-85-Maximal-Rectangle.html
+	 * https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28953/java-on-leftright-arrays-solution-4ms-beats-96
+	 */
+	public int maximalRectangle_self(char[][] matrix) {
+        if (matrix == null || matrix.length == 0)
+            return 0;
+        
+        int[] h = new int[matrix[0].length];
+        int ans = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == '1') {
+                    h[j]++;
+                }
+                else {
+                    h[j] = 0;
+                }
+            }
+            ans = Math.max(ans, histogram(h));
+        }
+        return ans;
+    }
+    
+    private int histogram(int[] h) {
+        int[] left = new int[h.length];
+        int[] right = new int[h.length];
+        
+        left[0] = 0;
+        for (int i = 1; i < left.length; i++) {
+            int current = i - 1;
+            
+            while (current >= 0 && h[current] >= h[i]) {
+                current = left[current] - 1;
+            }
+            
+            left[i] = current + 1;
+        }
+        
+        right[right.length - 1] = right.length - 1;
+        for (int i = right.length - 2; i >= 0; i--) {
+            int current = i + 1;
+            
+            while (current < right.length && h[current] >= h[i]) {
+                current = right[current] + 1;
+            }
+            
+            right[i] = current - 1;
+        }
+        
+        int result = 0;
+        for (int i = 0; i < h.length; i++) {
+            result = Math.max(result, (right[i] - left[i] + 1) * h[i]);
+        }
+        return result;
+    }
+	
+	/*
 	 * https://discuss.leetcode.com/topic/1634/a-o-n-2-solution-based-on-largest-rectangle-in-histogram
 	 * 
 	 * Maintain a row length of Integer array H recorded its height of '1's, 

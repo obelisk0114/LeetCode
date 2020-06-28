@@ -66,7 +66,7 @@
 56. Merge Intervals
 57. Insert Interval
 59. Spiral Matrix II
-60. Permutation Sequence
+60. Permutation Sequence (Can't access article)
 
 ## 61-70
 61. Rotate List
@@ -82,7 +82,7 @@
 ## 71-80
 72. Edit Distance (Can't access article)
 73. Set Matrix Zeroes
-74. Search a 2D Matrix
+74. Search a 2D Matrix (Can't access article)
 75. Sort Colors
 76. Minimum Window Substring
 77. Combinations
@@ -95,7 +95,7 @@
 82. Remove Duplicates from Sorted List II
 83. Remove Duplicates from Sorted List
 84. Largest Rectangle in Histogram (Can't access article)
-85. Maximal Rectangle
+85. Maximal Rectangle (Can't access article)
 86. Partition List
 88. Merge Sorted Array
 89. Gray Code
@@ -148,7 +148,7 @@
 132. Palindrome Partitioning II
 133. Clone Graph
 136. Single Number
-137. Single Number II
+137. Single Number II (Can't access article)
 138. Copy List with Random Pointer
 139. Word Break
 140. Word Break II
@@ -485,6 +485,9 @@
 ## 761-770
 763. Partition Labels
 767. Reorganize String
+
+## 781-790
+787. Cheapest Flights Within K Stops (Can't access article)
 
 ## 851-860
 851. Loud and Rich

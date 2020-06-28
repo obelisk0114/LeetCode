@@ -4,7 +4,14 @@ import java.util.Stack;
 
 public class Largest_Rectangle_in_Histogram {
 	/*
-	 * https://discuss.leetcode.com/topic/48127/java-o-n-left-right-arrays-solution-4ms-beats-96
+	 * https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28953/java-on-leftright-arrays-solution-4ms-beats-96
+	 * 
+	 * 1. Scan from left to right to compute left[], which represents the left most 
+	 *    boundary of current height.
+	 * 2. Scan from right to left to compute right[], which represents the right most 
+	 *    boundary of current height.
+	 * 3. Scan from left to right again to compute rectangle area based on the height 
+	 *    of that each position.
 	 * 
 	 * Rf : https://discuss.leetcode.com/topic/39151/5ms-o-n-java-solution-explained-beats-96
 	 */

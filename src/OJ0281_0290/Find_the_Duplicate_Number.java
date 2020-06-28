@@ -6,6 +6,37 @@ package OJ0281_0290;
 
 public class Find_the_Duplicate_Number {
 	/*
+	 * https://leetcode.com/articles/find-the-duplicate-number/
+	 * 
+	 * Let's use the function f(x) = nums[x] to construct the sequence: 
+	 * x, nums[x], nums[nums[x]], nums[nums[nums[x]]], ...
+	 * 
+	 * Each new element in the sequence is an element in nums at the index of the 
+	 * previous element.
+	 * 
+	 * If one starts from x = nums[0], such a sequence will produce a linked list with 
+	 * a cycle. We can use Floyd's algorithm.
+	 */
+	public int findDuplicate(int[] nums) {
+		// Find the intersection point of the two runners.
+		int tortoise = nums[0];
+		int hare = nums[0];
+		do {
+			tortoise = nums[tortoise];
+			hare = nums[nums[hare]];
+		} while (tortoise != hare);
+
+		// Find the "entrance" to the cycle.
+		tortoise = nums[0];
+		while (tortoise != hare) {
+			tortoise = nums[tortoise];
+			hare = nums[hare];
+		}
+
+		return hare;
+	}
+	
+	/*
 	 * https://discuss.leetcode.com/topic/25685/java-o-n-time-and-o-1-space-solution-similar-to-find-loop-in-linkedlist
 	 * 
 	 * Rf : 
@@ -14,7 +45,7 @@ public class Find_the_Duplicate_Number {
 	 * 
 	 * Leetcode 142 Linked List Cycle II
 	 */
-	public int findDuplicate(int[] nums) {
+	public int findDuplicate2(int[] nums) {
 		int n = nums.length;
 		int slow = n;
 		int fast = n;
