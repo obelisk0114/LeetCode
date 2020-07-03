@@ -2,6 +2,48 @@ package OJ0081_0090;
 
 public class Search_in_Rotated_Sorted_Array_II {
 	/*
+	 * Rf :
+	 * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/discuss/48484/A-concise-solution-with-proof-in-the-comment
+	 * 
+	 * (1) loop is left < right, which means inside the loop, left always < right
+	 * (2) since we use round up for mid, and left < right from (1), right would never 
+	 *     be the same as mid
+	 * (3) Therefore, we compare mid with right, since they will never be the same 
+	 *     from (2)
+	 */
+	public boolean search_modify2(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == target) {
+                return true;
+            }
+            
+            if (nums[mid] == nums[end]) {
+                end--;
+            }
+            else if (nums[mid] < nums[end]) {
+                if (target > nums[mid] && target <= nums[end]) {
+                    start = mid + 1;
+                }
+                else {
+                    end = mid - 1;
+                }
+            }
+            else {
+                if (target >= nums[start] && target < nums[mid]) {
+                    end = mid - 1;
+                }
+                else {
+                    start = mid + 1;
+                }
+            }
+        }
+        return false;
+    }
+	
+	/*
 	 * https://discuss.leetcode.com/topic/47379/my-1ms-java-solution-very-easy-to-understand
 	 * 
 	 * Rf :
@@ -11,7 +53,7 @@ public class Search_in_Rotated_Sorted_Array_II {
 	 * https://discuss.leetcode.com/topic/29919/binary-search-java-solution
 	 * https://discuss.leetcode.com/topic/61290/java-1ms-binary-search-solution-with-comments
 	 */
-	public boolean search(int[] nums, int target) {
+	public boolean search2(int[] nums, int target) {
 		// if(nums == null || nums.length == 0) return false;
 
 		int left = 0, right = nums.length - 1;
@@ -76,7 +118,7 @@ public class Search_in_Rotated_Sorted_Array_II {
 	}
 	
 	// https://discuss.leetcode.com/topic/11231/java-solution-with-comments
-	public boolean search2(int[] A, int target) {
+	public boolean search3(int[] A, int target) {
 		int start = 0;
 		int end = A.length - 1;
 		while (start <= end) {

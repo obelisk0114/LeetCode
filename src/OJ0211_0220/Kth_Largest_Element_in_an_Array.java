@@ -24,12 +24,14 @@ public class Kth_Largest_Element_in_an_Array {
 		
 		pivot = nums[end];
 		int j = start - 1;
-        for (int i = start; i <= end; i++) {
-            if (nums[i] >= pivot) {
-				j++;
-				swap(nums, i, j);
-			}
-        }
+        for (int i = start; i < end; i++) {   // for (int i = start; i <= end; i++) {
+            if (nums[i] > pivot) {            //     if (nums[i] >= pivot) { 
+				j++;                          //         j++;
+				swap(nums, i, j);             //         swap(nums, i, j); 
+			}                                 //     }
+        }                                     // }
+        j++;                                  //
+		swap(nums, j, end);                   //
         
         if (j == k)
 			return nums[j];

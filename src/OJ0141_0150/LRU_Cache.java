@@ -120,32 +120,29 @@ public class LRU_Cache {
 	 * leetcode.com/problems/lru-cache/discuss/45939/Laziest-implementation:-Java's-LinkedHashMap-takes-care-of-everything/45378
 	 */
 	class LRUCache {
-		
-	private LinkedHashMap<Integer, Integer> map2;
-	private final int CAPACITY2;
 
-	public LRUCache(int capacity) {
-		CAPACITY2 = capacity;
-		map2 = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+		private LinkedHashMap<Integer, Integer> map2;
+		private final int CAPACITY2;
 
-			protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
-				return size() > CAPACITY2;
-			}
-		};
-	}
+		public LRUCache(int capacity) {
+			CAPACITY2 = capacity;
+			map2 = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true) {
+				private static final long serialVersionUID = 1L;
 
-	public int get2(int key) {
-		return map2.getOrDefault(key, -1);
-	}
+				protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+					return size() > CAPACITY2;
+				}
+			};
+		}
 
-	public void put2(int key, int value) {
-		map2.put(key, value);
-	}
-	
+		public int get2(int key) {
+			return map2.getOrDefault(key, -1);
+		}
+
+		public void put2(int key, int value) {
+			map2.put(key, value);
+		}
+
 	}
 	
 	// https://leetcode.com/problems/lru-cache/discuss/46200/Java-solution-with-doubly-linked-list-hash-map
