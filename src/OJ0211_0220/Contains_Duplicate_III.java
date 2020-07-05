@@ -6,11 +6,19 @@ import java.util.HashMap;
 
 public class Contains_Duplicate_III {
 	/*
-	 * https://discuss.leetcode.com/topic/15199/ac-o-n-solution-in-java-using-buckets-with-explanation
+	 * https://leetcode.com/problems/contains-duplicate-iii/discuss/61645/AC-O(N)-solution-in-Java-using-buckets-with-explanation
+	 * 
+	 * We map a range of values to a bucket.
+	 * 
+	 * Make sure the size of the bucket is reasonable such that elements having the 
+	 * same bucket is immediately considered duplicates or duplicates must lie within 
+	 * adjacent buckets.
 	 * 
 	 * No sub Integer.Min: assign both -2 and +2 to bucket 0 if the bucket size is > 2
 	 * 
-	 * Rf : https://discuss.leetcode.com/topic/15199/ac-o-n-solution-in-java-using-buckets-with-explanation/10
+	 * Rf :
+	 * https://leetcode.com/problems/contains-duplicate-iii/discuss/61645/AC-O(N)-solution-in-Java-using-buckets-with-explanation/62992 
+	 * https://discuss.leetcode.com/topic/15199/ac-o-n-solution-in-java-using-buckets-with-explanation/10
 	 */
 	public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
 		if (k < 1 || t < 0)
@@ -18,7 +26,7 @@ public class Contains_Duplicate_III {
 		Map<Long, Long> map = new HashMap<>();
 		for (int i = 0; i < nums.length; i++) {
 			long remappedNum = (long) nums[i] - Integer.MIN_VALUE;
-			long bucket = remappedNum / ((long) t + 1);
+			long bucket = remappedNum / ((long) t + 1);  // prevent t = 0
 			if (map.containsKey(bucket) 
 					|| (map.containsKey(bucket - 1) && remappedNum - map.get(bucket - 1) <= t)
 					|| (map.containsKey(bucket + 1) && map.get(bucket + 1) - remappedNum <= t))

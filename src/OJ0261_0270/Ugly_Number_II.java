@@ -6,7 +6,17 @@ import java.util.PriorityQueue;
 
 public class Ugly_Number_II {
 	/*
-	 * https://discuss.leetcode.com/topic/21791/o-n-java-solution
+	 * https://leetcode.com/problems/ugly-number-ii/discuss/69362/on-java-solution
+	 * 
+	 * (1) 1กั2, 2กั2, 3กั2, 4กั2, 5กั2, 6กั2, 8กั2, กK
+	 * (2) 1กั3, 2กั3, 3กั3, 4กั3, 5กั3, 6กั3, 8กั3, กK
+	 * (3) 1กั5, 2กั5, 3กั5, 4กั5, 5กั5, 6กั5, 8กั5, กK
+	 * 
+	 * We can find that every subsequence is the ugly-sequence itself 
+	 * (1, 2, 3, 4, 5, 6, 8, กK) multiply 2, 3, 5.
+	 * 
+	 * Every step we choose the smallest one, and move one step after, including nums 
+	 * with same value.
 	 * 
 	 * factor2 and factor3 may both have value = 6, but we bump both "6"s together, 
 	 * thus the duplicated 6 won't cause any problem. 
@@ -24,6 +34,7 @@ public class Ugly_Number_II {
 		for (int i = 1; i < n; i++) {
 			int min = Math.min(Math.min(factor2, factor3), factor5);
 			ugly[i] = min;
+			
 			if (factor2 == min)
 				factor2 = 2 * ugly[++index2];
 			if (factor3 == min)

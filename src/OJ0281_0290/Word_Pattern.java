@@ -7,6 +7,34 @@ import java.util.HashMap;
 
 public class Word_Pattern {
 	/*
+	 * Rf :
+	 * https://leetcode.com/problems/isomorphic-strings/discuss/57802/Java-solution-using-HashMap/59449
+	 * https://leetcode.com/problems/isomorphic-strings/discuss/57874/Java-solution-with-1-line-core-code
+	 * 
+	 * Using maps to compare the position patterns.
+	 */
+	public boolean wordPattern_self_modify(String pattern, String str) {
+        String[] strs = str.split(" ");
+		if (strs.length != pattern.length())
+			return false;
+        
+        Map<Character, Integer> patternMap = new HashMap<>();
+		Map<String, Integer> strMap = new HashMap<>();
+        
+        for (int i = 0; i < strs.length; i++) {
+            int indexPattern = patternMap.getOrDefault(pattern.charAt(i), -1);
+            int indexStr = strMap.getOrDefault(strs[i], -1);
+            
+            if (indexPattern != indexStr)
+                return false;
+            
+            patternMap.put(pattern.charAt(i), i);
+            strMap.put(strs[i], i);
+        }
+        return true;
+    }
+	
+	/*
 	 * by myself
 	 * 
 	 * Other code:

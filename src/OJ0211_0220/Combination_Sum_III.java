@@ -24,12 +24,13 @@ public class Combination_Sum_III {
             ans.add(new ArrayList<>(list));
             return;
         }
-        if (n < 0 || k == 0) {
+        if (n == 0 || k == 0) {     // if (n < 0 || k == 0)
             return;
         }
         for (int i = start; i <= 9; i++) {
             if (n - i < 0)
                 break;
+            
             list.add(i);
             combine(k - 1, n - i, i + 1, list, ans);
             list.remove(list.size() - 1);
