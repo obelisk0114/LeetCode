@@ -2,6 +2,8 @@ package OJ0411_0420;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -108,7 +110,90 @@ public class Pacific_Atlantic_Water_Flow {
 		}
 	}
 	
-	// https://discuss.leetcode.com/topic/62379/java-bfs-dfs-from-ocean
+	/*
+	 * The following variable and 2 functions are from this link.
+	 * https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/90733/java-bfs-dfs-from-ocean
+	 * 
+	 * 1. Two Queue and add all the Pacific border to one queue; Atlantic border to 
+	 *    another queue.
+	 * 2. Keep a visited matrix for each queue. In the end, add the cell visited by 
+	 *    two queue to the result.
+	 * BFS: Water flood from ocean to the cell. Since water can only flow from 
+	 * high/equal cell to low cell, add the neighbor cell with height larger or equal 
+	 * to current cell to the queue and mark as visited.
+	 * 
+	 * we want to check the other way around, which is to check if we can flow from 
+	 * the center to both Pacific and Atlantic. Since we only start from the 
+	 * boundaries, we propagate forward the BFS only when the new point can flow back 
+	 * to the boundary, which means the new point is higher or equal.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/90733/Java-BFS-and-DFS-from-Ocean/300905
+	 */
+	int[][] dir_bfs = new int[][] { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+	public List<List<Integer>> pacificAtlantic_bfs(int[][] matrix) {
+		List<List<Integer>> res = new LinkedList<>();
+		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+			return res;
+		}
+		
+		int n = matrix.length, m = matrix[0].length;
+		
+		// One visited map for each ocean
+		boolean[][] pacific = new boolean[n][m];
+		boolean[][] atlantic = new boolean[n][m];
+		Queue<int[]> pQueue = new LinkedList<>();
+		Queue<int[]> aQueue = new LinkedList<>();
+		
+		for (int i = 0; i < n; i++) { // Vertical border
+			pQueue.offer(new int[] { i, 0 });
+			aQueue.offer(new int[] { i, m - 1 });
+			pacific[i][0] = true;
+			atlantic[i][m - 1] = true;
+		}
+		for (int i = 0; i < m; i++) { // Horizontal border
+			pQueue.offer(new int[] { 0, i });
+			aQueue.offer(new int[] { n - 1, i });
+			pacific[0][i] = true;
+			atlantic[n - 1][i] = true;
+		}
+		
+		bfs(matrix, pQueue, pacific);
+		bfs(matrix, aQueue, atlantic);
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				if (pacific[i][j] && atlantic[i][j]) {
+					List<Integer> list = new ArrayList<>();
+					list.add(i);
+					list.add(j);
+					
+					res.add(list);
+				}
+			}
+		}
+		return res;
+	}
+
+	public void bfs(int[][] matrix, Queue<int[]> queue, boolean[][] visited) {
+		int n = matrix.length, m = matrix[0].length;
+		while (!queue.isEmpty()) {
+			int[] cur = queue.poll();
+			
+			for (int[] d : dir_bfs) {
+				int x = cur[0] + d[0];
+				int y = cur[1] + d[1];
+				if (x < 0 || x >= n || y < 0 || y >= m 
+						|| visited[x][y] || matrix[x][y] < matrix[cur[0]][cur[1]]) {
+					continue;
+				}
+				
+				visited[x][y] = true;
+				queue.offer(new int[] { x, y });
+			}
+		}
+	}
 	
 	/*
 	 * The following 2 variables and 3 functions are from this link.

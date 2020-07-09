@@ -29,6 +29,52 @@ public class Trapping_Rain_Water {
 		return max;
 	}
 	
+	/*
+	 * https://leetcode.com/problems/trapping-rain-water-ii/discuss/89495/How-to-get-the-solution-to-2-D-%22Trapping-Rain-Water%22-problem-from-1-D-case
+	 * 
+	 * Rain water "container": To hold the rain water, we need some sort of 
+	 * "container", which will be defined by its boundary.
+	 * 
+	 * Liebig's law of the minimum: The maximum height of water for current container 
+	 * is determined by the lowest part of its boundary.
+	 * 
+	 * Boundary replacement: The above "law of the minimum" applies only to neighbors 
+	 * of the lowest part of current boundary. After that the lowest part will be 
+	 * replaced by its neighbors. The height of the new parts of the boundary will be 
+	 * the larger one of the old boundary height and the height from the elevation map.
+	 * 
+	 * In the 1-D case, the boundary of the container contains only two points, i.e., 
+	 * the left and right edges (l and r) from the elevation map. We then apply the 
+	 * "law of the minimum" to find the minimum height of the boundary (corresponding 
+	 * to the two cases involving comparing height[l] and height[r]). After that we 
+	 * replace the old part of the boundary with its neighbors and continue until the 
+	 * container shrinks to a point.
+	 */
+	public int trap_1D(int[] height) {
+	    int res = 0, l = 0, r = height.length - 1;
+	        
+	    while (l < r) {
+	        if (height[l] <= height[r]) {
+	            if (l + 1 < r) {
+	                res += Math.max(0, height[l] - height[l + 1]);
+	                height[l + 1] = Math.max(height[l], height[l + 1]);
+	            }
+	                
+	            l++;
+	        } 
+	        else {
+	            if (l < r - 1) {
+	                res += Math.max(0, height[r] - height[r - 1]);
+	                height[r - 1] = Math.max(height[r], height[r - 1]);
+	            }
+	                
+	            r--;
+	        }
+	    }
+	        
+	    return res;
+	}
+	
 	// https://discuss.leetcode.com/topic/22976/my-accepted-java-solution
 	public int trap2(int[] height) {
 		if (height.length <= 2)
