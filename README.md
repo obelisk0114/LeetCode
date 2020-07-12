@@ -474,6 +474,9 @@
 687. Longest Univalue Path
 689. Maximum Sum of 3 Non-Overlapping Subarrays
 
+## 691-700
+695. Max Area of Island
+
 ## 711-720
 713. Subarray Product Less Than K
 714. Best Time to Buy and Sell Stock with Transaction Fee
