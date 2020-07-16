@@ -516,5 +516,8 @@
 ## 1021-1030
 1029. Two City Scheduling (Can't access article)
 
+## 1171-1180
+1171. Remove Zero Sum Consecutive Nodes from Linked List
+
 ## 1271-1280
 1277. Count Square Submatrices with All Ones

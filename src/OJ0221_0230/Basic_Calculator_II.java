@@ -7,6 +7,58 @@ import java.util.Stack;
 
 public class Basic_Calculator_II {
 	/*
+	 * by myself
+	 * 
+	 * Rf : 
+	 * https://leetcode.com/problems/basic-calculator-ii/discuss/63003/share-my-java-solution
+	 * https://discuss.leetcode.com/topic/16935/share-my-java-solution/19
+	 * https://leetcode.com/problems/basic-calculator/discuss/62362/java-easy-version-to-understand
+	 */
+	public int calculate_stack_modify(String s) {
+        LinkedList<Integer> stack = new LinkedList<>();
+        int num = 0;
+        char sign = '+';
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                num = s.charAt(i) - '0';
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                    num = num * 10 + (s.charAt(i + 1) - '0');
+                    i++;
+                }
+            }
+            
+            if ((s.charAt(i) != ' ' && !Character.isDigit(s.charAt(i))) 
+            		|| i == s.length() - 1) {
+            	
+                if (sign == '+') {
+                    stack.offerLast(num);
+                }
+                else if (sign == '-') {
+                    stack.offerLast(-num);
+                }
+                else if (sign == '*') {
+                    int result = stack.pollLast() * num;
+                    stack.offerLast(result);
+                }
+                else {
+                    int result = stack.pollLast() / num;
+                    stack.offerLast(result);
+                }
+                
+                sign = s.charAt(i);
+                num = 0;
+            }
+        }
+        
+        int ans = 0;
+        for (int i : stack) {
+            ans += i;
+        }
+        return ans;
+    }
+	
+	/*
 	 * https://discuss.leetcode.com/topic/17435/java-straight-forward-iteration-solution-with-comments-no-stack-o-n-o-1
 	 */
 	public int calculate(String s) {
