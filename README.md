@@ -491,6 +491,9 @@
 763. Partition Labels
 767. Reorganize String
 
+## 771-780
+773. Sliding Puzzle (Can't access article)
+
 ## 781-790
 787. Cheapest Flights Within K Stops (Can't access article)
 

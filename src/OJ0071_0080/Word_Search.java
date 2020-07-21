@@ -3,9 +3,54 @@ package OJ0071_0080;
 
 public class Word_Search {
 	/*
+	 * The following 2 functions are by myself.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/word-search/discuss/27811/my-java-solution
+	 */
+	public boolean exist_self(char[][] board, String word) {
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (dfs_self(board, i, j, word, 0, visited)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private boolean dfs_self(char[][] board, int i, int j, String word, int start, 
+    		boolean[][] visited) {
+    	
+        if (start == word.length())
+            return true;
+        
+        if (i < 0 || i == board.length || j < 0 || j == board[0].length 
+        		|| visited[i][j])
+            return false;
+        
+        if (word.charAt(start) != board[i][j])
+            return false;
+        
+        visited[i][j] = true;
+        
+        boolean down = dfs_self(board, i + 1, j, word, start + 1, visited);
+        boolean up = dfs_self(board, i - 1, j, word, start + 1, visited);
+        boolean left = dfs_self(board, i, j - 1, word, start + 1, visited);
+        boolean right = dfs_self(board, i, j + 1, word, start + 1, visited);
+        if (down || up || left || right) {
+            return true;
+        }
+        
+        // Recover for next start point
+        visited[i][j] = false;
+        return false;
+    }
+	
+	/*
 	 * The following variable and 2 functions are from this link.
 	 * https://discuss.leetcode.com/topic/21142/my-java-solution
-	 * 
 	 */
 	static boolean[][] visited;
 	public boolean exist2(char[][] board, String word) {
@@ -80,17 +125,17 @@ public class Word_Search {
 	 * 
 	 * Rf : https://discuss.leetcode.com/topic/45252/java-dfs-solution-beats-97-64/3
 	 */
-	public boolean exist(char[][] board, String word) {
+	public boolean exist_bit(char[][] board, String word) {
 		char[] w = word.toCharArray();
 		for (int y = 0; y < board.length; y++) {
 			for (int x = 0; x < board[y].length; x++) {
-				if (exist(board, y, x, w, 0))
+				if (exist_bit(board, y, x, w, 0))
 					return true;
 			}
 		}
 		return false;
 	}
-	private boolean exist(char[][] board, int y, int x, char[] word, int i) {
+	private boolean exist_bit(char[][] board, int y, int x, char[] word, int i) {
 		if (i == word.length)
 			return true;
 		if (y < 0 || x < 0 || y == board.length || x == board[y].length)
@@ -98,10 +143,10 @@ public class Word_Search {
 		if (board[y][x] != word[i])
 			return false;
 		board[y][x] ^= 256;
-		boolean exist = exist(board, y, x + 1, word, i + 1) || 
-				        exist(board, y, x - 1, word, i + 1) || 
-				        exist(board, y + 1, x, word, i + 1) || 
-				        exist(board, y - 1, x, word, i + 1);
+		boolean exist = exist_bit(board, y, x + 1, word, i + 1) || 
+				        exist_bit(board, y, x - 1, word, i + 1) || 
+				        exist_bit(board, y + 1, x, word, i + 1) || 
+				        exist_bit(board, y - 1, x, word, i + 1);
 		board[y][x] ^= 256;     // (x ^ y) ^ y = x
 		return exist;
 	}
@@ -113,7 +158,7 @@ public class Word_Search {
 		String s = "ATCG";
 //		char[][] board = {"ab", "cd"};
 //		String s = "abcd";
-		System.out.println(search.exist(board, s));
+		System.out.println(search.exist_bit(board, s));
 	}
 
 }
