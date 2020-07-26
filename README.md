@@ -497,6 +497,9 @@
 ## 781-790
 787. Cheapest Flights Within K Stops (Can't access article)
 
+## 841-850
+846. Hand of Straights
+
 ## 851-860
 851. Loud and Rich
 

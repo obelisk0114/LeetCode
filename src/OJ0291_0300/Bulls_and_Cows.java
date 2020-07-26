@@ -4,7 +4,19 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Bulls_and_Cows {
-	// https://discuss.leetcode.com/topic/28463/one-pass-java-solution
+	/*
+	 * https://leetcode.com/problems/bulls-and-cows/discuss/74621/one-pass-java-solution
+	 * 
+	 * Increment cows when either number from secret was already seen in guest or vice 
+	 * versa.
+	 * 
+	 * numbers[secret.charAt(i)-'0'] is negative only if this character appeared in the 
+	 * guess more times then in the secret which means that this character in the 
+	 * secret can be matched with one of the previous characters in the guest.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/bulls-and-cows/discuss/74621/One-pass-Java-solution/77643
+	 */
 	public String getHint(String secret, String guess) {
 		int bulls = 0;
 		int cows = 0;
