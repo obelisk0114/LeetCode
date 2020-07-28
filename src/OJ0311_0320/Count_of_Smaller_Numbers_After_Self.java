@@ -8,6 +8,43 @@ import java.util.Comparator;
 
 public class Count_of_Smaller_Numbers_After_Self {
 	/*
+	 * The following 2 functions are by myself.
+	 * 
+	 * Traverse from the back to the beginning of the array, maintain an sorted array 
+	 * of numbers have been visited. Use findIndex() to find the first element in the 
+	 * sorted array which is larger or equal to target number.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/count-of-smaller-numbers-after-self/discuss/76576/my-simple-ac-java-binary-search-code
+	 */
+	public List<Integer> countSmaller_binarySearch_self(int[] nums) {
+		Integer[] ans = new Integer[nums.length];
+		
+		List<Integer> sorted = new ArrayList<Integer>();
+		for (int i = nums.length - 1; i >= 0; i--) {
+			int index = findIndex_binarySearch_self(sorted, nums[i]);
+			ans[i] = index;
+			sorted.add(index, nums[i]);
+		}
+		
+		return Arrays.asList(ans);
+	}
+	private int findIndex_binarySearch_self(List<Integer> sorted, int target) {
+		int start = 0;
+        int end = sorted.size();
+		while (start < end) {
+			int mid = start + (end - start) / 2;
+			if (sorted.get(mid) < target) {
+				start = mid + 1;
+			} 
+            else {
+				end = mid;
+			}
+		}
+		return start;
+	}
+	
+	/*
 	 * The following 2 functions are from this link.
 	 * https://discuss.leetcode.com/topic/31173/my-simple-ac-java-binary-search-code
 	 * 
@@ -15,17 +52,17 @@ public class Count_of_Smaller_Numbers_After_Self {
 	 * of numbers have been visited. Use findIndex() to find the first element in the 
 	 * sorted array which is larger or equal to target number.
 	 */
-	public List<Integer> countSmaller(int[] nums) {
+	public List<Integer> countSmaller_binarySearch2(int[] nums) {
 		Integer[] ans = new Integer[nums.length];
 		List<Integer> sorted = new ArrayList<Integer>();
 		for (int i = nums.length - 1; i >= 0; i--) {
-			int index = findIndex(sorted, nums[i]);
+			int index = findIndex_binarySearch2(sorted, nums[i]);
 			ans[i] = index;
 			sorted.add(index, nums[i]);
 		}
 		return Arrays.asList(ans);
 	}
-	private int findIndex(List<Integer> sorted, int target) {
+	private int findIndex_binarySearch2(List<Integer> sorted, int target) {
 		if (sorted.size() == 0)
 			return 0;
 		int start = 0;
@@ -232,6 +269,11 @@ public class Count_of_Smaller_Numbers_After_Self {
 	 * 
 	 * You can sort the array firstly and then map them to their order number, so 
 	 * that this can be solved by a tree which size is equal to the array size.
+	 * 
+	 * 盢┮Τ计キ簿场 0  map  array, array  index ボ计
+	 * 硂 array ボ–计瞷Ω计
+	 * "э" ボ盢赣计┮癸莱じ + 1, 瞷Ω计 + 1
+	 * "―㎝" ボ盢赣计玡┮Τじ场癬ㄓ, 参璸ゑ硂计临じ瞷Ω计
 	 * 
 	 * Rf : 
 	 * https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84

@@ -41,7 +41,7 @@ public class Burst_Balloons {
 		int[] nums = new int[iNums.length + 2];
 		int n = 1;
 		for (int x : iNums)
-			if (x > 0)
+			//if (x > 0)
 				nums[n++] = x;
 		
 		nums[0] = nums[n++] = 1;

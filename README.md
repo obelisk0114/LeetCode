@@ -289,7 +289,7 @@
 312. Burst Balloons
 313. Super Ugly Number
 315. Count of Smaller Numbers After Self
-318. Maximum Product of Word Lengths
+318. Maximum Product of Word Lengths (Can't access article)
 
 ## 321-330
 322. Coin Change
@@ -396,7 +396,7 @@
 ## 511-520
 513. Find Bottom Left Tree Value
 516. Longest Palindromic Subsequence
-518. Coin Change 2
+518. Coin Change 2 (Can't access article)
 
 ## 521-530
 521. Longest Uncommon Subsequence I

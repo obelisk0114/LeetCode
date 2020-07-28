@@ -20,6 +20,35 @@ public class Coin_Change {
 	}
 	
 	/*
+	 * Modified by myself
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/coin-change-2/discuss/176706/Beginner-Mistake:-Why-an-inner-loop-for-coins-doensn't-work-Java-Soln/306232
+	 * https://leetcode.com/problems/coin-change/discuss/77373/6-7-lines-2-ways
+	 * https://leetcode.com/problems/coin-change/discuss/77385/DP-AC-JAVA-Solution-18ms-Beating-95
+	 */
+	public int coinChange_self_modify(int[] coins, int amount) {
+		int[] dp = new int[amount + 1];
+		Arrays.fill(dp, amount + 1);
+		dp[0] = 0;
+		
+		for (int i = 0; i < coins.length; i++) {
+			for (int j = 0; j <= amount; j++) {
+				if (j >= coins[i]) {
+					dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
+				}
+			}
+		}
+		
+		if (dp[amount] > amount) {
+			return -1;
+		}
+		else {
+			return dp[amount];
+		}
+	}
+	
+	/*
 	 * https://leetcode.com/problems/coin-change/discuss/77385/DP-AC-JAVA-Solution-18ms-Beating-95
 	 * 
 	 * for each iteration, the dp result represents that each amount can be expressed 
