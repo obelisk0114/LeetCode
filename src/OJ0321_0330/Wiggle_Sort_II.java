@@ -22,9 +22,14 @@ public class Wiggle_Sort_II {
 	 * https://discuss.leetcode.com/topic/41464/step-by-step-explanation-of-index-mapping-in-java
 	 * 
 	 * Rf : 
+	 * https://leetcode.com/problems/wiggle-sort-ii/discuss/77678/3-lines-Python-with-Explanation-Proof
 	 * https://discuss.leetcode.com/topic/41464/step-by-step-explanation-of-index-mapping-in-java/14
 	 * https://discuss.leetcode.com/topic/32929/o-n-o-1-after-median-virtual-indexing/34
 	 * https://discuss.leetcode.com/topic/71990/summary-of-the-various-solutions-to-wiggle-sort-for-your-reference
+	 * 
+	 * Index :       0   1   2   3   4   5
+	 * Small half:   M       S       S    
+	 * Large half:       L       L       M
 	 * 
 	 * (n|1) is related to n being even or odd. 
 	 * When n is even, we only need nums[(1 + 2i) % (n+1)] instead of nums[(1 + 2i) % (n|1)]; 
@@ -39,6 +44,31 @@ public class Wiggle_Sort_II {
 	   each element will be visited at most once while the second will guarantee 
 	   each element be visited at least once. 
 	   Therefore, at the end each element will be visited exactly once.
+	   
+	   https://leetcode.com/problems/wiggle-sort-ii/discuss/77682/Step-by-step-explanation-of-index-mapping-in-Java/81844
+	   
+	   Notice that by placing the median in it's place in the array we divided the 
+	   array in 3 chunks: all numbers less than median are in one side, all numbers 
+	   larger than median are on the other side, median is in the dead center of the 
+	   array.
+	   
+	   We want to place any a group of numbers (larger than median) in odd slots, and 
+	   another group of numbers (smaller than median) in even slots. So all numbers on 
+	   left of the median < n / 2 should be in odd slots, all numbers on right of the 
+	   median > n / 2 should go into even slots (remember that median is its correct 
+	   place at n / 2)
+	   
+	   So let's think about the first group in the odd slots, all numbers is the left 
+	   side of the array should go into these odd slots.
+	   
+	   All these indexes are less than n / 2 so multiplying by 2 and add 1 (to make 
+	   them go to odd place) and then mod by n will always guarantee that they are 
+	   less than n.
+	   
+	   If we continue this with indexes larger than median we will cycle again and we 
+	   don't want that, so for indexes larger than n/2 we want them to be even, 
+	   (n|1) does that exactly. What n|1 does it that it gets the next odd number to n 
+	   if it was even
 	 */
 	public void wiggleSort(int[] nums) {
 		int median = partition(nums, 0, nums.length - 1, (nums.length + 1) / 2);
@@ -49,9 +79,11 @@ public class Wiggle_Sort_II {
 		while (i <= right) {
 			if (nums[newIndex(i, n)] > median) {
 				swap(nums, newIndex(left++, n), newIndex(i++, n));
-			} else if (nums[newIndex(i, n)] < median) {
+			} 
+			else if (nums[newIndex(i, n)] < median) {
 				swap(nums, newIndex(right--, n), newIndex(i, n));
-			} else {
+			} 
+			else {
 				i++;
 			}
 		}

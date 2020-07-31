@@ -15,8 +15,55 @@ import java.util.TreeMap;
  */
 
 public class Count_of_Range_Sum {
-	// Rf : https://discuss.leetcode.com/topic/31173/my-simple-ac-java-binary-search-code
+	/*
+	 * The following 2 functions are by myself.
+	 */
 	public int countRangeSum_binarySearch(int[] nums, int lower, int upper) {
+		long[] prefixSum = new long[nums.length + 1];
+		for (int i = 1; i < prefixSum.length; i++) {
+			prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
+		}
+		
+		int ans = 0;
+		List<Long> list = new ArrayList<>();
+		for (int i = 0; i < prefixSum.length; i++) {
+			// get leftmost for lower
+			int low = findIdx(list, prefixSum[i] - upper);
+			
+			// get leftmost + 1, since we want to include upper
+			int up = findIdx(list, prefixSum[i] - lower + 1);
+			
+			ans = ans + up - low;
+			
+			int index = findIdx(list, prefixSum[i]);
+			list.add(index, prefixSum[i]);
+		}
+		return ans;
+	}
+	
+	private int findIdx(List<Long> list, long target) {
+		int start = 0;
+		int end = list.size();
+		
+		while (start < end) {
+			int mid = start + (end - start) / 2;
+			
+			if (list.get(mid) < target) {
+				start = mid + 1;
+			}
+			else {
+				end = mid;
+			}
+		}
+		return start;
+	}
+	
+	/*
+	 * The following 2 functions are modified by myself.
+	 * 
+	 * Rf : https://discuss.leetcode.com/topic/31173/my-simple-ac-java-binary-search-code
+	 */
+	public int countRangeSum_binarySearch2(int[] nums, int lower, int upper) {
         int n = nums.length;
         long[] sums = new long[n + 1];
         List<Long> list = new ArrayList<>();
@@ -25,15 +72,15 @@ public class Count_of_Range_Sum {
             sums[i + 1] = sums[i] + nums[i];
         
         for (int i = 0; i < sums.length; i++) {
-            int low = find(list, sums[i] - upper);
-            int up = find(list, sums[i] - lower + 1);
+            int low = find2(list, sums[i] - upper);
+            int up = find2(list, sums[i] - lower + 1);
             ans = ans + up - low;
-            int index = find(list, sums[i]);
+            int index = find2(list, sums[i]);
             list.add(index, sums[i]);
         }
         return ans;
     }
-    private int find(List<Long> sorted, long target) {
+    private int find2(List<Long> sorted, long target) {
 		if (sorted.size() == 0)
 			return 0;
 		int start = 0;
