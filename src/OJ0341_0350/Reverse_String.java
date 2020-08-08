@@ -1,6 +1,20 @@
 package OJ0341_0350;
 
 public class Reverse_String {
+	// by myself (new signature)
+	public void reverseString_self(char[] s) {
+        int start = 0;
+        int end = s.length - 1;
+        while (start < end) {
+            char tmp = s[start];
+            s[start] = s[end];
+            s[end] = tmp;
+            
+            start++;
+            end--;
+        }
+    }
+	
 	// Self
 	public String reverseString(String s) {
 		StringBuilder builder = new StringBuilder(s);

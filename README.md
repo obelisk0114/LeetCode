@@ -302,7 +302,7 @@
 ## 331-340
 332. Reconstruct Itinerary
 334. Increasing Triplet Subsequence
-336. Palindrome Pairs
+336. Palindrome Pairs (Can't access article)
 337. House Robber III
 338. Counting Bits
 339. Nested List Weight Sum
@@ -442,6 +442,7 @@
 617. Merge Two Binary Trees
 
 ## 621-630
+621. Task Scheduler (Can't access article)
 628. Maximum Product of Three Numbers
 630. Course Schedule III
 

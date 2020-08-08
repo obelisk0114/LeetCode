@@ -9,38 +9,11 @@ import java.util.HashMap;
 import java.util.Collections;
 
 public class Nested_List_Weight_Sum_II {
-	public interface NestedInteger {
-		/*
-		// Constructor initializes an empty nested list.
-		public NestedInteger();
-
-		// Constructor initializes a single integer.
-		public NestedInteger(int value);
-		*/
-
-		// @return true if this NestedInteger holds a single integer, rather
-		// than a nested list.
-		public boolean isInteger();
-
-		// @return the single integer that this NestedInteger holds, if it holds
-		// a single integer
-		// Return null if this NestedInteger holds a nested list
-		public Integer getInteger();
-
-		// Set this NestedInteger to hold a single integer.
-		public void setInteger(int value);
-
-		// Set this NestedInteger to hold a nested list and adds a nested
-		// integer to it.
-		public void add(NestedInteger ni);
-
-		// @return the nested list that this NestedInteger holds, if it holds a
-		// nested list
-		// Return null if this NestedInteger holds a single integer
-		public List<NestedInteger> getList();
-	}
-	
-	// https://discuss.leetcode.com/topic/49488/java-ac-bfs-solution
+	/*
+	 * https://discuss.leetcode.com/topic/49488/java-ac-bfs-solution
+	 * 
+	 * prev 不斷累加, 越上層的被加入 total 的次數也越多 (weighted)
+	 */
 	public int depthSumInverse_BFS(List<NestedInteger> nestedList) {
         if (nestedList == null) return 0;
         Queue<NestedInteger> queue = new LinkedList<NestedInteger>(nestedList);
@@ -110,7 +83,8 @@ public class Nested_List_Weight_Sum_II {
         for (NestedInteger ni : niList) {
             if (ni.isInteger()) {
                 intSum += ni.getInteger();
-            } else {
+            } 
+            else {
                 levelBreak.addAll(ni.getList());
             }
         }
@@ -134,7 +108,8 @@ public class Nested_List_Weight_Sum_II {
             for (NestedInteger in : nestedList) {
                 if (in.isInteger()) {
                     sum += in.getInteger();
-                } else {
+                } 
+                else {
                     next.addAll(in.getList());
                 }
             }
@@ -175,7 +150,8 @@ public class Nested_List_Weight_Sum_II {
         for (NestedInteger integer : list) {
             if (integer.isInteger()) {
                 result.set(depth, result.get(depth) + integer.getInteger());
-            } else {
+            } 
+            else {
                 dfs(integer.getList(), depth + 1, result);
             }
         }
@@ -223,10 +199,12 @@ public class Nested_List_Weight_Sum_II {
 				// if temp is integer
 				if (!hs.containsKey(depth)) {
 					hs.put(depth, temp.getInteger());
-				} else {
+				} 
+				else {
 					hs.put(depth, hs.get(depth) + temp.getInteger());
 				}
-			} else {
+			} 
+			else {
 				// if temp is list
 				DFS_map(temp.getList(), depth + 1, hs);
 			}
@@ -403,6 +381,40 @@ public class Nested_List_Weight_Sum_II {
 			}
 		}
 		return result;
+	}
+	
+	/*
+	 * provided interface
+	 */
+	public interface NestedInteger {
+		/*
+		// Constructor initializes an empty nested list.
+		public NestedInteger();
+
+		// Constructor initializes a single integer.
+		public NestedInteger(int value);
+		*/
+
+		// @return true if this NestedInteger holds a single integer, rather
+		// than a nested list.
+		public boolean isInteger();
+
+		// @return the single integer that this NestedInteger holds, if it holds
+		// a single integer
+		// Return null if this NestedInteger holds a nested list
+		public Integer getInteger();
+
+		// Set this NestedInteger to hold a single integer.
+		public void setInteger(int value);
+
+		// Set this NestedInteger to hold a nested list and adds a nested
+		// integer to it.
+		public void add(NestedInteger ni);
+
+		// @return the nested list that this NestedInteger holds, if it holds a
+		// nested list
+		// Return null if this NestedInteger holds a single integer
+		public List<NestedInteger> getList();
 	}
 
 }

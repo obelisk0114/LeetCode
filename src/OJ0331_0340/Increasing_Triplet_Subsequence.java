@@ -46,8 +46,9 @@ public class Increasing_Triplet_Subsequence {
 	public boolean increasingTriplet(int[] nums) {
 		int min = Integer.MAX_VALUE, secondMin = Integer.MAX_VALUE;
 		for (int num : nums) {
-			if (num <= min)
+			if (num <= min)   // "=" is used to prevent change secondMin
 				min = num;
+			// else if (num <= secondMin) ¤]¥i¥H
 			else if (num < secondMin)
 				secondMin = num;
 			else if (num > secondMin)
