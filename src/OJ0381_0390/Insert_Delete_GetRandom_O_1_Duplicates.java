@@ -1,7 +1,8 @@
 package OJ0381_0390;
 
 import java.util.Set;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+//import java.util.LinkedHashSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -45,8 +46,12 @@ public class Insert_Delete_GetRandom_O_1_Duplicates {
     /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
     public boolean insert(int val) {
 		boolean contain = locs.containsKey(val);
-		if (!contain)
-			locs.put(val, new LinkedHashSet<Integer>());
+		if (!contain) {
+			locs.put(val, new HashSet<Integer>());
+			// 下面一行是原始解法, 使用 LinkedHashSet
+			//locs.put(val, new LinkedHashSet<Integer>());
+		}
+		
 		locs.get(val).add(nums.size());
 		nums.add(val);
 		return !contain;

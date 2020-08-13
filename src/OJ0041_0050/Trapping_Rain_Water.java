@@ -14,7 +14,7 @@ public class Trapping_Rain_Water {
 		int max = 0;
 		int leftmax = 0;
 		int rightmax = 0;
-		while (a <= b) {
+		while (a < b) {
 			leftmax = Math.max(leftmax, A[a]);
 			rightmax = Math.max(rightmax, A[b]);
 			if (leftmax < rightmax) {
