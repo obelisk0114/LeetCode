@@ -44,10 +44,16 @@ public class Add_Two_Numbers_II {
 				// update previous nodes
 				lastnot9node.val++;
 				lastnot9node = lastnot9node.next;
+				
+				// ex: 1 -> 9 -> 9 -> 9
+				//  lastnot9         tail
 				while (lastnot9node != null) {
 					lastnot9node.val = 0;
 					lastnot9node = lastnot9node.next;
 				}
+				
+				// ex: 2 -> 0 -> 0 -> 0
+				//                   tail & lastnot9
 				lastnot9node = tail;
 			}
 

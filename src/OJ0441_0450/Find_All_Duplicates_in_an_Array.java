@@ -6,6 +6,34 @@ import java.util.ArrayList;
 
 public class Find_All_Duplicates_in_an_Array {
 	/*
+	 * https://leetcode.com/problems/find-all-duplicates-in-an-array/discuss/92387/java-simple-solution
+	 * 
+	 * when find a number i, flip the number at position i-1 to negative.
+	 * if the number at position i-1 is already negative, i is the number that occurs twice.
+	 * 
+	 * we need a way to "hash" the same number together without using extra space.
+	 * if flip it to the opposite I can still recover it using Math.abs
+	 * 
+	 * Rf : 
+	 * https://leetcode.com/problems/find-all-duplicates-in-an-array/discuss/92387/Java-Simple-Solution/96903
+	 * https://discuss.leetcode.com/topic/64735/java-simple-solution/3
+	 * https://leetcode.com/problems/find-all-duplicates-in-an-array/discuss/92429/java-easy-to-understand-solution-without-extra-space-and-in-on-time
+	 */
+	public List<Integer> findDuplicates_negative_self(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int idx = Math.abs(nums[i]) - 1;
+            if (nums[idx] < 0) {
+                res.add(idx + 1);
+            }
+            else {
+                nums[idx] = -nums[idx];
+            }
+        }
+        return res;
+    }
+	
+	/*
 	 * https://discuss.leetcode.com/topic/64735/java-simple-solution
 	 * 
 	 * when find a number i, flip the number at position i-1 to negative.
@@ -18,7 +46,7 @@ public class Find_All_Duplicates_in_an_Array {
 	 * https://discuss.leetcode.com/topic/64735/java-simple-solution/3
 	 * https://discuss.leetcode.com/topic/64805/java-easy-to-understand-solution-without-extra-space-and-in-o-n-time
 	 */
-	public List<Integer> findDuplicates(int[] nums) {
+	public List<Integer> findDuplicates_negative(int[] nums) {
 		List<Integer> res = new ArrayList<>();
 		for (int i = 0; i < nums.length; ++i) {
 			int index = Math.abs(nums[i]) - 1;
