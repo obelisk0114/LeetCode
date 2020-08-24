@@ -6,6 +6,13 @@ public class Generate_Random_Point_in_a_Circle {
 	/*
 	 * https://leetcode.com/problems/generate-random-point-in-a-circle/discuss/154037/Polar-Coordinates-10-lines
 	 * 
+	 * The reason is simple. Since we want to get a random point in the region 
+	 * x^2 + y^2 <= r^2, '<=' is equal to a random number of which the range is [0,1].
+	 * Here is the new equation: x^2 + y^2 = random * r^2.
+	 * Then we can transform it to the polar coordinates:
+	 * x = Math.sqrt(random) * r * cos(theta)
+	 * y = Math.sqrt(random) * r * sin(theta)
+	 * 
 	 * We are using one random Length to multiply on a random normalized vector
 	 * (x^2 + y^2 = 1) to get the random point. However, if we directly multiply them, 
 	 * we will get a graph that points placed averagely according to Length/Radius.
@@ -15,6 +22,7 @@ public class Generate_Random_Point_in_a_Circle {
 	 * radius).
 	 * 
 	 * Rf : 
+	 * https://leetcode.com/problems/generate-random-point-in-a-circle/discuss/155650/Explanation-with-Graphs-why-using-Math.sqrt()/438929
 	 * https://leetcode.com/problems/generate-random-point-in-a-circle/discuss/155650/Explanation-with-Graphs-why-using-Math.sqrt()
 	 * leetcode.com/problems/generate-random-point-in-a-circle/discuss/155650/Explanation-with-Graphs-why-using-Math.sqrt()/167341
 	 */

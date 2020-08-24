@@ -66,9 +66,14 @@ public class Path_Sum_III {
 	 * Rf : https://leetcode.com/problems/path-sum-iii/discuss/91884/Simple-AC-Java-Solution-DFS
 	 */
 	public int pathSum_HashMap(TreeNode root, int sum) {
-		Map<Integer, Integer> map = new HashMap<>(); // stores the sum from the root to the current node
-		map.put(0, 1);                          // Default sum = 0 has one count
-		return backtrack(root, 0, sum, map);    // BackTrack one pass
+		// stores the sum from the root to the current node
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		// Default sum = 0 has one count
+		map.put(0, 1);
+		
+		// BackTrack one pass
+		return backtrack(root, 0, sum, map);
 	}
 	public int backtrack(TreeNode root, int sum, int target, Map<Integer, Integer> map) {
 		if (root == null)
@@ -76,13 +81,21 @@ public class Path_Sum_III {
 		
 		sum += root.val;
 		
-		int res = map.getOrDefault(sum - target, 0); // See if there is a subarray sum equals to target
+		// See if there is a subarray sum equals to target
+		// 現在的 node 是 path 的終點
+		int res = map.getOrDefault(sum - target, 0);
+		
+		// 更新 map 用以進行下一層
 		map.put(sum, map.getOrDefault(sum, 0) + 1);
 		
 		// Extend to left and right child
-		res += backtrack(root.left, sum, target, map) + backtrack(root.right, sum, target, map);
+		res = res + backtrack(root.left, sum, target, map) 
+				+ backtrack(root.right, sum, target, map);
 		
-		map.put(sum, map.get(sum) - 1); // Remove the current node so it won't affect other path
+		// Remove the current node so it won't affect other path
+		// 這個 node 以及 sub tree 處理完畢，將他們移除，這樣才不會干擾鄰近的 path
+		map.put(sum, map.get(sum) - 1);
+		
 		return res;
 	}
 	

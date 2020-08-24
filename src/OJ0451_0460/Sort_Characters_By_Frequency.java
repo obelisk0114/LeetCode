@@ -21,18 +21,20 @@ public class Sort_Characters_By_Frequency {
 				map.put(c, 1);
 			}
 		}
-		List<Character>[] bucket = new List[s.length() + 1];
+		
+		List<List<Character>> bucket = new ArrayList<>(s.length() + 1);
+		for (int i = 0; i < s.length() + 1; i++) {
+			bucket.add(new ArrayList<>());
+		}
 		for (char key : map.keySet()) {
 			int frequency = map.get(key);
-			if (bucket[frequency] == null) {
-				bucket[frequency] = new ArrayList<>();
-			}
-			bucket[frequency].add(key);
+			bucket.get(frequency).add(key);
 		}
+		
 		StringBuilder sb = new StringBuilder();
-		for (int pos = bucket.length - 1; pos >= 0; pos--) {
-			if (bucket[pos] != null) {
-				for (char num : bucket[pos]) {
+		for (int pos = bucket.size() - 1; pos >= 0; pos--) {
+			if (!bucket.get(pos).isEmpty()) {
+				for (char num : bucket.get(pos)) {
 					for (int i = 0; i < pos; i++) {
 						sb.append(num);
 					}

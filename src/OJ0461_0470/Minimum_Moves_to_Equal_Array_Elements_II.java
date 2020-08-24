@@ -4,6 +4,19 @@ import java.util.Arrays;
 
 /*
  * https://discuss.leetcode.com/topic/69332/why-median-is-better-than-average/4
+ * 
+ * https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/discuss/94932/Why-median-is-better-than-average/99363
+ * 
+ * The meet point must be somewhere between current min and max. No matter which point 
+ * you pick, the total running length for min and max is the same, i.e. 
+ * abs(min_point-meet_point) + abs(max_point-meet_point) = SOME_CONSTANT.
+ * 
+ * So, we can effectively reduce the problem size from n to n-2 by discarding min and 
+ * max points. That is the definition of median.
+ * 
+ * Suppose we have an array, [1,2,3,4,5,6,7]. The meet point must lie between 1 and 7. 
+ * For any value in this range, the total running length for 1 and 7 is the same. So, 
+ * array => [2,3,4,5,6]...
  */
 
 public class Minimum_Moves_to_Equal_Array_Elements_II {
