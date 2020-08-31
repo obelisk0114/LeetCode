@@ -512,6 +512,7 @@
 918. Maximum Sum Circular Subarray
 
 ## 981-990
+983. Minimum Cost For Tickets
 986. Interval List Intersections
 
 ## 1001-1010

@@ -86,7 +86,30 @@ public class Count_of_Smaller_Numbers_After_Self {
 	
 	/*
 	 * The following class and 2 functions are from this link.
-	 * https://discuss.leetcode.com/topic/31405/9ms-short-java-bst-solution-get-answer-when-building-bst
+	 * https://leetcode.com/problems/count-of-smaller-numbers-after-self/discuss/76580/9ms-short-java-bst-solution-get-answer-when-building-bst
+	 * 
+	 * Every node will maintain a val `sum` recording the total of number on it's left 
+	 * bottom side, `dup` counts the duplication.
+	 * 
+	 * When we try to insert a number, the total number of smaller number would be 
+	 * adding `dup` and `sum` of the nodes where we turn right.
+	 * 
+	 * [3, 2, 2, 6, 1], from back to beginning
+	 * 
+	 *         1(0, 1)
+                   \
+                    6(3, 1)
+                    /
+                   2(0, 2)
+                     \
+                      3(0, 1)
+	 * 
+	 * if we insert 5, it should be inserted on the way down to the right of 3, the 
+	 * nodes where we turn right is 1(0,1), 2,(0,2), 3(0,1), so the answer should be 
+	 * (0 + 1)+(0 + 2)+ (0 + 1) = 4
+	 * 
+	 * if we insert 7, the right-turning nodes are 1(0,1), 6(3,1), so answer should 
+	 * be (0 + 1) + (3 + 1) = 5
 	 * 
 	 * Add the nodes to the tree using the reverse order of the array.
 	 * So, all the numbers after it self will be store in the tree before it.
