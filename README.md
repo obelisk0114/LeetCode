@@ -372,7 +372,7 @@
 442. Find All Duplicates in an Array
 445. Add Two Numbers II
 448. Find All Numbers Disappeared in an Array
-450. Delete Node in a BST
+450. Delete Node in a BST (Can't access article)
 
 ## 451-460
 451. Sort Characters By Frequency
@@ -510,6 +510,9 @@
 
 ## 911-920
 918. Maximum Sum Circular Subarray
+
+## 961-970
+969. Pancake Sorting
 
 ## 981-990
 983. Minimum Cost For Tickets

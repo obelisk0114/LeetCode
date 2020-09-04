@@ -20,16 +20,16 @@ public class Delete_Node_in_a_BST {
 	 * Other code:
 	 * https://leetcode.com/problems/delete-node-in-a-bst/discuss/93328/Java-Easy-to-Understand-Solution
 	 */
-	public TreeNode deleteNode(TreeNode root, int key) {
+	public TreeNode deleteNode_recursive(TreeNode root, int key) {
 		if (root == null) {
 			return null;
 		}
 		
 		if (key < root.val) {
-			root.left = deleteNode(root.left, key);
+			root.left = deleteNode_recursive(root.left, key);
 		} 
 		else if (key > root.val) {
-			root.right = deleteNode(root.right, key);
+			root.right = deleteNode_recursive(root.right, key);
 		} 
 		else {
 			if (root.left == null) {
@@ -41,7 +41,7 @@ public class Delete_Node_in_a_BST {
 
 			TreeNode minNode = findMin(root.right);
 			root.val = minNode.val;
-			root.right = deleteNode(root.right, root.val);
+			root.right = deleteNode_recursive(root.right, root.val);
 		}
 		return root;
 	}
@@ -52,6 +52,46 @@ public class Delete_Node_in_a_BST {
 		}
 		return node;
 	}
+	
+	// The following 2 functions are by myself.
+	public TreeNode deleteNode_self(TreeNode root, int key) {
+        if (root == null) {
+            return root;
+        }
+        
+        if (root.val > key) {
+            root.left = deleteNode_self(root.left, key);
+        }
+        else if (root.val < key) {
+            root.right = deleteNode_self(root.right, key);
+        }
+        else {
+            if (root.left == null) {
+                return root.right;
+            }
+            else if (root.right == null) {
+                return root.left;
+            }
+            else {
+                TreeNode leftMaxNode = findMax_self(root.left);
+                
+                // 不能互換順序，否則再刪除 leftMaxNode 時會把錯誤的 right child 接上來
+                // test case: [5,3,6,2,4,null,7], 3
+                leftMaxNode.left = deleteNode_self(root.left, leftMaxNode.val);
+                leftMaxNode.right = root.right;
+                
+                return leftMaxNode;
+            }
+        }
+        return root;
+    }
+    
+    private TreeNode findMax_self(TreeNode node) {
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node;
+    }
 	
 	/*
 	 * The following 2 functions are from this link.
