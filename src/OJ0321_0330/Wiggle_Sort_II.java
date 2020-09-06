@@ -106,7 +106,8 @@ public class Wiggle_Sort_II {
 		pivot = arr[end];
 		int j = start - 1;
 		for (int i = start; i < end; i++) {
-			if (arr[i] < pivot) {
+			// if (arr[i] < pivot) also works
+			if (arr[i] > pivot) {
 				j++;
 				swap(arr, i, j);
 			}
