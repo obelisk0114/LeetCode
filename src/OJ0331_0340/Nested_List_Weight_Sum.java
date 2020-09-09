@@ -5,7 +5,38 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Nested_List_Weight_Sum {
-	public int depthSum_BFS(List<NestedInteger> nestedList) {
+	// https://discuss.leetcode.com/topic/41495/java-solution-similar-to-tree-level-order-traversal
+	public int depthSum(List<NestedInteger> nestedList) {
+		if (nestedList == null) {
+			return 0;
+		}
+
+		int sum = 0;
+		int level = 1;
+
+		Queue<NestedInteger> queue = new LinkedList<NestedInteger>(nestedList);
+		while (queue.size() > 0) {
+			int size = queue.size();
+
+			for (int i = 0; i < size; i++) {
+				NestedInteger ni = queue.poll();
+
+				if (ni.isInteger()) {
+					sum += ni.getInteger() * level;
+				} 
+				else {
+					queue.addAll(ni.getList());
+				}
+			}
+
+			level++;
+		}
+
+		return sum;
+	}
+	
+	// myself ?
+	public int depthSum_BFS2(List<NestedInteger> nestedList) {
 		int sum = 0;
 		int level = 1;
 		LinkedList<NestedInteger> nest = new LinkedList<NestedInteger>(nestedList);
@@ -27,35 +58,6 @@ public class Nested_List_Weight_Sum {
 			}
 		}
 		return sum;
-	}
-	
-	// https://discuss.leetcode.com/topic/41495/java-solution-similar-to-tree-level-order-traversal
-	public int depthSum(List<NestedInteger> nestedList) {
-	    if(nestedList == null){
-	        return 0;
-	    }
-	    
-	    int sum = 0;
-	    int level = 1;
-	    
-	    Queue<NestedInteger> queue = new LinkedList<NestedInteger>(nestedList);
-	    while(queue.size() > 0){
-	        int size = queue.size();
-	        
-	        for(int i = 0; i < size; i++){
-	            NestedInteger ni = queue.poll();
-	            
-	            if(ni.isInteger()){
-	                sum += ni.getInteger() * level;
-	            }else{
-	                queue.addAll(ni.getList());
-	            }
-	        }
-	        
-	        level++;
-	    }
-	    
-	    return sum;
 	}
 	
 	// https://discuss.leetcode.com/topic/41357/2ms-easy-to-understand-java-solution
