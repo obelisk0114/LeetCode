@@ -2,6 +2,90 @@ package OJ0681_0690;
 
 public class Maximum_Sum_of_3_NonOverlapping_Subarrays {
 	/*
+	 * https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/solution/
+	 * 
+	 * 使用 W 來儲存 k 區間和
+	 * left 是到 i 為止，左邊區間和最大的位置
+	 * right 是到 i 為止，右邊區間和最大的位置
+	 * 
+	 * 設 3 個 subarray 的起始位置為 i, j, l
+	 * 
+	 * 因為 j 可以輕易求出 i、l，所以由 j 開始尋找
+	 * 
+	 * j 所代表的區間為 [j, j + k - 1]
+	 * 左邊最大為 left[j - k]
+	 * 右邊最大為 right[j + k]
+	 * 
+	 * 因此將 j 從 k loop 到 W.length - k 即可
+	 * 
+	 * Consider an array W of each interval's sum, where each interval is the given 
+	 * length k. (i, j, l) with i + k <= j and j + k <= l that maximizes 
+	 * W[i] + W[j] + W[l]?
+	 * 
+	 * If we know that i is where the largest value of W[i] occurs first on [0,5], 
+	 * then on [0,6] the first occurrence of the largest W[i] must be either i or 6.
+	 * 
+	 * At the end, left[z] will be the first occurrence of the largest value of W[i] 
+	 * on the interval 0 <= i <= z, and right[z] will be the same but on the interval 
+	 * z <= i <= len(W)-1. This means that for some choice j, the candidate answer 
+	 * must be (left[j - k], j, right[j + k]). We take the candidate that produces the 
+	 * maximum W[i] + W[j] + W[l].
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/solution/324303
+	 */
+	public int[] maxSumOfThreeSubarrays_ad_hoc(int[] nums, int k) {
+		// W is an array of sums of windows
+		int[] W = new int[nums.length - k + 1];
+		int currSum = 0;
+		for (int i = 0; i < nums.length; i++) {
+			currSum += nums[i];
+			
+			if (i >= k) {
+				currSum -= nums[i - k];
+			}
+			if (i >= k - 1) {
+				W[i - k + 1] = currSum;
+			}
+		}
+
+		int[] left = new int[W.length];
+		int best = 0;
+		for (int i = 0; i < W.length; i++) {
+			// 字母順序最小，所以 > 才更新
+			if (W[i] > W[best]) {				
+				best = i;
+			}
+			
+			left[i] = best;
+		}
+
+		int[] right = new int[W.length];
+		best = W.length - 1;
+		for (int i = W.length - 1; i >= 0; i--) {
+			// 字母順序最小，所以 = 也要更新
+			if (W[i] >= W[best]) {
+				best = i;
+			}
+			
+			right[i] = best;
+		}
+
+		int[] ans = new int[] { -1, -1, -1 };
+		for (int j = k; j < W.length - k; j++) {
+			int i = left[j - k], l = right[j + k];
+			if (ans[0] == -1 
+					|| W[i] + W[j] + W[l] > W[ans[0]] + W[ans[1]] + W[ans[2]]) {
+				
+				ans[0] = i;
+				ans[1] = j;
+				ans[2] = l;
+			}
+		}
+		return ans;
+	}
+	
+	/*
 	 * https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/discuss/108228/Non-DP-method-Straight-forward-Clear-explanation.
 	 * 
 	 * 1. Since we only care about the sum of the subarray. We can create an array and 
@@ -22,7 +106,7 @@ public class Maximum_Sum_of_3_NonOverlapping_Subarrays {
 	 * For right index: we only update when the previous max index is no longer in 
 	 *                  the range.
 	 */
-	public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
+	public int[] maxSumOfThreeSubarrays_run_middle(int[] nums, int k) {
 		int n = nums.length;
 		int m = n - k + 1;
 		int[] sum = new int[m];
@@ -41,7 +125,8 @@ public class Maximum_Sum_of_3_NonOverlapping_Subarrays {
 			if (sum[temp[0]] < sum[middle - k])
 				temp[0] = middle - k;
 			
-			// update the right index(temp[1]) when previous max index is not in the range.
+			// update the right index(temp[1]) when previous max index is not in the 
+			// range.
 			if (temp[2] < middle + k) {
 				int tempR = Integer.MIN_VALUE;
 				for (int right = middle + k; right < m; right++) {
