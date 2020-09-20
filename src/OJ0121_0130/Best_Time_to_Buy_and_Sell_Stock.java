@@ -32,6 +32,22 @@ public class Best_Time_to_Buy_and_Sell_Stock {
 		return ans;
 	}
 	
+	// by myself
+	public int maxProfit_self(int[] prices) {
+        int max = 0;
+        int buy = Integer.MAX_VALUE;
+        
+        for (int price : prices) {
+            if (price < buy) {
+                buy = price;
+            }
+            else {
+                max = Math.max(price - buy, max);
+            }
+        }
+        return max;
+    }
+	
 	/*
 	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/Kadane's-Algorithm-Since-no-one-has-mentioned-about-this-so-far-:)-(In-case-if-interviewer-twists-the-input)
 	 * 
