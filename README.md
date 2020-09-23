@@ -517,6 +517,9 @@
 ## 961-970
 969. Pancake Sorting
 
+## 971-980
+980. Unique Paths III
+
 ## 981-990
 983. Minimum Cost For Tickets
 986. Interval List Intersections
