@@ -10,6 +10,64 @@ import java.util.HashMap;
 
 public class Evaluate_Division {
 	/*
+	 * The following 2 functions are by myself.
+	 * 
+	 * DFS
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/evaluate-division/discuss/136188/Logical-Thinking-with-Java-Code-Beats-97.40
+	 */
+	public double[] calcEquation_dfs_self(List<List<String>> equations, 
+			double[] values, List<List<String>> queries) {
+		
+        Map<String, Map<String, Double>> graph = new HashMap<>();
+        for (int i = 0; i < equations.size(); i++) {
+            String u = equations.get(i).get(0);
+            String v = equations.get(i).get(1);
+            
+            graph.putIfAbsent(u, new HashMap<>());
+            graph.putIfAbsent(v, new HashMap<>());
+            
+            graph.get(u).put(v, values[i]);
+            graph.get(v).put(u, 1.0 / values[i]);
+        }
+        
+        double[] result = new double[queries.size()];
+        for (int i = 0; i < queries.size(); i++) {
+            String source = queries.get(i).get(0);
+            String dest = queries.get(i).get(1);
+            result[i] = dfs_dfs_self(source, dest, 1.0, graph, new HashSet<String>());
+        }
+        return result;
+    }
+    
+    private double dfs_dfs_self(String source, String dest, double path, 
+    		Map<String, Map<String, Double>> graph, Set<String> set) {
+    	
+        if (!graph.containsKey(source) || set.contains(source)) {
+            return -1.0;
+        }
+        if (graph.get(source).containsKey(dest)) {
+            return path * graph.get(source).get(dest);
+        }
+        
+        set.add(source);
+        
+        Map<String, Double> next = graph.get(source);
+        for (Map.Entry<String, Double> entry : next.entrySet()) {
+            String nextSource = entry.getKey();
+            double nextCalc = path * entry.getValue();
+            
+            double nextRound = dfs_dfs_self(nextSource, dest, nextCalc, graph, set);
+            
+            if (nextRound != -1.0) {
+                return nextRound;
+            }
+        }
+        return -1.0;
+    }
+	
+	/*
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/evaluate-division/discuss/136188/Logical-Thinking-with-Java-Code-Beats-97.40
 	 * 
