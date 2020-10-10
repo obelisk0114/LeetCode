@@ -4,7 +4,16 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Minimum_Number_of_Arrows_to_Burst_Balloons {
-	// https://discuss.leetcode.com/topic/73981/share-my-explained-greedy-solution-as-the-highest-voted-java-solution-right-now-is-not-ideal
+	/*
+	 * https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/discuss/93703/share-my-explained-greedy-solution
+	 * 
+	 * Sort the array by their ending position. While we take care of each balloon in 
+	 * order, we can shoot as many following balloons as possible.
+	 * 
+	 * We should shoot as to the right as possible, because since balloons are sorted, 
+	 * this gives you the best chance to take down more balloons. Therefore the 
+	 * position should always be balloon[i][1] for the ith balloon.
+	 */
 	public int findMinArrowShots(int[][] points) {
 		if (points.length == 0) {
 			return 0;
