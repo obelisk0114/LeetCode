@@ -3,6 +3,7 @@ package OJ0181_0190;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.PriorityQueue;
@@ -228,7 +229,107 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
     }
 	
 	/*
+	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solution/
+	 * Approach 2: Merging
+	 * 
+	 * 先找出無限制交易的 max profit，然後刪除一次交易或是合併相鄰的 2 個交易
+	 * 重複直到交易次數 <= k
+	 * 下一階段不會和上一階段衝突 (有不應被刪除或合併的交易)，因為若出現衝突，則上一階段可以選擇更低的 loss
+	 * 
+	 * This approach starts from a simple situation with k=infinity, and decrease k 
+	 * one by one.
+	 * 
+	 * The general idea is to store all consecutively increasing subsequence as the 
+	 * initial solution. Then delete or merge transactions until the number of 
+	 * transactions less than or equal to k.
+	 */
+	public int maxProfit_merge(int k, int[] prices) {
+        int n = prices.length;
+
+        // solve special cases
+        if (n <= 0 || k <= 0) {
+            return 0;
+        }
+
+        // find all consecutively increasing subsequence
+        ArrayList<int[]> transactions = new ArrayList<>();
+        int start = 0;
+        int end = 0;
+        for (int i = 1; i < n; i++) {
+            if (prices[i] >= prices[i - 1]) {
+                end = i;
+            } 
+            else {
+                if (end > start) {
+                    int[] t = { start, end };
+                    transactions.add(t);
+                }
+                
+                start = i;
+            }
+        }
+        if (end > start) {
+            int[] t = { start, end };
+            transactions.add(t);
+        }
+
+        while (transactions.size() > k) {
+            // check delete loss
+            int delete_index = 0;
+            int min_delete_loss = Integer.MAX_VALUE;
+            for (int i = 0; i < transactions.size(); i++) {
+                int[] t = transactions.get(i);
+                int profit_loss = prices[t[1]] - prices[t[0]];
+                
+                if (profit_loss < min_delete_loss) {
+                    min_delete_loss = profit_loss;
+                    delete_index = i;
+                }
+            }
+
+            // check merge loss
+            int merge_index = 0;
+            int min_merge_loss = Integer.MAX_VALUE;
+            for (int i = 1; i < transactions.size(); i++) {
+                int[] t1 = transactions.get(i - 1);
+                int[] t2 = transactions.get(i);
+                int profit_loss = prices[t1[1]] - prices[t2[0]];
+                
+                if (profit_loss < min_merge_loss) {
+                    min_merge_loss = profit_loss;
+                    merge_index = i;
+                }
+            }
+
+            // delete or merge
+            if (min_delete_loss <= min_merge_loss) {
+                transactions.remove(delete_index);
+            } 
+            else {
+                int[] t1 = transactions.get(merge_index - 1);
+                int[] t2 = transactions.get(merge_index);
+                t1[1] = t2[1];
+                transactions.remove(merge_index);
+            }
+        }
+
+        int res = 0;
+        for (int[] t : transactions) {
+            res += prices[t[1]] - prices[t[0]];
+        }
+
+        return res;
+    }
+	
+	/*
 	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C++-Solution-with-O(n-+-klgn)-time-using-Max-Heap-and-Stack
+	 * 
+	 * https://leetcode.wang/leetcode-188-Best-Time-to-Buy-and-Sell-StockIV.html
+	 * 解法二
+	 * 
+	 * 我們要把新的交易的買入點和 stack 的買入點比較，如果當前的買入點更低，要把 stack 的元素 pop。
+	 * 讓未來的交易可以跟 stack top 合併取得更大 profit
+	 * 然後再判斷，賣出點是否高於 stack 元素的賣出點，如果更高的話，要把當前交易和 stack 的交易合併。
 	 * 
 	 * consider two consecutive non-decreasing v/p pairs, (v1,p1) and (v2,p2)
 	 * there are 4 possible relations between (v1,p1) and (v2,p2)
@@ -262,7 +363,7 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
 	 * leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C++-Solution-with-O(n-+-klgn)-time-using-Max-Heap-and-Stack/55674
 	 * leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C++-Solution-with-O(n-+-klgn)-time-using-Max-Heap-and-Stack/55671
 	 */
-	public int maxProfit(int k, int[] prices) {
+	public int maxProfit_stack(int k, int[] prices) {
         if(k < 1 || prices == null || prices.length == 0)
             return 0;
         
@@ -305,6 +406,10 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
 		return result;
 	}
 	
-	// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54145/O(n)-time-8ms-Accepted-Solution-with-Detailed-Explanation-(C++)
+	/**
+	 * C++ collections
+	 * 
+	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54145/O(n)-time-8ms-Accepted-Solution-with-Detailed-Explanation-(C++)
+	 */
 
 }
