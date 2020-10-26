@@ -800,6 +800,131 @@ public class The_Skyline_Problem {
 			explore_segment_tree(result, endpointList, node.right);
 		}
 	}
+	
+	/*
+	 * The following 3 functions are from this link.
+	 * https://leetcode.com/problems/the-skyline-problem/discuss/61198/My-O(nlogn)-solution-using-Binary-Indexed-Tree(BIT)Fenwick-Tree/62473
+	 * 
+	 * 碰到左端點，就在右端點建立 suffix range max (不包含右端點)
+	 * 使用 BIT 可以只用 log n 的點的 max 來得到 suffix max
+	 * 
+	 * 將原始 BIT 更新、求和的方向反過來，可以看成是 suffix range max
+	 * 
+	 * 若長度為 13，求 5 到 13 的 max
+	 * Max(5, 13) = Max(Max(5, 6), Max(6, 8), Max(8, 最後一個 13))
+	 * 
+	 * 更新 5
+	 * Update(5, 6), Update(4, 5)
+	 * 
+	 * Difficulty 1: Remove height
+	 * 
+	 * We need to change it suffix range query, to get the max value in 
+	 * [index, INFINITE). The implementation is just change the index calculation in 
+	 * the query loop from index-=lowerbit(index) to index+=lowerbit(index). We have 
+	 * to change "update" accordingly, and same idea applies.
+	 * 
+	 * Sort the buildings array, use sweep line algorithm to scan the buildings in x 
+	 * direction, from left to right. Only when we hit a building's starting point x1, 
+	 * we add the build's height into BIT at its ENDING point x2. So in BIT, [x1, x2] 
+	 * contains the height of the building, and [x2 + 1, INFINITE) does not include 
+	 * the height of the building(because we use suffix range BIT). This way we don't 
+	 * need to remove the building height of the case, because all < x1 coordinates 
+	 * have been processed already, no one care about them anymore, so it is fine to 
+	 * leave them along. On the other hand, before scanning the building's start 
+	 * point x1, we do not add the height of the building into BIT because it does 
+	 * not impact the height yet.
+	 * 
+	 * Difficulty 2: How to determine whether a point is a key point?
+	 * 
+	 * If we use the suffix BIT, at coordinate x1, we can easy query max height in 
+	 * [x1+1, INFINITE) to exclude all the ending buildings at x1, without adding 
+	 * any side effect even if x1 is a starting point. But if you use the regular 
+	 * prefix BIT, you will run into the difficulties to exclude the ending builds.
+	 * 
+	 * Besides the above difficulties, coordinates compression is a typical technique 
+	 * we use in BIT/Segment tree
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/the-skyline-problem/discuss/433833/explanations-on-difficulties-applying-binary-indexed-treebitfenwick-solution
+	 * https://leetcode.com/problems/the-skyline-problem/discuss/61198/My-O(nlogn)-solution-using-Binary-Indexed-Tree(BIT)Fenwick-Tree/62476
+	 */
+	public List<List<Integer>> getSkyline_Binary_Indexed_Tree(int[][] buildings) {
+		List<List<Integer>> ret = new ArrayList<>();
+		if (buildings.length == 0)
+			return ret;
+
+		List<int[]> points = new ArrayList<>();
+
+		for (int i = 0; i < buildings.length; i++) {
+			int[] b = buildings[i];
+			points.add(new int[] { b[0], 1, i });
+			points.add(new int[] { b[1], 2, i });
+		}
+
+		Collections.sort(points, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+		
+		// binary indexed tree
+		// stores the max height for each segment, bit[i] is the max height of 
+		// segment between point i-1 and i
+		int[] bit = new int[points.size() + 1];
+
+		Map<Integer, Integer> index = new HashMap<>();
+		for (int i = 0; i < points.size(); i++) {
+			index.putIfAbsent(points.get(i)[0], i);
+		}
+
+		int prevHeight = -1;
+
+		for (int i = 0; i < points.size(); i++) {
+			int[] pt = points.get(i);
+			if (pt[1] == 1) {
+				// start of a building
+				// put height in scope, scope ends when building end
+				int[] building = buildings[pt[2]];
+				add_BIT(bit, index.get(building[1]), building[2]);
+			}
+			
+			int cur = find_BIT(bit, index.get(pt[0]) + 1);
+			
+			if (cur != prevHeight) {
+				if (ret.size() > 0 && ret.get(ret.size() - 1).get(0) == pt[0]) {
+					int curHeight = Math.max(cur, ret.get(ret.size() - 1).get(1));
+					ret.get(ret.size() - 1).set(1, curHeight);
+				} 
+				else {
+					// 新增這段來解決下面 test case 的 bug
+					// [[1,2,1], [1,2,2], [1,2,3], [1,2,4], [2,3,2], [2,3,4]]
+					if (ret.size() > 1 && 
+							ret.get(ret.size() - 1).get(1) 
+							== ret.get(ret.size() - 2).get(1)) {
+						
+						ret.remove(ret.size() - 1);
+					}
+					
+					ret.add(Arrays.asList(pt[0], cur));
+				}
+				prevHeight = cur;
+			}
+		}
+
+		return ret;
+	}
+
+	void add_BIT(int[] bit, int i, int h) {
+		while (i > 0) {
+			bit[i] = Math.max(bit[i], h);
+			i -= (i & -i);
+		}
+	}
+
+	int find_BIT(int[] bit, int i) {
+		int h = 0;
+		while (i < bit.length) {
+			h = Math.max(h, bit[i]);
+			i += (i & -i);
+		}
+		return h;
+	}
 
 	/*
 	 * by myself
