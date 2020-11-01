@@ -29,6 +29,38 @@ public class Summary_Ranges {
 		return list;
 	}
 	
+	// by myself
+	public List<String> summaryRanges_self2(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
+        }
+        
+        List<String> res = new ArrayList<>();
+        int start = nums[0];
+        
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1] + 1) {
+                if (nums[i - 1] == start) {
+                    res.add(Integer.toString(start));
+                }
+                else {
+                    res.add(start + "->" + nums[i - 1]);
+                }
+                
+                start = nums[i];
+            }
+        }
+        
+        int last = nums[nums.length - 1];
+        if (last == start) {
+            res.add(Integer.toString(start));
+        }
+        else {
+            res.add(start + "->" + last);
+        }
+        return res;
+    }
+	
 	// https://discuss.leetcode.com/topic/29766/easy-java-solution-9-lines
 	public List<String> summaryRanges2(int[] nums) {
 		List<String> list = new ArrayList<>();

@@ -381,6 +381,7 @@
 452. Minimum Number of Arrows to Burst Balloons
 453. Minimum Moves to Equal Array Elements (Can't access article)
 454. 4Sum II
+456. 132 Pattern
 460. LFU Cache
 
 ## 461-470
