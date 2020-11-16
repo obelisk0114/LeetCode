@@ -109,6 +109,7 @@
 95. Unique Binary Search Trees II
 96. Unique Binary Search Trees
 98. Validate Binary Search Tree
+99. Recover Binary Search Tree
 100. Same Tree
 
 ## 101-110

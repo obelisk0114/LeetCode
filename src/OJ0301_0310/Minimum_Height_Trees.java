@@ -21,7 +21,13 @@ public class Minimum_Height_Trees {
 	 * is only 1 or 2 nodes left. If there is only one node left, it is the root. If 
 	 * there are 2 nodes, either of them could be a possible root.
 	 * 
+	 * Suppose that we have 3 centroids in the graph, if we remove all the 
+	 * non-centroid nodes in the graph, then the 3 centroids nodes must form a 
+	 * triangle shape. However, the triangle shape forms a cycle which is contradicted 
+	 * to the condition that there is no cycle in our tree-alike graph.
+	 * 
 	 * Rf :
+	 * https://leetcode.com/problems/minimum-height-trees/solution/
 	 * https://leetcode.com/problems/minimum-height-trees/discuss/76104/C++-Solution.-O(n)-Time-O(n)-Space
 	 * https://leetcode.com/problems/minimum-height-trees/discuss/76129/Share-my-BFS-JAVA-code-using-degree-with-explanation-which-beats-more-than-95
 	 */
