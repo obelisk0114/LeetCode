@@ -97,6 +97,7 @@
 84. Largest Rectangle in Histogram (Can't access article)
 85. Maximal Rectangle (Can't access article)
 86. Partition List
+87. Scramble String
 88. Merge Sorted Array
 89. Gray Code
 90. Subsets II
