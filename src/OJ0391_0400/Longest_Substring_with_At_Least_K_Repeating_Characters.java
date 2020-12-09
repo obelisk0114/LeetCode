@@ -9,6 +9,10 @@ public class Longest_Substring_with_At_Least_K_Repeating_Characters {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/119700/Java-3ms-10-lines-beat-100
 	 * 
+	 * 跳過數量不到 k 的位置, 遞迴處理
+	 * 
+	 * longestSubstring_n(String s, int k) 是 O(n) 的做法
+	 * 
 	 * Rf : https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/87741/Java-divide-and-conquer(recursion)-solution
 	 * 
 	 * Other code :
@@ -101,6 +105,18 @@ public class Longest_Substring_with_At_Least_K_Repeating_Characters {
 	
 	/*
 	 * https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/170010/Java-O(n)-Solution-with-Detailed-Explanation-Sliding-Window
+	 * 
+	 * 在不同的 unique character 上限 (u) 下，使用 sliding window (從 0 到 s.length() - 1)
+	 * 若這次 iterate 的 unique character (unique) 還沒超過 (<=) 該 iteration 所應達到的上限 (u)
+	 *   expand
+	 * 否則 
+	 *   shrink
+	 * 
+	 * 並使用 kOrMore 來記錄達到 k 的 unique character 數量
+	 * 
+	 * 每次 iteration 時，更新 max 的條件
+	 * 1. kOrMore 和 unique character 數量相同，表示所有 unique character 都 >= k
+	 * 2. 達到該 iteration 所要求的 unique character 上限 (可省略)
 	 * 
 	 * Iterate through the number of possible unique letters 1 to 26. Lets call our 
 	 * target amount of unique letters u. We search all windows of letters where the 

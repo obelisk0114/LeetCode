@@ -9,6 +9,13 @@ public class Basic_Calculator_II {
 	/*
 	 * by myself
 	 * 
+	 * sign 是現在正在處理的 num 前面的運算符號
+	 * 碰到 +, - 直接處理正負，放入 stack
+	 * 碰到 *, / 從 stack 末端取出數字運算完再放入 stack
+	 * 
+	 * stack 就是已經處理完 *, / 這些高優先的運算
+	 * 全部加起來就是答案
+	 * 
 	 * Rf : 
 	 * https://leetcode.com/problems/basic-calculator-ii/discuss/63003/share-my-java-solution
 	 * https://discuss.leetcode.com/topic/16935/share-my-java-solution/19
@@ -28,6 +35,8 @@ public class Basic_Calculator_II {
                 }
             }
             
+            // 走到運算符號，或是最後一個字元
+            // 開始處理 num 和 sign (num 前面的運算符號)
             if ((s.charAt(i) != ' ' && !Character.isDigit(s.charAt(i))) 
             		|| i == s.length() - 1) {
             	

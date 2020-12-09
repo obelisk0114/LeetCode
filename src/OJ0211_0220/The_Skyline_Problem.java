@@ -107,6 +107,10 @@ public class The_Skyline_Problem {
 		while (i < buildings.length || !pq.isEmpty()) {
 			// 下一個轉折點是左端點 (進入點)。若左右端點相同，先加入
 			// 若 PriorityQueue 為空，也加入
+			
+			// 左端點看 i (尚未加入 pq)，右端點看 pq top
+			// 因為一個建築物的左端點必定早於右端點，因此下一個轉折點若是右端點則必定是 pq top
+			// 下一個 x 若不是 pq top，高度會被 pq top 擋住，因此還是看 pq top
 			if (pq.isEmpty() || 
 					(i < buildings.length && buildings[i][0] <= pq.peek()[1])) {
 				
@@ -136,6 +140,94 @@ public class The_Skyline_Problem {
 
 		return ans;
 	}
+	
+	/*
+	 * by myself
+	 * 
+	 * 先收集全部端點以及對應高度 (criticals)
+	 * 儲存為 (現在的 x, 結束的 x, 高度)
+	 * 現在的 x 表示該端點，結束的 x 表示右端點
+	 * 以現在的 x 由小到大排序
+	 * 
+	 * 用 TreeMap 代替 priority queue
+	 * key：高度。value：出現的次數
+	 * 放入 (0, 1) 表示有一個高度為 0 的地平線
+	 * 
+	 * 由左到右，走 criticals
+	 * 相同 x 一起處理
+	 * 現在的 x != 結束的 x ： 左端點，放入 TreeMap
+	 * 現在的 x = 結束的 x ： 右端點，移出 TreeMap
+	 * 找最大高度，表示該 x 的高度 (天際線)
+	 */
+	public List<List<Integer>> getSkyline_self_modify(int[][] buildings) {
+        List<List<Integer>> ans = new ArrayList<>();
+        
+        // 收集所有端點，(現在的 x, 結束的 x, 高度)，現在的 x 由小到大排序
+		List<int[]> criticals = new ArrayList<>();
+		for (int[] building : buildings) {
+			int[] ending = { building[1], building[1], building[2] };
+			
+			criticals.add(building);
+			criticals.add(ending);
+		}
+		Collections.sort(criticals, (a, b) -> a[0] - b[0]);
+
+		// 用 TreeMap 當作 priority queue，(高度, 次數)
+        TreeMap<Integer, Integer> treemap = new TreeMap<>();
+        
+        // 放入地平線
+        treemap.put(0, 1);
+        
+        // 由小到大遍歷端點
+        int i = 0;
+        while (i < criticals.size()) {
+            int x = criticals.get(i)[0];
+            
+            // 相同 x 一起處理
+            while (i < criticals.size() && criticals.get(i)[0] == x) {
+                int currHeight = criticals.get(i)[2];
+                int count = 0;
+                if (treemap.containsKey(currHeight)) {
+                    count = treemap.get(currHeight);
+                }
+                
+                // 若用 List<List<Integer>> 來儲存 criticals，要用這樣比較
+                // if ((int) criticals.get(i).get(0) != (int) criticals.get(i).get(1))
+                // 或是
+                // if (!criticals.get(i).get(0).equals(criticals.get(i).get(1)))
+                
+                // 現在的 x 不是結束的 x，表示這是左端點，TreeMap + 1
+				if (criticals.get(i)[0] != criticals.get(i)[1]) {
+					if (treemap.containsKey(currHeight)) {
+                        treemap.put(currHeight, count + 1);
+                    }
+                    else {
+                        treemap.put(currHeight, 1);
+                    }
+                }
+				// 現在的 x 是結束的 x，表示這是右端點，TreeMap - 1
+                else {
+                    if (count == 1) {
+                        treemap.remove(currHeight);
+                    }
+                    else {
+                        treemap.put(currHeight, count - 1);
+                    }
+                }
+                
+                i++;
+            }
+            
+            // 找最大高度
+            int height = treemap.lastKey();
+            
+            if (ans.isEmpty() || ans.get(ans.size() - 1).get(1) != height) {
+                ans.add(Arrays.asList(x, height));
+            }
+        }
+        
+        return ans;
+    }
 	
 	/*
 	 * https://leetcode.com/problems/the-skyline-problem/discuss/61193/Short-Java-solution/225750
