@@ -10,7 +10,9 @@ public class Longest_Palindromic_Substring {
 	 * palindromes have even number of letters (such as "abba") and its center are 
 	 * between the two 'b's.
 	 * 
-	 * Rf : https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution
+	 * Rf : 
+	 * https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution
+	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
 	 */
 	public String longestPalindrome(String s) {
 		if (s == null || s.length() < 1)
@@ -124,7 +126,12 @@ public class Longest_Palindromic_Substring {
 		return result;
 	}
 	
-	// https://leetcode.com/problems/longest-palindromic-substring/discuss/128054/Java-(Beats-98)-and-JavaScript-(Beats-100)-O(n)-Manacher's-Algorithm-with-Detailed-Explanation
+	/*
+	 * https://leetcode.com/problems/longest-palindromic-substring/discuss/128054/Java-(Beats-98)-and-JavaScript-(Beats-100)-O(n)-Manacher's-Algorithm-with-Detailed-Explanation
+	 * 
+	 * Rf :
+	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
+	 */
 	public String longestPalindrome_Manacher(String s) {
 		
         /* Preprocess s: insert '#' between characters, so we don't need to worry about 

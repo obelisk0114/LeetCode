@@ -43,6 +43,88 @@ public class Palindromic_Substrings {
 	}
 	
 	/*
+	 * The following 2 functions are modified by myself.
+	 * 
+	 * 使用 Manacher's algorithm 找出每個字元為中心所擴展出的最長 Palindrome
+	 * 該字元為中心可產生出 (P[i] + 1) / 2 個 Palindrome
+	 * 
+	 * P[i] 是 preprocess 後，第 i 個字元的回文半徑 (不包含自己)
+	 * 同時也是原字串中，中心在 (i - 1) / 2 的最長回文長度
+	 * 
+	 * Rf :
+	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
+	 * https://zh.wikipedia.org/wiki/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2
+	 * https://havincy.github.io/blog/post/ManacherAlgorithm/
+	 * https://oi-wiki.org/string/manacher/
+	 */
+	public int countSubstrings_Manacher(String s) {
+
+		/** Part 1: Manacher's algorithm */
+		
+		String T = preProcess(s);
+		int n = T.length();
+
+		// P 為回文半徑，不包含自己
+		int[] P = new int[n];
+		int C = 0, R = 0;
+		
+		// 頭尾是標記符號，所以去除頭尾
+		for (int i = 1; i < n - 1; i++) {
+			int i_mirror = C - (i - C);
+			
+			// 防止超出 R
+			if (R > i) {
+				P[i] = Math.min(P[i_mirror], R - i);
+			} 
+			// R == i
+			else {
+				P[i] = 0;
+			}
+
+			// 例外情況，使用中心擴展法
+			// P[i] 為回文半徑，P[i] + 1 為下一個要比較的字元
+			// 因為插入不同的頭尾標示符號 (^$)，所以會因為字元不同而自動跳出 while loop
+			while (T.charAt(i + (P[i] + 1)) == T.charAt(i - (P[i] + 1))) {
+				P[i]++;
+			}
+
+			// 若生成區域超過 R，更新 C、R
+			if (i + P[i] > R) {
+				C = i;
+				R = i + P[i];
+			}
+		}
+
+		/** Part 2: Count */
+		
+		int res = 0;
+		for (int i = 0; i < n; i++) {
+			res = res + (P[i] + 1) / 2;
+		}
+		return res;
+	}
+
+	public String preProcess(String s) {
+		
+		// ^、#、$ 為原字串所沒有的字元
+		// 使用 # 插入每個字元，並同時添加在頭尾
+		// ^ 代表頭部起始。 $ 代表尾部結束
+		
+		int n = s.length();
+		if (n == 0) {
+			return "^$";
+		}
+
+		String ret = "^";
+		for (int i = 0; i < n; i++) {
+			ret = ret + "#" + s.charAt(i);
+		}
+		ret += "#$";
+
+		return ret;
+	}
+	
+	/*
 	 * The following variable and 2 functions are from this link.
 	 * https://leetcode.com/problems/palindromic-substrings/discuss/105689/Java-solution-8-lines-extendPalindrome
 	 * 
@@ -247,6 +329,7 @@ public class Palindromic_Substrings {
      * Python collections
      * 
      * https://leetcode.com/problems/palindromic-substrings/discuss/392119/Solution-in-Python-3-(beats-~94)-(six-lines)-(With-Detaiiled-Explanation)
+     * https://leetcode.com/problems/palindromic-substrings/discuss/105687/Python-Straightforward-with-Explanation-(Bonus-O(N)-solution)
      * https://leetcode.com/problems/palindromic-substrings/discuss/128581/Easy-to-understand-Python-DP-solution
      * https://leetcode.com/problems/palindromic-substrings/discuss/105694/Oneliner-Python
      */
