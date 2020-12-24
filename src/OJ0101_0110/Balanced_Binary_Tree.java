@@ -21,20 +21,20 @@ public class Balanced_Binary_Tree {
 	 * 
 	 * Rf : https://leetcode.com/problems/balanced-binary-tree/discuss/35863/Java-1ms-Solution
 	 */
-	public boolean isBalanced(TreeNode root) {
-		return height(root) != -1;
+	public boolean isBalanced_diff(TreeNode root) {
+		return height_diff(root) != -1;
 	}
-	public int height(TreeNode node) {
+	public int height_diff(TreeNode node) {
 		if (node == null) {
 			return 0;
 		}
 		
-		int lH = height(node.left);
+		int lH = height_diff(node.left);
 		if (lH == -1) {
 			return -1;
 		}
 		
-		int rH = height(node.right);
+		int rH = height_diff(node.right);
 		if (rH == -1) {
 			return -1;
 		}
@@ -45,6 +45,32 @@ public class Balanced_Binary_Tree {
 		
 		return Math.max(lH, rH) + 1;
 	}
+	
+	/*
+	 * The following 2 functions are by myself.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/balanced-binary-tree/discuss/35943/JAVA-O(n)-solution-based-on-Maximum-Depth-of-Binary-Tree
+	 */
+	public boolean isBalanced_self2(TreeNode root) {
+        boolean[] flag = { true };
+        height_self2(root, flag);
+        return flag[0];
+    }
+    
+    private int height_self2(TreeNode root, boolean[] flag) {
+        if (root == null) {
+            return 0;
+        }
+        
+        int left = height_self2(root.left, flag);
+        int right = height_self2(root.right, flag);
+        if (Math.abs(left - right) > 1) {
+            flag[0] = false;
+        }
+        
+        return Math.max(left, right) + 1;
+    }
 	
 	/*
 	 * The following variable and 2 functions are from this link.
