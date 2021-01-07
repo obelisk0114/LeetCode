@@ -61,6 +61,30 @@ public class Largest_Rectangle_in_Histogram {
 	/*
 	 * https://discuss.leetcode.com/topic/7599/o-n-stack-based-java-solution
 	 * 
+	 * 只有當前高度 <= 之前高度，矩形的高度才是當前高度
+	 * 因此用 stack 儲存遞增高度的 index (height[i] <= height[j], i < j)
+	 * 
+	 * 若當前高度 (height[i]) < height[stack.top_old]
+	 * 表示之後矩形若要伸展到 index < i 的話，高度 <= height[i]
+	 * 因此可以先求在 index < i 且 height[index] > height[i] 作為高度的矩形的最大面積
+	 * 
+	 * 開始 pop，來求以 height[stack.top_old] 為高度的矩形的寬度
+	 * 先 pop，並記錄此 index 為 tp，相對應的高度為 height[tp] (height[stack.top_old])
+	 * 由於 stack 遞增，因此 height[stack.top_new] <= height[tp]
+	 * 
+	 * 所以以 height[tp] 為高度的矩形，寬度為 (i - 1) - stack.top_new
+	 * 就是 i - 1 到 stack.top_new + 1，因為 height[i] < height[stack.top_old] = height[tp] 
+	 * i - 1 到 stack.top_new + 1 之間不會有某個高度 j，height[j] < height[tp]
+	 * 因為這個 j 會將 stack top 不斷 pop 直到可以被 push 進 stack 為止
+	 * 
+	 * 之後將 i-- 來固定 i，持續 pop 並計算以 height[stack.top_newI] 為高度的最大矩形
+	 * 直到 height[i] >= height[stack.top]，將 i 放入 stack
+	 * 因此若 height[stack.top_new] = height[tp] 時，
+	 * 以 height[tp] 為高度的最大矩形會在以  height[stack.top_new] 為高度時，被更新
+	 * 
+	 * 若只儲存嚴格遞增高度，之後計算矩形寬度會多算
+	 * test case: [0,1,2,3,3,1,2] 因為第二個 1 沒放入，導致第二個 2 多算寬度
+	 * 
 	 * Use a stack to save the index of each array entry in a ascending order; 
 	 * once the current entry is smaller than the one with the index s.top(), 
 	 * that means the rectangle with the height height[s.top()] ends 
@@ -75,11 +99,14 @@ public class Largest_Rectangle_in_Histogram {
 		int len = height.length;
 		Stack<Integer> s = new Stack<Integer>();
 		int maxArea = 0;
-		for (int i = 0; i <= len; i++) {       // Use i = length to pop out the remain elements
+		
+		// Use i = length to pop out the remain elements
+		for (int i = 0; i <= len; i++) {
 			int h = (i == len ? 0 : height[i]);
 			if (s.isEmpty() || h >= height[s.peek()]) {
 				s.push(i);
-			} else {
+			} 
+			else {
 				int tp = s.pop();
 				// Use i - 1 to exclude i, and use i-- to turn back
 				maxArea = Math.max(maxArea, height[tp] * (s.isEmpty() ? i : i - 1 - s.peek()));
