@@ -258,6 +258,7 @@
 260. Single Number III
 
 ## 261-270
+263. Ugly Number
 264. Ugly Number II
 268. Missing Number
 
