@@ -14,7 +14,7 @@ public class Longest_Palindromic_Substring {
 	 * https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution
 	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
 	 */
-	public String longestPalindrome(String s) {
+	public String longestPalindrome_expand(String s) {
 		if (s == null || s.length() < 1)
 			return "";
 		
@@ -40,6 +40,85 @@ public class Longest_Palindromic_Substring {
 		}
 		return R - L - 1;
 	}
+	
+	/*
+	 * The following 2 functions are by myself
+	 * 
+	 * 看 647. Palindromic Substrings
+	 * 
+	 * Rf :
+	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
+	 */
+	public String longestPalindrome_Manacher2(String s) {
+        String t = transform_Manacher(s);
+        
+        // P 為回文半徑，不包含自己
+        int[] P = new int[t.length()];
+        
+        // C 為當前回文中心，R 為當前回文半徑
+        int C = 0, R = 0;
+        
+        // 頭尾是標記符號，所以去除頭尾
+        for (int i = 1; i < t.length() - 1; i++) {
+            int i_mirror = 2 * C - i;
+            
+            // 防止超出 R
+            if (R > i) {
+                P[i] = Math.min(P[i_mirror], R - i);
+            }
+            // R == i
+            else {
+                P[i] = 0;
+            }
+            
+            // 例外情況，使用中心擴展法
+			// P[i] 為回文半徑，P[i] + 1 為下一個要比較的字元
+			// 因為插入不同的頭尾標示符號 (^$)，所以會因為字元不同而自動跳出 while loop
+            while (t.charAt(i + P[i] + 1) == t.charAt(i - P[i] - 1)) {
+                P[i]++;
+            }
+            
+            // 若生成區域超過 R，更新 C、R
+            if (i + P[i] > R) {
+                C = i;
+                R = i + P[i];
+            }
+        }
+        
+        int pos = 0;
+        int length = P[0];
+        for (int i = 1; i < t.length(); i++) {
+            if (P[i] > length) {
+                pos = i;
+                length = P[i];
+            }
+        }
+        
+        int start = (pos - length) / 2;
+        return s.substring(start, start + length);
+    }
+    
+    private String transform_Manacher(String s) {
+        
+        // ^、_、$ 為原字串所沒有的字元
+		// 使用 _ 插入每個字元，並同時添加在頭尾
+		// $ 代表頭部起始。 ^ 代表尾部結束
+        
+        if (s == null || s.length() == 0) {
+            return "$^";
+        }
+        
+        StringBuilder sb = new StringBuilder("$");
+        char[] ch = s.toCharArray();
+        
+        for (int i = 0; i < ch.length; i++) {
+            sb.append("_" + ch[i]);
+        }
+        
+        sb.append("_^");
+        
+        return sb.toString();
+    }
 	
 	/*
 	 * The following 2 functions are from this link.

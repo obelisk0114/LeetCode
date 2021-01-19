@@ -51,6 +51,11 @@ public class Palindromic_Substrings {
 	 * P[i] 是 preprocess 後，第 i 個字元的回文半徑 (不包含自己)
 	 * 同時也是原字串中，中心在 (i - 1) / 2 的最長回文長度
 	 * 
+	 * 這個子字串的起始位置 (start) 是 (i - P[i] - 1) / 2，長度為 P[i]
+	 * 可以用 substring(start, start + P[i]) 得到
+	 * 
+	 * 在 java，起始位置用 (i - P[i]) / 2 也可以，因為多的 0.5 會被 (int) 移掉
+	 * 
 	 * Rf :
 	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
 	 * https://zh.wikipedia.org/wiki/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2
@@ -66,6 +71,8 @@ public class Palindromic_Substrings {
 
 		// P 為回文半徑，不包含自己
 		int[] P = new int[n];
+		
+		// C 為當前回文中心，R 為當前回文半徑
 		int C = 0, R = 0;
 		
 		// 頭尾是標記符號，所以去除頭尾
