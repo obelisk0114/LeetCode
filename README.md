@@ -523,6 +523,9 @@
 ## 851-860
 851. Loud and Rich
 
+## 871-880
+877. Stone Game
+
 ## 881-890
 886. Possible Bipartition
 889. Construct Binary Tree from Preorder and Postorder Traversal
