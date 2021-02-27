@@ -752,7 +752,12 @@ public class Stone_Game {
 	/*
 	 * https://leetcode.com/problems/stone-game/discuss/261718/Step-by-Step-Recursive-TopDown-BottomUp-and-BottomUp-using-O(n)-space-in-Java
 	 * 
-	 * 這個解法應該是錯的，整體都很奇怪，也無法通過 486. Predict the Winner
+	 * 這個解法跟 solution 的解法一樣
+	 * 若要推廣到長度為 odd, 需修改 turn 和 si == ei 的賦值 
+	 * turn = (piles.length % 2 == 0) ? false : true;
+	 * strg[si][ei] = turn ? piles[si] : -piles[si];
+	 * 
+	 * --------------------------------------------------
 	 * 
 	 * Consider a boolean variable that will decide if the turn is of Alex or Lee.
 	 * 

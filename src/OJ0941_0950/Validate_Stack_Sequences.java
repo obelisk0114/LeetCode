@@ -2,6 +2,8 @@ package OJ0941_0950;
 
 import java.util.LinkedList;
 import java.util.Stack;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 public class Validate_Stack_Sequences {
 	/*
@@ -39,6 +41,35 @@ public class Validate_Stack_Sequences {
             }
         }
         return stack.empty();
+    }
+	
+	/*
+	 * by myself
+	 * 
+	 * ­Y stack.peekLast() == popped[j]¡Astack.pollLast()
+	 * §_«h stack.offerLast(pushed[i]); i >= pushed.length ªí¥Ü false
+	 */
+	public boolean validateStackSequences_self2(int[] pushed, int[] popped) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        
+        int i = 0;
+        int j = 0;
+        while (j < popped.length) {
+            if (stack.isEmpty() || stack.peekLast() != popped[j]) {
+                if (i >= pushed.length) {
+                    return false;
+                }
+                
+                stack.offerLast(pushed[i]);
+                i++;
+            }
+            else {
+                stack.pollLast();
+                j++;
+            }
+        }
+        
+        return true;
     }
 	
 	/*
