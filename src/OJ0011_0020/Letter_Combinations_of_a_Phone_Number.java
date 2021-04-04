@@ -17,14 +17,18 @@ public class Letter_Combinations_of_a_Phone_Number {
 		List<String> ret = new LinkedList<String>();
 		if (digits == null || digits.length() == 0)
 			return ret;
+		
 		combination("", digits, 0, ret);
 		return ret;
 	}
-	private void combination(String prefix, String digits, int offset, List<String> ret) {
+	private void combination(String prefix, String digits, int offset, 
+			List<String> ret) {
+		
 		if (offset >= digits.length()) {
 			ret.add(prefix);
 			return;
 		}
+		
 		String letters = KEYS[(digits.charAt(offset) - '0')];
 		for (int i = 0; i < letters.length(); i++) {
 			combination(prefix + letters.charAt(i), digits, offset + 1, ret);

@@ -9,27 +9,6 @@ import java.util.HashSet;
  */
 
 public class Linked_List_Cycle_II {
-	// http://fisherlei.blogspot.com/2013/11/leetcode-linked-list-cycle-ii-solution.html
-	public ListNode detectCycle(ListNode head) {
-        if (head == null || head.next == null)
-            return null;
-        ListNode fast = head;
-        ListNode slow = head;
-        while (fast.next != null && fast.next.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-            if (fast == slow) {
-                slow = head;
-                while (fast != slow) {
-                    fast = fast.next;
-                    slow = slow.next;
-                }
-                return slow;
-            }
-        }        
-        return null;
-    }
-	
 	// https://discuss.leetcode.com/topic/19367/java-o-1-space-solution-with-detailed-explanation
 	public ListNode detectCycle2(ListNode head) {
 		ListNode slow = head;
@@ -50,6 +29,27 @@ public class Linked_List_Cycle_II {
 		}
 		return null;
 	}
+
+	// http://fisherlei.blogspot.com/2013/11/leetcode-linked-list-cycle-ii-solution.html
+	public ListNode detectCycle(ListNode head) {
+        if (head == null || head.next == null)
+            return null;
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                slow = head;
+                while (fast != slow) {
+                    fast = fast.next;
+                    slow = slow.next;
+                }
+                return slow;
+            }
+        }        
+        return null;
+    }
 	
 	// https://discuss.leetcode.com/topic/41570/java-solution-without-extra-space-with-explanation
 	public ListNode detectCycle3(ListNode head) {
