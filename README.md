@@ -399,6 +399,9 @@
 478. Generate Random Point in a Circle (Can't access article)
 480. Sliding Window Median (Can't access article)
 
+## 481-490
+486. Predict the Winner
+
 ## 491-500
 494. Target Sum
 
