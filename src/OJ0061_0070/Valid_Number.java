@@ -11,7 +11,7 @@ public class Valid_Number {
 	 * https://discuss.leetcode.com/topic/19412/ac-java-solution-with-clear-explanation
 	 * https://discuss.leetcode.com/topic/40983/java-logically-simple-flexible-and-clear-solution-including-rules-of-a-valid-number
 	 */
-	public boolean isNumber(String s) {
+	public boolean isNumber_scan(String s) {
 	    s = s.trim();
 	    
 	    boolean pointSeen = false;
@@ -44,6 +44,101 @@ public class Valid_Number {
 	    
 	    return numberSeen && numberAfterE;
 	}
+	
+	/*
+	 * The following 4 functions are by myself.
+	 * 
+	 * Rf :
+	 * https://stackoverflow.com/a/35242882
+	 */
+	public boolean isNumber_self2(String s) {
+        int e = (int) (countCharNumber_self2(s, 'e') + countCharNumber_self2(s, 'E'));
+        
+        if (e > 1) {
+            return false;
+        }
+        else if (e == 0) {
+            return isDecimal_self2(s);
+        }
+        else {
+            int cut = s.indexOf('e') == -1 ? s.indexOf('E') : s.indexOf('e');
+            
+            String s1 = s.substring(0, cut);
+            String s2 = s.substring(cut + 1);
+            
+            return isDecimal_self2(s1) && isInteger_self2(s2);
+        }
+    }
+    
+    private long countCharNumber_self2(String s, char c) {
+        return s.chars().filter(ch -> ch == c).count();
+    }
+    
+    private boolean isDecimal_self2(String s) {
+        if (s.length() == 0) {
+            return false;
+        }
+        if (s.length() == 1) {
+            return Character.isDigit(s.charAt(0));
+        }
+        
+        char first = s.charAt(0);
+        
+        if (first == '+' || first == '-' || first == '.' 
+        		|| Character.isDigit(first)) {
+        	
+            int dotNumber = (int) countCharNumber_self2(s, '.');
+            
+            if (dotNumber == 0) {
+                return isInteger_self2(s);
+            }
+            else if (dotNumber == 1) {
+                if ((first == '+' || first == '-') && s.length() == 2) {
+                    return false;
+                }
+                
+                for (int i = 1; i < s.length(); i++) {
+                    char c = s.charAt(i);
+                    
+                    if (!Character.isDigit(c) && c != '.') {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    
+    private boolean isInteger_self2(String s) {
+        if (s.length() == 0) {
+            return false;
+        }
+        if (s.length() == 1) {
+            return Character.isDigit(s.charAt(0));
+        }
+        
+        char first = s.charAt(0);
+        
+        if (first == '+' || first == '-' || Character.isDigit(first)) {
+            for (int i = 1; i < s.length(); i++) {
+                if (!Character.isDigit(s.charAt(i))) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 	
 	/*
 	 * Self
@@ -167,7 +262,7 @@ public class Valid_Number {
 		//String s = " 005047e+6";  true
 		//String s = "4e+";       false
 		String s = ".2e81";      // true
-		System.out.println("Valid or not : " + validNumber.isNumber(s));
+		System.out.println("Valid or not : " + validNumber.isNumber_scan(s));
 		System.out.println("Valid or not : " + validNumber.isNumber_self(s));
 		System.out.println("Valid or not : " + validNumber.isNumber_regex(s));
 		System.out.println("Valid or not : " + validNumber.isNumber_cheat(s));
