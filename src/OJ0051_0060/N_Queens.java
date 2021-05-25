@@ -8,6 +8,8 @@ public class N_Queens {
 	/*
 	 * The following 3 functions are by myself.
 	 * 
+	 * list 儲存每個 row 皇后的位置 (x 座標)
+	 * 
 	 * Rf : https://discuss.leetcode.com/topic/19470/my-easy-understanding-java-solution
 	 */
 	public List<List<String>> solveNQueens_self(int n) {
@@ -15,29 +17,37 @@ public class N_Queens {
         placeQueen_self(0, n, new ArrayList<Integer>(), ans);
         return ans;
     }
-	private void placeQueen_self(int y, int n, List<Integer> list, List<List<String>> ans) {
+	private void placeQueen_self(int y, int n, List<Integer> list, 
+			List<List<String>> ans) {
+		
 		if (y == n) {
             List<String> line = new ArrayList<>();
-            int count = 0;
+            
+            // every row
 			for (int i = 0; i < n; i++) {
                 StringBuilder sb = new StringBuilder();
+                
+                // every cell in the row
                 for (int j = 0; j < n; j++) {
-                    if (list.get(count) == j) {
+                    if (list.get(i) == j) {
                         sb.append("Q");
                     }
                     else {
                         sb.append(".");
                     }
                 }
+                
                 line.add(sb.toString());
-                count++;
             }
+			
             ans.add(line);
 			return;
         }
+		
 		for (int i = 0; i < n; i++) {
 			if (!isSafe_self(i, y, list))
 				continue;
+			
 			list.add(i);
 			placeQueen_self(y + 1, n, list, ans);
 			list.remove(list.size() - 1);
@@ -49,7 +59,8 @@ public class N_Queens {
 			if (list.get(i) == x) {
 				return false;
 			}
-			// Check diagonal
+			
+			// Check diagonal (對角線斜率為 1 或是 -1)
 			if (y - i == Math.abs(x - list.get(i))) {
 				return false;
 			}
