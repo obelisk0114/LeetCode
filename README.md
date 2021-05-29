@@ -427,6 +427,7 @@
 542. 01 Matrix
 543. Diameter of Binary Tree
 547. Friend Circles (Can't access article)
+548. Split Array with Equal Sum
 
 ## 551-560
 551. Student Attendance Record I (Can't access article)
