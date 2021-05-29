@@ -25,15 +25,21 @@ public class N_Queens_II {
 		}
 
 		for (int col = 0; col < n; col++) {
+			// col 和 row 同方向變化, 相減保持不變性 (\)
 			int id1 = col - row + n;
+			
+			// col 和 row 反方向變化, 相加保持不變性 (/)
 			int id2 = col + row;
+			
 			if (cols[col] || d1[id1] || d2[id2])
 				continue;
 
 			cols[col] = true;
 			d1[id1] = true;
 			d2[id2] = true;
+			
 			count = place(row + 1, cols, d1, d2, count);
+			
 			cols[col] = false;
 			d1[id1] = false;
 			d2[id2] = false;
