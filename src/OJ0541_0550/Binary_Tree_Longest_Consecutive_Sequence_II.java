@@ -6,7 +6,34 @@ public class Binary_Tree_Longest_Consecutive_Sequence_II {
 	/*
 	 * The following 2 functions are modified by myself.
 	 * 
+	 * increase = the length of the longest incrementing branch below the current 
+	 *            node including itself 
+	 * decrease = the length of the longest decrementing branch below the current 
+	 *            node including itself.
+	 * longestPath_self_modify return [increase, decrease]
+	 * 
+	 * We start off by assigning both `increase` and `decrease` as 1 for the current 
+	 * node. This is because the node itself always forms a consecutive increasing as 
+	 * well as decreasing path of length 1.
+	 * 
+	 * if the left child is just smaller than the current node, it forms a decreasing 
+	 * sequence with the current node. Thus, the `decrease` value for the current 
+	 * node is stored as the left child's `decrease` value + 1.
+	 * 
+	 * if the left child is just larger than the current node, it forms an 
+	 * incrementing sequence with the current node. Thus, we update the current 
+	 * node's `increase` value as left_child(increase) + 1
+	 * 
+	 * For current node's `increase` and `decrease`, we need to consider the maximum 
+	 * value out of the two values obtained from the left and the right child for 
+	 * both `increase` and `decrease`, since we need to consider the longest sequence 
+	 * possible.
+	 * 
+	 * we update the length of the longest consecutive path found so far as 
+	 * max = Math.max(max, decrease + increase - 1)
+	 * 
 	 * Rf :
+	 * https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/solution/
 	 * https://leetcode.com/problems/binary-tree-longest-consecutive-sequence-ii/discuss/101519/Neat-Java-Solution-Single-pass-O(n)
 	 */
 	public int longestConsecutive_self_modify(TreeNode root) {
