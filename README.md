@@ -260,6 +260,7 @@
 260. Single Number III
 
 ## 261-270
+261. Graph Valid Tree
 263. Ugly Number
 264. Ugly Number II
 268. Missing Number
