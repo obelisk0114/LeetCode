@@ -592,7 +592,7 @@ public class Graph_Valid_Tree {
 		Set<Integer> visited = new HashSet<>();
 
 		// do DFS from vertex 0, after one round DFS, if there is no loop and 
-		// visited contains all the vertexes, it is a tree.
+		// visited contains all the vertices, it is a tree.
 		boolean res = helper_dfs4(-1, 0, visited, graph);
 		if (!res)
 			return res;

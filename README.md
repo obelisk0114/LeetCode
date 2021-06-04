@@ -264,6 +264,7 @@
 263. Ugly Number
 264. Ugly Number II
 268. Missing Number
+269. Alien Dictionary
 
 ## 271-280
 273. Integer to English Words
