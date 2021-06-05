@@ -267,6 +267,7 @@
 269. Alien Dictionary
 
 ## 271-280
+271. Encode and Decode Strings
 273. Integer to English Words
 277. Find the Celebrity
 278. First Bad Version
