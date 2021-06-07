@@ -305,6 +305,7 @@
 
 ## 321-330
 322. Coin Change
+323. Number of Connected Components in an Undirected Graph
 324. Wiggle Sort II
 326. Power of Three
 327. Count of Range Sum
