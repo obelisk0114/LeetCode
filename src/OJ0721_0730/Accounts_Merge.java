@@ -13,6 +13,10 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
 
+/*
+ * ¬Ý Union Find
+ */
+
 public class Accounts_Merge {
 	/*
 	 * The following 2 functions are from this link.
