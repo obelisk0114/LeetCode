@@ -294,6 +294,7 @@
 303. Range Sum Query - Immutable
 304. Range Sum Query 2D - Immutable
 307. Range Sum Query - Mutable
+308. Range Sum Query 2D - Mutable
 309. Best Time to Buy and Sell Stock with Cooldown
 310. Minimum Height Trees
 
