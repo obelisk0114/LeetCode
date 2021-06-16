@@ -528,6 +528,7 @@
 767. Reorganize String
 
 ## 771-780
+772. Basic Calculator III
 773. Sliding Puzzle (Can't access article)
 
 ## 781-790
