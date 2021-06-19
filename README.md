@@ -586,5 +586,8 @@
 ## 1171-1180
 1171. Remove Zero Sum Consecutive Nodes from Linked List
 
+## 1191-1200
+1197. Minimum Knight Moves
+
 ## 1271-1280
 1277. Count Square Submatrices with All Ones
