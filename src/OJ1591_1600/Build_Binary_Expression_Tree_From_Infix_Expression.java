@@ -6,6 +6,11 @@ import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
 
+/*
+ * 和 772. Basic Calculator III 一起看
+ * 要看 public Node expTree_parser(String s) { }
+ */
+
 public class Build_Binary_Expression_Tree_From_Infix_Expression {
 	/*
 	 * The following 3 functions are from this link.
