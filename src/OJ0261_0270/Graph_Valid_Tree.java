@@ -12,6 +12,10 @@ import java.util.Deque;
 import java.util.ArrayDeque;
 import java.util.Stack;
 
+/*
+ * ¬Ý validTree_UF(int n, int[][] edges) {...}
+ */
+
 public class Graph_Valid_Tree {
 	/*
 	 * The following 2 functions are modified by myself.

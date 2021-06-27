@@ -411,6 +411,7 @@
 
 ## 481-490
 486. Predict the Winner
+489. Robot Room Cleaner
 
 ## 491-500
 494. Target Sum
