@@ -6,6 +6,32 @@ public class Maximum_Gap {
 	/*
 	 * https://leetcode.com/articles/maximum-gap/
 	 * 
+	 * 假設排序過後為等差數列
+	 * 等差數列：首項為 min，末項為 max，共有 n 項；可得到 公差 t = (max - min)/(n - 1)
+	 * 我們可以將 bucket 內部的 maximum gap 設為這個 t 
+	 * 這樣我們只需要比較 bucket 間的差 (difference) 就好
+	 * bucket 間的差 (difference) = minimum_in_bucket_i+1 - maximum_in_bucket_i
+	 * 
+	 * 若此數列除了 a[i - 1], a[i], a[i + 1] 外，差 (difference) 都為 t
+	 * 而 a[i] - a[i - 1] = t - p, a[i + 1] - a[i] = t + p
+	 * 因此，排序過後相鄰兩數的 maximum gap 只會大於 t，不會變小
+	 * 
+	 * 考慮放入 bucket 的情況，繼續上面的例子
+	 * 因為 bucket 內部的 maximum gap 為 t = (max - min)/(n - 1)
+	 * 所以只要相鄰兩數 a[j], a[j + 1] 的差 a[j + 1] - a[j] <= t，這兩數就會在同一 bucket 中
+	 * a[i - 1] 和 a[i] 會被放到同一個 bucket, 其他的都是自己一個 bucket
+	 * 比較 bucket 之間的 difference，可以得到 a[i + 1] - a[i] = t + p
+	 * 
+	 * 以此類推，只要有任意兩數 a[j], a[j + 1]，而 a[j + 1] - a[j] < t
+	 * a[j] 和 a[j + 1] 就會在同一個 bucket 中
+	 * 而且必定會有另外兩數 a[k], a[k + 1]，而 a[k + 1] - a[k] > t
+	 * a[k] 和 a[k + 1] 就會在相鄰的 bucket 中
+	 * 所以 a[k + 1] - a[k] 就是 bucket 間的差 (difference)
+	 * 
+	 * 因此只要數列的最大 max，最小 min，共有 n 項。不管分布如何
+	 * 可以將  bucket 內部的 maximum gap 設為 t = (max - min)/(n - 1)
+	 * 我們就可以只比較 bucket 間的差 (difference) 來得到排序過後相鄰 2 數的 maximum gap
+	 * 
 	 * Sorted array and every adjacent pair of elements differ by the same value. 
 	 * n elements of the array, there are (n - 1) gaps, each of width, 
 	 * t = (max - min)/(n - 1) is the smallest value of maximum gap in the same 
@@ -33,7 +59,9 @@ public class Maximum_Gap {
 	        max = Math.max(max, i);
 	    }
 	    
+	    // 假設是等差數列，求出公差。公差至少為 1，這樣才能決定 bucket 數量
 	    int gap = Math.max(1, (max - min) / (num.length - 1)); // [1,1,1,1,1,5,5,5,5,5]
+	    // 已知首項、末項、公差，求出共有幾項
 	    int bucketNum = ((max - min) / gap) + 1;  // [100,3,2,1]
 	    
 	    int[] bucketsMIN = new int[bucketNum]; // store the min value in that bucket
@@ -52,8 +80,9 @@ public class Maximum_Gap {
 	    int maxGap = 0;
 	    int previous = min;
 	    for (int i = 0; i < bucketNum; i++) {
-	        if (bucketsMIN[i] == Integer.MAX_VALUE && bucketsMAX[i] == Integer.MIN_VALUE)
-	            // empty bucket
+	    	// empty bucket
+	        if (bucketsMIN[i] == Integer.MAX_VALUE 
+	        		&& bucketsMAX[i] == Integer.MIN_VALUE)
 	            continue;
 	        
 	        // min value minus the previous value is the current gap
