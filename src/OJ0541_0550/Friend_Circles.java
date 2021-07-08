@@ -7,6 +7,13 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.Deque;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+
+/*
+ * µ¥¦P 323. Number of Connected Components in an Undirected Graph
+ */
 
 public class Friend_Circles {
 	/*
@@ -67,7 +74,7 @@ public class Friend_Circles {
 		}
 	}
 
-	public int findCircleNum(int[][] M) {
+	public int findCircleNum_uf(int[][] M) {
 		int n = M.length;
 		UnionFind uf = new UnionFind(n);
 		for (int i = 0; i < n - 1; i++) {
@@ -112,6 +119,52 @@ public class Friend_Circles {
 		}
 		return id;
 	}
+	
+	/*
+	 * The following 3 functions are from this link.
+	 * https://leetcode.com/problems/number-of-provinces/solution/
+	 * Approach 3: Using Union-Find Method
+	 * 
+	 * We make use of a parent array of size N. For every node traversed, we traverse
+	 * over all the nodes directly connected to it and assign them to a single group
+	 * which is represented by their parent node.
+	 * 
+	 * For every new pair of nodes found, we look for the parents of both the nodes.
+	 * If the parents nodes are the same, it indicates that they have already been
+	 * united into the same group. If the parent nodes differ, it means they are yet
+	 * to be united. Thus, for the pair of nodes (x, y), while forming the union, we
+	 * assign parent[parent[x]] = parent[y], which ultimately combines them into
+	 * the same group
+	 */
+	int find_uf2(int parent[], int i) {
+        if (parent[i] == -1)
+            return i;
+        return find_uf2(parent, parent[i]);
+    }
+
+    void union_uf2(int parent[], int x, int y) {
+        int xset = find_uf2(parent, x);
+        int yset = find_uf2(parent, y);
+        if (xset != yset)
+            parent[xset] = yset;
+    }
+    public int findCircleNum_uf2(int[][] M) {
+        int[] parent = new int[M.length];
+        Arrays.fill(parent, -1);
+        for (int i = 0; i < M.length; i++) {
+            for (int j = 0; j < M.length; j++) {
+                if (M[i][j] == 1 && i != j) {
+                    union_uf2(parent, i, j);
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 0; i < parent.length; i++) {
+            if (parent[i] == -1)
+                count++;
+        }
+        return count;
+    }
 	
 	/*
 	 * The following function and class are by myself.
@@ -180,6 +233,8 @@ public class Friend_Circles {
      * The following 2 functions are from this link.
      * https://leetcode.com/problems/friend-circles/discuss/101338/Neat-DFS-java-solution/105148
      * 
+     * DFS starting from every node that isn't visited
+     * 
      * Other code :
      * https://leetcode.com/problems/friend-circles/discuss/141185/Simple-Java-DFS-beats-99.25-(10ms)
      */
@@ -239,6 +294,83 @@ public class Friend_Circles {
             }
 		}
 	}
+	
+	/*
+	 * We start from a particular node and visit all its directly connected node 
+	 * first. After all the direct neighbors have been visited, we apply the same
+	 * process to the neighbor nodes as well. Thus, we exhaust the nodes of a graph
+	 * on a level by level basis.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/number-of-provinces/solution/
+	 */
+	public int findCircleNum_BFS3_modified(int[][] isConnected) {
+		Deque<Integer> queue = new ArrayDeque<>();
+        boolean[] visited = new boolean[isConnected.length];
+        
+        int count = 0;
+        for (int i = 0; i < isConnected.length; i++) {
+            if (!visited[i]) {
+                queue.offerLast(i);
+                visited[i] = true;
+                
+                while (!queue.isEmpty()) {
+                    int s = queue.pollFirst();
+                    
+                    for (int j = 0; j < isConnected.length; j++) {
+                        if (isConnected[s][j] == 1 && !visited[j]) {
+                            queue.offerLast(j);
+                            visited[s] = true;
+                        }
+                    }
+                }
+                
+                count++;
+            }
+        }
+        
+        return count;
+    }
+	
+	/*
+	 * https://leetcode.com/problems/number-of-provinces/solution/
+	 * Approach 2: Using Breadth First Search
+	 * 
+	 * We start from a particular node and visit all its directly connected node 
+	 * first. After all the direct neighbors have been visited, we apply the same
+	 * process to the neighbor nodes as well. Thus, we exhaust the nodes of a graph
+	 * on a level by level basis.
+	 * 
+	 * We apply BFS starting from one of the nodes. We make use of a visited array
+	 * to keep a track of the already visited nodes. We increment the count of
+	 * connected components whenever we need to start off with a new node as the root
+	 * node for applying BFS which haven't been already visited. 
+	 */
+	public int findCircleNum_BFS3(int[][] isConnected) {
+        boolean[] visited = new boolean[isConnected.length];
+        int count = 0;
+        
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < isConnected.length; i++) {
+            if (!visited[i]) {
+                queue.add(i);
+                while (!queue.isEmpty()) {
+                    int s = queue.remove();
+                    visited[s] = true;
+                    
+                    for (int j = 0; j < isConnected.length; j++) {
+                        if (isConnected[s][j] == 1 && !visited[j]) {
+                            queue.add(j);
+                        }
+                    }
+                }
+                
+                count++;
+            }
+        }
+        
+        return count;
+    }
 	
 	/*
 	 * The following 2 functions are from this link.
