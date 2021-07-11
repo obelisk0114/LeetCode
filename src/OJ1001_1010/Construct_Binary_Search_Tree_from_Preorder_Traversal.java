@@ -4,6 +4,8 @@ import definition.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Stack;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class Construct_Binary_Search_Tree_from_Preorder_Traversal {
 	/*
@@ -17,7 +19,9 @@ public class Construct_Binary_Search_Tree_from_Preorder_Traversal {
 	 *       The last popped item will be the parent and the item will be the right 
 	 *       child of the parent.
 	 * 
-	 * Rf : https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/discuss/252722/Python-stack-solution-beats-100-on-runtime-and-memory
+	 * Rf : 
+	 * https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/discuss/252722/Python-stack-solution-beats-100-on-runtime-and-memory
+	 * https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/solution/
 	 */
 	public TreeNode bstFromPreorder_stack(int[] preorder) {
 		if (preorder == null || preorder.length == 0) {
@@ -252,6 +256,121 @@ public class Construct_Binary_Search_Tree_from_Preorder_Traversal {
 			root.right = insert_naive(root.right, val);
 		}
 		return root;
+	}
+	
+	/*
+	 * The following class is from this link.
+	 * https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/solution/
+	 * Approach 2: Recursion
+	 * 
+	 * The inorder traversal was used only to check if the element could be placed in
+	 * this subtree. Since one deals with a BST here, this could be verified with the
+	 * help of lower and upper limits for each element as for the validate BST.
+	 * 
+	 * + Initialize the lower and upper limits as negative and positive infinity 
+	 *   because one could always place the root.
+	 * + Start from the first element in the preorder array `idx = 0`
+	 * + Return `helper(lower, upper)`:
+	 *   + If the preorder array is used up `idx = n` then the tree is constructed,
+	 *     return null.
+	 *   + If current value `val = preorder[idx]` is smaller than lower limit, or
+	 *     larger than upper limit, return null.
+	 *   + If the current value is in the limits, place it here `root = TreeNode(val)`
+	 *     and proceed to construct recursively left and right subtrees:
+	 *     `root.left = helper(lower, val)` and `root.right = helper(val, upper)`.
+	 *   + Return `root`.
+	 */
+	class Solution_recursion {
+		int idx = 0;
+		int[] preorder;
+		int n;
+
+		public TreeNode helper(int lower, int upper) {
+			// if all elements from preorder are used
+			// then the tree is constructed
+			if (idx == n)
+				return null;
+
+			int val = preorder[idx];
+			// if the current element
+			// couldn't be placed here to meet BST requirements
+			if (val < lower || val > upper)
+				return null;
+
+			// place the current element
+			// and recursively construct subtrees
+			idx++;
+			TreeNode root = new TreeNode(val);
+			root.left = helper(lower, val);
+			root.right = helper(val, upper);
+			return root;
+		}
+
+		public TreeNode bstFromPreorder(int[] preorder) {
+			this.preorder = preorder;
+			n = preorder.length;
+			return helper(Integer.MIN_VALUE, Integer.MAX_VALUE);
+		}
+	}
+
+	/*
+	 * The following class is from this link.
+	 * https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/solution/
+	 * Approach 1: Construct binary tree from preorder and inorder traversal
+	 * 
+	 * 2 Facts:
+	 * + Binary tree could be constructed from preorder and inorder traversal.
+	 * + Inorder traversal of BST is an array sorted in the ascending order.
+	 * 
+	 * Algorithm:
+	 * + Construct inorder traversal by sorting the preorder array.
+	 * + Construct binary tree from preorder and inorder traversal: the idea is to 
+	 *   peek the elements one by one from the preorder array and try to put them as
+	 *   a left or as a right child if it's possible. If it's impossible - just put
+	 *   `null` as a child and proceed further. The possibility to use an element as
+	 *   a child is checked by an inorder array; if it contains no elements for this
+	 *   subtree, then the element couldn't be used here, and one should use `null`
+	 *   as a child instead.  
+	 */
+	class Solution_preOrder_inOrder {
+		// start from first preorder element
+		int pre_idx = 0;
+		int[] preorder;
+		HashMap<Integer, Integer> idx_map = new HashMap<Integer, Integer>();
+
+		public TreeNode helper(int in_left, int in_right) {
+			// if there is no elements to construct subtrees
+			if (in_left == in_right)
+				return null;
+
+			// pick up pre_idx element as a root
+			int root_val = preorder[pre_idx];
+			TreeNode root = new TreeNode(root_val);
+
+			// root splits inorder list
+			// into left and right subtrees
+			int index = idx_map.get(root_val);
+
+			// recursion
+			pre_idx++;
+			// build left subtree
+			root.left = helper(in_left, index);
+			// build right subtree
+			root.right = helper(index + 1, in_right);
+			return root;
+		}
+
+		public TreeNode bstFromPreorder(int[] preorder) {
+			this.preorder = preorder;
+			int[] inorder = Arrays.copyOf(preorder, preorder.length);
+			Arrays.sort(inorder);
+
+			// build a hashmap value -> its index
+			int idx = 0;
+			for (Integer val : inorder)
+				idx_map.put(val, idx++);
+			return helper(0, inorder.length);
+		}
 	}
 
 	/**
