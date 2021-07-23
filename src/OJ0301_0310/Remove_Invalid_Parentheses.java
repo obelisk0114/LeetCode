@@ -25,6 +25,19 @@ public class Remove_Invalid_Parentheses {
 	 * 
 	 * T(n) = n x C(n, n) + (n-1) x C(n, n-1) + ... + 1 x C(n, 1) = n x 2^(n-1).
 	 * 
+	 * ------------------------------------------------------------
+	 * 
+	 * Once you have a string of length k that is valid, all those strings in the 
+	 * next level which have a length of k - 1 are definitely not valid (you need to 
+	 * remove a pair to make it valid again). Notice some next level k - 1 length 
+	 * strings can be added to the queue if a valid pattern comes late in the current 
+	 * level and found only becomes true it encounters the first valid string. And 
+	 * once found is true, all the strings remaining in the queue will still be 
+	 * processed and checked if valid except no children will be added to the queue.
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/remove-invalid-parentheses/discuss/75032/Share-my-Java-BFS-solution/545788
+	 * 
 	 * Other code:
 	 * https://leetcode.com/problems/remove-invalid-parentheses/discuss/75084/Clean-Java-solution-BFS-+-optimization-40ms
 	 */
