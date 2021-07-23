@@ -10,6 +10,13 @@ public class Search_in_Rotated_Sorted_Array {
 	 *     be the same as mid
 	 * (3) Therefore, we compare mid with right, since they will never be the same 
 	 *     from (2)
+	 * 
+	 * test cases:
+	 * [1,3]
+	 * 3
+	 * 
+	 * [3,5,1]
+	 * 3
 	 */
 	public int search_modify(int[] nums, int target) {
         int start = 0;
