@@ -25,10 +25,14 @@ public class Combination_Sum {
 		dfs(ans, new ArrayList<Integer>(), candidates, target, 0);
 		return ans;
 	}
-	private void dfs(List<List<Integer>> ans, List<Integer> list, int[] cand, int remain, int from) {
+	private void dfs(List<List<Integer>> ans, List<Integer> list, 
+			int[] cand, int remain, int from) {
+		
+		// 可以省略
 		if (remain < 0) {
 			return;
 		}
+		
 		if (remain == 0) {
 			ans.add(new ArrayList<Integer>(list));
 			return;
@@ -38,8 +42,17 @@ public class Combination_Sum {
 		for (int i = from; i < cand.length; ++i) {
 			if (remain - cand[i] < 0)
 				break;
+			
+			// 可以加上這段, 因為下一個 from 還是從 i 開始, 所以可以重複選取
+			//if (i > from && cand[i] == cand[i - 1]) {
+                //continue;
+            //}
+			
 			list.add(cand[i]);
+			
+			// 可以重複選取, 所以下一個 from 還是 i
 			dfs(ans, list, cand, remain - cand[i], i);
+			
 			list.remove(list.size() - 1);
 		}
 	}

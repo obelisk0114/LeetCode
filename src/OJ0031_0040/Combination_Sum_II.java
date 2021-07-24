@@ -27,19 +27,25 @@ public class Combination_Sum_II {
 		dfs_com(cand, 0, target, path, res);
 		return res;
 	}
-	void dfs_com(int[] cand, int cur, int target, List<Integer> path, List<List<Integer>> res) {
+	void dfs_com(int[] cand, int cur, int target, List<Integer> path, 
+			List<List<Integer>> res) {
+		
 		if (target == 0) {
 			res.add(new ArrayList<>(path));
 			return;
 		}
+		
+		// 可以加上這段
 		//if (target < 0)
 			//return;
+		
 		for (int i = cur; i < cand.length; i++) {
 			if (target - cand[i] < 0)
 				break;
 			if (i > cur && cand[i] == cand[i - 1])
 				continue;
-			path.add(path.size(), cand[i]);
+			
+			path.add(cand[i]);
 			dfs_com(cand, i + 1, target - cand[i], path, res);
 			path.remove(path.size() - 1);
 		}
