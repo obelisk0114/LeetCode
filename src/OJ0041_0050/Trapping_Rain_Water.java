@@ -4,6 +4,44 @@ package OJ0041_0050;
 
 public class Trapping_Rain_Water {
 	/*
+	 * https://leetcode.wang/leetCode-42-Trapping-Rain-Water.html
+	 * 解法三 動態規劃
+	 * 
+	 * 求每一列的水，我們只需要關注當前列，以及左邊最高的牆，右邊最高的牆就夠了。
+	 * 裝水的多少，當然根據木桶效應，我們只需要看左邊最高的牆和右邊最高的牆中較矮的一個就夠了。
+	 * 
+	 * 首先用兩個陣列，max_left[i] 代表第 i 列左邊最高的牆的高度，max_right[i] 代表第 i 列右邊最高的牆
+	 * 的高度。 (一定要注意下，第 i 列左(右)邊最高的牆，是不包括自身的，和 leetcode 上邊的講的有些不同)
+	 * 
+	 * 對於 max_left 我們其實可以這樣求。
+	 * max_left[i] = Max ( max_left [i-1] , height[i-1])。它前邊的牆的左邊的最高高度和它前邊的
+	 * 牆的高度選一個較大的，就是當前列左邊最高的牆了。
+	 * 
+	 * 對於 max_right 我們可以這樣求。
+	 * max_right[i] = Max ( max_right[i+1] , height[i+1])。它後邊的牆的右邊的最高高度和它後邊的
+	 * 牆的高度選一個較大的，就是當前列右邊最高的牆了。
+	 */
+	public int trap_dp(int[] height) {
+	    int sum = 0;
+	    int[] max_left = new int[height.length];
+	    int[] max_right = new int[height.length];
+
+	    for (int i = 1; i < height.length - 1; i++) {
+	        max_left[i] = Math.max(max_left[i - 1], height[i - 1]);
+	    }
+	    for (int i = height.length - 2; i >= 0; i--) {
+	        max_right[i] = Math.max(max_right[i + 1], height[i + 1]);
+	    }
+	    for (int i = 1; i < height.length - 1; i++) {
+	        int min = Math.min(max_left[i], max_right[i]);
+	        if (min > height[i]) {
+	            sum = sum + (min - height[i]);
+	        }
+	    }
+	    return sum;
+	}
+	
+	/*
 	 * https://discuss.leetcode.com/topic/3016/share-my-short-solution
 	 * 
 	 * Rf : https://discuss.leetcode.com/topic/5125/sharing-my-simple-c-code-o-n-time-o-1-space
