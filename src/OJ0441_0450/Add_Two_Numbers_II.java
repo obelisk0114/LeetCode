@@ -4,6 +4,8 @@ import definition.ListNode;
 import java.util.Stack;
 import java.util.HashMap;
 
+import java.math.BigInteger;
+
 public class Add_Two_Numbers_II {
 	/*
 	 * The following 2 functions are from this link.
@@ -249,5 +251,66 @@ public class Add_Two_Numbers_II {
 		}
 		return newHead;
 	}
+
+	// by myself
+	public ListNode addTwoNumbers_self_BigInteger(ListNode l1, ListNode l2) {
+        BigInteger first = BigInteger.ZERO;
+        BigInteger second = BigInteger.ZERO;
+
+        ListNode cur = l1;
+        while (cur != null) {
+            BigInteger curVal = new BigInteger(String.valueOf(cur.val));
+            first = (first.multiply(BigInteger.TEN)).add(curVal);
+            cur = cur.next;
+        }
+
+        cur = l2;
+        while (cur != null) {
+            BigInteger curVal = new BigInteger(String.valueOf(cur.val));
+            second = (second.multiply(BigInteger.TEN)).add(curVal);
+            cur = cur.next;
+        }
+
+        BigInteger num = first.add(second);
+        BigInteger num2 = BigInteger.ZERO;
+        int zero = 0;
+
+        // System.out.println(first);
+        // System.out.println(second);
+        // System.out.println(num);
+
+        // String s1 = "[2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,9]";
+        // String s2 = "[5,6,4,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,9,9,9,9]";
+
+        // System.out.println(s1.replaceAll(",", ""));
+        // System.out.println(s2.replaceAll(",", ""));
+
+        while (!num.equals(BigInteger.ZERO)) {
+            num2 = (num2.multiply(BigInteger.TEN)).add(num.mod(BigInteger.TEN));
+            num = num.divide(BigInteger.TEN);
+
+            if (num2.equals(BigInteger.ZERO)) {
+                zero++;
+            }
+        }
+
+        //System.out.println(num2);
+
+        ListNode res = new ListNode((num2.mod(BigInteger.TEN)).intValue());
+        num2 = num2.divide(BigInteger.TEN);
+        cur = res;
+        while (!num2.equals(BigInteger.ZERO)) {
+            cur.next = new ListNode((num2.mod(BigInteger.TEN)).intValue());
+            num2 = num2.divide(BigInteger.TEN);
+            cur = cur.next;
+        }
+
+        for (int i = 0; i < zero; i++) {
+            cur.next = new ListNode(0);
+            cur = cur.next;
+        }
+
+        return res;
+    }
 
 }
