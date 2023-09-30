@@ -16,6 +16,20 @@ public class OneThreeTwo_Pattern {
 	 * The following class and function are from this link.
 	 * https://leetcode.com/problems/132-pattern/discuss/94077/Java-O(n)-solution-using-stack-in-detail-explanation
 	 * 
+	 * stack.peek() 的 min 是 global 最小，max 是 min 之後最大的元素
+	 * 因此新的元素 (num) 若比 stack.peek().min 小，表示可以從他開始新的線段，所以 push (num, num)
+	 * 
+	 * 否則 stack.pop() 出來，將這個 pop 出的 Pair 定為 last
+	 *   若 num < last.max 達成條件，return true
+	 *   否則 num 可以合併到 last 裡面，同時確認前面有哪些線段被包含
+	 *   因為 last.min 是 global 最小，我們只要檢查到 stack 裡面 Pair 的 max < num，這個 Pair 就被包含
+	 *     stack 不斷 pop 被包含的 Pair
+	 *     若此迴圈停止，表示 stack.peek().max > num
+	 *     假如此時，stack.peek().min < num，表示我們找到 132 pattern，return true
+	 *     否則將更新後的 last push 進去 stack
+	 * 
+	 * ------------------------------------------------------------
+	 * 
 	 * 用 stack 記錄 (min, max)，每個 (min, max) 線段都沒有交集。
 	 * stack 中的 min 是 sorted，stack.peek().min 是最小的
 	 * 
