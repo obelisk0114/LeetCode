@@ -183,8 +183,8 @@ public class Integer_Break {
 	/*
 	 * The following 2 functions are by myself.
 	 * 
-	 * ��N������ >= �X�󥭧���, �������߱��󬰨C�ӼƬۦP
-	 * �����P���Τ覡���̤j��
+	 * 算術平均數 >= 幾何平均數, 等號成立條件為每個數相同
+	 * 取不同分割方式的最大值
 	 */
 	public int integerBreak_self(int n) {
         int splitCount = 2;
