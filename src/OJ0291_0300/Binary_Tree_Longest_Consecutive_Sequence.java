@@ -334,7 +334,7 @@ public class Binary_Tree_Longest_Consecutive_Sequence {
 	 * https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/discuss/74468/Easy-Java-DFS-is-there-better-time-complexity-solution/792821
 	 */
 	public int longestConsecutive_topDown4(TreeNode root) {
-		// ­ì©lª©¥», ¸û®t
+		// åŸå§‹ç‰ˆæœ¬, è¼ƒå·®
 		// return (root == null) ? 0
 		//		: Math.max(dfs_topDown4(root.left, 1, root.val), 
 		//				dfs_topDown4(root.right, 1, root.val));
@@ -343,7 +343,7 @@ public class Binary_Tree_Longest_Consecutive_Sequence {
 	}
 
 	public int dfs_topDown4(TreeNode root, int count, int val) {
-		// ¤]¥i¥H return 0; ­Y¬O­ì©lª©¥», ¤@©w­n return count;
+		// ä¹Ÿå¯ä»¥ return 0; è‹¥æ˜¯åŸå§‹ç‰ˆæœ¬, ä¸€å®šè¦ return count;
 		if (root == null)
 			return count;
 		

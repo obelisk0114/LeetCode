@@ -378,9 +378,9 @@ public class Palindrome_Pairs {
 	 * If contains, then we can use that string as left part, combine with middle 
 	 * part, right part, it will form a correct palindrome string. 
 	 * 
-	 * ¤ñ¦p¹ï©ó "abacd", ¥ª°¼ "aba" ¬O¦^¤å¡AÁÙ³Ñ¤U "cd", ©Ò¥H·Q­n©M¥t¤@­Ó¦r²Å¦ê²Õ¦¨¤@­Óªøªº¦^¤å¦ê¡A¥u»İ­n 
-	 * Map ¤¤¦³ "dc" §Y¥i¥[¨ì­ì¦r²Å¦êªº¥ªÃä: "dc", "abacd" => "dcabacd"
-	 * ¹ï©ó¥k¥b³¡¤À substring ªº¤ÀªR¦P²z
+	 * æ¯”å¦‚å°æ–¼ "abacd", å·¦å´ "aba" æ˜¯å›æ–‡ï¼Œé‚„å‰©ä¸‹ "cd", æ‰€ä»¥æƒ³è¦å’Œå¦ä¸€å€‹å­—ç¬¦ä¸²çµ„æˆä¸€å€‹é•·çš„å›æ–‡ä¸²ï¼Œåªéœ€è¦ 
+	 * Map ä¸­æœ‰ "dc" å³å¯åŠ åˆ°åŸå­—ç¬¦ä¸²çš„å·¦é‚Š: "dc", "abacd" => "dcabacd"
+	 * å°æ–¼å³åŠéƒ¨åˆ† substring çš„åˆ†æåŒç†
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/palindrome-pairs/discuss/279554/O(n-*-k2)-Java-Solution-Beats-67
@@ -408,7 +408,7 @@ public class Palindrome_Pairs {
 				String str1 = words[i].substring(0, j);
 				String str2 = words[i].substring(j);
 				
-				// ¥ª°¼¬°¦^¤å¡A»İ­n§ä¨ì¥k°¼ªº°f§Ç¦b map ¤¤
+				// å·¦å´ç‚ºå›æ–‡ï¼Œéœ€è¦æ‰¾åˆ°å³å´çš„é€†åºåœ¨ map ä¸­
 				if (isPalindrome3(str1)) {
 					String str2rvs = new StringBuilder(str2).reverse().toString();
 					

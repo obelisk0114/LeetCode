@@ -16,10 +16,10 @@ public class Reconstruct_Itinerary {
 	 * 
 	 * Hierholzer's algorithm
 	 * 
-	 * ·í§A±q source ¥Xµo²Ä¤@¦¸µo²{¦º¸ôªº®É­Ô¡A¨º­Óµ²ÂI´N¬O destination. (¦b cycle ªº±¡ªp¤U src ´N¬O dst). 
-	 * ¦]¬°¥u¦³¨â­Óµ²ÂIªº degree ·|¬O©_¼Æ. ¨ä¥Lµ²ÂI¦pªG¦³¤@±øÃä¶i¥h¡A´NªÖ©w¦³¤@±øÃä¥X¨Ó. ¦]¦¹³o´N¬O¬°¤°»òµo²{
-	 * ¦º¸ô¤§«á¥i¥Hª½±µ§â·í«eµ²ÂI¥[¤J¨ì result list ªº§À³¡. Ä~Äò¦^·¹¤§«á¤]¬O¤@¼Ë¡A¦pªG¦^·¹¨ìªºµ²ÂI¨S¦³§ó¦hªº
-	 * unvisited edges ªº¸Ü, ¤]´N¥i¥H¥[¤J result list ¤F.
+	 * ç•¶ä½ å¾ source å‡ºç™¼ç¬¬ä¸€æ¬¡ç™¼ç¾æ­»è·¯çš„æ™‚å€™ï¼Œé‚£å€‹çµé»å°±æ˜¯ destination. (åœ¨ cycle çš„æƒ…æ³ä¸‹ src å°±æ˜¯ dst). 
+	 * å› ç‚ºåªæœ‰å…©å€‹çµé»çš„ degree æœƒæ˜¯å¥‡æ•¸. å…¶ä»–çµé»å¦‚æœæœ‰ä¸€æ¢é‚Šé€²å»ï¼Œå°±è‚¯å®šæœ‰ä¸€æ¢é‚Šå‡ºä¾†. å› æ­¤é€™å°±æ˜¯ç‚ºä»€éº¼ç™¼ç¾
+	 * æ­»è·¯ä¹‹å¾Œå¯ä»¥ç›´æ¥æŠŠç•¶å‰çµé»åŠ å…¥åˆ° result list çš„å°¾éƒ¨. ç¹¼çºŒå›æº¯ä¹‹å¾Œä¹Ÿæ˜¯ä¸€æ¨£ï¼Œå¦‚æœå›æº¯åˆ°çš„çµé»æ²’æœ‰æ›´å¤šçš„
+	 * unvisited edges çš„è©±, ä¹Ÿå°±å¯ä»¥åŠ å…¥ result list äº†.
 	 * 
 	 * In Eulerian paths, there must exist a start node and a end node.
 	 * + end node is start node iff all nodes has even degree.

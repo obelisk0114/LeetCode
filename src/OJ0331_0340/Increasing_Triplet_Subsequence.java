@@ -48,7 +48,7 @@ public class Increasing_Triplet_Subsequence {
 		for (int num : nums) {
 			if (num <= min)   // "=" is used to prevent change secondMin
 				min = num;
-			// else if (num <= secondMin) ¤]¥i¥H
+			// else if (num <= secondMin) ä¹Ÿå¯ä»¥
 			else if (num < secondMin)
 				secondMin = num;
 			else if (num > secondMin)

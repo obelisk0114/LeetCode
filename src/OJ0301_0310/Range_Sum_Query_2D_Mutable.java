@@ -46,7 +46,7 @@ public class Range_Sum_Query_2D_Mutable {
 				}
 			}
 			
-			// initialization, ¤]¥i¥H¥Î init2(); ©Î init3();
+			// initialization, ä¹Ÿå¯ä»¥ç”¨ init2(); æˆ– init3();
 			// init2();
 			// init3();
 			init();
@@ -104,7 +104,7 @@ public class Range_Sum_Query_2D_Mutable {
 		}
 		
 		public void init3() {
-			// (0, 0) ¨ì (i, j) ³o­Ó¯x°}ªºÁ`©M
+			// (0, 0) åˆ° (i, j) é€™å€‹çŸ©é™£çš„ç¸½å’Œ
 			for (int i = 0; i < nums.length; ++i) {
 				for (int j = 0, cum = 0; j < nums[0].length; ++j) {
 					cum += nums[i][j];
@@ -113,7 +113,7 @@ public class Range_Sum_Query_2D_Mutable {
 			}
 			
 			// i & i - 1 = i & (i - 1) = i - (i & -i)
-			// ¨D sub-matrix ªºÁ`©M¡A¥Ñ³Ì¤j©¹³Ì¤p¡AÁ×§K«á¨Óªº¨ú¨ì¿ù»~ªº¸ê®Æ
+			// æ±‚ sub-matrix çš„ç¸½å’Œï¼Œç”±æœ€å¤§å¾€æœ€å°ï¼Œé¿å…å¾Œä¾†çš„å–åˆ°éŒ¯èª¤çš„è³‡æ–™
 			for (int i = nums.length; i > 0; --i) {
 				for (int j = nums[0].length; j > 0; --j) {
 					tree[i][j] = tree[i][j] - tree[i & i - 1][j] 
@@ -127,7 +127,7 @@ public class Range_Sum_Query_2D_Mutable {
 			nums[row][col] = val;
 			
 			// tree is indexed by rLen & cLen, off-by-one index
-			// i & (-i) ¬O i Âà¬°¤G¶i¦ì«á¡A³Ì«á¤@­Ó 1 ªº¦ì¸m©Ò¥Nªíªº¼Æ­È¡C
+			// i & (-i) æ˜¯ i è½‰ç‚ºäºŒé€²ä½å¾Œï¼Œæœ€å¾Œä¸€å€‹ 1 çš„ä½ç½®æ‰€ä»£è¡¨çš„æ•¸å€¼ã€‚
 			for (int i = row + 1; i < tree.length; i += i & (-i)) {
 				for (int j = col + 1; j < tree[i].length; j += j & (-j)) {
 					tree[i][j] += delta;
@@ -143,7 +143,7 @@ public class Range_Sum_Query_2D_Mutable {
 		public int sum(int row, int col) {
 			int sum = 0;
 			
-			// i & (-i) ¬O i Âà¬°¤G¶i¦ì«á¡A³Ì«á¤@­Ó 1 ªº¦ì¸m©Ò¥Nªíªº¼Æ­È¡C
+			// i & (-i) æ˜¯ i è½‰ç‚ºäºŒé€²ä½å¾Œï¼Œæœ€å¾Œä¸€å€‹ 1 çš„ä½ç½®æ‰€ä»£è¡¨çš„æ•¸å€¼ã€‚
 			for (int i = row + 1; i > 0; i -= i & (-i)) {
 				for (int j = col + 1; j > 0; j -= j & (-j)) {
 					sum += tree[i][j];

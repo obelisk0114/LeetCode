@@ -110,10 +110,10 @@ public class Longest_Substring_with_At_Most_K_Distinct_Characters {
 		int max = 0;
 		LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
 		
-		// ¦pªG¨Ï¥Î
+		// å¦‚æœä½¿ç”¨
 		// Map<Character, Integer> map = new LinkedHashMap<>(k + 1, 1, true);
 		//
-		// ¥i¥Hª½±µ put ¦Ó¤£¥Î¥ı remove (update ³Ì«á¦ì¸m)
+		// å¯ä»¥ç›´æ¥ put è€Œä¸ç”¨å…ˆ remove (update æœ€å¾Œä½ç½®)
 		
 		/*
 		 * LinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder)
@@ -131,7 +131,7 @@ public class Longest_Substring_with_At_Most_K_Distinct_Characters {
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
 
-			// ¥i¥Hª½±µ map.remove(c);
+			// å¯ä»¥ç›´æ¥ map.remove(c);
 			if (map.containsKey(c)) {
                 map.remove(c);
             }
@@ -443,7 +443,7 @@ public class Longest_Substring_with_At_Most_K_Distinct_Characters {
 			maxLength = Math.max(maxLength, currIndex - startIndex + 1);
 		}
 		
-		// ¥i¥H return s.length() - startIndex;
+		// å¯ä»¥ return s.length() - startIndex;
 		return maxLength;
 	}
 	

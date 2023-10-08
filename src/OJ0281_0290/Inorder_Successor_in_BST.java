@@ -12,7 +12,7 @@ import java.util.ArrayDeque;
 import java.util.Stack;
 
 /*
- * ³Ì¤U­±¦³ in-order predecessor
+ * æœ€ä¸‹é¢æœ‰ in-order predecessor
  */
 
 public class Inorder_Successor_in_BST {

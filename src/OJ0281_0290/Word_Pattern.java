@@ -211,8 +211,8 @@ public class Word_Pattern {
 			start = j;
 		}
 		
-		// requires that when the while loop is finished¡Aindices i and j should both be
-		// out of bound
+		// requires that when the while loop is finished, indices i and j should both 
+		// be out of bound
 		return i >= pattern.length() && j >= str.length();
 	}
 	

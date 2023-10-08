@@ -5,8 +5,8 @@ package OJ0291_0300;
  * http://www.csie.ntnu.edu.tw/~u91029/LongestCommonSubsequence.html
  * https://leetcode.com/articles/longest-increasing-subsequence/
  * 
- * LIS Âà LCS¡G¥O­ì§Ç¦C A ±Æ§Ç«á·|ÅÜ¦¨ B¡C A ©M B ªº LCS¡A´N¬O A ªº LIS¡C
- * LCS Âà LIS¡G±N§Ç¦C A ©M B ·í¤¤ªº¬Û¦P¦r¥À°t¹ï³£§ä¥X¨Ó¡A§e²{¦¨¯Á¤Ş­È¼Æ¹ï¡A¦A¥H¯S®í³W«h±Æ§Ç¡A³Ì«á§ä LIS¡A´N¬O A ©M B ªº LCS¡C
+ * LIS è½‰ LCSï¼šä»¤åŸåºåˆ— A æ’åºå¾Œæœƒè®Šæˆ Bã€‚ A å’Œ B çš„ LCSï¼Œå°±æ˜¯ A çš„ LISã€‚
+ * LCS è½‰ LISï¼šå°‡åºåˆ— A å’Œ B ç•¶ä¸­çš„ç›¸åŒå­—æ¯é…å°éƒ½æ‰¾å‡ºä¾†ï¼Œå‘ˆç¾æˆç´¢å¼•å€¼æ•¸å°ï¼Œå†ä»¥ç‰¹æ®Šè¦å‰‡æ’åºï¼Œæœ€å¾Œæ‰¾ LISï¼Œå°±æ˜¯ A å’Œ B çš„ LCSã€‚
  * 
  * Lazy to read
  * https://discuss.leetcode.com/topic/51345/lis-general-template-that-can-record-all-the-lis-fight-for-dream
@@ -204,29 +204,29 @@ public class Longest_Increasing_Subsequence {
     }
 	
 	void LIS_csie_ntnu(int[] s) {
-		int length[] = new int[s.length];     // °O¿ı ith ªø«×
-		int prev[] = new int[s.length];       // °O¿ı ith ¦ì¸m
-		// ªì©l¤Æ¡C¨C¤@­Ó¼Æ¦r¥»¨­´N¬Oªø«×¬°¤@ªº LIS¡C
+		int length[] = new int[s.length];     // è¨˜éŒ„ ith é•·åº¦
+		int prev[] = new int[s.length];       // è¨˜éŒ„ ith ä½ç½®
+		// åˆå§‹åŒ–ã€‚æ¯ä¸€å€‹æ•¸å­—æœ¬èº«å°±æ˜¯é•·åº¦ç‚ºä¸€çš„ LISã€‚
 		for (int i = 0; i < s.length; i++)
 			length[i] = 1;
-		// -1 ¥Nªí s[i] ¬O¶}ÀY¼Æ¦r¡A¨S¦³±µ¦b¨ä¥L¼Æ¦r«á­±¡C
+		// -1 ä»£è¡¨ s[i] æ˜¯é–‹é ­æ•¸å­—ï¼Œæ²’æœ‰æ¥åœ¨å…¶ä»–æ•¸å­—å¾Œé¢ã€‚
 		for (int i = 0; i < s.length; i++)
 			prev[i] = -1;
 		
 		for (int i = 0; i < s.length; i++)
-			// §ä¥X s[i] «á­±¯à±µ¤W­ş¨Ç¼Æ¦r¡A
-			// ­Y¬O¥i¥H±µ¡Aªø«×´N¼W¥[¡C
+			// æ‰¾å‡º s[i] å¾Œé¢èƒ½æ¥ä¸Šå“ªäº›æ•¸å­—ï¼Œ
+			// è‹¥æ˜¯å¯ä»¥æ¥ï¼Œé•·åº¦å°±å¢åŠ ã€‚
 			for (int j = i + 1; j < s.length; j++)
 				if (s[i] < s[j]) {
 					if (length[i] + 1 > length[j]) {
 						length[j] = length[i] + 1;
-						// s[j] ±µ¦b s[i] «á­±
+						// s[j] æ¥åœ¨ s[i] å¾Œé¢
 						prev[j] = i;
 					}
 					//length[j] = Math.max(length[j], length[i] + 1);
 				}
 
-		// length[] ¤§¤¤³Ì¤jªº­È§Y¬° LIS ªºªø«×¡C
+		// length[] ä¹‹ä¸­æœ€å¤§çš„å€¼å³ç‚º LIS çš„é•·åº¦ã€‚
 		int n = 0;
 		int pos = 0;
 		for (int i = 0; i < s.length; i++) {
@@ -235,21 +235,21 @@ public class Longest_Increasing_Subsequence {
 				pos = i;
 			}
 		}
-		System.out.println("ºtºâªkµ§°O¡CLISªºªø«×¬O : " + n);
-		System.out.println("»¼°jª©¥» : ");
-		trace(pos, prev, s); // ¦L¥X¤@­ÓLIS
-		System.out.println("\n°j°éª©¥»¡A¦ı¬O¶¶§Ç·|ÄA­Ë : ");
+		System.out.println("æ¼”ç®—æ³•ç­†è¨˜ã€‚LISçš„é•·åº¦æ˜¯ : " + n);
+		System.out.println("éè¿´ç‰ˆæœ¬ : ");
+		trace(pos, prev, s); // å°å‡ºä¸€å€‹LIS
+		System.out.println("\nè¿´åœˆç‰ˆæœ¬ï¼Œä½†æ˜¯é †åºæœƒé¡›å€’ : ");
 		trace2(pos, prev, s);
 	}
 	
-	// »¼°jª©¥»
+	// éè¿´ç‰ˆæœ¬
 	void trace(int i, int[] prev, int[] s)
 	{
 	    if (prev[i] != -1) trace(prev[i], prev, s);
 	    System.out.print(s[i] + " ");
 	}
 	 
-	// °j°éª©¥»¡A¦ı¬O¶¶§Ç·|ÄA­Ë¡C
+	// è¿´åœˆç‰ˆæœ¬ï¼Œä½†æ˜¯é †åºæœƒé¡›å€’ã€‚
 	void trace2(int i, int[] prev, int[] s)
 	{
 	    for (; i != -1; i = prev[i])
@@ -372,7 +372,7 @@ public class Longest_Increasing_Subsequence {
 		//int[] a = {3, 4, -1, 5, 8, 2, 3, 12, 7, 9, 10};
 		//int[] a = {10, 9, 2, 5, 3, 4};
 		
-		System.out.println("findLong ; §ä¥X s[i] ¯à±µ¦b­ş¨Ç¼Æ¦r«á­±");
+		System.out.println("findLong ; æ‰¾å‡º s[i] èƒ½æ¥åœ¨å“ªäº›æ•¸å­—å¾Œé¢");
 		Integer[] gg = findLong(a, a.length);
 		for (int i = 0; i < gg.length; i++) {
 			System.out.print(gg[i] + " ");			

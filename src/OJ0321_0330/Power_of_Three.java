@@ -82,7 +82,7 @@ public class Power_of_Three {
 	 * https://leetcode.com/problems/power-of-three/solution/
 	 * Approach 3: Mathematics
 	 * 
-	 * ´«©³¤½¦¡ + ºë«×­×¥¿
+	 * æ›åº•å…¬å¼ + ç²¾åº¦ä¿®æ­£
 	 * test case: 14348906
 	 */
 	public boolean isPowerOfThree_log_modify(int n) {

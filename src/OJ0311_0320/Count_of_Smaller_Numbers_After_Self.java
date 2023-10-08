@@ -293,10 +293,10 @@ public class Count_of_Smaller_Numbers_After_Self {
 	 * You can sort the array firstly and then map them to their order number, so 
 	 * that this can be solved by a tree which size is equal to the array size.
 	 * 
-	 * ±N©Ò¦³¼Æ¦r¥­²¾¦Ü¥þ³¡¤j©ó 0 «á map ¨ì array, array ªº index ªí¥Ü¼Æ¦r
-	 * ³o­Ó array ªí¥Ü¨C­Ó¼Æ¦r¥X²{¦¸¼Æ
-	 * "­×§ï" ªí¥Ü±N¸Ó¼Æ¦r©Ò¹ïÀ³ªº¤¸¯À + 1, §Y¥X²{¦¸¼Æ + 1
-	 * "¨D©M" ªí¥Ü±N¸Ó¼Æ¦r«eªº©Ò¦³¤¸¯À¥þ³¡¥[°_¨Ó, §Y²Î­p¤ñ³o­Ó¼Æ¦rÁÙ¤pªº¤¸¯Àªº¥X²{¦¸¼Æ
+	 * å°‡æ‰€æœ‰æ•¸å­—å¹³ç§»è‡³å…¨éƒ¨å¤§æ–¼ 0 å¾Œ map åˆ° array, array çš„ index è¡¨ç¤ºæ•¸å­—
+	 * é€™å€‹ array è¡¨ç¤ºæ¯å€‹æ•¸å­—å‡ºç¾æ¬¡æ•¸
+	 * "ä¿®æ”¹" è¡¨ç¤ºå°‡è©²æ•¸å­—æ‰€å°æ‡‰çš„å…ƒç´  + 1, å³å‡ºç¾æ¬¡æ•¸ + 1
+	 * "æ±‚å’Œ" è¡¨ç¤ºå°‡è©²æ•¸å­—å‰çš„æ‰€æœ‰å…ƒç´ å…¨éƒ¨åŠ èµ·ä¾†, å³çµ±è¨ˆæ¯”é€™å€‹æ•¸å­—é‚„å°çš„å…ƒç´ çš„å‡ºç¾æ¬¡æ•¸
 	 * 
 	 * Rf : 
 	 * https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84
@@ -330,7 +330,7 @@ public class Count_of_Smaller_Numbers_After_Self {
 		}
 		return res;
 	}
-	private int get(int i, int[] tree) {      // ¨D©M
+	private int get(int i, int[] tree) {      // æ±‚å’Œ
 		int num = 0;
 		while (i > 0) {
 			num += tree[i];
@@ -338,7 +338,7 @@ public class Count_of_Smaller_Numbers_After_Self {
 		}
 		return num;
 	}
-	private void update(int i, int[] tree) {  // ­×§ï
+	private void update(int i, int[] tree) {  // ä¿®æ”¹
 		while (i < tree.length) {
 			tree[i]++;
 			i += i & (-i);

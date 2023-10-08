@@ -4,69 +4,69 @@ public class Range_Sum_Query_Mutable {
 	/*
 	 * https://blog.csdn.net/Yaokai_AssultMaster/article/details/79492190
 	 * 
-	 * BIT, Fenwick Tree�A�O�@�إΩ󰪮ĳB�z��@�Ӧs�x�Ʀr���C���i���s�ΨD�e��M���ƾڵ��c�C
+	 * BIT, Fenwick Tree，是一種用於高效處理對一個存儲數字的列表進行更新及求前綴和的數據結構。
 	 * 
-	 * Binary Indexed Tree �D�M���򥻫�Q�b��A���w�ݭn�D�M����m i�A�Ҧp 13�A�ڭ̥i�H�Q�Ψ�G�i����ܪk��
-	 * �i����q�]�Ϊ̻����h�^�D�M�G
+	 * Binary Indexed Tree 求和的基本思想在於，給定需要求和的位置 i，例如 13，我們可以利用其二進制表示法來
+	 * 進行分段（或者說分層）求和：
 	 * 
-	 * 13 = 2^3 + 2^2 + 2^0�A�h 
+	 * 13 = 2^3 + 2^2 + 2^0，則 
 	 * 
 	 * prefixSum(13) = RANGE(1, 8) + RANGE(9, 12) + RANGE(13, 13) 
-	 * (�`�N���B�� RANGE(x, y) ���ܼƲդ��� x �Ӧ�m��� y �Ӧ�m���Ҧ��Ʀr�D�M)�C
+	 * (注意此處的 RANGE(x, y) 表示數組中第 x 個位置到第 y 個位置的所有數字求和)。
 	 * 
-	 * �p�G�ڭ̱N�W�z�� range sum ���e�p��n���ܡAprefixSum(13) �i�H�����ѥ��̬ۥ[�o��C
+	 * 如果我們將上述的 range sum 提前計算好的話，prefixSum(13) 可以直接由它們相加得到。
 	 * 
-	 * �c�y�𪬼ƲղĤ@�h���L�{���ҡA�ڭ̭����ݭn��R���O�Ʋդ��Ĥ@�ӼƦr�}�l�A���׬� "2 ������" �ӼƦr���϶�����
-	 * �Ʀr���֥[�M�C�ҥH�Ϥ����O��R�F�q�Ĥ@�ӼƦr�}�l�A���׬� 2^0, 2^1, 2^2, 2^3���϶����϶��M�C
+	 * 構造樹狀數組第一層的過程為例，我們首先需要填充的是數組中第一個數字開始，長度為 "2 的指數" 個數字的區間內的
+	 * 數字的累加和。所以圖中分別填充了從第一個數字開始，長度為 2^0, 2^1, 2^2, 2^3的區間的區間和。
 	 * 
-	 * �U�@�B�ڭ̺c�y�Ʋժ��ĤG�h�C�P�W�@�h�����A�ڭ̵̨M��R�l�U���ťդ��A�q�ĪťճB�@�Ӧ�m��_���׬� "2������" 
-	 * ���϶����϶��M�C�Ҧp 3-3 �ťաA�ڭ̥u�ݶ�R�q��m 3 �}�l�A���׬� 1 ���϶����M�C
+	 * 下一步我們構造數組的第二層。與上一層類似，我們依然填充餘下的空白中，從第空白處一個位置算起長度為 "2的指數" 
+	 * 的區間的區間和。例如 3-3 空白，我們只需填充從位置 3 開始，長度為 1 的區間的和。
 	 * 
-	 * �A�p 9-14 �ťաA�ڭ̻ݭn��R�q 9 �}�l�A���׬� 2^0 (9-9)�A2^1 (9-10)�A2^2 (9-12) ���϶��M�C
+	 * 再如 9-14 空白，我們需要填充從 9 開始，長度為 2^0 (9-9)，2^1 (9-10)，2^2 (9-12) 的區間和。
 	 * 
-	 * �����a�A�ĤT�h�ڭ̶�R 7-7�A11-11 �M 13-14 �϶����ťաC
-	 * �즹����A�ڭ̤w�g�������c�y�F�������J�Ʋժ��@�Ӿ𪬼ƲաC�N�ӼƲէY�� BIT 
-	 * (��K�_���A���B�惡�Ʋժ����ެ��q 1 �}�l)�C
+	 * 類似地，第三層我們填充 7-7，11-11 和 13-14 區間的空白。
+	 * 到此為止，我們已經完全的構造了對應於輸入數組的一個樹狀數組。將該數組即為 BIT 
+	 * (方便起見，此處對此數組的索引為從 1 開始)。
 	 * 
 	 * prefixSum(13) = prefixSum(0b00001101)
 	 * = BIT[13] + BIT[12] + BIT[8]
 	 * = BIT[0b00001101] + BIT[0b00001100] + BIT[0b00001000]
 	 * 
-	 * �q�L�W�����Ҥl�A�ڭ̱o���A�D�e��M���L�{�ƹ�W�O�b�𪬼ƲթҥN������H����ε��c���A���_���ʴM��W�@�h
-	 * �����I�èD�M���L�{�C�b�o�ʩ�H����ئV�W���ʪ��L�{�A���N�O���_�N���e�Ʀr���̫�@�� 1 ½�ର 0 ���L�{�C
+	 * 通過上面的例子，我們得知，求前綴和的過程事實上是在樹狀數組所代表的抽象的樹形結構中，不斷移動尋找上一層
+	 * 母結點並求和的過程。在這棵抽象的樹種向上移動的過程，其實就是不斷將當前數字的最後一個 1 翻轉為 0 的過程。
 	 * 
-	 * ���w�@�� int x = 13�A�o�ӹL�{�i�H�Φp�U�B���{�G
+	 * 給定一個 int x = 13，這個過程可以用如下運算實現：
 	 * x = 13 = 0b00001101
 	 * -x = -13 = 0b11110011
 	 * x & (-x) = 0b00000001
 	 * x - (x & (-x)) = 0b00001100
 	 * 
-	 * ��s�Ʋդ�������
+	 * 更新數組中的元素
 	 * 
-	 * ���ڭ̽ե� update(idx, delta) ��s�F��Ʋդ����Y�@�ӼƦr��A��M�ڭ̤]�ݭn��s 
-	 * Binary Indexed Tree ���������϶��M������o�@���ܡC(���W�h�k����s)
+	 * 當我們調用 update(idx, delta) 更新了原數組中的某一個數字後，顯然我們也需要更新 
+	 * Binary Indexed Tree 中相應的區間和來應對這一改變。(往上層右側更新)
 	 * 
-	 * �H update(5, 2) ���ҡA�ڭ̷Q�n����Ʋդ��� 5 �Ӧ�m���Ʀr�[ 2�A�q 5 �}�l�A�����Q��s����m�����Ь�
-	 * �짤�Х[�W�짤�ФG�i����ܤ��̫�@�� 1 �ҥN�����Ʀr�C�o�@�L�{�M�W���D�M���L�{��n�ۤϡC
+	 * 以 update(5, 2) 為例，我們想要給原數組中第 5 個位置的數字加 2，從 5 開始，應當被更新的位置的坐標為
+	 * 原坐標加上原坐標二進制表示中最後一個 1 所代表的數字。這一過程和上面求和的過程剛好相反。
 	 * 
-	 * �H int x = 5 ���ҡA�ڭ̥i�H�Φp�U�B���{�G
+	 * 以 int x = 5 為例，我們可以用如下運算實現：
 	 * x = 5 = 0b00000101
 	 * -x = -5 = 0b11111011
 	 * x & (-x) = 0b00000001
 	 * x + (x & (-x)) = 0b00000110
 	 * 
-	 * Binary Indexed Tree ���إ�
+	 * Binary Indexed Tree 的建立
 	 * 
-	 * Binary Indexed Tree ���إ߫D�`²��C�ڭ̥u�ݪ�l�Ƥ@�ӥ��� 0 ���ƲաA�ù��Ʋդ����C�@�Ӧ�m
-	 * �������Ʀr�եΤ@�� update(i, delta) �ާ@�Y�i�C�o�O�@�� O(nlogn) ���إ߹L�{�C
+	 * Binary Indexed Tree 的建立非常簡單。我們只需初始化一個全為 0 的數組，並對原數組中的每一個位置
+	 * 對應的數字調用一次 update(i, delta) 操作即可。這是一個 O(nlogn) 的建立過程。
 	 * 
-	 * ���~�A�٦s�b�@�� O(n) �ɶ��إ� Binary Indexed Tree ����k�A��B�J�p�U(�ƲդU�бq 0 �}�l)�G
+	 * 此外，還存在一個 O(n) 時間建立 Binary Indexed Tree 的算法，其步驟如下(數組下標從 0 開始)：
 	 * 
-	 * ���w�@�Ӫ��׬� n ����J�Ʋ� list�C
-	 *   1. ��l�ƪ��׬� n + 1 �� Binary Indexed Tree �Ʋ� bit�A�ñN list �����Ʀr�����a��b bit[1] 
-	 *      ��  bit[n] ���U�Ӧ�m�C
-	 *   2. ��� 1 �� n ���C�@�� i�A�i��p�U�ާ@�G
-	 *      1. �O j = i + (i & -i)�A�Y j < n + 1�A�h bit[j] = bit[j] + bit[i]
+	 * 給定一個長度為 n 的輸入數組 list。
+	 *   1. 初始化長度為 n + 1 的 Binary Indexed Tree 數組 bit，並將 list 中的數字對應地放在 bit[1] 
+	 *      到  bit[n] 的各個位置。
+	 *   2. 對於 1 到 n 的每一個 i，進行如下操作：
+	 *      1. 令 j = i + (i & -i)，若 j < n + 1，則 bit[j] = bit[j] + bit[i]
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/range-sum-query-mutable/discuss/75753/Java-using-Binary-Indexed-Tree-with-clear-explanation
@@ -140,7 +140,7 @@ public class Range_Sum_Query_Mutable {
 		return getSum(j) - getSum(i - 1);
 	}
 	
-	// ��^�Ѽ��ର�G�i���A�̫�@�� 1 ����m�ҥN�����ƭȡC
+	// 返回參數轉為二進位後，最後一個 1 的位置所代表的數值。
 	private int lowbit(int x) {
 		return x & (-x);
 	}
@@ -149,9 +149,9 @@ public class Range_Sum_Query_Mutable {
 	 * The following variables and functions are from this link.
 	 * https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84
 	 * 
-	 * ���p�Ҧ�����Ƴ��i�H���ܦ� 2 �����M�A�ڭ̤]�i�H��@��ǦC���ܦ��@�t�C�l�ǦC���M�C�ĥγo�ӷQ�k�A
-	 * �ڭ̥i�N�@�ӫe��M�������h�Ӥl�ǦC���M�A�ӹ�������k�P�ƪ� 2 �����M�㦳����ۦ����覡�C�@�譱�A
-	 * �l�ǦC���ӼƬO��G�i����ܤ� 1 ���ӼơA�t�@�譱�A�l�ǦC�N���� f[i] ���ӼƤ]�O 2 �����C
+	 * 正如所有的整數都可以表示成 2 的冪和，我們也可以把一串序列表示成一系列子序列的和。採用這個想法，
+	 * 我們可將一個前綴和劃分成多個子序列的和，而劃分的方法與數的 2 的冪和具有極其相似的方式。一方面，
+	 * 子序列的個數是其二進位表示中 1 的個數，另一方面，子序列代表的 f[i] 的個數也是 2 的冪。
 	 */
 	class NumArray_wiki_BIT {
 		int[] nums_wiki;
@@ -171,7 +171,7 @@ public class Range_Sum_Query_Mutable {
 	        }
 	    }
 
-		// ���]�{�b�n�N A[i] ���ȼW�[ delta�A����A�ݭn�N BIT[i] �л\���϶��]�t A[i] ���ȳ��[�W delta
+		// 假設現在要將 A[i] 的值增加 delta，那麼，需要將 BIT[i] 覆蓋的區間包含 A[i] 的值都加上 delta
 		void update_wiki(int i, int val) {
 			int diff = val - nums_wiki[i];
 			nums_wiki[i] = val;
@@ -181,10 +181,10 @@ public class Range_Sum_Query_Mutable {
 	        }
 		}
 
-		// 1. �����A�N ans ��l�Ƭ� 0�A�N i ��l�Ƭ� k
-		// 2. �N ans ���ȥ[�W BIT[i]
-		// 3. �N i ���ȴ�h lowbit(i)
-		// 4. ���ƨB�J 2��3�A���� i �����ܬ� 0
+		// 1. 首先，將 ans 初始化為 0，將 i 初始化為 k
+		// 2. 將 ans 的值加上 BIT[i]
+		// 3. 將 i 的值減去 lowbit(i)
+		// 4. 重複步驟 2～3，直到 i 的值變為 0
 		public int getSum_wiki(int i) {
 			int sum = 0;
 			i++;
@@ -198,7 +198,7 @@ public class Range_Sum_Query_Mutable {
 			return getSum_wiki(j) - getSum_wiki(i - 1);
 		}
 		
-		// ��^�Ѽ��ର�G�i���A�̫�@�� 1 ����m�ҥN�����ƭȡC
+		// 返回參數轉為二進位後，最後一個 1 的位置所代表的數值。
 		private int lowbit_wiki(int x) {
 			return x & (-x);
 		}
