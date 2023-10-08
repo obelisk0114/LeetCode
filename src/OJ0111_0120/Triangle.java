@@ -61,7 +61,7 @@ public class Triangle {
         for (int row = 1; row < triangle.size(); row++) {
             List<Integer> currRow = new ArrayList<>();
             
-            // ±ø¥ó¤]¥i¥H¥Î col <= row
+            // æ¢ä»¶ä¹Ÿå¯ä»¥ç”¨ col <= row
             for (int col = 0; col < triangle.get(row).size(); col++) {
                 int smallestAbove = Integer.MAX_VALUE;           
                 if (col > 0) {
@@ -228,7 +228,7 @@ public class Triangle {
 	 */
 	public int minimumTotal_modify_input_from_top(List<List<Integer>> triangle) {
         for (int row = 1; row < triangle.size(); row++) {
-        	// ±ø¥ó¤]¥i¥H¥Î col <= row
+        	// æ¢ä»¶ä¹Ÿå¯ä»¥ç”¨ col <= row
             for (int col = 0; col < triangle.get(row).size(); col++) {
                 int smallestAbove = Integer.MAX_VALUE;           
                 if (col > 0) {

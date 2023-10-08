@@ -19,7 +19,7 @@ public class Count_Primes {
 		
 		int count = 0;
 		boolean[] prime = new boolean[length];
-		// 2¡B3¡B5¡B7¡B9...
+		// 2, 3, 5, 7, 9...
 		for (int i = 0; i < length; i++) {
 			prime[i] = true;
 			count++;

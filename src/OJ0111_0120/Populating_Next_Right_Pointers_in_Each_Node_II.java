@@ -303,8 +303,8 @@ public class Populating_Next_Right_Pointers_in_Each_Node_II {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/discuss/37877/O(1)-space-O(n)-time-Java-solution
 	 * 
-	 * ¥ı¥Î while §â³o¤@¼hªº next §ä§¹
-	 * ¦A connect(root.left); connect(root.right)
+	 * å…ˆç”¨ while æŠŠé€™ä¸€å±¤çš„ next æ‰¾å®Œ
+	 * å† connect(root.left); connect(root.right)
 	 */
 	public Node connect_DFS(Node root) {
 		if (root == null)

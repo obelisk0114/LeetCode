@@ -18,8 +18,8 @@ public class Lowest_Common_Ancestor_of_a_Binary_Tree {
 	/*
 	 * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/discuss/65226/My-Java-Solution-which-is-easy-to-understand
 	 * 
-	 * If right branch doesn¡¦t have second node then it¡¦s somewhere below in the left 
-	 * sub tree where we found first p or q and it¡¦s below the node we already found 
+	 * If right branch doesn't have second node then it's somewhere below in the left 
+	 * sub tree where we found first p or q and it's below the node we already found 
 	 * so the node we found on the left is LCA.
 	 * 
 	 * if both p and q exist in Tree rooted at root, then return their LCA

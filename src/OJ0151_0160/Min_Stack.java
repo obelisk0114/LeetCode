@@ -70,8 +70,8 @@ public class Min_Stack {
 	 * to the stack in addition to the new value. So each time the min changes due to 
 	 * an item being removed, we know that the next value in the stack is the old min.
 	 * 
-	 * push ªº®É­Ô´N¤w¸g½T©w¤F¡C¦pªG³Ì¤p­È§ó·sªº¸Ü¡A¥ı push ­ì¥ı³Ì¤p­È¡A¦A push ²{¦b¦s¤Jªº·í«e³Ì¤p­È¡C
-	 * ©Ò¥H pop ªº®É­Ô¦P²z¡Apop ¥X¥ş§½³Ì¤p­È®É¡A´Ì³»´NÅÜ¦¨¤F·í«e³Ì¤p­È¤§«eªº³Ì¤p­È¡A§Y­Ë¼Æ²Ä¤G¤pªº­È
+	 * push çš„æ™‚å€™å°±å·²ç¶“ç¢ºå®šäº†ã€‚å¦‚æœæœ€å°å€¼æ›´æ–°çš„è©±ï¼Œå…ˆ push åŸå…ˆæœ€å°å€¼ï¼Œå† push ç¾åœ¨å­˜å…¥çš„ç•¶å‰æœ€å°å€¼ã€‚
+	 * æ‰€ä»¥ pop çš„æ™‚å€™åŒç†ï¼Œpop å‡ºå…¨å±€æœ€å°å€¼æ™‚ï¼Œæ£§é ‚å°±è®Šæˆäº†ç•¶å‰æœ€å°å€¼ä¹‹å‰çš„æœ€å°å€¼ï¼Œå³å€’æ•¸ç¬¬äºŒå°çš„å€¼
 	 * 
 	 * -----------------------------------------------------------------------
 	 * 
@@ -207,7 +207,7 @@ public class Min_Stack {
      * https://leetcode.com/problems/min-stack/discuss/49031/Share-my-Java-solution-with-ONLY-ONE-stack/49183
      */
     public class MinStack_stack_gap {
-		long min;   // ¥i¥H¤£¬° long, ¦ı¬O­nÂà´««¬ºA
+		long min;   // å¯ä»¥ä¸ç‚º long, ä½†æ˜¯è¦è½‰æ›å‹æ…‹
 		Stack<Long> stack;
 
 		public MinStack_stack_gap() {

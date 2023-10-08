@@ -148,7 +148,7 @@ public class Kth_Largest_Element_in_an_Array {
 	// Choose first one as pivot
 	private int findKthLargest2(int[] nums, int k) {
 		int pivot = (int) (Math.random() * nums.length);
-		System.out.println("pivot ¶Ã¼Æ : " + pivot);
+		System.out.println("pivot äº‚æ•¸ : " + pivot);
 		System.out.println("length : " + nums.length);
 		swap(nums, 0, pivot);
 		pivot = nums[0];

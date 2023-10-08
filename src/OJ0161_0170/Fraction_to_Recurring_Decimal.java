@@ -114,11 +114,11 @@ public class Fraction_to_Recurring_Decimal {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/fraction-to-recurring-decimal/discuss/51113/Fastest-Java-solution-(1-ms)-and-O(1)-space
 	 * 
-	 * Base on the Floyd¡¦s cycle-finding algorithm. 
+	 * Base on the Floyd's cycle-finding algorithm. 
 	 * Instead of using hashMap to store the result of each step, It uses two pointer, 
 	 * fast (iterate twice each time) and slow (iterate once) to detect cycle. 
 	 * It finds out the non-cycle part and cycle part. 
-	 * Therefore, it¡¦s O(1) space and is faster than those of using hash.
+	 * Therefore, it's O(1) space and is faster than those of using hash.
 	 */
 	public String fractionToDecimal_cycleFinding(int numerator, int denominator) {
 		// negative sign

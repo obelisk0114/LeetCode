@@ -283,18 +283,18 @@ public class Max_Points_on_a_Line {
 	/*
 	 * https://leetcode.com/problems/max-points-on-a-line/discuss/221044/
 	 * 
-	 * ¤TÂI¦@½u : ¥~¿n¤j¤p¬° 0 
+	 * ä¸‰é»å…±ç·š : å¤–ç©å¤§å°ç‚º 0 
 	 * 
 	 * 3 points in the same line => magnitudes (cross product of vector) = 0
 	 * 
-	 * ¨Dª½½u¤èµ{¡G
+	 * æ±‚ç›´ç·šæ–¹ç¨‹ï¼š
 	 * https://zh.wikihow.com/%E6%B1%82%E7%9B%B4%E7%BA%BF%E6%96%B9%E7%A8%8B
 	 * https://www.shuxuele.com/algebra/line-equation-point-slope.html
 	 * 
-	 * ³Ì¤j¤½¬ù¼Æ(§Ú­Ì«á­±·|¥Î¼Ú´X¨½±oªk)¡G
+	 * æœ€å¤§å…¬ç´„æ•¸(æˆ‘å€‘å¾Œé¢æœƒç”¨æ­å¹¾é‡Œå¾—æ³•)ï¼š
 	 * https://blog.csdn.net/Holmofy/article/details/76401074
 	 * 
-	 * §PÂ_¤TÂI¦@½uªº¶Ç°eªù¡G
+	 * åˆ¤æ–·ä¸‰é»å…±ç·šçš„å‚³é€é–€ï¼š
 	 * https://yiminghe.iteye.com/blog/568666
 	 */
 	public int maxPoints_cross_product(int[][] points) {

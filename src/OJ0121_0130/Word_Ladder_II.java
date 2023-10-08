@@ -67,7 +67,7 @@ public class Word_Ladder_II {
 
 		while (!start.isEmpty()) {
 			dict.removeAll(start);
-			dict.removeAll(end);      // ¥i¥H²¾°£¡A¥i¯à·|ÅÜºC
+			dict.removeAll(end);      // å¯ä»¥ç§»é™¤ï¼Œå¯èƒ½æœƒè®Šæ…¢
 			
 			if (start.size() > end.size()) {
 				reverse = !reverse;
@@ -149,9 +149,9 @@ public class Word_Ladder_II {
 	/*
 	 * Bidirectional BFS
 	 * 
-	 * §Ú­Ì»İ­nª¾¹D³o­Ó word ¬O§_¦b¥t¤@ºİªº¥½ºİ
-	 * ¬Û¦Pªº¥½ºİ word ¦³¥i¯à¹ïÀ³¦h±ø path
-	 * ©Ò¥H¨Ï¥Î "¥½ºİ word" §@¬° HashMap ªº key¡A"¨ä©Ò¹ïÀ³ªº©Ò¦³ path" §@¬° value
+	 * æˆ‘å€‘éœ€è¦çŸ¥é“é€™å€‹ word æ˜¯å¦åœ¨å¦ä¸€ç«¯çš„æœ«ç«¯
+	 * ç›¸åŒçš„æœ«ç«¯ word æœ‰å¯èƒ½å°æ‡‰å¤šæ¢ path
+	 * æ‰€ä»¥ä½¿ç”¨ "æœ«ç«¯ word" ä½œç‚º HashMap çš„ keyï¼Œ"å…¶æ‰€å°æ‡‰çš„æ‰€æœ‰ path" ä½œç‚º value
 	 * 
 	 * test case:
 	 * 
@@ -167,8 +167,8 @@ public class Word_Ladder_II {
 			return new ArrayList<>();
 		}
 		
-		// Bidirectional BFS¡A±q start ¶}©l¡B±q end ¶}©l
-		// ¥½ºİ word¡G©Ò¹ïÀ³ªº¨C±ø path
+		// Bidirectional BFSï¼Œå¾ start é–‹å§‹ã€å¾ end é–‹å§‹
+		// æœ«ç«¯ wordï¼šæ‰€å°æ‡‰çš„æ¯æ¢ path
 		Map<String, List<List<String>>> startMap = new HashMap<>();
 		Map<String, List<List<String>>> endMap = new HashMap<>();
 
@@ -178,22 +178,22 @@ public class Word_Ladder_II {
         List<List<String>> list2 = new ArrayList<>();
         list2.add(new ArrayList<>(Arrays.asList(end)));
         
-        // key ¬°¥½ºİ word¡Avalue ¬°©Ò¹ïÀ³ªº©Ò¦³ path
-        // ±Nªì©lªº start ©M end path ©ñ¶i¥h
+        // key ç‚ºæœ«ç«¯ wordï¼Œvalue ç‚ºæ‰€å°æ‡‰çš„æ‰€æœ‰ path
+        // å°‡åˆå§‹çš„ start å’Œ end path æ”¾é€²å»
 		startMap.put(start, list1);
 		endMap.put(end, list2);
 		
-		// ±N start ©M end ±q dict ¤¤²¾°£
-		// ³o³¡¤À¥i¥H²¾°£¡A¥i¯à·|ÅÜºC
+		// å°‡ start å’Œ end å¾ dict ä¸­ç§»é™¤
+		// é€™éƒ¨åˆ†å¯ä»¥ç§»é™¤ï¼Œå¯èƒ½æœƒè®Šæ…¢
 		dict.remove(start);
 		dict.remove(end);
 
 		List<List<String>> res = new ArrayList<List<String>>();
         
-		// false¡G²{¦b³B²zªº¬O start¡C true¡G²{¦b³B²zªº¬O end
+		// falseï¼šç¾åœ¨è™•ç†çš„æ˜¯ startã€‚ trueï¼šç¾åœ¨è™•ç†çš„æ˜¯ end
 		boolean flip = false;
 		
-		// ­Y§ä¨ì«h¬° true
+		// è‹¥æ‰¾åˆ°å‰‡ç‚º true
         boolean done = false;
         
         while (!startMap.isEmpty() && !endMap.isEmpty()) {
@@ -257,8 +257,8 @@ public class Word_Ladder_II {
                                 midMap.putIfAbsent(target, new ArrayList<>());
                                 midMap.get(target).add(way);
                                 
-                                // ³B²z§¹³o¤@¼h¦A±N target §R°£
-                                // ­Y¥ß§Y§R°£¡A«h·|³y¦¨¨ä¥L¥i¥H¨«¨ì target ªº¸ô®|¨S³Q°O¿ı¨ì
+                                // è™•ç†å®Œé€™ä¸€å±¤å†å°‡ target åˆªé™¤
+                                // è‹¥ç«‹å³åˆªé™¤ï¼Œå‰‡æœƒé€ æˆå…¶ä»–å¯ä»¥èµ°åˆ° target çš„è·¯å¾‘æ²’è¢«è¨˜éŒ„åˆ°
                                 set.add(target);
                             }
                         }
@@ -272,10 +272,10 @@ public class Word_Ladder_II {
                 break;
             }
             
-            // ¶i¨ì¤U¤@¼h
+            // é€²åˆ°ä¸‹ä¸€å±¤
             startMap = midMap;
             
-            // §R°£³o¤@¼h¨«¹Lªº word
+            // åˆªé™¤é€™ä¸€å±¤èµ°éçš„ word
             dict.removeAll(set);
         }
 
@@ -354,9 +354,9 @@ public class Word_Ladder_II {
 		}
 
 		// remove words on current both ends from the dict to avoid duplicate addition
-		// ¥i¥H¥u dict.removeAll(forward);
+		// å¯ä»¥åª dict.removeAll(forward);
 		dict.removeAll(forward);
-		dict.removeAll(backward);   // ¥i¥H²¾°£
+		dict.removeAll(backward);   // å¯ä»¥ç§»é™¤
 
 		// as we only need the shortest paths
 		// we use a boolean value help early termination
@@ -449,7 +449,7 @@ public class Word_Ladder_II {
 	 * second round. Even with more nodes in the distance map, we will still output 
 	 * the solution once we meet endWord.
 	 * 
-	 * Âù¦V BFS + DFS »İ­n `found` ¨Ó´£¦­µ²§ô
+	 * é›™å‘ BFS + DFS éœ€è¦ `found` ä¾†ææ—©çµæŸ
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/word-ladder-ii/discuss/40447/Share-two-similar-Java-solution-that-Accpted-by-OJ.

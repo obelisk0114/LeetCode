@@ -9,12 +9,12 @@ public class Basic_Calculator_II {
 	/*
 	 * by myself
 	 * 
-	 * sign ¬O²{¦b¥¿¦b³B²zªº num «e­±ªº¹Bºâ²Å¸¹
-	 * ¸I¨ì +, - ª½±µ³B²z¥¿­t¡A©ñ¤J stack
-	 * ¸I¨ì *, / ±q stack ¥½ºİ¨ú¥X¼Æ¦r¹Bºâ§¹¦A©ñ¤J stack
+	 * sign æ˜¯ç¾åœ¨æ­£åœ¨è™•ç†çš„ num å‰é¢çš„é‹ç®—ç¬¦è™Ÿ
+	 * ç¢°åˆ° +, - ç›´æ¥è™•ç†æ­£è² ï¼Œæ”¾å…¥ stack
+	 * ç¢°åˆ° *, / å¾ stack æœ«ç«¯å–å‡ºæ•¸å­—é‹ç®—å®Œå†æ”¾å…¥ stack
 	 * 
-	 * stack ´N¬O¤w¸g³B²z§¹ *, / ³o¨Ç°ªÀu¥ıªº¹Bºâ
-	 * ¥ş³¡¥[°_¨Ó´N¬Oµª®×
+	 * stack å°±æ˜¯å·²ç¶“è™•ç†å®Œ *, / é€™äº›é«˜å„ªå…ˆçš„é‹ç®—
+	 * å…¨éƒ¨åŠ èµ·ä¾†å°±æ˜¯ç­”æ¡ˆ
 	 * 
 	 * Rf : 
 	 * https://leetcode.com/problems/basic-calculator-ii/discuss/63003/share-my-java-solution
@@ -35,8 +35,8 @@ public class Basic_Calculator_II {
                 }
             }
             
-            // ¨«¨ì¹Bºâ²Å¸¹¡A©Î¬O³Ì«á¤@­Ó¦r¤¸
-            // ¶}©l³B²z num ©M sign (num «e­±ªº¹Bºâ²Å¸¹)
+            // èµ°åˆ°é‹ç®—ç¬¦è™Ÿï¼Œæˆ–æ˜¯æœ€å¾Œä¸€å€‹å­—å…ƒ
+            // é–‹å§‹è™•ç† num å’Œ sign (num å‰é¢çš„é‹ç®—ç¬¦è™Ÿ)
             if ((s.charAt(i) != ' ' && !Character.isDigit(s.charAt(i))) 
             		|| i == s.length() - 1) {
             	

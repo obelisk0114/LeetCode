@@ -19,14 +19,14 @@ public class Course_Schedule {
 	 * Finally, if each node' indgree equals 0, then it is validated DAG 
 	 * (Directed Acyclic Graph), which means the course schedule can be finished.
 	 * 
-	 * �i�H�@���Ĥ@�I���I�A�Q���������Ʀb��L�I���C�]�N�O���A�S���Q������s�V���I�A�N�i�H�@���Ĥ@�I�C
-	 * �p�G���ܦh�ӲĤ@�I�A�������@�I����C
+	 * 可以作為第一點的點，想必它不必排在其他點後方。也就是說，沒有被任何邊連向的點，就可以作為第一點。
+	 * 如果有很多個第一點，那麼找哪一點都行。
 	 * 
-	 * �M�w�Ĥ@�I����A����ѤU�Ҧ��I���|�b�Ĥ@�I���C�Ҧ�����Ĥ@�I������W�w�A���w�g�ŦX�F�A�W�w�s���s�b���L�ҿסC
-	 * �]���A�M�w�Ĥ@�I����A�N�i�H�R�h���I�A�H�ΧR�h�Ѧ��I�s�X�h���� �w�w ����D�i�H���j�a�Y�p�I
+	 * 決定第一點之後，那麼剩下所有點都會在第一點後方。所有關於第一點的先後規定，都已經符合了，規定存不存在都無所謂。
+	 * 因此，決定第一點之後，就可以刪去此點，以及刪去由此點連出去的邊 ── 原問題可以遞迴地縮小！
 	 * 
-	 * �u�n���дM��S���Q������s�V���I�A�M��R�h���I�H�ΧR�h�Ѧ��I�s�X�h����A�N�i�H��X�@�ӦX�z���ƦC���ǤF�C
-	 * �n��X�X�z���ƦC���ǡA�]�i�H�ѳ̫�@�I�}�l�M�w�I�L�׭n�q�Ĥ@�I���̫�@�I�A�άO�q�̫�@�I���Ĥ@�I�A���O�i�H���C
+	 * 只要反覆尋找沒有被任何邊連向的點，然後刪去此點以及刪去由此點連出去的邊，就可以找出一個合理的排列順序了。
+	 * 要找出合理的排列順序，也可以由最後一點開始決定！無論要從第一點找到最後一點，或是從最後一點找到第一點，都是可以的。
 	 * 
 	 * Rf :
 	 * http://www.csie.ntnu.edu.tw/~u91029/DirectedAcyclicGraph.html

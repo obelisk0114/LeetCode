@@ -15,7 +15,7 @@ public class Word_Search_II {
 	 * Apparently, we need to do pruning when current character is not in any word.
 	 * 
 	 * How do we instantly know the current character is invalid? HashMap?
-	 * How do we instantly know what¡¦s the next valid character? LinkedList?
+	 * How do we instantly know what's the next valid character? LinkedList?
 	 * But the next character can be chosen from a list of characters. "Mutil-LinkedList"?
 	 * 
 	 * Combing them, Trie is the natural choice.

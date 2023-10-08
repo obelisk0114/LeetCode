@@ -22,8 +22,8 @@ public class Course_Schedule_II {
 	 * (the failed case).
 	 * 
 	 * Kahn's Algorithm
-	 * �S���Q������s�V���I�A�N�i�H�@���Ĥ@�I�C�p�G���ܦh�ӲĤ@�I�A�������@�I����C
-	 * �M�w�Ĥ@�I����A�N�i�H�R�h���I�A�H�ΧR�h�Ѧ��I�s�X�h����
+	 * 沒有被任何邊連向的點，就可以作為第一點。如果有很多個第一點，那麼找哪一點都行。
+	 * 決定第一點之後，就可以刪去此點，以及刪去由此點連出去的邊
 	 * 
 	 * Rf :
 	 * http://www.csie.ntnu.edu.tw/~u91029/DirectedAcyclicGraph.html
@@ -81,10 +81,10 @@ public class Course_Schedule_II {
 	 * -1 corresponding to prere as a normal node; 1 corresponding to prere as an end 
 	 * node of a cross edge.
 	 * 
-	 * DFS ���}�I�����ǡA�A�ˤ���A���n�O�ݼ����ǡC
+	 * DFS 離開點的順序，顛倒之後，正好是拓撲順序。
 	 * 
-	 * DFS �u������̲`���I�A���줣��A�`����C DFS �]�|�u����X�Ҧ��̲`���I�A���}�I����h�O�̲`���I�����}�C
-	 * �̲`���I���M�N�O�ݼ����ǳ̫᪺�I�C
+	 * DFS 優先走到最深的點，直到不能再深為止。 DFS 也會優先找出所有最深的點，離開點的原則是最深的點先離開。
+	 * 最深的點當然就是拓撲順序最後的點。
 	 * 
 	 * Rf :
 	 * http://www.csie.ntnu.edu.tw/~u91029/DirectedAcyclicGraph.html

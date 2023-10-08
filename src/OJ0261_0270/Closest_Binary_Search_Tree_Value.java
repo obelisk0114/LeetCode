@@ -230,7 +230,7 @@ public class Closest_Binary_Search_Tree_Value {
 		List<Integer> nums = new ArrayList<>();
 		inorder_inOrder(root, nums);
 		
-		// return ¤U­±³o­Ó¸û¦n
+		// return ä¸‹é¢é€™å€‹è¼ƒå¥½
 		// Collections.min(nums, Comparator.comparingDouble(o -> Math.abs(o - target)));
 		return Collections.min(nums, new Comparator<Integer>() {
 			@Override

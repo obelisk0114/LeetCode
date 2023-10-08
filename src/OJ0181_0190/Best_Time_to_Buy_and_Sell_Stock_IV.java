@@ -232,9 +232,9 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
 	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solution/
 	 * Approach 2: Merging
 	 * 
-	 * ¥ý§ä¥XµL­­¨î¥æ©öªº max profit¡AµM«á§R°£¤@¦¸¥æ©ö©Î¬O¦X¨Ö¬Û¾Fªº 2 ­Ó¥æ©ö
-	 * ­«½Æª½¨ì¥æ©ö¦¸¼Æ <= k
-	 * ¤U¤@¶¥¬q¤£·|©M¤W¤@¶¥¬q½Ä¬ð (¦³¤£À³³Q§R°£©Î¦X¨Öªº¥æ©ö)¡A¦]¬°­Y¥X²{½Ä¬ð¡A«h¤W¤@¶¥¬q¥i¥H¿ï¾Ü§ó§Cªº loss
+	 * å…ˆæ‰¾å‡ºç„¡é™åˆ¶äº¤æ˜“çš„ max profitï¼Œç„¶å¾Œåˆªé™¤ä¸€æ¬¡äº¤æ˜“æˆ–æ˜¯åˆä½µç›¸é„°çš„ 2 å€‹äº¤æ˜“
+	 * é‡è¤‡ç›´åˆ°äº¤æ˜“æ¬¡æ•¸ <= k
+	 * ä¸‹ä¸€éšŽæ®µä¸æœƒå’Œä¸Šä¸€éšŽæ®µè¡çª (æœ‰ä¸æ‡‰è¢«åˆªé™¤æˆ–åˆä½µçš„äº¤æ˜“)ï¼Œå› ç‚ºè‹¥å‡ºç¾è¡çªï¼Œå‰‡ä¸Šä¸€éšŽæ®µå¯ä»¥é¸æ“‡æ›´ä½Žçš„ loss
 	 * 
 	 * This approach starts from a simple situation with k=infinity, and decrease k 
 	 * one by one.
@@ -325,11 +325,11 @@ public class Best_Time_to_Buy_and_Sell_Stock_IV {
 	 * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C++-Solution-with-O(n-+-klgn)-time-using-Max-Heap-and-Stack
 	 * 
 	 * https://leetcode.wang/leetcode-188-Best-Time-to-Buy-and-Sell-StockIV.html
-	 * ¸Ñªk¤G
+	 * è§£æ³•äºŒ
 	 * 
-	 * §Ú­Ì­n§â·sªº¥æ©öªº¶R¤JÂI©M stack ªº¶R¤JÂI¤ñ¸û¡A¦pªG·í«eªº¶R¤JÂI§ó§C¡A­n§â stack ªº¤¸¯À pop¡C
-	 * Åý¥¼¨Óªº¥æ©ö¥i¥H¸ò stack top ¦X¨Ö¨ú±o§ó¤j profit
-	 * µM«á¦A§PÂ_¡A½æ¥XÂI¬O§_°ª©ó stack ¤¸¯Àªº½æ¥XÂI¡A¦pªG§ó°ªªº¸Ü¡A­n§â·í«e¥æ©ö©M stack ªº¥æ©ö¦X¨Ö¡C
+	 * æˆ‘å€‘è¦æŠŠæ–°çš„äº¤æ˜“çš„è²·å…¥é»žå’Œ stack çš„è²·å…¥é»žæ¯”è¼ƒï¼Œå¦‚æžœç•¶å‰çš„è²·å…¥é»žæ›´ä½Žï¼Œè¦æŠŠ stack çš„å…ƒç´  popã€‚
+	 * è®“æœªä¾†çš„äº¤æ˜“å¯ä»¥è·Ÿ stack top åˆä½µå–å¾—æ›´å¤§ profit
+	 * ç„¶å¾Œå†åˆ¤æ–·ï¼Œè³£å‡ºé»žæ˜¯å¦é«˜æ–¼ stack å…ƒç´ çš„è³£å‡ºé»žï¼Œå¦‚æžœæ›´é«˜çš„è©±ï¼Œè¦æŠŠç•¶å‰äº¤æ˜“å’Œ stack çš„äº¤æ˜“åˆä½µã€‚
 	 * 
 	 * consider two consecutive non-decreasing v/p pairs, (v1,p1) and (v2,p2)
 	 * there are 4 possible relations between (v1,p1) and (v2,p2)

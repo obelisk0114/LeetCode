@@ -11,9 +11,9 @@ public class Encode_and_Decode_Strings {
 	 * The following class is from this link.
 	 * https://leetcode.com/problems/encode-and-decode-strings/discuss/70402/Java-with-%22escaping%22
 	 * 
-	 * ¨Ï¥Î³æ¤@ªº # (ÀY§À¥[¤WªÅ¥Õ¡A§Î¦¨ ¡§ # ¡¨) §@¬°¤À¹j¡A
-	 * ¬°¤FÁ×§K©M¤º¤å­ì¦³ªº # ²V²c¡A±N¤º¤å©Ò¦³ # ­«½Æ¤@¦¸
-	 * ¦]¦¹­Y¥X²{ ¡§ # ¡¨ (³æ¤@ªº #)¡A¬O¤À¹j¡F­Y¬O³sÄòªº #¡A°£¥H 2 ¯à±o¨ì­ì¥ıªº #
+	 * ä½¿ç”¨å–®ä¸€çš„ # (é ­å°¾åŠ ä¸Šç©ºç™½ï¼Œå½¢æˆ â€œ # â€) ä½œç‚ºåˆ†éš”ï¼Œ
+	 * ç‚ºäº†é¿å…å’Œå…§æ–‡åŸæœ‰çš„ # æ··æ·†ï¼Œå°‡å…§æ–‡æ‰€æœ‰ # é‡è¤‡ä¸€æ¬¡
+	 * å› æ­¤è‹¥å‡ºç¾ â€œ # â€ (å–®ä¸€çš„ #)ï¼Œæ˜¯åˆ†éš”ï¼›è‹¥æ˜¯é€£çºŒçš„ #ï¼Œé™¤ä»¥ 2 èƒ½å¾—åˆ°åŸå…ˆçš„ #
 	 * 
 	 * Double any hashes inside the strings, then use standalone hashes 
 	 * (surrounded by spaces) to mark string endings. For example:

@@ -8,12 +8,12 @@ public class Ugly_Number_II {
 	/*
 	 * https://leetcode.com/problems/ugly-number-ii/discuss/69362/on-java-solution
 	 * 
-	 * (1) 1กั2, 2กั2, 3กั2, 4กั2, 5กั2, 6กั2, 8กั2, กK
-	 * (2) 1กั3, 2กั3, 3กั3, 4กั3, 5กั3, 6กั3, 8กั3, กK
-	 * (3) 1กั5, 2กั5, 3กั5, 4กั5, 5กั5, 6กั5, 8กั5, กK
+	 * (1) 1ร—2, 2ร—2, 3ร—2, 4ร—2, 5ร—2, 6ร—2, 8ร—2, ...
+	 * (2) 1ร—3, 2ร—3, 3ร—3, 4ร—3, 5ร—3, 6ร—3, 8ร—3, ...
+	 * (3) 1ร—5, 2ร—5, 3ร—5, 4ร—5, 5ร—5, 6ร—5, 8ร—5, ...
 	 * 
 	 * We can find that every subsequence is the ugly-sequence itself 
-	 * (1, 2, 3, 4, 5, 6, 8, กK) multiply 2, 3, 5.
+	 * (1, 2, 3, 4, 5, 6, 8, ...) multiply 2, 3, 5.
 	 * 
 	 * Every step we choose the smallest one, and move one step after, including nums 
 	 * with same value.

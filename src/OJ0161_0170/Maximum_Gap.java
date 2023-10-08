@@ -6,31 +6,31 @@ public class Maximum_Gap {
 	/*
 	 * https://leetcode.com/articles/maximum-gap/
 	 * 
-	 * °²³]±Æ§Ç¹L«á¬°µ¥®t¼Æ¦C
-	 * µ¥®t¼Æ¦C¡G­º¶µ¬° min¡A¥½¶µ¬° max¡A¦@¦³ n ¶µ¡F¥i±o¨ì ¤½®t t = (max - min)/(n - 1)
-	 * §Ú­Ì¥i¥H±N bucket ¤º³¡ªº maximum gap ³]¬°³o­Ó t 
-	 * ³o¼Ë§Ú­Ì¥u»İ­n¤ñ¸û bucket ¶¡ªº®t (difference) ´N¦n
-	 * bucket ¶¡ªº®t (difference) = minimum_in_bucket_i+1 - maximum_in_bucket_i
+	 * å‡è¨­æ’åºéå¾Œç‚ºç­‰å·®æ•¸åˆ—
+	 * ç­‰å·®æ•¸åˆ—ï¼šé¦–é …ç‚º minï¼Œæœ«é …ç‚º maxï¼Œå…±æœ‰ n é …ï¼›å¯å¾—åˆ° å…¬å·® t = (max - min)/(n - 1)
+	 * æˆ‘å€‘å¯ä»¥å°‡ bucket å…§éƒ¨çš„ maximum gap è¨­ç‚ºé€™å€‹ t 
+	 * é€™æ¨£æˆ‘å€‘åªéœ€è¦æ¯”è¼ƒ bucket é–“çš„å·® (difference) å°±å¥½
+	 * bucket é–“çš„å·® (difference) = minimum_in_bucket_i+1 - maximum_in_bucket_i
 	 * 
-	 * ­Y¦¹¼Æ¦C°£¤F a[i - 1], a[i], a[i + 1] ¥~¡A®t (difference) ³£¬° t
-	 * ¦Ó a[i] - a[i - 1] = t - p, a[i + 1] - a[i] = t + p
-	 * ¦]¦¹¡A±Æ§Ç¹L«á¬Û¾F¨â¼Æªº maximum gap ¥u·|¤j©ó t¡A¤£·|ÅÜ¤p
+	 * è‹¥æ­¤æ•¸åˆ—é™¤äº† a[i - 1], a[i], a[i + 1] å¤–ï¼Œå·® (difference) éƒ½ç‚º t
+	 * è€Œ a[i] - a[i - 1] = t - p, a[i + 1] - a[i] = t + p
+	 * å› æ­¤ï¼Œæ’åºéå¾Œç›¸é„°å…©æ•¸çš„ maximum gap åªæœƒå¤§æ–¼ tï¼Œä¸æœƒè®Šå°
 	 * 
-	 * ¦Ò¼{©ñ¤J bucket ªº±¡ªp¡AÄ~Äò¤W­±ªº¨Ò¤l
-	 * ¦]¬° bucket ¤º³¡ªº maximum gap ¬° t = (max - min)/(n - 1)
-	 * ©Ò¥H¥u­n¬Û¾F¨â¼Æ a[j], a[j + 1] ªº®t a[j + 1] - a[j] <= t¡A³o¨â¼Æ´N·|¦b¦P¤@ bucket ¤¤
-	 * a[i - 1] ©M a[i] ·|³Q©ñ¨ì¦P¤@­Ó bucket, ¨ä¥Lªº³£¬O¦Û¤v¤@­Ó bucket
-	 * ¤ñ¸û bucket ¤§¶¡ªº difference¡A¥i¥H±o¨ì a[i + 1] - a[i] = t + p
+	 * è€ƒæ…®æ”¾å…¥ bucket çš„æƒ…æ³ï¼Œç¹¼çºŒä¸Šé¢çš„ä¾‹å­
+	 * å› ç‚º bucket å…§éƒ¨çš„ maximum gap ç‚º t = (max - min)/(n - 1)
+	 * æ‰€ä»¥åªè¦ç›¸é„°å…©æ•¸ a[j], a[j + 1] çš„å·® a[j + 1] - a[j] <= tï¼Œé€™å…©æ•¸å°±æœƒåœ¨åŒä¸€ bucket ä¸­
+	 * a[i - 1] å’Œ a[i] æœƒè¢«æ”¾åˆ°åŒä¸€å€‹ bucket, å…¶ä»–çš„éƒ½æ˜¯è‡ªå·±ä¸€å€‹ bucket
+	 * æ¯”è¼ƒ bucket ä¹‹é–“çš„ differenceï¼Œå¯ä»¥å¾—åˆ° a[i + 1] - a[i] = t + p
 	 * 
-	 * ¥H¦¹Ãş±À¡A¥u­n¦³¥ô·N¨â¼Æ a[j], a[j + 1]¡A¦Ó a[j + 1] - a[j] < t
-	 * a[j] ©M a[j + 1] ´N·|¦b¦P¤@­Ó bucket ¤¤
-	 * ¦Ó¥B¥²©w·|¦³¥t¥~¨â¼Æ a[k], a[k + 1]¡A¦Ó a[k + 1] - a[k] > t
-	 * a[k] ©M a[k + 1] ´N·|¦b¬Û¾Fªº bucket ¤¤
-	 * ©Ò¥H a[k + 1] - a[k] ´N¬O bucket ¶¡ªº®t (difference)
+	 * ä»¥æ­¤é¡æ¨ï¼Œåªè¦æœ‰ä»»æ„å…©æ•¸ a[j], a[j + 1]ï¼Œè€Œ a[j + 1] - a[j] < t
+	 * a[j] å’Œ a[j + 1] å°±æœƒåœ¨åŒä¸€å€‹ bucket ä¸­
+	 * è€Œä¸”å¿…å®šæœƒæœ‰å¦å¤–å…©æ•¸ a[k], a[k + 1]ï¼Œè€Œ a[k + 1] - a[k] > t
+	 * a[k] å’Œ a[k + 1] å°±æœƒåœ¨ç›¸é„°çš„ bucket ä¸­
+	 * æ‰€ä»¥ a[k + 1] - a[k] å°±æ˜¯ bucket é–“çš„å·® (difference)
 	 * 
-	 * ¦]¦¹¥u­n¼Æ¦Cªº³Ì¤j max¡A³Ì¤p min¡A¦@¦³ n ¶µ¡C¤£ºŞ¤À¥¬¦p¦ó
-	 * ¥i¥H±N  bucket ¤º³¡ªº maximum gap ³]¬° t = (max - min)/(n - 1)
-	 * §Ú­Ì´N¥i¥H¥u¤ñ¸û bucket ¶¡ªº®t (difference) ¨Ó±o¨ì±Æ§Ç¹L«á¬Û¾F 2 ¼Æªº maximum gap
+	 * å› æ­¤åªè¦æ•¸åˆ—çš„æœ€å¤§ maxï¼Œæœ€å° minï¼Œå…±æœ‰ n é …ã€‚ä¸ç®¡åˆ†å¸ƒå¦‚ä½•
+	 * å¯ä»¥å°‡  bucket å…§éƒ¨çš„ maximum gap è¨­ç‚º t = (max - min)/(n - 1)
+	 * æˆ‘å€‘å°±å¯ä»¥åªæ¯”è¼ƒ bucket é–“çš„å·® (difference) ä¾†å¾—åˆ°æ’åºéå¾Œç›¸é„° 2 æ•¸çš„ maximum gap
 	 * 
 	 * Sorted array and every adjacent pair of elements differ by the same value. 
 	 * n elements of the array, there are (n - 1) gaps, each of width, 
@@ -59,9 +59,9 @@ public class Maximum_Gap {
 	        max = Math.max(max, i);
 	    }
 	    
-	    // °²³]¬Oµ¥®t¼Æ¦C¡A¨D¥X¤½®t¡C¤½®t¦Ü¤Ö¬° 1¡A³o¼Ë¤~¯à¨M©w bucket ¼Æ¶q
+	    // å‡è¨­æ˜¯ç­‰å·®æ•¸åˆ—ï¼Œæ±‚å‡ºå…¬å·®ã€‚å…¬å·®è‡³å°‘ç‚º 1ï¼Œé€™æ¨£æ‰èƒ½æ±ºå®š bucket æ•¸é‡
 	    int gap = Math.max(1, (max - min) / (num.length - 1)); // [1,1,1,1,1,5,5,5,5,5]
-	    // ¤wª¾­º¶µ¡B¥½¶µ¡B¤½®t¡A¨D¥X¦@¦³´X¶µ
+	    // å·²çŸ¥é¦–é …ã€æœ«é …ã€å…¬å·®ï¼Œæ±‚å‡ºå…±æœ‰å¹¾é …
 	    int bucketNum = ((max - min) / gap) + 1;  // [100,3,2,1]
 	    
 	    int[] bucketsMIN = new int[bucketNum]; // store the min value in that bucket

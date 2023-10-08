@@ -514,8 +514,8 @@ public class Alien_Dictionary {
     private void buildGraph_bfs(Map<Character, Set<Character>> graph, 
     		int[] inDegree, String[] words) {
     	
-        // !!! Attention: ³o­Ó¦a¤è¤@©w­n¥ı§â©Ò¦³¥X²{ªº char ©ñ¨ì graph ¸Ì¡A
-        // ³o¼Ë¤~¯à§¹¥ş²[»\©Ò¦³ªº char
+        // !!! Attention: é€™å€‹åœ°æ–¹ä¸€å®šè¦å…ˆæŠŠæ‰€æœ‰å‡ºç¾çš„ char æ”¾åˆ° graph è£¡ï¼Œ
+        // é€™æ¨£æ‰èƒ½å®Œå…¨æ¶µè“‹æ‰€æœ‰çš„ char
 		for (String s : words) {
 			for (char c : s.toCharArray()) {
 				graph.putIfAbsent(c, new HashSet<>());

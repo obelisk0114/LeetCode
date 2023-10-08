@@ -17,59 +17,59 @@ import java.util.PriorityQueue;
 /*
  * https://briangordon.github.io/2014/08/the-skyline-problem.html
  * 
- * skyline ¥u·|¦b«Ø¿vª«ªº¥ªºİÂI©M¥kºİÂI§ïÅÜ¡A¦]¦¹§Ú­Ì¥u­n§ä¥X³o¨ÇÁ{¬ÉÂIªº°ª«×´N¥i¥H¨M©w skyline¡C 
- * ¦bÁ{¬ÉÂI¶i¦æ¦V¥kªº¾î¦V±½´y¡A¨C¤@ÂI¨ú³Ì¤j­È¡A¥i¥H±o¨ì¤Ñ»Ú½u¡Cª`·N¡G¤£¥]§t¥kºİÂI
- * °Ñ·Óµ{¦¡½X¡GgetSkyline_all_critical(int[][] buildings)
+ * skyline åªæœƒåœ¨å»ºç¯‰ç‰©çš„å·¦ç«¯é»å’Œå³ç«¯é»æ”¹è®Šï¼Œå› æ­¤æˆ‘å€‘åªè¦æ‰¾å‡ºé€™äº›è‡¨ç•Œé»çš„é«˜åº¦å°±å¯ä»¥æ±ºå®š skylineã€‚ 
+ * åœ¨è‡¨ç•Œé»é€²è¡Œå‘å³çš„æ©«å‘æƒæï¼Œæ¯ä¸€é»å–æœ€å¤§å€¼ï¼Œå¯ä»¥å¾—åˆ°å¤©éš›ç·šã€‚æ³¨æ„ï¼šä¸åŒ…å«å³ç«¯é»
+ * åƒç…§ç¨‹å¼ç¢¼ï¼šgetSkyline_all_critical(int[][] buildings)
  * 
- * ¥Ñ¥H¤W¹Lµ{¥iµo²{¡A§Ú­Ì¥u»İ­n§ó·s¤ñ«Ø¿vª«§CªºÁ{¬ÉÂI
- * °Ñ·Óµ{¦¡½X¡GgetSkyline_low_critical(int[][] buildings)
+ * ç”±ä»¥ä¸Šéç¨‹å¯ç™¼ç¾ï¼Œæˆ‘å€‘åªéœ€è¦æ›´æ–°æ¯”å»ºç¯‰ç‰©ä½çš„è‡¨ç•Œé»
+ * åƒç…§ç¨‹å¼ç¢¼ï¼šgetSkyline_low_critical(int[][] buildings)
  * 
- * §Ú­Ì¥i¥H¹Á¸Õ½Õ´« nested for loop ªº¶¶§Ç¡A³o¼Ë¦³¾÷·|¼W¥[®Ä²v
- * °Ñ·Óµ{¦¡½X¡GgetSkyline_low_critical_outside(int[][] buildings)
+ * æˆ‘å€‘å¯ä»¥å˜—è©¦èª¿æ› nested for loop çš„é †åºï¼Œé€™æ¨£æœ‰æ©Ÿæœƒå¢åŠ æ•ˆç‡
+ * åƒç…§ç¨‹å¼ç¢¼ï¼šgetSkyline_low_critical_outside(int[][] buildings)
  * 
- * §ó¦nªº°µªk¬O±NÁ{¬ÉÂI¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
- * ¥Ñ¥ª¦Ó¥k¡A¦V¥k¾î¦V±½´y³o¨ÇÁ{¬ÉÂI¡A¦P®É¨Ï¥Î¤@­Ó set ¨ÓÀx¦s·í«eªº¦³®Ä«Ø¿vª«
- * ¨ì¹F¤@­ÓÁ{¬ÉÂI®É¡A§ó·s³o­Ó set¡A¨Ã±N³o­Ó set ªº«Ø¿vª«½á¤©³o­ÓÁ{¬ÉÂI
- * ¦p¦¹¨C­ÓÁ{¬ÉÂI´N¥i¥Hª¾¹D©Ò¦³¤ñ¥¦°ªªº«Ø¿vª«
+ * æ›´å¥½çš„åšæ³•æ˜¯å°‡è‡¨ç•Œé»ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
+ * ç”±å·¦è€Œå³ï¼Œå‘å³æ©«å‘æƒæé€™äº›è‡¨ç•Œé»ï¼ŒåŒæ™‚ä½¿ç”¨ä¸€å€‹ set ä¾†å„²å­˜ç•¶å‰çš„æœ‰æ•ˆå»ºç¯‰ç‰©
+ * åˆ°é”ä¸€å€‹è‡¨ç•Œé»æ™‚ï¼Œæ›´æ–°é€™å€‹ setï¼Œä¸¦å°‡é€™å€‹ set çš„å»ºç¯‰ç‰©è³¦äºˆé€™å€‹è‡¨ç•Œé»
+ * å¦‚æ­¤æ¯å€‹è‡¨ç•Œé»å°±å¯ä»¥çŸ¥é“æ‰€æœ‰æ¯”å®ƒé«˜çš„å»ºç¯‰ç‰©
  * for each critical point c
  *     c.y gets the height of the tallest rectangle over c
  * 
- * ³Ì²×¸Ñªk¡G
- * 1. ±NÁ{¬ÉÂI¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
- * 2. ¥Ñ¥ª¦Ü¥k scan ³o¨ÇÁ{¬ÉÂI
- * 3-1. ¹J¨ì«Ø¿vª«ªº¥ªºİÂI¡A±N«Ø¿vª«¥[¤J maxHeap¡A¨Ã¨Ï¥Î°ª«×§@¬° key
- * 3-2. ¹J¨ì«Ø¿vª«ªº¥kºİÂI¡A±N«Ø¿vª«±q maxHeap ¤¤²¾°£ (»İ­nÃB¥~«ü¼Ğ¨Ó°O¿ı)
- * 4. ¥ô¦ó®É­Ô·í§Ú­Ì¹J¨ìÁ{¬ÉÂI¡A§ó·s§¹ maxHeap ¤§«á¡A±N maxHeap.top() §@¬°Á{¬ÉÂIªº°ª«×
+ * æœ€çµ‚è§£æ³•ï¼š
+ * 1. å°‡è‡¨ç•Œé»ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
+ * 2. ç”±å·¦è‡³å³ scan é€™äº›è‡¨ç•Œé»
+ * 3-1. é‡åˆ°å»ºç¯‰ç‰©çš„å·¦ç«¯é»ï¼Œå°‡å»ºç¯‰ç‰©åŠ å…¥ maxHeapï¼Œä¸¦ä½¿ç”¨é«˜åº¦ä½œç‚º key
+ * 3-2. é‡åˆ°å»ºç¯‰ç‰©çš„å³ç«¯é»ï¼Œå°‡å»ºç¯‰ç‰©å¾ maxHeap ä¸­ç§»é™¤ (éœ€è¦é¡å¤–æŒ‡æ¨™ä¾†è¨˜éŒ„)
+ * 4. ä»»ä½•æ™‚å€™ç•¶æˆ‘å€‘é‡åˆ°è‡¨ç•Œé»ï¼Œæ›´æ–°å®Œ maxHeap ä¹‹å¾Œï¼Œå°‡ maxHeap.top() ä½œç‚ºè‡¨ç•Œé»çš„é«˜åº¦
  * 
- * §ï¶i¡G
- * ¤£¥ÎÃB¥~«ü¼Ğ¨Ó°O¿ı maxHeap¡A¹J¨ì«Ø¿vª«ªº¥kºİÂI¡A¤£Â_ pop ª½¨ì maxHeap.top() ¬O¦³®Äªº
- * ³o¼Ë maxHeap ¦³¥i¯à¥]§t¤w¸g¹L¥hªº«Ø¿vª«¡A
- * ¦ı¬O§Ú­Ì¥u¨ú maxHeap.top()¡A¦]¦¹¥u­n maxHeap.top() ¬O¦³®Äªº´N¦n
- * °Ñ·Óµ{¦¡½X¡GgetSkyline_building_pq_check_top(int[][] buildings)
+ * æ”¹é€²ï¼š
+ * ä¸ç”¨é¡å¤–æŒ‡æ¨™ä¾†è¨˜éŒ„ maxHeapï¼Œé‡åˆ°å»ºç¯‰ç‰©çš„å³ç«¯é»ï¼Œä¸æ–· pop ç›´åˆ° maxHeap.top() æ˜¯æœ‰æ•ˆçš„
+ * é€™æ¨£ maxHeap æœ‰å¯èƒ½åŒ…å«å·²ç¶“éå»çš„å»ºç¯‰ç‰©ï¼Œ
+ * ä½†æ˜¯æˆ‘å€‘åªå– maxHeap.top()ï¼Œå› æ­¤åªè¦ maxHeap.top() æ˜¯æœ‰æ•ˆçš„å°±å¥½
+ * åƒç…§ç¨‹å¼ç¢¼ï¼šgetSkyline_building_pq_check_top(int[][] buildings)
  */
 
 /*
- * ¸Ñªk¤G¡GDivide-and-Conquer (Ãş¦ü merge sort)
+ * è§£æ³•äºŒï¼šDivide-and-Conquer (é¡ä¼¼ merge sort)
  * 
  * Ch4Ch5 p.20
  * 
- * ­Y§Ú­Ì¤wª¾ «e n-1 ­Ó building ªº¦X¨Öµ²ªG¡A¦p¦ó¥[¤J²Ä n ­Ó Bn (Ln, Hn, Rn)¡H
+ * è‹¥æˆ‘å€‘å·²çŸ¥ å‰ n-1 å€‹ building çš„åˆä½µçµæœï¼Œå¦‚ä½•åŠ å…¥ç¬¬ n å€‹ Bn (Ln, Hn, Rn)ï¼Ÿ
  * 
- * ¥ı§ä¥X Ln ¤§«eªº¨º­Ó x_1¡A±µµÛ¨ú¥X©M Bn ­«Å|ªº³¡¤À
- * (x_1, h1), (x_2, h2), ..., (x_m, hm)¡A¨ä¤¤ x_m < Rn ¦Ó¥B x_m+1 >= Rn (©ÎªÌ x_m ¬O³Ì«á¤@­Ó)
+ * å…ˆæ‰¾å‡º Ln ä¹‹å‰çš„é‚£å€‹ x_1ï¼Œæ¥è‘—å–å‡ºå’Œ Bn é‡ç–Šçš„éƒ¨åˆ†
+ * (x_1, h1), (x_2, h2), ..., (x_m, hm)ï¼Œå…¶ä¸­ x_m < Rn è€Œä¸” x_m+1 >= Rn (æˆ–è€… x_m æ˜¯æœ€å¾Œä¸€å€‹)
  * 
- * ­Y hi < Hn¡A«h³o¤@¬q·|³Q Bn ªº°ª«× Hn ©Ò»\¦í
- * ­Y¤£¦s¦b x_m+1¡A«h¥i¥H­×§ï³Ì«á¤@¬q x_m ¬° (x_m, Hn) ¡A¨Ã·s¼WÃB¥~ªº¤@¬q (Rn, 0)
- * §Ú­Ì¦P®É¤]ÀË¬d¬Û¾Fªº¨â¬q°ª«×¬O§_¬Û¦P¡A­Y¬Û¦P«h¦X¨Ö¦b¤@°_
+ * è‹¥ hi < Hnï¼Œå‰‡é€™ä¸€æ®µæœƒè¢« Bn çš„é«˜åº¦ Hn æ‰€è“‹ä½
+ * è‹¥ä¸å­˜åœ¨ x_m+1ï¼Œå‰‡å¯ä»¥ä¿®æ”¹æœ€å¾Œä¸€æ®µ x_m ç‚º (x_m, Hn) ï¼Œä¸¦æ–°å¢é¡å¤–çš„ä¸€æ®µ (Rn, 0)
+ * æˆ‘å€‘åŒæ™‚ä¹Ÿæª¢æŸ¥ç›¸é„°çš„å…©æ®µé«˜åº¦æ˜¯å¦ç›¸åŒï¼Œè‹¥ç›¸åŒå‰‡åˆä½µåœ¨ä¸€èµ·
  * 
- * ¨Ï¥Î Divide-and-Conquer §ï¶i¡GT(n) = 2T(n/2) + O(n). T(n) = O(n log n).
- * §Ú­Ì¥i¥H»¼°j±N©Ò¦³«Ø¿vª«¤Á¦¨ 2 °ï¨Ã¦X¨Ö
+ * ä½¿ç”¨ Divide-and-Conquer æ”¹é€²ï¼šT(n) = 2T(n/2) + O(n). T(n) = O(n log n).
+ * æˆ‘å€‘å¯ä»¥éè¿´å°‡æ‰€æœ‰å»ºç¯‰ç‰©åˆ‡æˆ 2 å †ä¸¦åˆä½µ
  * 
- * 2 ­Ó skylines A = (a1, ha1, a2, ha2, ..., an, 0); B = (b1, hb1, b2, hb2, ..., bm, 0)
- * ¦X¨Ö¥X (c1, hc1, c2, hc2, ..., c_n+m, 0).
- * §Ú­Ì¨Ï¥Î CurH1 ©M CurH2 (³o¨Ç¬O¹J¨£ 2 ­Ó lists ¤§«eªº°ª«×) ¥hÀx¦s²{¦b³o 2 ­Ó skylines ªº°ª«×
- * ·í¤ñ¸û³o 2 ­Ó skylines ªº head entries (CurH1, CurH2) ®É¡A§Ú­Ì·s¼W¤@¬q (±µ¦b output skyline)
- * x ®y¼Ğ¬O minimum of the entries¡¦ x ®y¼Ğ¡A°ª«×¬° maximum of CurH1 and CurH2.
+ * 2 å€‹ skylines A = (a1, ha1, a2, ha2, ..., an, 0); B = (b1, hb1, b2, hb2, ..., bm, 0)
+ * åˆä½µå‡º (c1, hc1, c2, hc2, ..., c_n+m, 0).
+ * æˆ‘å€‘ä½¿ç”¨ CurH1 å’Œ CurH2 (é€™äº›æ˜¯é‡è¦‹ 2 å€‹ lists ä¹‹å‰çš„é«˜åº¦) å»å„²å­˜ç¾åœ¨é€™ 2 å€‹ skylines çš„é«˜åº¦
+ * ç•¶æ¯”è¼ƒé€™ 2 å€‹ skylines çš„ head entries (CurH1, CurH2) æ™‚ï¼Œæˆ‘å€‘æ–°å¢ä¸€æ®µ (æ¥åœ¨ output skyline)
+ * x åº§æ¨™æ˜¯ minimum of the entriesâ€™ x åº§æ¨™ï¼Œé«˜åº¦ç‚º maximum of CurH1 and CurH2.
  */
 
 /*
@@ -103,35 +103,35 @@ public class The_Skyline_Problem {
 		
 		int i = 0, xPosition = 0, height = 0;
 		
-		// ¥u­n¥ş³¡ªº¥ª¥kºİÂI©|¥¼³B²z§¹¡AÄ~Äò°õ¦æ
+		// åªè¦å…¨éƒ¨çš„å·¦å³ç«¯é»å°šæœªè™•ç†å®Œï¼Œç¹¼çºŒåŸ·è¡Œ
 		while (i < buildings.length || !pq.isEmpty()) {
-			// ¤U¤@­ÓÂà§éÂI¬O¥ªºİÂI (¶i¤JÂI)¡C­Y¥ª¥kºİÂI¬Û¦P¡A¥ı¥[¤J
-			// ­Y PriorityQueue ¬°ªÅ¡A¤]¥[¤J
+			// ä¸‹ä¸€å€‹è½‰æŠ˜é»æ˜¯å·¦ç«¯é» (é€²å…¥é»)ã€‚è‹¥å·¦å³ç«¯é»ç›¸åŒï¼Œå…ˆåŠ å…¥
+			// è‹¥ PriorityQueue ç‚ºç©ºï¼Œä¹ŸåŠ å…¥
 			
-			// ¥ªºİÂI¬İ i (©|¥¼¥[¤J pq)¡A¥kºİÂI¬İ pq top
-			// ¦]¬°¤@­Ó«Ø¿vª«ªº¥ªºİÂI¥²©w¦­©ó¥kºİÂI¡A¦]¦¹¤U¤@­ÓÂà§éÂI­Y¬O¥kºİÂI«h¥²©w¬O pq top
-			// ¤U¤@­Ó x ­Y¤£¬O pq top¡A°ª«×·|³Q pq top ¾×¦í¡A¦]¦¹ÁÙ¬O¬İ pq top
+			// å·¦ç«¯é»çœ‹ i (å°šæœªåŠ å…¥ pq)ï¼Œå³ç«¯é»çœ‹ pq top
+			// å› ç‚ºä¸€å€‹å»ºç¯‰ç‰©çš„å·¦ç«¯é»å¿…å®šæ—©æ–¼å³ç«¯é»ï¼Œå› æ­¤ä¸‹ä¸€å€‹è½‰æŠ˜é»è‹¥æ˜¯å³ç«¯é»å‰‡å¿…å®šæ˜¯ pq top
+			// ä¸‹ä¸€å€‹ x è‹¥ä¸æ˜¯ pq topï¼Œé«˜åº¦æœƒè¢« pq top æ“‹ä½ï¼Œå› æ­¤é‚„æ˜¯çœ‹ pq top
 			if (pq.isEmpty() || 
 					(i < buildings.length && buildings[i][0] <= pq.peek()[1])) {
 				
 				xPosition = buildings[i][0];
 				
-				// ­Y¤§«áªº«Ø¿vª«¥ªºİÂI¤]¬Û¦P¡AÄ~Äò¥[¤J
+				// è‹¥ä¹‹å¾Œçš„å»ºç¯‰ç‰©å·¦ç«¯é»ä¹Ÿç›¸åŒï¼Œç¹¼çºŒåŠ å…¥
 				while (i < buildings.length && xPosition == buildings[i][0]) {
 					pq.offer(buildings[i]);
 					i++;
 				}
 			} 
-			// ¤U¤@­ÓÂà§éÂI¬O¥kºİÂI (Â÷¶}ÂI)
+			// ä¸‹ä¸€å€‹è½‰æŠ˜é»æ˜¯å³ç«¯é» (é›¢é–‹é»)
 			else {
 				xPosition = pq.peek()[1];
 				
-				// ­Y¥kºİÂI <= ²{¦b x ®y¼Ğ¡Aªí¥Ü³o­Ó«Ø¿vª«¤w¸gÂ÷¶}¤F¡A±N¤§²¾°£
+				// è‹¥å³ç«¯é» <= ç¾åœ¨ x åº§æ¨™ï¼Œè¡¨ç¤ºé€™å€‹å»ºç¯‰ç‰©å·²ç¶“é›¢é–‹äº†ï¼Œå°‡ä¹‹ç§»é™¤
 				while (!pq.isEmpty() && pq.peek()[1] <= xPosition)
 					pq.poll();
 			}
 
-			// ³o­Ó x ®y¼Ğ³B²z§¹²¦¡A¨D°ª«×
+			// é€™å€‹ x åº§æ¨™è™•ç†å®Œç•¢ï¼Œæ±‚é«˜åº¦
 			height = pq.isEmpty() ? 0 : pq.peek()[2];
 			if (ans.isEmpty() || ans.get(ans.size() - 1).get(1) != height) {
 				ans.add(Arrays.asList(xPosition, height));
@@ -144,25 +144,25 @@ public class The_Skyline_Problem {
 	/*
 	 * by myself
 	 * 
-	 * ¥ı¦¬¶°¥ş³¡ºİÂI¥H¤Î¹ïÀ³°ª«× (criticals)
-	 * Àx¦s¬° (²{¦bªº x, µ²§ôªº x, °ª«×)
-	 * ²{¦bªº x ªí¥Ü¸ÓºİÂI¡Aµ²§ôªº x ªí¥Ü¥kºİÂI
-	 * ¥H²{¦bªº x ¥Ñ¤p¨ì¤j±Æ§Ç
+	 * å…ˆæ”¶é›†å…¨éƒ¨ç«¯é»ä»¥åŠå°æ‡‰é«˜åº¦ (criticals)
+	 * å„²å­˜ç‚º (ç¾åœ¨çš„ x, çµæŸçš„ x, é«˜åº¦)
+	 * ç¾åœ¨çš„ x è¡¨ç¤ºè©²ç«¯é»ï¼ŒçµæŸçš„ x è¡¨ç¤ºå³ç«¯é»
+	 * ä»¥ç¾åœ¨çš„ x ç”±å°åˆ°å¤§æ’åº
 	 * 
-	 * ¥Î TreeMap ¥N´À priority queue
-	 * key¡G°ª«×¡Cvalue¡G¥X²{ªº¦¸¼Æ
-	 * ©ñ¤J (0, 1) ªí¥Ü¦³¤@­Ó°ª«×¬° 0 ªº¦a¥­½u
+	 * ç”¨ TreeMap ä»£æ›¿ priority queue
+	 * keyï¼šé«˜åº¦ã€‚valueï¼šå‡ºç¾çš„æ¬¡æ•¸
+	 * æ”¾å…¥ (0, 1) è¡¨ç¤ºæœ‰ä¸€å€‹é«˜åº¦ç‚º 0 çš„åœ°å¹³ç·š
 	 * 
-	 * ¥Ñ¥ª¨ì¥k¡A¨« criticals
-	 * ¬Û¦P x ¤@°_³B²z
-	 * ²{¦bªº x != µ²§ôªº x ¡G ¥ªºİÂI¡A©ñ¤J TreeMap
-	 * ²{¦bªº x = µ²§ôªº x ¡G ¥kºİÂI¡A²¾¥X TreeMap
-	 * §ä³Ì¤j°ª«×¡Aªí¥Ü¸Ó x ªº°ª«× (¤Ñ»Ú½u)
+	 * ç”±å·¦åˆ°å³ï¼Œèµ° criticals
+	 * ç›¸åŒ x ä¸€èµ·è™•ç†
+	 * ç¾åœ¨çš„ x != çµæŸçš„ x ï¼š å·¦ç«¯é»ï¼Œæ”¾å…¥ TreeMap
+	 * ç¾åœ¨çš„ x = çµæŸçš„ x ï¼š å³ç«¯é»ï¼Œç§»å‡º TreeMap
+	 * æ‰¾æœ€å¤§é«˜åº¦ï¼Œè¡¨ç¤ºè©² x çš„é«˜åº¦ (å¤©éš›ç·š)
 	 */
 	public List<List<Integer>> getSkyline_self_modify(int[][] buildings) {
         List<List<Integer>> ans = new ArrayList<>();
         
-        // ¦¬¶°©Ò¦³ºİÂI¡A(²{¦bªº x, µ²§ôªº x, °ª«×)¡A²{¦bªº x ¥Ñ¤p¨ì¤j±Æ§Ç
+        // æ”¶é›†æ‰€æœ‰ç«¯é»ï¼Œ(ç¾åœ¨çš„ x, çµæŸçš„ x, é«˜åº¦)ï¼Œç¾åœ¨çš„ x ç”±å°åˆ°å¤§æ’åº
 		List<int[]> criticals = new ArrayList<>();
 		for (int[] building : buildings) {
 			int[] ending = { building[1], building[1], building[2] };
@@ -172,18 +172,18 @@ public class The_Skyline_Problem {
 		}
 		Collections.sort(criticals, (a, b) -> a[0] - b[0]);
 
-		// ¥Î TreeMap ·í§@ priority queue¡A(°ª«×, ¦¸¼Æ)
+		// ç”¨ TreeMap ç•¶ä½œ priority queueï¼Œ(é«˜åº¦, æ¬¡æ•¸)
         TreeMap<Integer, Integer> treemap = new TreeMap<>();
         
-        // ©ñ¤J¦a¥­½u
+        // æ”¾å…¥åœ°å¹³ç·š
         treemap.put(0, 1);
         
-        // ¥Ñ¤p¨ì¤j¹M¾úºİÂI
+        // ç”±å°åˆ°å¤§éæ­·ç«¯é»
         int i = 0;
         while (i < criticals.size()) {
             int x = criticals.get(i)[0];
             
-            // ¬Û¦P x ¤@°_³B²z
+            // ç›¸åŒ x ä¸€èµ·è™•ç†
             while (i < criticals.size() && criticals.get(i)[0] == x) {
                 int currHeight = criticals.get(i)[2];
                 int count = 0;
@@ -191,12 +191,12 @@ public class The_Skyline_Problem {
                     count = treemap.get(currHeight);
                 }
                 
-                // ­Y¥Î List<List<Integer>> ¨ÓÀx¦s criticals¡A­n¥Î³o¼Ë¤ñ¸û
+                // è‹¥ç”¨ List<List<Integer>> ä¾†å„²å­˜ criticalsï¼Œè¦ç”¨é€™æ¨£æ¯”è¼ƒ
                 // if ((int) criticals.get(i).get(0) != (int) criticals.get(i).get(1))
-                // ©Î¬O
+                // æˆ–æ˜¯
                 // if (!criticals.get(i).get(0).equals(criticals.get(i).get(1)))
                 
-                // ²{¦bªº x ¤£¬Oµ²§ôªº x¡Aªí¥Ü³o¬O¥ªºİÂI¡ATreeMap + 1
+                // ç¾åœ¨çš„ x ä¸æ˜¯çµæŸçš„ xï¼Œè¡¨ç¤ºé€™æ˜¯å·¦ç«¯é»ï¼ŒTreeMap + 1
 				if (criticals.get(i)[0] != criticals.get(i)[1]) {
 					if (treemap.containsKey(currHeight)) {
                         treemap.put(currHeight, count + 1);
@@ -205,7 +205,7 @@ public class The_Skyline_Problem {
                         treemap.put(currHeight, 1);
                     }
                 }
-				// ²{¦bªº x ¬Oµ²§ôªº x¡Aªí¥Ü³o¬O¥kºİÂI¡ATreeMap - 1
+				// ç¾åœ¨çš„ x æ˜¯çµæŸçš„ xï¼Œè¡¨ç¤ºé€™æ˜¯å³ç«¯é»ï¼ŒTreeMap - 1
                 else {
                     if (count == 1) {
                         treemap.remove(currHeight);
@@ -218,7 +218,7 @@ public class The_Skyline_Problem {
                 i++;
             }
             
-            // §ä³Ì¤j°ª«×
+            // æ‰¾æœ€å¤§é«˜åº¦
             int height = treemap.lastKey();
             
             if (ans.isEmpty() || ans.get(ans.size() - 1).get(1) != height) {
@@ -345,14 +345,14 @@ public class The_Skyline_Problem {
 	 * Rf : Update (Feb 2019)
 	 * https://briangordon.github.io/2014/08/the-skyline-problem.html
 	 * 
-	 * 1. ¨ú¥X«Ø¿vª«ªº¥ª¥kºİÂI°µ¬°Á{¬ÉÂI¡A±N¥¦­Ì¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
-	 * 2. ¥Ñ¥ª¦Ü¥k scan ³o¨ÇÁ{¬ÉÂI
-	 * 3. §ó·s maxHeap
-	 *   3-1. ¹J¨ì«Ø¿vª«ªº¥ªºİÂI¡A±N«Ø¿vª«¥[¤J maxHeap¡A¨Ã¨Ï¥Î°ª«×§@¬° key
-	 *   3-2. ­Y maxHeap.top() ªº¥kºİÂI <= ²{¦b­n³B²zªºÁ{¬ÉÂI x ®y¼Ğ¡A±N¥¦²¾°£ maxHeap
-	 * 4. ¸ÓÁ{¬ÉÂIªº°ª«×¬° maxHeap.top() ªº°ª«×
+	 * 1. å–å‡ºå»ºç¯‰ç‰©çš„å·¦å³ç«¯é»åšç‚ºè‡¨ç•Œé»ï¼Œå°‡å®ƒå€‘ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
+	 * 2. ç”±å·¦è‡³å³ scan é€™äº›è‡¨ç•Œé»
+	 * 3. æ›´æ–° maxHeap
+	 *   3-1. é‡åˆ°å»ºç¯‰ç‰©çš„å·¦ç«¯é»ï¼Œå°‡å»ºç¯‰ç‰©åŠ å…¥ maxHeapï¼Œä¸¦ä½¿ç”¨é«˜åº¦ä½œç‚º key
+	 *   3-2. è‹¥ maxHeap.top() çš„å³ç«¯é» <= ç¾åœ¨è¦è™•ç†çš„è‡¨ç•Œé» x åº§æ¨™ï¼Œå°‡å®ƒç§»é™¤ maxHeap
+	 * 4. è©²è‡¨ç•Œé»çš„é«˜åº¦ç‚º maxHeap.top() çš„é«˜åº¦
 	 * 
-	 * ª`·N test cases:
+	 * æ³¨æ„ test cases:
 	 * Input:    [[1,2,1],[1,2,2],[1,2,3]]
 	 * Expected: [[1,3],[2,0]]
 	 * 
@@ -363,8 +363,8 @@ public class The_Skyline_Problem {
 	 * https://leetcode.com/problems/the-skyline-problem/discuss/61264/easy-to-understand-O(nlogn)-java-solution-with-detailed-explanation
 	 */
 	public List<List<Integer>> getSkyline_building_pq_check_top(int[][] buildings) {
-		// ¨ú¥X©Ò¦³«Ø¿vª«ªº¥ª¥kºİÂI¡A¥¦­Ì¬OÁ{¬ÉÂI¡C
-		// °ª«×ªì©l¤Æ¬° 0
+		// å–å‡ºæ‰€æœ‰å»ºç¯‰ç‰©çš„å·¦å³ç«¯é»ï¼Œå®ƒå€‘æ˜¯è‡¨ç•Œé»ã€‚
+		// é«˜åº¦åˆå§‹åŒ–ç‚º 0
 		List<Integer[]> criticals = new ArrayList<>();
 		for (int[] building : buildings) {
 			int left = building[0];
@@ -374,37 +374,37 @@ public class The_Skyline_Problem {
 			criticals.add(new Integer[] { right, 0 });
 		}
 
-		// ±NÁ{¬ÉÂI¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
+		// å°‡è‡¨ç•Œé»ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
 		Collections.sort(criticals, new Comparator<Integer[]>() {
 			public int compare(Integer[] a, Integer[] b) {
 				return a[0] - b[0];
 			}
 		});
 
-		// Àx¦s«Ø¿vª«ªº maxHeap¡A¤ñ¸û°ª«×
+		// å„²å­˜å»ºç¯‰ç‰©çš„ maxHeapï¼Œæ¯”è¼ƒé«˜åº¦
 		Queue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
 			public int compare(int[] a, int[] b) {
 				return b[2] - a[2];
 			}
 		});
 
-		// scan Á{¬ÉÂI
-		// §ó·s maxHeap ¨Ã§ä¥X¸ÓÁ{¬ÉÂIªº°ª«×
+		// scan è‡¨ç•Œé»
+		// æ›´æ–° maxHeap ä¸¦æ‰¾å‡ºè©²è‡¨ç•Œé»çš„é«˜åº¦
 		int i = 0;
 		for (Integer[] critical : criticals) {
 			
-			// «Ø¿vª«ªº¥ªºİÂI <= Á{¬ÉÂI x ®y¼Ğ¡A©ñ¤J maxHeap
+			// å»ºç¯‰ç‰©çš„å·¦ç«¯é» <= è‡¨ç•Œé» x åº§æ¨™ï¼Œæ”¾å…¥ maxHeap
 			while (i < buildings.length && buildings[i][0] <= critical[0]) {
 				pq.offer(buildings[i]);
 				i++;
 			}
 
-			// maxHeap.top() ªº¥kºİÂI <= Á{¬ÉÂI x ®y¼Ğ¡A±N¥¦²¾°£ maxHeap
+			// maxHeap.top() çš„å³ç«¯é» <= è‡¨ç•Œé» x åº§æ¨™ï¼Œå°‡å®ƒç§»é™¤ maxHeap
 			while (!pq.isEmpty() && pq.peek()[1] <= critical[0]) {
 				pq.poll();
 			}
 
-			// ­Y maxHeap ¤£¬°ªÅ¡A¥i¥H§ó·s°ª«×
+			// è‹¥ maxHeap ä¸ç‚ºç©ºï¼Œå¯ä»¥æ›´æ–°é«˜åº¦
 			if (!pq.isEmpty()) {
 				critical[1] = pq.peek()[2];
 			}
@@ -498,7 +498,7 @@ public class The_Skyline_Problem {
 	 * encountering the heads of the lists) to store the current height of the first 
 	 * and the second skyline. When comparing the head entries (h1, h2) of the two 
 	 * skylines, we introduce a new strip (and append to the output skyline) whose 
-	 * x-coordinate is the minimum of the entries¡¦ x-coordinates and whose height is 
+	 * x-coordinate is the minimum of the entriesâ€™ x-coordinates and whose height is 
 	 * the maximum of h1 and h2. 
 	 * 
 	 * Let T(n) denote the running time of this algorithm for n buildings. Since 
@@ -564,7 +564,7 @@ public class The_Skyline_Problem {
 			
 			h = Math.max(h1, h2);
 			
-			// ©M«e¤@­ÓÂIªº°ª«×¤£¦P¤~¥[¤J
+			// å’Œå‰ä¸€å€‹é»çš„é«˜åº¦ä¸åŒæ‰åŠ å…¥
 			if (rs.isEmpty() || h != rs.getLast().get(1)) {
 				rs.add(Arrays.asList(new Integer[] { x, h }));
 			}
@@ -724,7 +724,7 @@ public class The_Skyline_Problem {
 			
 			for (int i = 0, j; i < N << 1; i = j) {
 				
-				// j ­n±q i ¶}©l¡A¦]¬°¦b¤º¼h for loop °µ height ªº³B²z
+				// j è¦å¾ i é–‹å§‹ï¼Œå› ç‚ºåœ¨å…§å±¤ for loop åš height çš„è™•ç†
 				for (j = i; j < N << 1 && events[i].x == events[j].x; ++j) {
 					Event event = events[j];
 					if (event.closing) {
@@ -771,8 +771,8 @@ public class The_Skyline_Problem {
 			closing = c;
 		}
 
-		// 1. x ¥Ñ¤p±Æ¨ì¤j
-		// 2. closing ¥Ñ false ±Æ¨ì true
+		// 1. x ç”±å°æ’åˆ°å¤§
+		// 2. closing ç”± false æ’åˆ° true
 		@Override
 		public int compareTo(Event that) {
 			return x != that.x ? x - that.x : Boolean.compare(closing, that.closing);
@@ -821,9 +821,9 @@ public class The_Skyline_Problem {
 		List<List<Integer>> result = new ArrayList<>();
 		explore_segment_tree(result, endpointList, root);
 
-		// ³Ì«á¤@­Ó end ¨S¦³³Qºâ¨ì¡A¤â°Ê¥[¤J
-		// ¨S¦³«Ø¿vª«¤~¤£¥Î¥[¤J
-		// ­Y§â if ²¾°£¡A«h¦b³Ì«e­±­n¥[¤W empty array ªº§PÂ_
+		// æœ€å¾Œä¸€å€‹ end æ²’æœ‰è¢«ç®—åˆ°ï¼Œæ‰‹å‹•åŠ å…¥
+		// æ²’æœ‰å»ºç¯‰ç‰©æ‰ä¸ç”¨åŠ å…¥
+		// è‹¥æŠŠ if ç§»é™¤ï¼Œå‰‡åœ¨æœ€å‰é¢è¦åŠ ä¸Š empty array çš„åˆ¤æ–·
 		if (endpointList.size() > 0) {
 			result.add(Arrays.asList(
 					new Integer[] { endpointList.get(endpointList.size() - 1), 0 }));
@@ -833,13 +833,13 @@ public class The_Skyline_Problem {
 	}
 
 	private Node buildNode_segment_tree(int start, int end) {
-		// ¤]¥i¥H
+		// ä¹Ÿå¯ä»¥
 		// if (start > end)
 		if (start >= end) {
 			return null;
 		} 
 		
-		// ¥u¥]§t start¡A¤£ºâ end
+		// åªåŒ…å« startï¼Œä¸ç®— end
 		Node result = new Node(start, end);
 		if (start + 1 < end) {
 			int center = start + (end - start) / 2;
@@ -852,8 +852,8 @@ public class The_Skyline_Problem {
 	}
 
 	private void add_segment_tree(Node node, int start, int end, int height) {
-		// ¥H«Ø¿vª« start, end, height §ó·s node ¥H¤Î¤l node
-		// ¦]¦¹¶W¹L½d³ò©M°ª«×¤£°÷´N°±¤î§ó·s
+		// ä»¥å»ºç¯‰ç‰© start, end, height æ›´æ–° node ä»¥åŠå­ node
+		// å› æ­¤è¶…éç¯„åœå’Œé«˜åº¦ä¸å¤ å°±åœæ­¢æ›´æ–°
 		if (node == null || start >= node.end || end <= node.start 
 				|| height < node.height) {
 			
@@ -867,8 +867,8 @@ public class The_Skyline_Problem {
 			add_segment_tree(node.left, start, end, height);
 			add_segment_tree(node.right, start, end, height);
 			
-			// §Q¥Î«e­±ªº height < node.height ¨Ó°ÅªK 
-			// ¬Ù²¤¤´µM accept¡A¦ı¬O·|ÅÜºC
+			// åˆ©ç”¨å‰é¢çš„ height < node.height ä¾†å‰ªæ 
+			// çœç•¥ä»ç„¶ acceptï¼Œä½†æ˜¯æœƒè®Šæ…¢
 			node.height = Math.min(node.left.height, node.right.height);
 		}
 	}
@@ -897,15 +897,15 @@ public class The_Skyline_Problem {
 	 * The following 3 functions are from this link.
 	 * https://leetcode.com/problems/the-skyline-problem/discuss/61198/My-O(nlogn)-solution-using-Binary-Indexed-Tree(BIT)Fenwick-Tree/62473
 	 * 
-	 * ¸I¨ì¥ªºİÂI¡A´N¦b¥kºİÂI«Ø¥ß suffix range max (¤£¥]§t¥kºİÂI)
-	 * ¨Ï¥Î BIT ¥i¥H¥u¥Î log n ªºÂIªº max ¨Ó±o¨ì suffix max
+	 * ç¢°åˆ°å·¦ç«¯é»ï¼Œå°±åœ¨å³ç«¯é»å»ºç«‹ suffix range max (ä¸åŒ…å«å³ç«¯é»)
+	 * ä½¿ç”¨ BIT å¯ä»¥åªç”¨ log n çš„é»çš„ max ä¾†å¾—åˆ° suffix max
 	 * 
-	 * ±N­ì©l BIT §ó·s¡B¨D©Mªº¤è¦V¤Ï¹L¨Ó¡A¥i¥H¬İ¦¨¬O suffix range max
+	 * å°‡åŸå§‹ BIT æ›´æ–°ã€æ±‚å’Œçš„æ–¹å‘åéä¾†ï¼Œå¯ä»¥çœ‹æˆæ˜¯ suffix range max
 	 * 
-	 * ­Yªø«×¬° 13¡A¨D 5 ¨ì 13 ªº max
-	 * Max(5, 13) = Max(Max(5, 6), Max(6, 8), Max(8, ³Ì«á¤@­Ó 13))
+	 * è‹¥é•·åº¦ç‚º 13ï¼Œæ±‚ 5 åˆ° 13 çš„ max
+	 * Max(5, 13) = Max(Max(5, 6), Max(6, 8), Max(8, æœ€å¾Œä¸€å€‹ 13))
 	 * 
-	 * §ó·s 5
+	 * æ›´æ–° 5
 	 * Update(5, 6), Update(4, 5)
 	 * 
 	 * Difficulty 1: Remove height
@@ -984,7 +984,7 @@ public class The_Skyline_Problem {
 					ret.get(ret.size() - 1).set(1, curHeight);
 				} 
 				else {
-					// ·s¼W³o¬q¨Ó¸Ñ¨M¤U­± test case ªº bug
+					// æ–°å¢é€™æ®µä¾†è§£æ±ºä¸‹é¢ test case çš„ bug
 					// [[1,2,1], [1,2,2], [1,2,3], [1,2,4], [2,3,2], [2,3,4]]
 					if (ret.size() > 1 && 
 							ret.get(ret.size() - 1).get(1) 
@@ -1021,15 +1021,15 @@ public class The_Skyline_Problem {
 	/*
 	 * by myself
 	 * 
-	 * Rf : ²Ä 5 ­Ó pseudo code
+	 * Rf : ç¬¬ 5 å€‹ pseudo code
 	 * https://briangordon.github.io/2014/08/the-skyline-problem.html
 	 * 
-	 * ¦b§ó·sÁ{¬ÉÂIªº°ª«×®É¡A¥u§ó·s¤ñ«Ø¿vª«§CªºÁ{¬ÉÂI
-	 * ¦P®ÉÂ½Âà nested for loop ¤º¥~¶¶§Ç¡G¥ı¨«Á{¬ÉÂI¡A¦A¨««Ø¿vª«
+	 * åœ¨æ›´æ–°è‡¨ç•Œé»çš„é«˜åº¦æ™‚ï¼Œåªæ›´æ–°æ¯”å»ºç¯‰ç‰©ä½çš„è‡¨ç•Œé»
+	 * åŒæ™‚ç¿»è½‰ nested for loop å…§å¤–é †åºï¼šå…ˆèµ°è‡¨ç•Œé»ï¼Œå†èµ°å»ºç¯‰ç‰©
 	 */
 	public List<List<Integer>> getSkyline_low_critical_outside(int[][] buildings) {
-		// ¨ú¥X©Ò¦³«Ø¿vª«ªº¥ª¥kºİÂI¡A¥¦­Ì¬OÁ{¬ÉÂI¡C
-		// °ª«×ªì©l¤Æ¬° 0
+		// å–å‡ºæ‰€æœ‰å»ºç¯‰ç‰©çš„å·¦å³ç«¯é»ï¼Œå®ƒå€‘æ˜¯è‡¨ç•Œé»ã€‚
+		// é«˜åº¦åˆå§‹åŒ–ç‚º 0
 		List<Integer[]> criticals = new ArrayList<>();
 		for (int[] building : buildings) {
 			int left = building[0];
@@ -1039,18 +1039,18 @@ public class The_Skyline_Problem {
 			criticals.add(new Integer[] { right, 0 });
 		}
 
-		// «Ø¿vª«ªº°ª«×¤£·|ÅÜ¡A¹ï«Ø¿vª«°ª«×°µ¤@¦¸±Æ§Ç§Y¥i
+		// å»ºç¯‰ç‰©çš„é«˜åº¦ä¸æœƒè®Šï¼Œå°å»ºç¯‰ç‰©é«˜åº¦åšä¸€æ¬¡æ’åºå³å¯
 		Arrays.sort(buildings, new Comparator<int[]>() {
 			public int compare(int[] a, int[] b) {
 				return b[2] - a[2];
 			}
 		});
 
-		// ¥u»İ­n§ó·s¤ñ«Ø¿vª«§CªºÁ{¬ÉÂI¡G
-		// ¥~¼h¥ı¨«Á{¬ÉÂI¡A¤º¼h¤~¨««Ø¿vª«¡C
+		// åªéœ€è¦æ›´æ–°æ¯”å»ºç¯‰ç‰©ä½çš„è‡¨ç•Œé»ï¼š
+		// å¤–å±¤å…ˆèµ°è‡¨ç•Œé»ï¼Œå…§å±¤æ‰èµ°å»ºç¯‰ç‰©ã€‚
 		// 
-		// ­YÁ{¬ÉÂI¦b«Ø¿vª«¤º (¤£¥]§t¥kºİÂI)¡A¦Ó¥B¤ñ«Ø¿vª«¸G¡A
-		// «h§ó·sÁ{¬ÉÂI°ª«× (¨ú³Ì¤j­È¡A§ä¤Ñ»Ú½u)
+		// è‹¥è‡¨ç•Œé»åœ¨å»ºç¯‰ç‰©å…§ (ä¸åŒ…å«å³ç«¯é»)ï¼Œè€Œä¸”æ¯”å»ºç¯‰ç‰©çŸ®ï¼Œ
+		// å‰‡æ›´æ–°è‡¨ç•Œé»é«˜åº¦ (å–æœ€å¤§å€¼ï¼Œæ‰¾å¤©éš›ç·š)
 		for (Integer[] critical : criticals) {
 			for (int[] building : buildings) {
 				if (building[2] < critical[1]) {
@@ -1061,18 +1061,18 @@ public class The_Skyline_Problem {
 				int right = building[1];
 
 				if (critical[0] >= left && critical[0] < right) {
-					// ­Y building[2] < critical[1] «h·| break
-					// ¨ì¹F³o¸Ì¥i¥H»¡©ú 
+					// è‹¥ building[2] < critical[1] å‰‡æœƒ break
+					// åˆ°é”é€™è£¡å¯ä»¥èªªæ˜ 
 					// building[2] >= critical[1]
 					// 
-					// ©Ò¥H¨ä¹ê¥i¥HÂ²¤Æ¬°
+					// æ‰€ä»¥å…¶å¯¦å¯ä»¥ç°¡åŒ–ç‚º
 					// critical[1] = building[2];
 					critical[1] = Math.max(critical[1], building[2]);
 				}
 			}
 		}
 
-		// Á{¬ÉÂI¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
+		// è‡¨ç•Œé»ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
 		Collections.sort(criticals, new Comparator<Integer[]>() {
 			public int compare(Integer[] a, Integer[] b) {
 				return a[0] - b[0];
@@ -1096,17 +1096,17 @@ public class The_Skyline_Problem {
 	/*
 	 * by myself
 	 * 
-	 * Rf : ²Ä 3 ­Ó pseudo code
+	 * Rf : ç¬¬ 3 å€‹ pseudo code
 	 * https://briangordon.github.io/2014/08/the-skyline-problem.html
 	 * 
-	 * ¦b§ó·sÁ{¬ÉÂIªº°ª«×®É¡A¥u§ó·s¤ñ«Ø¿vª«§CªºÁ{¬ÉÂI
+	 * åœ¨æ›´æ–°è‡¨ç•Œé»çš„é«˜åº¦æ™‚ï¼Œåªæ›´æ–°æ¯”å»ºç¯‰ç‰©ä½çš„è‡¨ç•Œé»
 	 * 
-	 * ­Y¨Ï¥Î PriorityQueue ¨Ó³B²zÁ{¬ÉÂI¡A·| Time Limit Exceeded
+	 * è‹¥ä½¿ç”¨ PriorityQueue ä¾†è™•ç†è‡¨ç•Œé»ï¼Œæœƒ Time Limit Exceeded
 	 * https://leetcode.com/submissions/detail/408481072/
 	 */
 	public List<List<Integer>> getSkyline_low_critical(int[][] buildings) {
-		// ¨ú¥X©Ò¦³«Ø¿vª«ªº¥ª¥kºİÂI¡A¥¦­Ì¬OÁ{¬ÉÂI¡C
-		// °ª«×ªì©l¤Æ¬° 0
+		// å–å‡ºæ‰€æœ‰å»ºç¯‰ç‰©çš„å·¦å³ç«¯é»ï¼Œå®ƒå€‘æ˜¯è‡¨ç•Œé»ã€‚
+		// é«˜åº¦åˆå§‹åŒ–ç‚º 0
 		List<Integer[]> criticals = new ArrayList<>();
 		for (int[] building : buildings) {
 			int left = building[0];
@@ -1116,12 +1116,12 @@ public class The_Skyline_Problem {
 			criticals.add(new Integer[] { right, 0 });
 		}
 
-		// ¥u»İ­n§ó·s¤ñ«Ø¿vª«§CªºÁ{¬ÉÂI¡G
-		// ©Ò¦³«Ø¿vª«³£¨«¤@¹M¡A­YÁ{¬ÉÂI¦b«Ø¿vª«¤º (¤£¥]§t¥kºİÂI)¡A¦Ó¥B¤ñ«Ø¿vª«¸G¡A
-		// «h§ó·sÁ{¬ÉÂI°ª«× (¨ú³Ì¤j­È¡A§ä¤Ñ»Ú½u)
+		// åªéœ€è¦æ›´æ–°æ¯”å»ºç¯‰ç‰©ä½çš„è‡¨ç•Œé»ï¼š
+		// æ‰€æœ‰å»ºç¯‰ç‰©éƒ½èµ°ä¸€éï¼Œè‹¥è‡¨ç•Œé»åœ¨å»ºç¯‰ç‰©å…§ (ä¸åŒ…å«å³ç«¯é»)ï¼Œè€Œä¸”æ¯”å»ºç¯‰ç‰©çŸ®ï¼Œ
+		// å‰‡æ›´æ–°è‡¨ç•Œé»é«˜åº¦ (å–æœ€å¤§å€¼ï¼Œæ‰¾å¤©éš›ç·š)
 		// 
-		// ´M§ä¤ñ«Ø¿vª«§CªºÁ{¬ÉÂI¡G±NÁ{¬ÉÂI±Æ§Ç
-		// ±NÁ{¬ÉÂI¨Ì·Ó°ª«×¡A¥Ñ¤p¨ì¤j±Æ§Ç
+		// å°‹æ‰¾æ¯”å»ºç¯‰ç‰©ä½çš„è‡¨ç•Œé»ï¼šå°‡è‡¨ç•Œé»æ’åº
+		// å°‡è‡¨ç•Œé»ä¾ç…§é«˜åº¦ï¼Œç”±å°åˆ°å¤§æ’åº
 		for (int[] building : buildings) {
 			int left = building[0];
 			int right = building[1];
@@ -1145,7 +1145,7 @@ public class The_Skyline_Problem {
 			}
 		}
 
-		// Á{¬ÉÂI¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
+		// è‡¨ç•Œé»ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
 		Collections.sort(criticals, new Comparator<Integer[]>() {
 			public int compare(Integer[] a, Integer[] b) {
 				return a[0] - b[0];
@@ -1169,14 +1169,14 @@ public class The_Skyline_Problem {
 	/*
 	 * by myself
 	 * 
-	 * Rf : ²Ä 2 ­Ó pseudo code
+	 * Rf : ç¬¬ 2 å€‹ pseudo code
 	 * https://briangordon.github.io/2014/08/the-skyline-problem.html
 	 * 
-	 * skyline ¥u·|¦b«Ø¿vª«ªº¥ªºİÂI©M¥kºİÂI§ïÅÜ¡A¦]¦¹§Ú­Ì¥u­n§ä¥X³o¨ÇÁ{¬ÉÂIªº°ª«×´N¥i¥H¨M©w skyline¡C
+	 * skyline åªæœƒåœ¨å»ºç¯‰ç‰©çš„å·¦ç«¯é»å’Œå³ç«¯é»æ”¹è®Šï¼Œå› æ­¤æˆ‘å€‘åªè¦æ‰¾å‡ºé€™äº›è‡¨ç•Œé»çš„é«˜åº¦å°±å¯ä»¥æ±ºå®š skylineã€‚
 	 */
 	public List<List<Integer>> getSkyline_all_critical(int[][] buildings) {
-		// ¨ú¥X©Ò¦³«Ø¿vª«ªº¥ª¥kºİÂI¡A¥¦­Ì¬OÁ{¬ÉÂI¡C
-		// °ª«×ªì©l¤Æ¬° 0
+		// å–å‡ºæ‰€æœ‰å»ºç¯‰ç‰©çš„å·¦å³ç«¯é»ï¼Œå®ƒå€‘æ˜¯è‡¨ç•Œé»ã€‚
+		// é«˜åº¦åˆå§‹åŒ–ç‚º 0
 		List<Integer[]> criticals = new ArrayList<>();
 		for (int[] building : buildings) {
 			int left = building[0];
@@ -1186,8 +1186,8 @@ public class The_Skyline_Problem {
 			criticals.add(new Integer[] { right, 0 });
 		}
 
-		// §ó·sÁ{¬ÉÂIªº°ª«×¡G
-		// ©Ò¦³«Ø¿vª«³£¨«¤@¹M¡A­YÁ{¬ÉÂI¦b«Ø¿vª«¤º (¤£¥]§t¥kºİÂI)¡A«h§ó·sÁ{¬ÉÂI°ª«× (¨ú³Ì¤j­È¡A§ä¤Ñ»Ú½u)
+		// æ›´æ–°è‡¨ç•Œé»çš„é«˜åº¦ï¼š
+		// æ‰€æœ‰å»ºç¯‰ç‰©éƒ½èµ°ä¸€éï¼Œè‹¥è‡¨ç•Œé»åœ¨å»ºç¯‰ç‰©å…§ (ä¸åŒ…å«å³ç«¯é»)ï¼Œå‰‡æ›´æ–°è‡¨ç•Œé»é«˜åº¦ (å–æœ€å¤§å€¼ï¼Œæ‰¾å¤©éš›ç·š)
 		for (int[] building : buildings) {
 			int left = building[0];
 			int right = building[1];
@@ -1199,7 +1199,7 @@ public class The_Skyline_Problem {
 			}
 		}
 
-		// Á{¬ÉÂI¨Ì·Ó x ®y¼Ğ¡A¥Ñ¤p¨ì¤j±Æ§Ç
+		// è‡¨ç•Œé»ä¾ç…§ x åº§æ¨™ï¼Œç”±å°åˆ°å¤§æ’åº
 		Collections.sort(criticals, new Comparator<Integer[]>() {
 			public int compare(Integer[] a, Integer[] b) {
 				return a[0] - b[0];
@@ -1221,37 +1221,37 @@ public class The_Skyline_Problem {
 	}
 	
 	/**
-	 * ³o­Ó°µªk¬O ¿ù ªº !!!
+	 * é€™å€‹åšæ³•æ˜¯ éŒ¯ çš„ !!!
 	 * 
 	 * https://briangordon.github.io/2014/08/the-skyline-problem.html
 	 * 
-	 * «Ø¥ß heightMap¡C ±N©Ò¦³«Ø¿vª«ªº°ª«×§ë¼v¦Ü 1D array¡A³o­Ó array Àx¦s¨C­Ó®y¼Ğªº maxHeight¡C§ä¥XÂà§éÂI
-	 * ¿ù»~¡Gx ®y¼Ğ·|¦³»~®t
+	 * å»ºç«‹ heightMapã€‚ å°‡æ‰€æœ‰å»ºç¯‰ç‰©çš„é«˜åº¦æŠ•å½±è‡³ 1D arrayï¼Œé€™å€‹ array å„²å­˜æ¯å€‹åº§æ¨™çš„ maxHeightã€‚æ‰¾å‡ºè½‰æŠ˜é»
+	 * éŒ¯èª¤ï¼šx åº§æ¨™æœƒæœ‰èª¤å·®
 	 * 
-	 * ¿é¤J¡G[[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
-	 * ¥¿½T¡G[[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
-	 * µ²ªG¡G[[2,10],[3,15],[8,12],[13,0],[15,10],[21,8],[24,0]]
+	 * è¼¸å…¥ï¼š[[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+	 * æ­£ç¢ºï¼š[[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+	 * çµæœï¼š[[2,10],[3,15],[8,12],[13,0],[15,10],[21,8],[24,0]]
 	 * 
-	 * ¿ù»~­ì¦]¡GÂà§éÀ³¸Óµo¥Í¦b«Ø¿vª«¥kºİÂI¡AµM¦Ó Math.max «oÁÙ¬O¨ú¨ì³o­Ó§Y±N¹L¥hªº«Ø¿vª«¡A¾É­PÂà§éÂI³Q©¹«á²¾¤@ÂI
+	 * éŒ¯èª¤åŸå› ï¼šè½‰æŠ˜æ‡‰è©²ç™¼ç”Ÿåœ¨å»ºç¯‰ç‰©å³ç«¯é»ï¼Œç„¶è€Œ Math.max å»é‚„æ˜¯å–åˆ°é€™å€‹å³å°‡éå»çš„å»ºç¯‰ç‰©ï¼Œå°è‡´è½‰æŠ˜é»è¢«å¾€å¾Œç§»ä¸€é»
 	 * 
-	 * ¥H¤W­±¬°¨Ò¡G
-	 * [3,7] °ª«× 15 ªº«Ø¿vª«¦b 7 ®É§Y±N¹L¥h¡A¦]¦¹­n¨ú¤ñ¥¦¸G¤@ÂIªº¡A°ª«×¬° 12 ªº«Ø¿v [5,12]
-	 * µM¦Ó¦b 7 ªº Math.max «oÁÙ¬O 15¡A©Ò¥HÂà§é³Q©¹«á²¾¦Ü 8¡A¦Ó¦b 8 ªº Math.max ¬O 12
+	 * ä»¥ä¸Šé¢ç‚ºä¾‹ï¼š
+	 * [3,7] é«˜åº¦ 15 çš„å»ºç¯‰ç‰©åœ¨ 7 æ™‚å³å°‡éå»ï¼Œå› æ­¤è¦å–æ¯”å®ƒçŸ®ä¸€é»çš„ï¼Œé«˜åº¦ç‚º 12 çš„å»ºç¯‰ [5,12]
+	 * ç„¶è€Œåœ¨ 7 çš„ Math.max å»é‚„æ˜¯ 15ï¼Œæ‰€ä»¥è½‰æŠ˜è¢«å¾€å¾Œç§»è‡³ 8ï¼Œè€Œåœ¨ 8 çš„ Math.max æ˜¯ 12
 	 * 
-	 * ¦P²zµo¥Í¦b 
-	 * 12¡A[5,12] °ª«×¬° 12 ªº«Ø¿v
-	 * 20¡A[15,20] °ª«×¬° 10 ªº«Ø¿v
+	 * åŒç†ç™¼ç”Ÿåœ¨ 
+	 * 12ï¼Œ[5,12] é«˜åº¦ç‚º 12 çš„å»ºç¯‰
+	 * 20ï¼Œ[15,20] é«˜åº¦ç‚º 10 çš„å»ºç¯‰
 	 * 
-	 * ­Y¤£¦Ò¼{«Ø¿vª«¥kºİÂI¡A¤]´N¬O±N¤º¼h for loop §ï¦¨
+	 * è‹¥ä¸è€ƒæ…®å»ºç¯‰ç‰©å³ç«¯é»ï¼Œä¹Ÿå°±æ˜¯å°‡å…§å±¤ for loop æ”¹æˆ
 	 * for (int i = left - minX; i < right - minX; i++) {
 	 *     hMap[i] = Math.max(hMap[i], building[2]);
 	 * }
 	 * 
-	 * ¤´·|­±Á{¦Ò¼{ªº array ¤Ó¤j¦Ó¾É­P Memory Limit Exceeded ©Î¬O Time Limit Exceeded ªº°İÃD
-	 * 1. ¿é¤J¡G[[0,2147483647,2147483647]] 
-	 * 2. ¿é¤J¡G[[1,2,1],[2147483646,2147483647,2147483647]]
+	 * ä»æœƒé¢è‡¨è€ƒæ…®çš„ array å¤ªå¤§è€Œå°è‡´ Memory Limit Exceeded æˆ–æ˜¯ Time Limit Exceeded çš„å•é¡Œ
+	 * 1. è¼¸å…¥ï¼š[[0,2147483647,2147483647]] 
+	 * 2. è¼¸å…¥ï¼š[[1,2,1],[2147483646,2147483647,2147483647]]
 	 * 
-	 * ­Y«Ø¿vª«ªº x ®y¼Ğ¬O¯BÂI¼Æ¡A³o­Ó°µªkªººë«×¤]¦³°İÃD
+	 * è‹¥å»ºç¯‰ç‰©çš„ x åº§æ¨™æ˜¯æµ®é»æ•¸ï¼Œé€™å€‹åšæ³•çš„ç²¾åº¦ä¹Ÿæœ‰å•é¡Œ
 	 * https://leetcode.com/problems/the-skyline-problem/discuss/61197/(Guaranteed)-Really-Detailed-and-Good-(Perfect)-Explanation-of-The-Skyline-Problem/147623
 	 */
 	/*

@@ -13,16 +13,16 @@ public class Largest_Number {
 	 * f(B)A + B <= f(A)B + A
 	 * (f(B) - 1)A <= (f(A) - 1)B
 	 * that is
-	 * A <= B¡P(f(A) - 1) / (f(B) - 1)   (1)
+	 * A <= BÂ·(f(A) - 1) / (f(B) - 1)   (1)
 	 * 
 	 * If BC <= CB, then we have
 	 * f(C)B + C <= f(B)C + B
 	 * (f(C) - 1)B <= (f(B) - 1)C
 	 * that is
-	 * B <= C¡P(f(B) - 1) / (f(C) - 1)   (2)
+	 * B <= CÂ·(f(B) - 1) / (f(C) - 1)   (2)
 	 * 
 	 * Combine (1), (2), we have
-	 * A <= C¡P(f(A) - 1) / (f(C) - 1)
+	 * A <= CÂ·(f(A) - 1) / (f(C) - 1)
 	 * (f(C) - 1)A <= (f(A) - 1)C
 	 * f(C)A + C <= f(A)C + A
 	 * AC <= CA

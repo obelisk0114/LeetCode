@@ -48,7 +48,7 @@ public class Dungeon_Game {
 				int right = Math.max(health[i][j + 1] - dungeon[i][j], 1);
 				health[i][j] = Math.min(right, down);
 				
-				// ¤W­±¤T¦æ¤]¥i¥H´«¦¨¤U­±³o¼Ë
+				// ä¸Šé¢ä¸‰è¡Œä¹Ÿå¯ä»¥æ›æˆä¸‹é¢é€™æ¨£
 				/*
 				 * health[i][j] = Math.max(1, 
 				 * 						Math.min(health[i + 1][j], health[i][j + 1]) 

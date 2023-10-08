@@ -143,10 +143,10 @@ public class Perfect_Squares {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/perfect-squares/discuss/71661/O(sqrt(n2))-Applying-Fermat's-theorm-with-BrahmaguptaFibonacci-identity
 	 * 
-	 * check if number fits Legendre¡¦s condition for 4 squares 4^a (8b+7)
+	 * check if number fits Legendre's condition for 4 squares 4^a (8b+7)
 	 * if all factors(or subfactors) are prime and match condtion n%4 == 1 I am 
-	 * guaranteed that my number is sum of 2 squares. Otherwise it¡¦s sum of 3 squares 
-	 * by Legendre¡¦s theorem
+	 * guaranteed that my number is sum of 2 squares. Otherwise it's sum of 3 squares 
+	 * by Legendre's theorem
 	 */
 	public int numSquares_number_theorem2(int n) {
 		if (Math.pow((int) Math.sqrt(n), 2) == n) {

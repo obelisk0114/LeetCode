@@ -13,7 +13,7 @@ import java.util.ArrayDeque;
 import java.util.Stack;
 
 /*
- * ¨› validTree_UF(int n, int[][] edges) {...}
+ * Áúã validTree_UF(int n, int[][] edges) {...}
  */
 
 public class Graph_Valid_Tree {
@@ -23,8 +23,8 @@ public class Graph_Valid_Tree {
 	 * DFS should only go along each edge once, and therefore only in one direction.
 	 * 
 	 * First strategy: delete the opposite direction edges from the adjacency list. 
-	 * In other words, when we follow an edge A °˜ B, we should lookup Bs adjacency 
-	 * list and delete A from it, effectively removing the opposite edge of B °˜ A.
+	 * In other words, when we follow an edge A ‚Üí B, we should lookup Bs adjacency 
+	 * list and delete A from it, effectively removing the opposite edge of B ‚Üí A.
 	 * 
 	 * Second strategy: instead of using a seen set, to use a seen map that also 
 	 * keeps track of the "parent" node that we got to a node from. We'll call this 
@@ -106,8 +106,8 @@ public class Graph_Valid_Tree {
 	 * should only go along each edge once, and therefore only in one direction.
 	 * 
 	 * First strategy: delete the opposite direction edges from the adjacency list. 
-	 * In other words, when we follow an edge A °˜ B, we should lookup Bs adjacency 
-	 * list and delete A from it, effectively removing the opposite edge of B °˜ A.
+	 * In other words, when we follow an edge A ‚Üí B, we should lookup Bs adjacency 
+	 * list and delete A from it, effectively removing the opposite edge of B ‚Üí A.
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/graph-valid-tree/solution/
@@ -169,7 +169,7 @@ public class Graph_Valid_Tree {
 	 * 
 	 * Each time there was no merge, it was because we were adding an edge between 
 	 * two nodes that were already connected via a path. This means there is now an 
-	 * additional path between them°Xwhich is the definition of a cycle.
+	 * additional path between them-which is the definition of a cycle.
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/graph-valid-tree/solution/
@@ -225,7 +225,7 @@ public class Graph_Valid_Tree {
 	 * 
 	 * Each time there was no merge, it was because we were adding an edge between 
 	 * two nodes that were already connected via a path. This means there is now an 
-	 * additional path between them°Xwhich is the definition of a cycle.
+	 * additional path between them-which is the definition of a cycle.
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/graph-valid-tree/solution/
@@ -306,8 +306,8 @@ public class Graph_Valid_Tree {
 	 * should only go along each edge once, and therefore only in one direction.
 	 * 
 	 * First strategy: delete the opposite direction edges from the adjacency list. 
-	 * In other words, when we follow an edge A °˜ B, we should lookup B's adjacency 
-	 * list and delete A from it, effectively removing the opposite edge of B °˜ A.
+	 * In other words, when we follow an edge A ‚Üí B, we should lookup B's adjacency 
+	 * list and delete A from it, effectively removing the opposite edge of B ‚Üí A.
 	 * 
 	 * Second strategy: instead of using a seen set, to use a seen map that also 
 	 * keeps track of the "parent" node that we got to a node from. We'll call this 
@@ -560,7 +560,7 @@ public class Graph_Valid_Tree {
 		
 		for (int v : visited) {
 			// # of connected components is not 1
-			// v != 2 §]•i•H
+			// v != 2 ‰πüÂèØ‰ª•
 			if (v == 0) {
 				return false;
 			}
@@ -634,8 +634,8 @@ public class Graph_Valid_Tree {
 	 * DFS should only go along each edge once, and therefore only in one direction.
 	 * 
 	 * First strategy: delete the opposite direction edges from the adjacency list. 
-	 * In other words, when we follow an edge A °˜ B, we should lookup Bs adjacency 
-	 * list and delete A from it, effectively removing the opposite edge of B °˜ A.
+	 * In other words, when we follow an edge A ‚Üí B, we should lookup Bs adjacency 
+	 * list and delete A from it, effectively removing the opposite edge of B ‚Üí A.
 	 * 
 	 * Second strategy: instead of using a seen set, to use a seen map that also 
 	 * keeps track of the "parent" node that we got to a node from. We'll call this 
