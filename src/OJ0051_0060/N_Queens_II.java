@@ -25,10 +25,10 @@ public class N_Queens_II {
 		}
 
 		for (int col = 0; col < n; col++) {
-			// col ©M row ¦P¤è¦VÅÜ¤Æ, ¬Û´î«O«ù¤£ÅÜ©Ê (\)
+			// col å’Œ row åŒæ–¹å‘è®ŠåŒ–, ç›¸æ¸›ä¿æŒä¸è®Šæ€§ (\)
 			int id1 = col - row + n;
 			
-			// col ©M row ¤Ï¤è¦VÅÜ¤Æ, ¬Û¥[«O«ù¤£ÅÜ©Ê (/)
+			// col å’Œ row åæ–¹å‘è®ŠåŒ–, ç›¸åŠ ä¿æŒä¸è®Šæ€§ (/)
 			int id2 = col + row;
 			
 			if (cols[col] || d1[id1] || d2[id2])
@@ -188,10 +188,10 @@ public class N_Queens_II {
      * The following variable and 2 functions are from this link.
      * https://discuss.leetcode.com/topic/38923/share-my-java-code-beats-97-83-run-times
      * 
-     * ±`³W n-queens ¸Ñªk, ¼Æµª®×­Ó¼Æ.
-     * ¥Îcolumn¼Ğ°O¦¹¦æ¤§«eªº­ş¨Çcolumn¤w¸g©ñ¸m¤Fqueen. ´Ñ½L§¤¼Ğ(row, col)¹ïÀ³columnªº²Äcol¦ì(LSB --> MSB, ¤U¦P).
-     * ¥Îdiag¼Ğ°O¦¹¦ì¸m¤§«eªº­ş¨Ç¥D¹ï¨¤½u¤w¸g©ñ¸m¤Fqueen. ´Ñ½L§¤¼Ğ(row, col)¹ïÀ³diagªº²Ä(n - 1 + row - col)¦ì.
-     * ¥ÎantiDiag¼Ğ°O¦¹¦ì¸m¤§«eªº­ş¨Ç°Æ¹ï¨¤½u¤w¸g©ñ¸m¤Fqueen. ´Ñ½L§¤¼Ğ(row, col)¹ïÀ³antiDiagªº²Ä(row + col)¦ì.
+     * å¸¸è¦ n-queens è§£æ³•, æ•¸ç­”æ¡ˆå€‹æ•¸.
+     * ç”¨columnæ¨™è¨˜æ­¤è¡Œä¹‹å‰çš„å“ªäº›columnå·²ç¶“æ”¾ç½®äº†queen. æ£‹ç›¤åæ¨™(row, col)å°æ‡‰columnçš„ç¬¬colä½(LSB --> MSB, ä¸‹åŒ).
+     * ç”¨diagæ¨™è¨˜æ­¤ä½ç½®ä¹‹å‰çš„å“ªäº›ä¸»å°è§’ç·šå·²ç¶“æ”¾ç½®äº†queen. æ£‹ç›¤åæ¨™(row, col)å°æ‡‰diagçš„ç¬¬(n - 1 + row - col)ä½.
+     * ç”¨antiDiagæ¨™è¨˜æ­¤ä½ç½®ä¹‹å‰çš„å“ªäº›å‰¯å°è§’ç·šå·²ç¶“æ”¾ç½®äº†queen. æ£‹ç›¤åæ¨™(row, col)å°æ‡‰antiDiagçš„ç¬¬(row + col)ä½.
      */
 	int count = 0;
 	public int totalNQueens_bit(int n) {

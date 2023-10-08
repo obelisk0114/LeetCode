@@ -28,7 +28,7 @@ public class Permutations {
 	 * after each swap, I will do a recursion for the rest of the array.
 	 * 
 	 * Rf : 
-	 * http://zhouyichu.com/algorithm/Permutation-Generation-1/#©T©w­º¤¸¯À
+	 * http://zhouyichu.com/algorithm/Permutation-Generation-1/#å›ºå®šé¦–å…ƒç´ 
 	 */
 	public List<List<Integer>> permute_back_swap(int[] num) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
@@ -94,7 +94,7 @@ public class Permutations {
 	 * The following 2 functions are from this link.
 	 * https://discuss.leetcode.com/topic/23036/java-clean-code-two-recursive-solutions
 	 * 
-	 * Rf : http://zhouyichu.com/algorithm/Permutation-Generation-1/#´¡¤Jªk
+	 * Rf : http://zhouyichu.com/algorithm/Permutation-Generation-1/#æ’å…¥æ³•
 	 * 
 	 * Other code : 
 	 * https://discuss.leetcode.com/topic/22890/java-solution-easy-to-understand-backtracking
@@ -255,7 +255,7 @@ public class Permutations {
 		System.out.println(comb);
 	}
 	
-	// ±Æ®e­ì²z
+	// æ’å®¹åŸç†
 	void inclusion_exclusion_principle(int N) {
 		for (int comb = 0; comb < 1 << N; ++comb) {
 			int c = 0; // size of set

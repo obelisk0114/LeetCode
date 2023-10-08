@@ -44,7 +44,7 @@ public class Longest_Palindromic_Substring {
 	/*
 	 * The following 2 functions are by myself
 	 * 
-	 * ¬İ 647. Palindromic Substrings
+	 * çœ‹ 647. Palindromic Substrings
 	 * 
 	 * Rf :
 	 * https://leetcode.wang/leetCode-5-Longest-Palindromic-Substring.html
@@ -52,17 +52,17 @@ public class Longest_Palindromic_Substring {
 	public String longestPalindrome_Manacher2(String s) {
         String t = transform_Manacher(s);
         
-        // P ¬°¦^¤å¥b®|¡A¤£¥]§t¦Û¤v
+        // P ç‚ºå›æ–‡åŠå¾‘ï¼Œä¸åŒ…å«è‡ªå·±
         int[] P = new int[t.length()];
         
-        // C ¬°·í«e¦^¤å¤¤¤ß¡AR ¬°·í«e¦^¤å¥b®|
+        // C ç‚ºç•¶å‰å›æ–‡ä¸­å¿ƒï¼ŒR ç‚ºç•¶å‰å›æ–‡åŠå¾‘
         int C = 0, R = 0;
         
-        // ÀY§À¬O¼Ğ°O²Å¸¹¡A©Ò¥H¥h°£ÀY§À
+        // é ­å°¾æ˜¯æ¨™è¨˜ç¬¦è™Ÿï¼Œæ‰€ä»¥å»é™¤é ­å°¾
         for (int i = 1; i < t.length() - 1; i++) {
             int i_mirror = 2 * C - i;
             
-            // ¨¾¤î¶W¥X R
+            // é˜²æ­¢è¶…å‡º R
             if (R > i) {
                 P[i] = Math.min(P[i_mirror], R - i);
             }
@@ -71,14 +71,14 @@ public class Longest_Palindromic_Substring {
                 P[i] = 0;
             }
             
-            // ¨Ò¥~±¡ªp¡A¨Ï¥Î¤¤¤ßÂX®iªk
-			// P[i] ¬°¦^¤å¥b®|¡AP[i] + 1 ¬°¤U¤@­Ó­n¤ñ¸ûªº¦r¤¸
-			// ¦]¬°´¡¤J¤£¦PªºÀY§À¼Ğ¥Ü²Å¸¹ (^$)¡A©Ò¥H·|¦]¬°¦r¤¸¤£¦P¦Ó¦Û°Ê¸õ¥X while loop
+            // ä¾‹å¤–æƒ…æ³ï¼Œä½¿ç”¨ä¸­å¿ƒæ“´å±•æ³•
+			// P[i] ç‚ºå›æ–‡åŠå¾‘ï¼ŒP[i] + 1 ç‚ºä¸‹ä¸€å€‹è¦æ¯”è¼ƒçš„å­—å…ƒ
+			// å› ç‚ºæ’å…¥ä¸åŒçš„é ­å°¾æ¨™ç¤ºç¬¦è™Ÿ (^$)ï¼Œæ‰€ä»¥æœƒå› ç‚ºå­—å…ƒä¸åŒè€Œè‡ªå‹•è·³å‡º while loop
             while (t.charAt(i + P[i] + 1) == t.charAt(i - P[i] - 1)) {
                 P[i]++;
             }
             
-            // ­Y¥Í¦¨°Ï°ì¶W¹L R¡A§ó·s C¡BR
+            // è‹¥ç”Ÿæˆå€åŸŸè¶…é Rï¼Œæ›´æ–° Cã€R
             if (i + P[i] > R) {
                 C = i;
                 R = i + P[i];
@@ -100,9 +100,9 @@ public class Longest_Palindromic_Substring {
     
     private String transform_Manacher(String s) {
         
-        // ^¡B_¡B$ ¬°­ì¦r¦ê©Ò¨S¦³ªº¦r¤¸
-		// ¨Ï¥Î _ ´¡¤J¨C­Ó¦r¤¸¡A¨Ã¦P®É²K¥[¦bÀY§À
-		// $ ¥NªíÀY³¡°_©l¡C ^ ¥Nªí§À³¡µ²§ô
+        // ^ã€_ã€$ ç‚ºåŸå­—ä¸²æ‰€æ²’æœ‰çš„å­—å…ƒ
+		// ä½¿ç”¨ _ æ’å…¥æ¯å€‹å­—å…ƒï¼Œä¸¦åŒæ™‚æ·»åŠ åœ¨é ­å°¾
+		// $ ä»£è¡¨é ­éƒ¨èµ·å§‹ã€‚ ^ ä»£è¡¨å°¾éƒ¨çµæŸ
         
         if (s == null || s.length() == 0) {
             return "$^";
@@ -196,7 +196,7 @@ public class Longest_Palindromic_Substring {
 				dp[i][j] = s.charAt(i) == s.charAt(j) && 
 						(j - i < 2 || dp[i + 1][j - 1]);
 				
-				// if dp[i][j] is true¡Aupdate result
+				// if dp[i][j] is trueï¼Œupdate result
 				if (dp[i][j] && (result.equals("") || j - i + 1 > result.length())) {
 					result = s.substring(i, j + 1); // substring includes j
 				}

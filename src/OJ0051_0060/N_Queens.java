@@ -8,7 +8,7 @@ public class N_Queens {
 	/*
 	 * The following 3 functions are by myself.
 	 * 
-	 * list Àx¦s¨C­Ó row ¬Ó¦Zªº¦ì¸m (x ®y¼Ğ)
+	 * list å„²å­˜æ¯å€‹ row çš‡åçš„ä½ç½® (x åº§æ¨™)
 	 * 
 	 * Rf : https://discuss.leetcode.com/topic/19470/my-easy-understanding-java-solution
 	 */
@@ -60,7 +60,7 @@ public class N_Queens {
 				return false;
 			}
 			
-			// Check diagonal (¹ï¨¤½u±×²v¬° 1 ©Î¬O -1)
+			// Check diagonal (å°è§’ç·šæ–œç‡ç‚º 1 æˆ–æ˜¯ -1)
 			if (y - i == Math.abs(x - list.get(i))) {
 				return false;
 			}

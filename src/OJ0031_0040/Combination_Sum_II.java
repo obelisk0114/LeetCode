@@ -35,7 +35,7 @@ public class Combination_Sum_II {
 			return;
 		}
 		
-		// ¥i¥H¥[¤W³o¬q
+		// å¯ä»¥åŠ ä¸Šé€™æ®µ
 		//if (target < 0)
 			//return;
 		

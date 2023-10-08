@@ -5,9 +5,9 @@ public class Edit_Distance {
 	 * https://leetcode.com/problems/edit-distance/discuss/25914/Concise-JAVA-DP-solution-with-comments
 	 * 
 	 * Any adjacent value in the matrix dp can only diff by 1. So 
-	 * dp[i - 1][j - 1] <= dp[i ¡V 1][j] + 1. Otherwise we can first transform to 
-	 * dp[i ¡V 1][j] then do one operation to dp[i - 1][j - 1] and the dp[i-1][j-1] 
-	 * would no longer be the minimum distance. The same to dp[i][j ¡V 1]
+	 * dp[i - 1][j - 1] <= dp[i - 1][j] + 1. Otherwise we can first transform to 
+	 * dp[i - 1][j] then do one operation to dp[i - 1][j - 1] and the dp[i-1][j-1] 
+	 * would no longer be the minimum distance. The same to dp[i][j - 1]
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/edit-distance/discuss/25846/C++-O(n)-space-DP/24843

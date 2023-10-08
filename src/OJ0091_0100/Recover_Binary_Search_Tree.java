@@ -152,14 +152,14 @@ public class Recover_Binary_Search_Tree {
 	 * 
 	 * Morris Traversal
 	 * 
-	 * ·í left child ¬°ªÅ¡A¿é¥X·í«e¸`ÂI¨Ã¨«¨ì right child¡C
-	 * ·í left child ¤£¬°ªÅ¡A¦b·í«e¸`ÂIªº left tree ¤¤§ä¨ì·í«e¸`ÂI¦bin order traversal ªº«e¤@­Ó¸`ÂI¡C
-	 * a. ¦pªG«e¤@­Ó¸`ÂIªº right child ¬°ªÅ¡A±N¥¦ªº right child ³]¸m¬°·í«e¸`ÂI¡C
-	 *    ·í«e¸`ÂI§ó·s¬°·í«e¸`ÂIªº left child¡C
-	 * b. ¦pªG«e¤@­Ó¸`ÂIªº right child ¬°·í«e¸`ÂI¡A±N¥¦ªº right child ­«·s³]¬°ªÅ¡]«ì´_¾ğªº§Îª¬¡^¡C
-	 *    ¿é¥X·í«e¸`ÂI¡C·í«e¸`ÂI§ó·s¬°·í«e¸`ÂIªº right child¡C
+	 * ç•¶ left child ç‚ºç©ºï¼Œè¼¸å‡ºç•¶å‰ç¯€é»ä¸¦èµ°åˆ° right childã€‚
+	 * ç•¶ left child ä¸ç‚ºç©ºï¼Œåœ¨ç•¶å‰ç¯€é»çš„ left tree ä¸­æ‰¾åˆ°ç•¶å‰ç¯€é»åœ¨in order traversal çš„å‰ä¸€å€‹ç¯€é»ã€‚
+	 * a. å¦‚æœå‰ä¸€å€‹ç¯€é»çš„ right child ç‚ºç©ºï¼Œå°‡å®ƒçš„ right child è¨­ç½®ç‚ºç•¶å‰ç¯€é»ã€‚
+	 *    ç•¶å‰ç¯€é»æ›´æ–°ç‚ºç•¶å‰ç¯€é»çš„ left childã€‚
+	 * b. å¦‚æœå‰ä¸€å€‹ç¯€é»çš„ right child ç‚ºç•¶å‰ç¯€é»ï¼Œå°‡å®ƒçš„ right child é‡æ–°è¨­ç‚ºç©ºï¼ˆæ¢å¾©æ¨¹çš„å½¢ç‹€ï¼‰ã€‚
+	 *    è¼¸å‡ºç•¶å‰ç¯€é»ã€‚ç•¶å‰ç¯€é»æ›´æ–°ç‚ºç•¶å‰ç¯€é»çš„ right childã€‚
 	 * 
-	 * left tree ³Ì¥kÃäªº node ¥u¦³ 2 ºØ±¡§Î¡Anull ©Î¬O¦Û¤v
+	 * left tree æœ€å³é‚Šçš„ node åªæœ‰ 2 ç¨®æƒ…å½¢ï¼Œnull æˆ–æ˜¯è‡ªå·±
 	 * 
 	 * Morris Traversal or Morris Threading Traversal.
 	 * It take use of leaf nodes' right/left pointer to achieve O(1) space Traversal 

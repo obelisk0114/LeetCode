@@ -138,7 +138,7 @@ public class Four_Sum {
 			return;
 		}
 
-		// Á×§K¤@¨Ç¤£¥²­ncase
+		// é¿å…ä¸€äº›ä¸å¿…è¦case
 		if (k * nums[start] > target || k * nums[nums.length - 1] < target)
 			return;
 
@@ -148,8 +148,8 @@ public class Four_Sum {
 			if (i > start && nums[i] == nums[i - 1])
 				continue;
 			
-			// ­«ÂI
-			if (k * nums[i] <= target) { // Á×§K±¼¤@¨Ç¤£¥²­ncase
+			// é‡é»
+			if (k * nums[i] <= target) { // é¿å…æ‰ä¸€äº›ä¸å¿…è¦case
 				cur.add(nums[i]);
 				kSum(result, cur, nums, target - nums[i], k - 1, i + 1);
 				cur.remove(cur.size() - 1);

@@ -5,21 +5,21 @@ package OJ0041_0050;
 public class Trapping_Rain_Water {
 	/*
 	 * https://leetcode.wang/leetCode-42-Trapping-Rain-Water.html
-	 * �Ѫk�T �ʺA�W��
+	 * 解法三 動態規劃
 	 * 
-	 * �D�C�@�C�����A�ڭ̥u�ݭn���`���e�C�A�H�Υ���̰�����A�k��̰�����N���F�C
-	 * �ˤ����h�֡A���M�ھڤ�������A�ڭ̥u�ݭn�ݥ���̰�����M�k��̰����𤤸��G���@�ӴN���F�C
+	 * 求每一列的水，我們只需要關注當前列，以及左邊最高的牆，右邊最高的牆就夠了。
+	 * 裝水的多少，當然根據木桶效應，我們只需要看左邊最高的牆和右邊最高的牆中較矮的一個就夠了。
 	 * 
-	 * �����Ψ�Ӱ}�C�Amax_left[i] �N���� i �C����̰����𪺰��סAmax_right[i] �N���� i �C�k��̰�����
-	 * �����סC (�@�w�n�`�N�U�A�� i �C��(�k)��̰�����A�O���]�A�ۨ����A�M leetcode �W�䪺�������Ǥ��P)
+	 * 首先用兩個陣列，max_left[i] 代表第 i 列左邊最高的牆的高度，max_right[i] 代表第 i 列右邊最高的牆
+	 * 的高度。 (一定要注意下，第 i 列左(右)邊最高的牆，是不包括自身的，和 leetcode 上邊的講的有些不同)
 	 * 
-	 * ��� max_left �ڭ̨��i�H�o�˨D�C
-	 * max_left[i] = Max ( max_left [i-1] , height[i-1])�C���e�䪺�𪺥��䪺�̰����שM���e�䪺
-	 * �𪺰��׿�@�Ӹ��j���A�N�O���e�C����̰�����F�C
+	 * 對於 max_left 我們其實可以這樣求。
+	 * max_left[i] = Max ( max_left [i-1] , height[i-1])。它前邊的牆的左邊的最高高度和它前邊的
+	 * 牆的高度選一個較大的，就是當前列左邊最高的牆了。
 	 * 
-	 * ��� max_right �ڭ̥i�H�o�˨D�C
-	 * max_right[i] = Max ( max_right[i+1] , height[i+1])�C�����䪺�𪺥k�䪺�̰����שM�����䪺
-	 * �𪺰��׿�@�Ӹ��j���A�N�O���e�C�k��̰�����F�C
+	 * 對於 max_right 我們可以這樣求。
+	 * max_right[i] = Max ( max_right[i+1] , height[i+1])。它後邊的牆的右邊的最高高度和它後邊的
+	 * 牆的高度選一個較大的，就是當前列右邊最高的牆了。
 	 */
 	public int trap_dp(int[] height) {
 	    int sum = 0;

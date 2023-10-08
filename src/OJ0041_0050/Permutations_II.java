@@ -86,7 +86,7 @@ public class Permutations_II {
 	 * The following 3 functions are from this link.
 	 * https://discuss.leetcode.com/topic/38166/java-recursive-solution-with-minimal-extra-space
 	 * 
-	 * Rf : http://wuchong.me/blog/2014/07/28/permutation-and-combination-realize/#¥h­«ªº¥ş±Æ¦C
+	 * Rf : http://wuchong.me/blog/2014/07/28/permutation-and-combination-realize/#å»é‡çš„å…¨æ’åˆ—
 	 */
 	public List<List<Integer>> permuteUnique_check_same_number(int[] nums) {
 		List<List<Integer>> result = new ArrayList<>();

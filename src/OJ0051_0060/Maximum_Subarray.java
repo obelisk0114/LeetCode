@@ -4,7 +4,7 @@ package OJ0051_0060;
  * https://en.wikipedia.org/wiki/Maximum_subarray_problem
  * 
  * http://blog.csdn.net/hcbbt/article/details/10454947
- * http://emn178.pixnet.net/blog/post/88907691-�̤j�l�ǦC%28maximum-subarray%29
+ * http://emn178.pixnet.net/blog/post/88907691-最大子序列%28maximum-subarray%29
  * https://my.oschina.net/itblog/blog/267860
  * 
  * https://stackoverflow.com/questions/16605991/number-of-subarrays-divisible-by-k

@@ -123,9 +123,9 @@ public class Scramble_String {
         int n = s1.length();
 		boolean res = false;
 		
-		// ¦UÂI¤Á³Î
+		// å„é»åˆ‡å‰²
 		for (int i = 1; i < n; i++) {
-			// ¥æ´«¬Û¦P
+			// äº¤æ›ç›¸åŒ
 			if (dfs_modified_self(s1.substring(0, i), s2.substring(n - i, n), cache) 
 					&& dfs_modified_self(s1.substring(i, n), s2.substring(0, n - i), 
 							cache)) {
@@ -133,7 +133,7 @@ public class Scramble_String {
 				res = true;
                 break;
 			} 
-			// ­ì¥ı¬Û¦P
+			// åŸå…ˆç›¸åŒ
 			else if (dfs_modified_self(s1.substring(0, i), s2.substring(0, i), cache) 
 					&& dfs_modified_self(s1.substring(i, n), s2.substring(i, n), 
 							cache)) {
@@ -151,8 +151,8 @@ public class Scramble_String {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/scramble-string/discuss/359319/Share-my-notes-of-this-problem
 	 * 
-	 * true ©M false ªºµ²ªG³£¦³³Q§Q¥Î
-	 * ªì©l¤Æ¬° 0, true ¬° 1, false ¬° 2
+	 * true å’Œ false çš„çµæœéƒ½æœ‰è¢«åˆ©ç”¨
+	 * åˆå§‹åŒ–ç‚º 0, true ç‚º 1, false ç‚º 2
 	 */
 	public boolean isScramble_boolean3(String s1, String s2) {
 		if (s1.equals(s2)) {
@@ -204,7 +204,7 @@ public class Scramble_String {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/scramble-string/discuss/359319/Share-my-notes-of-this-problem
 	 * 
-	 * ¨S¦³§Q¥Î¨ì false ªºµ²ªG
+	 * æ²’æœ‰åˆ©ç”¨åˆ° false çš„çµæœ
 	 * 
 	 * TLE
 	 * use recursive plus memory method. there still have duplicate calculation

@@ -28,7 +28,7 @@ public class Combination_Sum {
 	private void dfs(List<List<Integer>> ans, List<Integer> list, 
 			int[] cand, int remain, int from) {
 		
-		// ¥i¥H¬Ù²¤
+		// å¯ä»¥çœç•¥
 		if (remain < 0) {
 			return;
 		}
@@ -43,14 +43,14 @@ public class Combination_Sum {
 			if (remain - cand[i] < 0)
 				break;
 			
-			// ¥i¥H¥[¤W³o¬q, ¦]¬°¤U¤@­Ó from ÁÙ¬O±q i ¶}©l, ©Ò¥H¥i¥H­«½Æ¿ï¨ú
+			// å¯ä»¥åŠ ä¸Šé€™æ®µ, å› ç‚ºä¸‹ä¸€å€‹ from é‚„æ˜¯å¾ i é–‹å§‹, æ‰€ä»¥å¯ä»¥é‡è¤‡é¸å–
 			//if (i > from && cand[i] == cand[i - 1]) {
                 //continue;
             //}
 			
 			list.add(cand[i]);
 			
-			// ¥i¥H­«½Æ¿ï¨ú, ©Ò¥H¤U¤@­Ó from ÁÙ¬O i
+			// å¯ä»¥é‡è¤‡é¸å–, æ‰€ä»¥ä¸‹ä¸€å€‹ from é‚„æ˜¯ i
 			dfs(ans, list, cand, remain - cand[i], i);
 			
 			list.remove(list.size() - 1);

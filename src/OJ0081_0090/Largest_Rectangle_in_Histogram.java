@@ -61,29 +61,29 @@ public class Largest_Rectangle_in_Histogram {
 	/*
 	 * https://discuss.leetcode.com/topic/7599/o-n-stack-based-java-solution
 	 * 
-	 * ¥u¦³·í«e°ª«× <= ¤§«e°ª«×¡A¯x§Îªº°ª«×¤~¬O·í«e°ª«×
-	 * ¦]¦¹¥Î stack Àx¦s»¼¼W°ª«×ªº index (height[i] <= height[j], i < j)
+	 * åªæœ‰ç•¶å‰é«˜åº¦ <= ä¹‹å‰é«˜åº¦ï¼ŒçŸ©å½¢çš„é«˜åº¦æ‰æ˜¯ç•¶å‰é«˜åº¦
+	 * å› æ­¤ç”¨ stack å„²å­˜éå¢é«˜åº¦çš„ index (height[i] <= height[j], i < j)
 	 * 
-	 * ­Y·í«e°ª«× (height[i]) < height[stack.top_old]
-	 * ªí¥Ü¤§«á¯x§Î­Y­n¦ù®i¨ì index < i ªº¸Ü¡A°ª«× <= height[i]
-	 * ¦]¦¹¥i¥H¥ı¨D¦b index < i ¥B height[index] > height[i] §@¬°°ª«×ªº¯x§Îªº³Ì¤j­±¿n
+	 * è‹¥ç•¶å‰é«˜åº¦ (height[i]) < height[stack.top_old]
+	 * è¡¨ç¤ºä¹‹å¾ŒçŸ©å½¢è‹¥è¦ä¼¸å±•åˆ° index < i çš„è©±ï¼Œé«˜åº¦ <= height[i]
+	 * å› æ­¤å¯ä»¥å…ˆæ±‚åœ¨ index < i ä¸” height[index] > height[i] ä½œç‚ºé«˜åº¦çš„çŸ©å½¢çš„æœ€å¤§é¢ç©
 	 * 
-	 * ¶}©l pop¡A¨Ó¨D¥H height[stack.top_old] ¬°°ª«×ªº¯x§Îªº¼e«×
-	 * ¥ı pop¡A¨Ã°O¿ı¦¹ index ¬° tp¡A¬Û¹ïÀ³ªº°ª«×¬° height[tp] (height[stack.top_old])
-	 * ¥Ñ©ó stack »¼¼W¡A¦]¦¹ height[stack.top_new] <= height[tp]
+	 * é–‹å§‹ popï¼Œä¾†æ±‚ä»¥ height[stack.top_old] ç‚ºé«˜åº¦çš„çŸ©å½¢çš„å¯¬åº¦
+	 * å…ˆ popï¼Œä¸¦è¨˜éŒ„æ­¤ index ç‚º tpï¼Œç›¸å°æ‡‰çš„é«˜åº¦ç‚º height[tp] (height[stack.top_old])
+	 * ç”±æ–¼ stack éå¢ï¼Œå› æ­¤ height[stack.top_new] <= height[tp]
 	 * 
-	 * ©Ò¥H¥H height[tp] ¬°°ª«×ªº¯x§Î¡A¼e«×¬° (i - 1) - stack.top_new
-	 * ´N¬O i - 1 ¨ì stack.top_new + 1¡A¦]¬° height[i] < height[stack.top_old] = height[tp] 
-	 * i - 1 ¨ì stack.top_new + 1 ¤§¶¡¤£·|¦³¬Y­Ó°ª«× j¡Aheight[j] < height[tp]
-	 * ¦]¬°³o­Ó j ·|±N stack top ¤£Â_ pop ª½¨ì¥i¥H³Q push ¶i stack ¬°¤î
+	 * æ‰€ä»¥ä»¥ height[tp] ç‚ºé«˜åº¦çš„çŸ©å½¢ï¼Œå¯¬åº¦ç‚º (i - 1) - stack.top_new
+	 * å°±æ˜¯ i - 1 åˆ° stack.top_new + 1ï¼Œå› ç‚º height[i] < height[stack.top_old] = height[tp] 
+	 * i - 1 åˆ° stack.top_new + 1 ä¹‹é–“ä¸æœƒæœ‰æŸå€‹é«˜åº¦ jï¼Œheight[j] < height[tp]
+	 * å› ç‚ºé€™å€‹ j æœƒå°‡ stack top ä¸æ–· pop ç›´åˆ°å¯ä»¥è¢« push é€² stack ç‚ºæ­¢
 	 * 
-	 * ¤§«á±N i-- ¨Ó©T©w i¡A«ùÄò pop ¨Ã­pºâ¥H height[stack.top_newI] ¬°°ª«×ªº³Ì¤j¯x§Î
-	 * ª½¨ì height[i] >= height[stack.top]¡A±N i ©ñ¤J stack
-	 * ¦]¦¹­Y height[stack.top_new] = height[tp] ®É¡A
-	 * ¥H height[tp] ¬°°ª«×ªº³Ì¤j¯x§Î·|¦b¥H  height[stack.top_new] ¬°°ª«×®É¡A³Q§ó·s
+	 * ä¹‹å¾Œå°‡ i-- ä¾†å›ºå®š iï¼ŒæŒçºŒ pop ä¸¦è¨ˆç®—ä»¥ height[stack.top_newI] ç‚ºé«˜åº¦çš„æœ€å¤§çŸ©å½¢
+	 * ç›´åˆ° height[i] >= height[stack.top]ï¼Œå°‡ i æ”¾å…¥ stack
+	 * å› æ­¤è‹¥ height[stack.top_new] = height[tp] æ™‚ï¼Œ
+	 * ä»¥ height[tp] ç‚ºé«˜åº¦çš„æœ€å¤§çŸ©å½¢æœƒåœ¨ä»¥  height[stack.top_new] ç‚ºé«˜åº¦æ™‚ï¼Œè¢«æ›´æ–°
 	 * 
-	 * ­Y¥uÀx¦sÄY®æ»¼¼W°ª«×¡A¤§«á­pºâ¯x§Î¼e«×·|¦hºâ
-	 * test case: [0,1,2,3,3,1,2] ¦]¬°²Ä¤G­Ó 1 ¨S©ñ¤J¡A¾É­P²Ä¤G­Ó 2 ¦hºâ¼e«×
+	 * è‹¥åªå„²å­˜åš´æ ¼éå¢é«˜åº¦ï¼Œä¹‹å¾Œè¨ˆç®—çŸ©å½¢å¯¬åº¦æœƒå¤šç®—
+	 * test case: [0,1,2,3,3,1,2] å› ç‚ºç¬¬äºŒå€‹ 1 æ²’æ”¾å…¥ï¼Œå°è‡´ç¬¬äºŒå€‹ 2 å¤šç®—å¯¬åº¦
 	 * 
 	 * Use a stack to save the index of each array entry in a ascending order; 
 	 * once the current entry is smaller than the one with the index s.top(), 
