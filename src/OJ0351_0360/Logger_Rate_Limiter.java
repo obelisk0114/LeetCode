@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 
  * @author 15T-J000
  *
- * ©|¥¼¾ã²z
+ * å°šæœªæ•´ç†
  * 
  * https://leetcode.com/problems/logger-rate-limiter/solution/
  * https://leetcode.com/problems/logger-rate-limiter/discuss/391558/Review-of-four-different-solutions%3A-HashMap-Two-Sets-Queue-with-Set-Radix-buckets-(Java-centric)

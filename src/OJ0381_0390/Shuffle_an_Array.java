@@ -54,7 +54,7 @@ public class Shuffle_an_Array {
 	/*
 	 * https://leetcode.com/problems/shuffle-an-array/discuss/86017/Using-Fisheru2013Yates-shuffle-java-solution.
 	 * 
-	 * refer wikipedia for Fisher¡VYates shuffle
+	 * refer wikipedia for Fisher-Yates shuffle
 	 * 
 	 * Other code :
 	 * https://leetcode.com/problems/shuffle-an-array/discuss/197912/Java-150ms-faster-than-94
@@ -130,9 +130,9 @@ public class Shuffle_an_Array {
 	/*
 	 * https://leetcode.com/problems/shuffle-an-array/discuss/86006/simple-java-solution
 	 * 
-	 * Inside-Out Algorithm ºâªkªº°ò¥»«ä·Q¬O±q«e¦V«á±½´y¼Æ¾Ú¡A§â¦ì¸m i ªº¼Æ¾ÚÀH¾÷´¡¤J¨ì«e i ­Ó(¥]¬A²Ä i ­Ó)
-	 * ¦ì¸m¤¤(°²³]¬° k)¡A³o­Ó¾Ş§@¬O¦b·s°}¦C¤¤¶i¦æ¡AµM«á§â­ì©l¼Æ¾Ú¤¤¦ì¸m k ªº¼Æ¦r´À´«·s°}¦C¦ì¸m i ªº¼Æ¦r¡C¨ä¹ê®ÄªG
-	 * ¬Û·í©ó·s°}¦C¤¤¦ì¸m k ©M¦ì¸m i ªº¼Æ¦r¶i¦æ¥æ´«¡C
+	 * Inside-Out Algorithm ç®—æ³•çš„åŸºæœ¬æ€æƒ³æ˜¯å¾å‰å‘å¾Œæƒææ•¸æ“šï¼ŒæŠŠä½ç½® i çš„æ•¸æ“šéš¨æ©Ÿæ’å…¥åˆ°å‰ i å€‹(åŒ…æ‹¬ç¬¬ i å€‹)
+	 * ä½ç½®ä¸­(å‡è¨­ç‚º k)ï¼Œé€™å€‹æ“ä½œæ˜¯åœ¨æ–°é™£åˆ—ä¸­é€²è¡Œï¼Œç„¶å¾ŒæŠŠåŸå§‹æ•¸æ“šä¸­ä½ç½® k çš„æ•¸å­—æ›¿æ›æ–°é™£åˆ—ä½ç½® i çš„æ•¸å­—ã€‚å…¶å¯¦æ•ˆæœ
+	 * ç›¸ç•¶æ–¼æ–°é™£åˆ—ä¸­ä½ç½® k å’Œä½ç½® i çš„æ•¸å­—é€²è¡Œäº¤æ›ã€‚
 	 * 
 	 * Rf : https://blog.csdn.net/qq_26399665/article/details/79831490
 	 */

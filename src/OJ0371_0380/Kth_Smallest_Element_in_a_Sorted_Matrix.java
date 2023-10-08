@@ -179,10 +179,10 @@ public class Kth_Smallest_Element_in_a_Sorted_Matrix {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/discuss/301357/Java-0ms-(added-Python-and-C%2B%2B)%3A-Easy-to-understand-solutions-using-Heap-and-Binary-Search
 	 * 
-	 * An alternate could be to apply the Binary Search on the ：number range； instead 
-	 * of the ：index range；. As we know that the smallest number of our matrix is at 
+	 * An alternate could be to apply the Binary Search on the "number range" instead 
+	 * of the "index range". As we know that the smallest number of our matrix is at 
 	 * the top left corner and the biggest number is at the bottom right corner. 
-	 * These two number can represent the ：range； i.e., the start and the end for the 
+	 * These two number can represent the "range" i.e., the start and the end for the 
 	 * Binary Search.
 	 * 
 	 * 1. Start the Binary Search with start = matrix[0][0] and end = matrix[n-1][n-1]
@@ -190,16 +190,16 @@ public class Kth_Smallest_Element_in_a_Sorted_Matrix {
 	 *    an element in the matrix.
 	 * 3. Count all the numbers smaller than or equal to middle in the matrix. As the 
 	 *    matrix is sorted, we can do this in O(N).
-	 * 4. While counting, we can keep track of the ：smallest number greater than the 
-	 *    middle； (let・s call it n2) and at the same time the ：biggest number less 
-	 *    than or equal to the middle； (let・s call it n1). These two numbers will be 
+	 * 4. While counting, we can keep track of the "smallest number greater than the 
+	 *    middle" (let's call it n2) and at the same time the "biggest number less 
+	 *    than or equal to the middle" (let's call it n1). These two numbers will be 
 	 *    used to adjust the "number range" for the Binary Search in the next 
 	 *    iteration.
-	 * 5. If the count is equal to ．K・, n1 will be our required number as it is the 
-	 *    ：biggest number less than or equal to the middle；, and is definitely present 
+	 * 5. If the count is equal to 'K', n1 will be our required number as it is the 
+	 *    "biggest number less than or equal to the middle", and is definitely present 
 	 *    in the matrix.
-	 * 6. If the count is less than ．K・, we can update start = n2 to search in the 
-	 *    higher part of the matrix and if the count is greater than ．K・, we can 
+	 * 6. If the count is less than 'K', we can update start = n2 to search in the 
+	 *    higher part of the matrix and if the count is greater than 'K', we can 
 	 *    update end = n1 to search in the lower part of the matrix in the next 
 	 *    iteration.
 	 *    

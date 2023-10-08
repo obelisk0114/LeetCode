@@ -12,7 +12,7 @@ public class Nested_List_Weight_Sum_II {
 	/*
 	 * https://discuss.leetcode.com/topic/49488/java-ac-bfs-solution
 	 * 
-	 * prev ¤£Â_²Ö¥[, ¶V¤W¼hªº³Q¥[¤J total ªº¦¸¼Æ¤]¶V¦h (weighted)
+	 * prev ä¸æ–·ç´¯åŠ , è¶Šä¸Šå±¤çš„è¢«åŠ å…¥ total çš„æ¬¡æ•¸ä¹Ÿè¶Šå¤š (weighted)
 	 */
 	public int depthSumInverse_BFS(List<NestedInteger> nestedList) {
         if (nestedList == null) return 0;

@@ -9,9 +9,9 @@ public class Longest_Substring_with_At_Least_K_Repeating_Characters {
 	 * The following 2 functions are from this link.
 	 * https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/119700/Java-3ms-10-lines-beat-100
 	 * 
-	 * ¸õ¹L¼Æ¶q¤£¨ì k ªº¦ì¸m, »¼°j³B²z
+	 * è·³éæ•¸é‡ä¸åˆ° k çš„ä½ç½®, éè¿´è™•ç†
 	 * 
-	 * longestSubstring_n(String s, int k) ¬O O(n) ªº°µªk
+	 * longestSubstring_n(String s, int k) æ˜¯ O(n) çš„åšæ³•
 	 * 
 	 * Rf : https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/87741/Java-divide-and-conquer(recursion)-solution
 	 * 
@@ -106,17 +106,17 @@ public class Longest_Substring_with_At_Least_K_Repeating_Characters {
 	/*
 	 * https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/170010/Java-O(n)-Solution-with-Detailed-Explanation-Sliding-Window
 	 * 
-	 * ¦b¤£¦Pªº unique character ¤W­­ (u) ¤U¡A¨Ï¥Î sliding window (±q 0 ¨ì s.length() - 1)
-	 * ­Y³o¦¸ iterate ªº unique character (unique) ÁÙ¨S¶W¹L (<=) ¸Ó iteration ©ÒÀ³¹F¨ìªº¤W­­ (u)
+	 * åœ¨ä¸åŒçš„ unique character ä¸Šé™ (u) ä¸‹ï¼Œä½¿ç”¨ sliding window (å¾ 0 åˆ° s.length() - 1)
+	 * è‹¥é€™æ¬¡ iterate çš„ unique character (unique) é‚„æ²’è¶…é (<=) è©² iteration æ‰€æ‡‰é”åˆ°çš„ä¸Šé™ (u)
 	 *   expand
-	 * §_«h 
+	 * å¦å‰‡ 
 	 *   shrink
 	 * 
-	 * ¨Ã¨Ï¥Î kOrMore ¨Ó°O¿ı¹F¨ì k ªº unique character ¼Æ¶q
+	 * ä¸¦ä½¿ç”¨ kOrMore ä¾†è¨˜éŒ„é”åˆ° k çš„ unique character æ•¸é‡
 	 * 
-	 * ¨C¦¸ iteration ®É¡A§ó·s max ªº±ø¥ó
-	 * 1. kOrMore ©M unique character ¼Æ¶q¬Û¦P¡Aªí¥Ü©Ò¦³ unique character ³£ >= k
-	 * 2. ¹F¨ì¸Ó iteration ©Ò­n¨Dªº unique character ¤W­­ (¥i¬Ù²¤)
+	 * æ¯æ¬¡ iteration æ™‚ï¼Œæ›´æ–° max çš„æ¢ä»¶
+	 * 1. kOrMore å’Œ unique character æ•¸é‡ç›¸åŒï¼Œè¡¨ç¤ºæ‰€æœ‰ unique character éƒ½ >= k
+	 * 2. é”åˆ°è©² iteration æ‰€è¦æ±‚çš„ unique character ä¸Šé™ (å¯çœç•¥)
 	 * 
 	 * Iterate through the number of possible unique letters 1 to 26. Lets call our 
 	 * target amount of unique letters u. We search all windows of letters where the 

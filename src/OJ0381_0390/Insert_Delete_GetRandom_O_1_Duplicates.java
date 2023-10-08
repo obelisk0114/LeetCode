@@ -48,7 +48,7 @@ public class Insert_Delete_GetRandom_O_1_Duplicates {
 		boolean contain = locs.containsKey(val);
 		if (!contain) {
 			locs.put(val, new HashSet<Integer>());
-			// ¤U­±¤@¦æ¬O­ì©l¸Ñªk, ¨Ï¥Î LinkedHashSet
+			// ä¸‹é¢ä¸€è¡Œæ˜¯åŸå§‹è§£æ³•, ä½¿ç”¨ LinkedHashSet
 			//locs.put(val, new LinkedHashSet<Integer>());
 		}
 		
