@@ -16,36 +16,36 @@ public class OneThreeTwo_Pattern {
 	 * The following class and function are from this link.
 	 * https://leetcode.com/problems/132-pattern/discuss/94077/Java-O(n)-solution-using-stack-in-detail-explanation
 	 * 
-	 * stack.peek() ªº min ¬O global ³Ì¤p¡Amax ¬O min ¤§«á³Ì¤jªº¤¸¯À
-	 * ¦]¦¹·sªº¤¸¯À (num) ­Y¤ñ stack.peek().min ¤p¡Aªí¥Ü¥i¥H±q¥L¶}©l·sªº½u¬q¡A©Ò¥H push (num, num)
+	 * stack.peek() çš„ min æ˜¯ global æœ€å°ï¼Œmax æ˜¯ min ä¹‹å¾Œæœ€å¤§çš„å…ƒç´ 
+	 * å› æ­¤æ–°çš„å…ƒç´  (num) è‹¥æ¯” stack.peek().min å°ï¼Œè¡¨ç¤ºå¯ä»¥å¾ä»–é–‹å§‹æ–°çš„ç·šæ®µï¼Œæ‰€ä»¥ push (num, num)
 	 * 
-	 * §_«h stack.pop() ¥X¨Ó¡A±N³o­Ó pop ¥Xªº Pair ©w¬° last
-	 *   ­Y num < last.max ¹F¦¨±ø¥ó¡Areturn true
-	 *   §_«h num ¥i¥H¦X¨Ö¨ì last ¸Ì­±¡A¦P®É½T»{«e­±¦³­ş¨Ç½u¬q³Q¥]§t
-	 *   ¦]¬° last.min ¬O global ³Ì¤p¡A§Ú­Ì¥u­nÀË¬d¨ì stack ¸Ì­± Pair ªº max < num¡A³o­Ó Pair ´N³Q¥]§t
-	 *     stack ¤£Â_ pop ³Q¥]§tªº Pair
-	 *     ­Y¦¹°j°é°±¤î¡Aªí¥Ü stack.peek().max > num
-	 *     °²¦p¦¹®É¡Astack.peek().min < num¡Aªí¥Ü§Ú­Ì§ä¨ì 132 pattern¡Areturn true
-	 *     §_«h±N§ó·s«áªº last push ¶i¥h stack
+	 * å¦å‰‡ stack.pop() å‡ºä¾†ï¼Œå°‡é€™å€‹ pop å‡ºçš„ Pair å®šç‚º last
+	 *   è‹¥ num < last.max é”æˆæ¢ä»¶ï¼Œreturn true
+	 *   å¦å‰‡ num å¯ä»¥åˆä½µåˆ° last è£¡é¢ï¼ŒåŒæ™‚ç¢ºèªå‰é¢æœ‰å“ªäº›ç·šæ®µè¢«åŒ…å«
+	 *   å› ç‚º last.min æ˜¯ global æœ€å°ï¼Œæˆ‘å€‘åªè¦æª¢æŸ¥åˆ° stack è£¡é¢ Pair çš„ max < numï¼Œé€™å€‹ Pair å°±è¢«åŒ…å«
+	 *     stack ä¸æ–· pop è¢«åŒ…å«çš„ Pair
+	 *     è‹¥æ­¤è¿´åœˆåœæ­¢ï¼Œè¡¨ç¤º stack.peek().max > num
+	 *     å‡å¦‚æ­¤æ™‚ï¼Œstack.peek().min < numï¼Œè¡¨ç¤ºæˆ‘å€‘æ‰¾åˆ° 132 patternï¼Œreturn true
+	 *     å¦å‰‡å°‡æ›´æ–°å¾Œçš„ last push é€²å» stack
 	 * 
 	 * ------------------------------------------------------------
 	 * 
-	 * ¥Î stack °O¿ı (min, max)¡A¨C­Ó (min, max) ½u¬q³£¨S¦³¥æ¶°¡C
-	 * stack ¤¤ªº min ¬O sorted¡Astack.peek().min ¬O³Ì¤pªº
+	 * ç”¨ stack è¨˜éŒ„ (min, max)ï¼Œæ¯å€‹ (min, max) ç·šæ®µéƒ½æ²’æœ‰äº¤é›†ã€‚
+	 * stack ä¸­çš„ min æ˜¯ sortedï¼Œstack.peek().min æ˜¯æœ€å°çš„
 	 * 
-	 * ·í stack ¬°ªÅ®É¡Apush (num, num)
-	 * ·í stack.peek().min > num ®É¡Apush (num, num)
+	 * ç•¶ stack ç‚ºç©ºæ™‚ï¼Œpush (num, num)
+	 * ç•¶ stack.peek().min > num æ™‚ï¼Œpush (num, num)
 	 * 
-	 * ·í stack.peek().min <= num¡Aªí¥Ü num ¥i¥H³Q¦X¨Ö¨ì stack.peek()¡A©Ò¥H stack pop
-	 * ·í num < last.max¡A§Ú­Ì§ä¨ì 132 pattern
-	 * ·í num >= last.max¡A±N num ¦X¨Ö¨ì·í«e pop ¥Xªº½u¬q (°O¿ı¬° last)¡Alast.max = num
-	 * ¦ı¬O³o¼Ë¦³¥i¯à·|©M stack ¸Ìªº¨ä¥L½u¬q²£¥Í¥æ¶°¡A¦]¦¹­nÀË¬d
+	 * ç•¶ stack.peek().min <= numï¼Œè¡¨ç¤º num å¯ä»¥è¢«åˆä½µåˆ° stack.peek()ï¼Œæ‰€ä»¥ stack pop
+	 * ç•¶ num < last.maxï¼Œæˆ‘å€‘æ‰¾åˆ° 132 pattern
+	 * ç•¶ num >= last.maxï¼Œå°‡ num åˆä½µåˆ°ç•¶å‰ pop å‡ºçš„ç·šæ®µ (è¨˜éŒ„ç‚º last)ï¼Œlast.max = num
+	 * ä½†æ˜¯é€™æ¨£æœ‰å¯èƒ½æœƒå’Œ stack è£¡çš„å…¶ä»–ç·šæ®µç”¢ç”Ÿäº¤é›†ï¼Œå› æ­¤è¦æª¢æŸ¥
 	 * 
-	 * ¦]¬°§Ú­Ì¥u¦³¦b stack.peek().min > num ¤~ push ·sªº½u¬q¡A¦]¦¹ last.min < stack.peek().min
-	 * ­Y stack.peek().max <= last.max¡A³o¬q³Q last §¹¾ã¥]§t¡Astack pop
-	 * ­Y stack.peek().max > last.max¡A§Ú­Ì§ä¨ì 132 pattern
+	 * å› ç‚ºæˆ‘å€‘åªæœ‰åœ¨ stack.peek().min > num æ‰ push æ–°çš„ç·šæ®µï¼Œå› æ­¤ last.min < stack.peek().min
+	 * è‹¥ stack.peek().max <= last.maxï¼Œé€™æ®µè¢« last å®Œæ•´åŒ…å«ï¼Œstack pop
+	 * è‹¥ stack.peek().max > last.maxï¼Œæˆ‘å€‘æ‰¾åˆ° 132 pattern
 	 * 
-	 * ³B²z§¹²¦«á¡A±N last push ¶i stack
+	 * è™•ç†å®Œç•¢å¾Œï¼Œå°‡ last push é€² stack
 	 * 
 	 * Use a stack to keep track of previous min-max intervals.
 	 * 
@@ -176,19 +176,19 @@ public class OneThreeTwo_Pattern {
 	 * 
 	 * O(n)
 	 * 
-	 * ¥Î¤@­Ó min value array ¨ÓÀx¦s³Ì¨Îªº "1"
+	 * ç”¨ä¸€å€‹ min value array ä¾†å„²å­˜æœ€ä½³çš„ "1"
 	 * 
-	 * ¦b i ¤§«á·|¬O (nums[j] <= nums[k], j < k)¡A­Y¦³¥´¯}³o¶¶§Çªº¼Æ¦r¡Aªí¥Ü¦³ 132 pattern
-	 * ¥Ñ«á©¹«e¡A­Y²{¦b¬O nums[j]¡A§Ú­Ì¥i¥H¨Ï¥Î j + 1 ¤§«áªºµ²ªG
-	 * ¦]¦¹¥Î¤@­Ó stack ¨ÓÀx¦s¥i¯àªº "2"
+	 * åœ¨ i ä¹‹å¾Œæœƒæ˜¯ (nums[j] <= nums[k], j < k)ï¼Œè‹¥æœ‰æ‰“ç ´é€™é †åºçš„æ•¸å­—ï¼Œè¡¨ç¤ºæœ‰ 132 pattern
+	 * ç”±å¾Œå¾€å‰ï¼Œè‹¥ç¾åœ¨æ˜¯ nums[j]ï¼Œæˆ‘å€‘å¯ä»¥ä½¿ç”¨ j + 1 ä¹‹å¾Œçš„çµæœ
+	 * å› æ­¤ç”¨ä¸€å€‹ stack ä¾†å„²å­˜å¯èƒ½çš„ "2"
 	 * 
-	 * ­º¥ı¡A stack[top] <= min[j] ´N¤£Â_ pop¡A³o¼Ë stack ´N¥u³Ñ¤U²Å¦X±ø¥óªº
-	 * ­Y nums[j] > stack[top] ªí¥Ü§ä¨ì¤F
-	 * µM¦Ó nums[j] <= stack[top]¡Aªí¥Ü nums[j] ¬O¥i¯àªº "2"¡A±N nums[j] push ¶i¥h
+	 * é¦–å…ˆï¼Œ stack[top] <= min[j] å°±ä¸æ–· popï¼Œé€™æ¨£ stack å°±åªå‰©ä¸‹ç¬¦åˆæ¢ä»¶çš„
+	 * è‹¥ nums[j] > stack[top] è¡¨ç¤ºæ‰¾åˆ°äº†
+	 * ç„¶è€Œ nums[j] <= stack[top]ï¼Œè¡¨ç¤º nums[j] æ˜¯å¯èƒ½çš„ "2"ï¼Œå°‡ nums[j] push é€²å»
 	 * 
-	 * stack ¥²©w¬O±Æ§Ç¦nªº (stack[top] ³Ì¤p)¡A¦]¬°
-	 * 1. min[i] <= min[j], when i > j¡A©Ò¥H pop ¤§«áÁÙ¬O sorted
-	 * 2. nums[j] <= stack[top]¡AµM«á¤~ push nums[j]
+	 * stack å¿…å®šæ˜¯æ’åºå¥½çš„ (stack[top] æœ€å°)ï¼Œå› ç‚º
+	 * 1. min[i] <= min[j], when i > jï¼Œæ‰€ä»¥ pop ä¹‹å¾Œé‚„æ˜¯ sorted
+	 * 2. nums[j] <= stack[top]ï¼Œç„¶å¾Œæ‰ push nums[j]
 	 * 
 	 * The preprocessing is to just find the best nums[i] value corresponding to every 
 	 * nums[j] value. We find the minimum element found till the jth element which 
@@ -274,18 +274,18 @@ public class OneThreeTwo_Pattern {
 	/*
 	 * https://leetcode.com/problems/132-pattern/discuss/906789/Short-Java-O(N)-Solution-with-Detailed-Explanation-and-Sample-Test-Case-or-Stack-or-100
 	 * 
-	 * nums[i] ¬O "1"¡A§Ú­Ì­nÅı "2" (second) ºÉ¥i¯à¤j
+	 * nums[i] æ˜¯ "1"ï¼Œæˆ‘å€‘è¦è®“ "2" (second) ç›¡å¯èƒ½å¤§
 	 * 
-	 * ­Y nums[i] < second ªí¥Ü§ä¨ì 132 pattern
-	 * §_«h±N nums[i] ·í§@¥i¯àªº "3"¡A§Ú­Ì¥u»İ­nÀË¬d¤ñ²{¦bªº "2" ¤jªº³¡¤À¡A¦]¦¹¨Ï¥Î stack
+	 * è‹¥ nums[i] < second è¡¨ç¤ºæ‰¾åˆ° 132 pattern
+	 * å¦å‰‡å°‡ nums[i] ç•¶ä½œå¯èƒ½çš„ "3"ï¼Œæˆ‘å€‘åªéœ€è¦æª¢æŸ¥æ¯”ç¾åœ¨çš„ "2" å¤§çš„éƒ¨åˆ†ï¼Œå› æ­¤ä½¿ç”¨ stack
 	 * 
-	 * ±N stack[top] ¤ñ nums[i] ¤pªº¼Æ¦r³£ pop ¥X¨Ó°µ¬° "2"¡C¦]¬°¥Ñ«á©¹«e¡A©Ò¥H "2" ¥²©w¦b nums[i] ¥kÃä
-	 * ­Y stack[top] >= nums[i]¡Aªí¥Ü¦b¥kÃä¦³§ó¤jªº "2" ©M±N¥L pop ¥X¨Óªº "3"
+	 * å°‡ stack[top] æ¯” nums[i] å°çš„æ•¸å­—éƒ½ pop å‡ºä¾†åšç‚º "2"ã€‚å› ç‚ºç”±å¾Œå¾€å‰ï¼Œæ‰€ä»¥ "2" å¿…å®šåœ¨ nums[i] å³é‚Š
+	 * è‹¥ stack[top] >= nums[i]ï¼Œè¡¨ç¤ºåœ¨å³é‚Šæœ‰æ›´å¤§çš„ "2" å’Œå°‡ä»– pop å‡ºä¾†çš„ "3"
 	 * 
-	 * ³Ì«á¦A±N nums[i] push ¶i¥h¡Astack ¸Ì­±¬O "3"
+	 * æœ€å¾Œå†å°‡ nums[i] push é€²å»ï¼Œstack è£¡é¢æ˜¯ "3"
 	 * 
-	 * stack ¥²©w¬O±Æ§Ç¦nªº (stack[top] ³Ì¤p)¡A¦]¬° stack[top] < nums[i] ´N³Q pop
-	 * µM«á¤~ push nums[i]
+	 * stack å¿…å®šæ˜¯æ’åºå¥½çš„ (stack[top] æœ€å°)ï¼Œå› ç‚º stack[top] < nums[i] å°±è¢« pop
+	 * ç„¶å¾Œæ‰ push nums[i]
 	 * 
 	 * We are only storing one item in the stack, which is our ideal candidate for s2 
 	 * (number that needs to be the largest). If we find a number that is bigger than 
@@ -398,11 +398,11 @@ public class OneThreeTwo_Pattern {
         for (int i = 1; i < nums.length; i++)
             min[i] = Math.min(min[i - 1], nums[i]);
         
-        // k ¬O array «á¥b³¡¼ÒÀÀ stack ªº top¡Anums.length - 1 ¬O bottom
-        // ¦]¬° stack ¬O sorted¡A©Ò¥H¥i¥H¥Î binary search¡C§ä¥X·sªº top
+        // k æ˜¯ array å¾ŒåŠéƒ¨æ¨¡æ“¬ stack çš„ topï¼Œnums.length - 1 æ˜¯ bottom
+        // å› ç‚º stack æ˜¯ sortedï¼Œæ‰€ä»¥å¯ä»¥ç”¨ binary searchã€‚æ‰¾å‡ºæ–°çš„ top
         for (int j = nums.length - 1, k = nums.length; j >= 0; j--) {
             if (nums[j] > min[j]) {
-            	// ¥u§ä k ¤§«áªº¡A¼ÒÀÀ pop
+            	// åªæ‰¾ k ä¹‹å¾Œçš„ï¼Œæ¨¡æ“¬ pop
                 k = Arrays.binarySearch(nums, k, nums.length, min[j] + 1);
                 
                 if (k < 0)
@@ -412,8 +412,8 @@ public class OneThreeTwo_Pattern {
                     return true;
                 
                 // nums[k] >= nums[j]
-                // ±N nums[j] push ¶i¥h¡C¦]¬° k ¬O top¡A©Ò¥H­n¥ı --k
-                // k = j; ¤]·| accept¡A­ì¦]¤£©ú
+                // å°‡ nums[j] push é€²å»ã€‚å› ç‚º k æ˜¯ topï¼Œæ‰€ä»¥è¦å…ˆ --k
+                // k = j; ä¹Ÿæœƒ acceptï¼ŒåŸå› ä¸æ˜
                 nums[--k] = nums[j];
             }
         }
@@ -507,11 +507,11 @@ public class OneThreeTwo_Pattern {
 	/*
 	 * https://leetcode.com/problems/132-pattern/discuss/94133/Simple-java-accepted-well-explained-O(n2)-solution
 	 * 
-	 * nums[i] ¬O³Ì¤pªº¡A¸õ¹L nums[j] <= nums[i]
+	 * nums[i] æ˜¯æœ€å°çš„ï¼Œè·³é nums[j] <= nums[i]
 	 * 
-	 * bigger ¬O³Ì¤jªº¡A·í nums[j] >= bigger ´N­n§ó·s bigger
-	 * ­Y bigger ¨S³Q nums[j] §ó·s¡Aªí¥Ü nums[j] < bigger
-	 * => ¦]¦¹ nums[i] < bigger > nums[j]¡A¦]¬° bigger > nums[i]¡A§_«h·|³Q¸õ¹L
+	 * bigger æ˜¯æœ€å¤§çš„ï¼Œç•¶ nums[j] >= bigger å°±è¦æ›´æ–° bigger
+	 * è‹¥ bigger æ²’è¢« nums[j] æ›´æ–°ï¼Œè¡¨ç¤º nums[j] < bigger
+	 * => å› æ­¤ nums[i] < bigger > nums[j]ï¼Œå› ç‚º bigger > nums[i]ï¼Œå¦å‰‡æœƒè¢«è·³é
 	 */
 	public boolean find132pattern_bigger(int[] nums) {
 		if (nums == null || nums.length < 3) {
