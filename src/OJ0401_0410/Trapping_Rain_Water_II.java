@@ -13,31 +13,31 @@ public class Trapping_Rain_Water_II {
 	 * https://leetcode.com/problems/trapping-rain-water-ii/discuss/89461/Java-solution-using-PriorityQueue
 	 * https://github.com/awangdev/LintCode/blob/master/Java/Trapping%20Rain%20Water%20II.java
 	 * 
-	 * Min Heap¡G¥Î PriorityQueue §â¿ï¤¤ªº height ±Æ§Ç¡A¬°¨«¦ì¡A³Ğ«Ø class Cell (x,y, height).
+	 * Min Heapï¼šç”¨ PriorityQueue æŠŠé¸ä¸­çš„ height æ’åºï¼Œç‚ºèµ°ä½ï¼Œå‰µå»º class Cell (x,y, height).
 	 * 
-	 * ª`·N´X­Ó²z½×
-	 * - 1. ±q matrix ¥|©P¶}©l¦Ò¼{¡Aµo²{ matrix ¯à Hold ¦íªº¤ô¡A¨ú¨M©ó height §Cªº block
-	 * - 2. ¥²¶·±q¥~³ò¶}©l¦Ò¼{¡A¦]¬°¤ô¬O³Q¥]»q¦b¸Ì­±¡A¥~­±¦Ü¤Ö»İ­n²{¦³¤@¼h
-	 * - ¥H¤W¨âÂI´N«P¨Ï§Ú­Ì¥Î min-heap: ¤]´N¬O natural order ªº PriorityQueue<Cell>.
+	 * æ³¨æ„å¹¾å€‹ç†è«–
+	 * - 1. å¾ matrix å››å‘¨é–‹å§‹è€ƒæ…®ï¼Œç™¼ç¾ matrix èƒ½ Hold ä½çš„æ°´ï¼Œå–æ±ºæ–¼ height ä½çš„ block
+	 * - 2. å¿…é ˆå¾å¤–åœé–‹å§‹è€ƒæ…®ï¼Œå› ç‚ºæ°´æ˜¯è¢«åŒ…è£¹åœ¨è£¡é¢ï¼Œå¤–é¢è‡³å°‘éœ€è¦ç¾æœ‰ä¸€å±¤
+	 * - ä»¥ä¸Šå…©é»å°±ä¿ƒä½¿æˆ‘å€‘ç”¨ min-heap: ä¹Ÿå°±æ˜¯ natural order çš„ PriorityQueue<Cell>.
 	 * 
 	 * Steps
-	 * - 1. process ªº®É­Ô¡Aµe¹Ï¥i¥H·d²M·¡: ´N¬O¥|­Ó¤è¦V³£¨«¨«¡A¥Î curr cell ªº°ª«×´î¥h©P³ò cell ªº°ª«×.
-	 * - 2. ­Y¤j©ó¹s¡A¨º»ò©P³òªº cell ´N¦³¿n¤ô: ¦]¬° curr cell ¤w¸g¬O¥~³ò³Ì§C, ©Ò¥H¤º³¡§ó§Cªº, ¤@©w¦³¿n¤ô.
-	 * - 3. ¨C­Ó visited ªº cell ³£­n mark, avoid revisit
-	 * - 4. ®Ú¾Ú 4 ­Ó¤è¦Vªº¨«¦ì (mX, mY) ³Ğ«Ø·s cell ¥[¶i queue ¸Ì­±: cell(mX, mY) ¤w¸g­pºâ¹L¿n¤ô«á, 
-	 *      ¥~³òÀğ¤p®É, (mX, mY) ´N·|ÅÜ¦¨Àğ.
-	 * - 5. ¦]¬°°µªº¬OÁY¤p¤@°éªº·s³òÀğ, height = Math.max(cell.h, neighbor.h);
-	 * - ©M trapping water I ·Qªk¤@¼Ë¡C­è­è±q¥~³ò¡A¥u¬O¯à¥[¨ì¸ò¥~³ò cell °ª«×¤@­Pªº¤ô¥­­±¡C©¹¸Ì­±¡A«Ü¥i¯à 
-	 *   cell °ª«×ÅÜ¤Æ¡C
-	 * - ³o¸Ì­nªş¤W curr cell ©M  move-to cell ªº³Ì¤j°ª«×¡C
+	 * - 1. process çš„æ™‚å€™ï¼Œç•«åœ–å¯ä»¥ææ¸…æ¥š: å°±æ˜¯å››å€‹æ–¹å‘éƒ½èµ°èµ°ï¼Œç”¨ curr cell çš„é«˜åº¦æ¸›å»å‘¨åœ cell çš„é«˜åº¦.
+	 * - 2. è‹¥å¤§æ–¼é›¶ï¼Œé‚£éº¼å‘¨åœçš„ cell å°±æœ‰ç©æ°´: å› ç‚º curr cell å·²ç¶“æ˜¯å¤–åœæœ€ä½, æ‰€ä»¥å…§éƒ¨æ›´ä½çš„, ä¸€å®šæœ‰ç©æ°´.
+	 * - 3. æ¯å€‹ visited çš„ cell éƒ½è¦ mark, avoid revisit
+	 * - 4. æ ¹æ“š 4 å€‹æ–¹å‘çš„èµ°ä½ (mX, mY) å‰µå»ºæ–° cell åŠ é€² queue è£¡é¢: cell(mX, mY) å·²ç¶“è¨ˆç®—éç©æ°´å¾Œ, 
+	 *      å¤–åœç‰†å°æ™‚, (mX, mY) å°±æœƒè®Šæˆç‰†.
+	 * - 5. å› ç‚ºåšçš„æ˜¯ç¸®å°ä¸€åœˆçš„æ–°åœç‰†, height = Math.max(cell.h, neighbor.h);
+	 * - å’Œ trapping water I æƒ³æ³•ä¸€æ¨£ã€‚å‰›å‰›å¾å¤–åœï¼Œåªæ˜¯èƒ½åŠ åˆ°è·Ÿå¤–åœ cell é«˜åº¦ä¸€è‡´çš„æ°´å¹³é¢ã€‚å¾€è£¡é¢ï¼Œå¾ˆå¯èƒ½ 
+	 *   cell é«˜åº¦è®ŠåŒ–ã€‚
+	 * - é€™è£¡è¦é™„ä¸Š curr cell å’Œ  move-to cell çš„æœ€å¤§é«˜åº¦ã€‚
 	 * 
-	 * ¬°¤°»ò·Q¨ì¥Î Heap (min-heap - priorityQueue)
-	 * - ­n§ä¨ì bucket ªº³ÌµuªO
-	 * - ¨C¦¸»İ­n³Ì¥ı³B²z³Ìµuªº¨º±ø (on top)
+	 * ç‚ºä»€éº¼æƒ³åˆ°ç”¨ Heap (min-heap - priorityQueue)
+	 * - è¦æ‰¾åˆ° bucket çš„æœ€çŸ­æ¿
+	 * - æ¯æ¬¡éœ€è¦æœ€å…ˆè™•ç†æœ€çŸ­çš„é‚£æ¢ (on top)
 	 * 
-	 * ¬°¤°»ò±q¥~¦V¸Ì¹M¾ú
-	 * - ¤ì±í²z½×, ¥]¤ô, ¬O±q¥~­±¥]¦í¸Ì­±
-	 * - ¬v½µ­é¥Ö, ¥Î§¹¥á±¼ => BFS
+	 * ç‚ºä»€éº¼å¾å¤–å‘è£¡éæ­·
+	 * - æœ¨æ¡¶ç†è«–, åŒ…æ°´, æ˜¯å¾å¤–é¢åŒ…ä½è£¡é¢
+	 * - æ´‹è”¥å‰çš®, ç”¨å®Œä¸Ÿæ‰ => BFS
 	 * 
 	 * [[0, 0, 3, 0, 0], [0, 0, 2, 0, 0], [3, 2, 1, 2, 3], [0, 0, 2, 0, 0], [0, 0, 3, 0, 0]]
 	 * 
@@ -156,10 +156,10 @@ public class Trapping_Rain_Water_II {
 	 * cell is neighbor of multiple cells on the boundary so we need to keep track of 
 	 * which cell has been visited to avoid repetition.
 	 * 
-	 * ¥|­±³£¬O³òÀğ¡A±q³Ì§Cªº©¹¸Ì¨«¡F
-	 * ¦pªG¸Ì­±¦³§ó§Cªº¡A·íµM´N¥i¥H»W¤ô¡A»W¤ôªº¶q´N¬O³òÀğ³Ì§C ´î¥h ¦¹³Bªº°ª«×¡F
-	 * ¦pªG¸Ì­±ªº¤ñ·í«e³òÀğ°ª¡A¨º³o­Ó¤è¦Vªº³òÀğ°ª«×´N¼W¥[¤F¡C
-	 * µM«á¥Ã»·³òÀğ³Ì§Cªº¦a¤è¶}©l·j¡A³Ì«á´N¯à§â¾ã­Ó¤ô¦À·j¤@¹M¡C
+	 * å››é¢éƒ½æ˜¯åœç‰†ï¼Œå¾æœ€ä½çš„å¾€è£¡èµ°ï¼›
+	 * å¦‚æœè£¡é¢æœ‰æ›´ä½çš„ï¼Œç•¶ç„¶å°±å¯ä»¥è“„æ°´ï¼Œè“„æ°´çš„é‡å°±æ˜¯åœç‰†æœ€ä½ æ¸›å» æ­¤è™•çš„é«˜åº¦ï¼›
+	 * å¦‚æœè£¡é¢çš„æ¯”ç•¶å‰åœç‰†é«˜ï¼Œé‚£é€™å€‹æ–¹å‘çš„åœç‰†é«˜åº¦å°±å¢åŠ äº†ã€‚
+	 * ç„¶å¾Œæ°¸é åœç‰†æœ€ä½çš„åœ°æ–¹é–‹å§‹æœï¼Œæœ€å¾Œå°±èƒ½æŠŠæ•´å€‹æ°´æ± æœä¸€éã€‚
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/trapping-rain-water-ii/discuss/89495/How-to-get-the-solution-to-2-D-"Trapping-Rain-Water"-problem-from-1-D-case/380142

@@ -82,10 +82,10 @@ public class Path_Sum_III {
 		sum += root.val;
 		
 		// See if there is a subarray sum equals to target
-		// ²{¦bªº node ¬O path ªº²×ÂI
+		// ç¾åœ¨çš„ node æ˜¯ path çš„çµ‚é»
 		int res = map.getOrDefault(sum - target, 0);
 		
-		// §ó·s map ¥Î¥H¶i¦æ¤U¤@¼h
+		// æ›´æ–° map ç”¨ä»¥é€²è¡Œä¸‹ä¸€å±¤
 		map.put(sum, map.getOrDefault(sum, 0) + 1);
 		
 		// Extend to left and right child
@@ -93,7 +93,7 @@ public class Path_Sum_III {
 				+ backtrack(root.right, sum, target, map);
 		
 		// Remove the current node so it won't affect other path
-		// ³o­Ó node ¥H¤Î sub tree ³B²z§¹²¦¡A±N¥L­Ì²¾°£¡A³o¼Ë¤~¤£·|¤zÂZ¾Fªñªº path
+		// é€™å€‹ node ä»¥åŠ sub tree è™•ç†å®Œç•¢ï¼Œå°‡ä»–å€‘ç§»é™¤ï¼Œé€™æ¨£æ‰ä¸æœƒå¹²æ“¾é„°è¿‘çš„ path
 		map.put(sum, map.get(sum) - 1);
 		
 		return res;

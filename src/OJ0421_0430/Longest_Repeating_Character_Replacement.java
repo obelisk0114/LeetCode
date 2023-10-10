@@ -7,28 +7,28 @@ public class Longest_Repeating_Character_Replacement {
 	/*
 	 * Modified by myself
 	 * 
-	 * ¨Ï¥Î sliding window ¨Ó´M§ä¡Cmap ¬O·í«e window ¤¤©Ò¦³ character ¦U¦Û¹ïÀ³ªº¼Æ¶q
-	 * window size = ¦¸¼Æ³Ì¦hªº character ªº¼Æ¶q  + k
-	 * right ¤@ª½¨«¡Aª½¨ì window size = right - left + 1 > k + maxCount¡Aªí¥Ü invalid
+	 * ä½¿ç”¨ sliding window ä¾†å°‹æ‰¾ã€‚map æ˜¯ç•¶å‰ window ä¸­æ‰€æœ‰ character å„è‡ªå°æ‡‰çš„æ•¸é‡
+	 * window size = æ¬¡æ•¸æœ€å¤šçš„ character çš„æ•¸é‡  + k
+	 * right ä¸€ç›´èµ°ï¼Œç›´åˆ° window size = right - left + 1 > k + maxCountï¼Œè¡¨ç¤º invalid
 	 * 
-	 * ³o¸Ìªº maxCount ¬O [0, right] ©Ò¦³ character ªº³Ì¤j¼Æ¶q
-	 * ¤£¤@©w¬O·í«e window ¤¤ character ªº³Ì¤j¼Æ¶q
-	 * maxCount ¨C¦¸³£©M²{¦b character ¦b·í«e window ¤¤ªº¼Æ¶q°µ¤ñ¸û
-	 * ¦]¦¹ maxCount ¨C¦¸§ó·s³£ªí¥Ü·í«e window ¤¤¼Æ¶q³Ì¦hªº character ªº¼Æ¶q
+	 * é€™è£¡çš„ maxCount æ˜¯ [0, right] æ‰€æœ‰ character çš„æœ€å¤§æ•¸é‡
+	 * ä¸ä¸€å®šæ˜¯ç•¶å‰ window ä¸­ character çš„æœ€å¤§æ•¸é‡
+	 * maxCount æ¯æ¬¡éƒ½å’Œç¾åœ¨ character åœ¨ç•¶å‰ window ä¸­çš„æ•¸é‡åšæ¯”è¼ƒ
+	 * å› æ­¤ maxCount æ¯æ¬¡æ›´æ–°éƒ½è¡¨ç¤ºç•¶å‰ window ä¸­æ•¸é‡æœ€å¤šçš„ character çš„æ•¸é‡
 	 * 
-	 * ¦]¬°§Ú­Ì­n§ä³Ì¤jªº window size¡A©Ò¥H¤£¥Î while ¨Ó shrink¡A¨Ï¥Î if ¨Ó¥­²¾¾ã­Ó sliding window
-	 * ¥­²¾«áªº sliding window ¦³¥i¯à invalid¡A¦ı¬O¤£­«­n
-	 * ¦]¬° window size ­Y¬OÄ~Äò expand «hªí¥Ü valid
-	 * ´«¨¥¤§¡A­Y windowSize ³Q§ó·s¹L¡A«hªí¥Ü¦³¬Y¤@¬q valid substring º¡¨¬±ø¥ó¨Ó§ó·s¹L
+	 * å› ç‚ºæˆ‘å€‘è¦æ‰¾æœ€å¤§çš„ window sizeï¼Œæ‰€ä»¥ä¸ç”¨ while ä¾† shrinkï¼Œä½¿ç”¨ if ä¾†å¹³ç§»æ•´å€‹ sliding window
+	 * å¹³ç§»å¾Œçš„ sliding window æœ‰å¯èƒ½ invalidï¼Œä½†æ˜¯ä¸é‡è¦
+	 * å› ç‚º window size è‹¥æ˜¯ç¹¼çºŒ expand å‰‡è¡¨ç¤º valid
+	 * æ›è¨€ä¹‹ï¼Œè‹¥ windowSize è¢«æ›´æ–°éï¼Œå‰‡è¡¨ç¤ºæœ‰æŸä¸€æ®µ valid substring æ»¿è¶³æ¢ä»¶ä¾†æ›´æ–°é
 	 * 
-	 * ¦b if ¤º¤£¥Î­×§ï¡B­«³] maxCount 
-	 * ¦]¬°·í window ¬O valid ®É¡A window size = k + maxCount
-	 * ¦b k ¤£ÅÜ¤U¡A¥u¦³ maxCount ¼W¥[¤~·|§ó·s window size
-	 * ¦]¦¹¤£¥Î¯S¦a´î¤Ö maxCount
-	 * ¥u­n¥~­± maxCount ¦]¬° window ¥X²{¼Æ¶q§ó¦hªº character ¦Ó§ó·s®É¡A¤§«á¤~·|¦b«á­±§ó·s window size
+	 * åœ¨ if å…§ä¸ç”¨ä¿®æ”¹ã€é‡è¨­ maxCount 
+	 * å› ç‚ºç•¶ window æ˜¯ valid æ™‚ï¼Œ window size = k + maxCount
+	 * åœ¨ k ä¸è®Šä¸‹ï¼Œåªæœ‰ maxCount å¢åŠ æ‰æœƒæ›´æ–° window size
+	 * å› æ­¤ä¸ç”¨ç‰¹åœ°æ¸›å°‘ maxCount
+	 * åªè¦å¤–é¢ maxCount å› ç‚º window å‡ºç¾æ•¸é‡æ›´å¤šçš„ character è€Œæ›´æ–°æ™‚ï¼Œä¹‹å¾Œæ‰æœƒåœ¨å¾Œé¢æ›´æ–° window size
 	 * 
-	 * ­Y¥Î if ªí¥Ü window ¥u·|¥­²¾¡A¤£·| shrink
-	 * ¦]¦¹³Ì¤jªº window size ¨ä¹ê¬O s.length() - left
+	 * è‹¥ç”¨ if è¡¨ç¤º window åªæœƒå¹³ç§»ï¼Œä¸æœƒ shrink
+	 * å› æ­¤æœ€å¤§çš„ window size å…¶å¯¦æ˜¯ s.length() - left
 	 * 
 	 * Rf :
 	 * https://leetcode.com/problems/longest-repeating-character-replacement/discuss/91271/Java-12-lines-O(n)-sliding-window-solution-with-explanation/95833
@@ -58,7 +58,7 @@ public class Longest_Repeating_Character_Replacement {
 			windowSize = Math.max(windowSize, right - left + 1);
 		}
 		
-		// ¨ä¹ê¥i¥H¥Î s.length() - left
+		// å…¶å¯¦å¯ä»¥ç”¨ s.length() - left
 		return windowSize;
 	}
 	
@@ -261,7 +261,7 @@ public class Longest_Repeating_Character_Replacement {
 	 * If s[start] is the majority character, we won't get a better result if the new 
 	 * max_occur doesn't exceed the former one. Window size is increased only because 
 	 * we end++ every time. So if the new character coming into the window (s[end+1]) 
-	 * is not the majority character, we won¡¦t get a qualified sequence since we 
+	 * is not the majority character, we won't get a qualified sequence since we 
 	 * introduce a new character. So we will only get a new result if the majority 
 	 * character count increase further or there comes a new majority character and 
 	 * its count exceeds the former one.

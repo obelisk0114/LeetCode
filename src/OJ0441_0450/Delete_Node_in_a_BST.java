@@ -75,7 +75,7 @@ public class Delete_Node_in_a_BST {
             else {
                 TreeNode leftMaxNode = findMax_self(root.left);
                 
-                // ¤£¯à¤¬´«¶¶§Ç¡A§_«h¦A§R°£ leftMaxNode ®É·|§â¿ù»~ªº right child ±µ¤W¨Ó
+                // ä¸èƒ½äº’æ›é †åºï¼Œå¦å‰‡å†åˆªé™¤ leftMaxNode æ™‚æœƒæŠŠéŒ¯èª¤çš„ right child æ¥ä¸Šä¾†
                 // test case: [5,3,6,2,4,null,7], 3
                 leftMaxNode.left = deleteNode_self(root.left, leftMaxNode.val);
                 leftMaxNode.right = root.right;

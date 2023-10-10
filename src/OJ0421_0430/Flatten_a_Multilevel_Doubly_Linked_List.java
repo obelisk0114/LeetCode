@@ -454,7 +454,7 @@ public class Flatten_a_Multilevel_Doubly_Linked_List {
 	}
 	
 	/*
-	 * ¥i¯à¤£²ÅÃD·N
+	 * å¯èƒ½ä¸ç¬¦é¡Œæ„
 	 * https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/discuss/314871/Java-0-ms-solution
 	 */
 	
