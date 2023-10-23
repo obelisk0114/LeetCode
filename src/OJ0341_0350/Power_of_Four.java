@@ -40,6 +40,33 @@ public class Power_of_Four {
 	public boolean isPowerOfFour_bitCount_trailing(int num) {
 		return num >= 1 && Integer.bitCount(num) == 1 && Integer.numberOfTrailingZeros(num) % 2 == 0;
 	}
+
+	// by myself
+	public boolean isPowerOfFour_self(int n) {
+        if (n == 1) {
+            return true;
+        }
+        if (n < 1) {
+            return false;
+        }
+
+        int idx = 0;
+        while (n != 1) {
+            if ((n & 1) == 1) {
+                return false;
+            }
+
+            n >>= 1;
+            idx++;
+        }
+
+        if ((idx & 1) == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 	
 	/*
 	 * The first two conditions are for power of 2. 
