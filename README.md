@@ -459,6 +459,7 @@
 ## 581-590
 581. Shortest Unsorted Continuous Subarray
 583. Delete Operation for Two Strings
+584. Find Customer Referee (database, DB)
 
 ## 591-600
 592. Fraction Addition and Subtraction
@@ -471,6 +472,7 @@
 ## 611-620
 611. Valid Triangle Number
 617. Merge Two Binary Trees
+620. Not Boring Movies (database, DB) (Can't access article)
 
 ## 621-630
 621. Task Scheduler (Can't access article)
@@ -597,3 +599,6 @@
 
 ## 1591-1600
 1597. Build Binary Expression Tree From Infix Expression
+
+## 1751-1760
+1757. Recyclable and Low Fat Products (database, DB)
