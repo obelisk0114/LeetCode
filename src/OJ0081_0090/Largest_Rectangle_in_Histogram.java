@@ -1,8 +1,61 @@
 package OJ0081_0090;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 public class Largest_Rectangle_in_Histogram {
+	/*
+	 * 窮舉每個 heights[i] 所能做出的最大矩形
+	 * left[i] = heights[i] 的左邊界
+	 * right[i] = heights[i] 的右邊界
+	 * 
+	 * heights[i] 所能做出的最大矩形, 長度 = 左 - 右 + 1
+	 * 
+	 * 找出邊界, 即為找出第一個高度比當前高度小的, 因此可套用 Monotonic Stack
+	 * 因為更高的, 都被 pop 了, 所以 stack.top 是最大的
+	 * 
+	 * Rf : https://leetcode.cn/problems/largest-rectangle-in-histogram/solutions/2695467/dan-diao-zhan-fu-ti-dan-pythonjavacgojsr-89s7/
+	 */
+	public int largestRectangleArea_self_mod(int[] heights) {
+        int n = heights.length;
+        Deque<Integer> st = new ArrayDeque<>();
+
+		// heights[i] 的左邊界
+        int[] left = new int[n];
+        for (int i = 0; i < n; i++) {
+            int h = heights[i];
+            while (!st.isEmpty() && heights[st.peek()] >= h) {
+                st.pop();
+            }
+
+            // st.peek() 是第一個高度比他小的, + 1 變成高度延伸的左邊界
+            left[i] = st.isEmpty() ? 0 : st.peek() + 1;
+            st.push(i);
+        }
+
+        st.clear();
+
+		// heights[i] 的右邊界
+        int[] right = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            int h = heights[i];
+            while (!st.isEmpty() && heights[st.peek()] >= h) {
+                st.pop();
+            }
+
+            // st.peek() 是第一個高度比他小的, - 1 變成高度延伸的右邊界
+            right[i] = st.isEmpty() ? n - 1 : st.peek() - 1;
+            st.push(i);
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans = Math.max(ans, heights[i] * (right[i] - left[i] + 1));
+        }
+        return ans;
+    }
+
 	/*
 	 * https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28953/java-on-leftright-arrays-solution-4ms-beats-96
 	 * 
