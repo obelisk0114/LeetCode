@@ -128,6 +128,139 @@ public class Critical_Connections_in_a_Network {
 	}
 	
 	/*
+	 * https://leetcode.com/problems/critical-connections-in-a-network/discuss/401340/Clean-Java-Solution-With-Explanation!!!-Great-Question!
+	 * 
+	 * 1. Why do we write a special case for parent? before iterating every child, 
+	 *    visited[parent] becomes true.
+	 * A: The reason for writing a special condition for checking parent is that, I 
+	 *    don't want the timing of my currently node's parent to update my current 
+	 *    node's timing which will always be less than my current node which would 
+	 *    ultimately lead to result being populated with all the connections in the 
+	 *    graph. Let me know if you understand the explanation otherwise I can 
+	 *    explain you the same with an example.
+	 * 2. We don't need "visited[]". If timestampAtThatNode[I] == 0, then it is not 
+	 *    visited, given timer[] start with 1.
+	 * A: Yes, that's a great idea we can go ahead with that as well!
+	 *    Will save memory of visited array.
+	 * 3. why the timer is an array with one value in it? what if we use a integer to 
+	 *    store it ?
+	 * A: Yes, you can also use one int value for the timer but generally in these 
+	 *    types of graph problems there are a couple of timers some time and it 
+	 *    doesn't make sense have different fields every time but in this problem it 
+	 *    doesn't matter. You can use anything!
+	 * 4. How would you recommend that we maintain the order of the input nodes? 
+	 *    (For the case: Input: n = 4, connections = [[0,1],[1,2],[2,0],[1,3]] 
+	 *    Output: [[1,3]]
+	 *    [[3,1]] is also accepted. How could we preserve the input order, 
+	 *    i.e. only return [1,3] and not [3,1])
+	 * A: First of all, the entire graph is undirected which means that the order 
+	 *    does not matter!
+	 *    But even then if you need to preserve the order the easiest way is to 
+	 *    traverse the input connections for every result connection to check if it 
+	 *    is in the same order which is there in the input if not we reverse the 
+	 *    order. Its complexity will be order of 
+	 *    (input connections, result connection)
+	 *    Easier way will be to add all the input connections to hashset. While 
+	 *    adding a connection to result we just check whether that connection is in 
+	 *    the set. If it is we add it as it is, if not we will reverse it and add it. 
+	 *    This will be order of number of connections in the result.
+	 * 5. why if (currentTimeStamp < timeStampAtThatNode[oneNeighbour]) other than 
+	 *        if(currentTimeStamp > timeStampAtThatNode[oneNeighbour]) ?
+	 *    currentTimeStamp means the timestamp of current node, if the timestamp of 
+	 *    its neighbor is less than its own timestamp, then there's a critical 
+	 *    connection. Am I understanding correct ?
+	 * A: A critical connection (A-B) where A is the current node and B is the 
+	 *    neighbor of A in the DFS traversal is given by a connection when A is 
+	 *    visited before its neighbor(B). Which means that only way to go to B is 
+	 *    through A. Now, if B is visited before A through some other node's DFS 
+	 *    traversal and updated the visited time of B to a value lower than visited 
+	 *    time of A it means that there is a way to reach B which will not go through 
+	 *    A. So edge A-B is not a critical connection because even after removing 
+	 *    edge A-B , B will not be isolated.
+	 * 
+	 * --------------------------------------------------------------------------
+	 * 
+	 * if I change if(currentTimeStamp < timeStampAtThatNode[oneNeighbour]) 
+	 *   results.add(Arrays.asList(node, oneNeighbour));
+	 * to if(timeStampAtThatNode[node]< timeStampAtThatNode[oneNeighbour]) 
+	 *   results.add(Arrays.asList(node, oneNeighbour));
+	 * 
+	 * The code will fail.
+	 * 
+	 * Think about the case [[0,1],[1,2],[2,0],[1,3], [3,4], [4,5], [3,5], [4,0]], 
+	 * when the current node is 3 and next node is 5, the timeStampAtThatNode is 
+	 * [1, 1, 1, 1, 1, 3], and node 3 and node 5 are in the loop even though 
+	 * timeStampAtThatNode [3] < timeStampAtThatNode[5], but currentTimeStamp for 
+	 * node 3 is 3, which is the same as timeStampAtThatNode[5], in my understanding 
+	 * node 3 and node 5 are at the same depth in the previous search, but the node 3 
+	 * has been updated first within timeStampAtThatNode array and node 5 hasn't, so 
+	 * we should use currentTimeStamp to compare to prevent the "sync" delay. 
+	 * 
+	 * 
+	 * Rf :
+	 * https://leetcode.com/problems/critical-connections-in-a-network/discuss/401340/Clean-Java-Solution-With-Explanation!!!-Great-Question!/562054
+	 */
+	class Solution2_2 {
+		// We record the timestamp that we visit each node. For each node, we check
+		// every neighbor except its parent and return a smallest timestamp in all 
+		// its neighbors. If this timestamp is strictly less than the node's 
+		// timestamp, we know that this node is somehow in a cycle. Otherwise, this 
+		// edge from the parent to this node is a critical connection
+		public List<List<Integer>> criticalConnections(int n, 
+				List<List<Integer>> connections) {
+			
+			List<List<Integer>> graph = new ArrayList<>(n);
+			for (int i = 0; i < n; i++) {				
+				graph.add(new ArrayList<>());
+			}
+
+			for (List<Integer> oneConnection : connections) {
+				graph.get(oneConnection.get(0)).add(oneConnection.get(1));
+				graph.get(oneConnection.get(1)).add(oneConnection.get(0));
+			}
+			
+			List<List<Integer>> results = new ArrayList<>();
+			
+			int timer[] = new int[1];
+			boolean[] visited = new boolean[n];
+			int[] timeStampAtThatNode = new int[n];
+			
+			criticalConnectionsUtil(graph, -1, 0, timer, visited, results, 
+					timeStampAtThatNode);
+			
+			return results;
+		}
+
+		public void criticalConnectionsUtil(List<List<Integer>> graph, int parent, 
+				int node, int timer[], boolean[] visited,
+				List<List<Integer>> results, int[] timeStampAtThatNode) {
+			
+			visited[node] = true;
+			timeStampAtThatNode[node] = timer[0]++;
+			
+			int currentTimeStamp = timeStampAtThatNode[node];
+
+			for (int oneNeighbour : graph.get(node)) {
+				if (oneNeighbour == parent)
+					continue;
+				
+				if (!visited[oneNeighbour]) {					
+					criticalConnectionsUtil(graph, node, oneNeighbour, 
+							timer, visited, results, timeStampAtThatNode);
+				}
+				
+				timeStampAtThatNode[node] = 
+					Math.min(timeStampAtThatNode[node], 
+							timeStampAtThatNode[oneNeighbour]);
+				
+				if (currentTimeStamp < timeStampAtThatNode[oneNeighbour]) {					
+					results.add(Arrays.asList(node, oneNeighbour));
+				}
+			}
+		}
+	}
+
+	/*
 	 * https://leetcode.com/problems/critical-connections-in-a-network/discuss/399827/Java-DFS-Solution-similar-to-Tarjan-maybe-easier-to-understand
 	 * 
 	 * We record the timestamp that we visit each node. For each node, we check every 
